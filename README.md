@@ -72,7 +72,7 @@ Weekend: Completed MERN Twitter, started basic backend.
 ### 11/25: 
 * Complete Production README - Everyone
 * Refactoring code and refining css - Everyone
-
+ 
 
 
 
