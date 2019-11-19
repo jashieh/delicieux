@@ -6,7 +6,7 @@ const MAX = 21;
 const MIN = 0;
 
 class RecipeIndexItem extends React.Component {
-  constructor() {
+  constructor(props) {
     super(props);
 
     this.state = {
@@ -52,4 +52,4 @@ class RecipeIndexItem extends React.Component {
   }
 }
 
-export default ReactIndexItem;
+export default RecipeIndexItem;

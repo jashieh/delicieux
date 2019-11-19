@@ -2,7 +2,7 @@ import {
   RECEIVE_RECIPES,
 } from '../actions/recipe_actions';
 
-const SessionErrorsReducer = (state = {}, action) => {
+const RecipesReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
@@ -13,4 +13,4 @@ const SessionErrorsReducer = (state = {}, action) => {
   }
 };
 
-export default SessionErrorsReducer;
+export default RecipesReducer;
