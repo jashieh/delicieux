@@ -76,10 +76,6 @@ export const getSimilarRecipes = (id, limit = 5) => {
 };
 
 
-// Returns array of substitutes under key 'substitutes'
-export const getIngredientSubstitutes = (ingredientName) => {
-  return axios.get(`https://api.spoonacular.com/food/ingredients/substitutes?ingredientName=${ingredientName}&apiKey=${apiKey}`);
-};
 
 // Extract recipe from site url and return as object
 export const extractRecipe = (url) => {
