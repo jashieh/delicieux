@@ -1,23 +1,26 @@
 import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
+import Modal from './modal/modal';
 import MainPage from './main/main';
-import NavbarContainer from './nav/navbar_container';
-import LoginFormContainer from './session/login_form_container';
-import SignupFormContainer from './session/signup_form_container';
+import LoginFormContainer from './userform/login_form_container';
+import UserForm from './userform/user_form';
 import RecipeIndexContainer from './recipe_index/recipe_index_container';
+import './stylesheets/App.scss';
 
 const App = () => (
   <div>
-      <NavbarContainer />
     <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <Route exact path="/" component={ MainPage } />
+      <AuthRoute exact path="/signup" component={ UserForm } />
+      <AuthRoute exact path="/login" component={ LoginFormContainer } />
       <Route exact path="/recipes" component={RecipeIndexContainer} />
+      <Redirect to="/" />
     </Switch>
   </div>
 );
 
 export default App;
+
+// Install npm i material-ui

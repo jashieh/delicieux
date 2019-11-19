@@ -36,6 +36,9 @@ class NavBar extends React.Component {
       } else {
         return (
             <div>
+              {/* <button onClick={ () => this.props.openModal("login") }>Login</button>
+              <button onClick={ () => this.props.openModal("signup") }>Sign Up</button>
+               */}
                 <Link to={'/signup'}>Signup</Link>
                 <Link to={'/login'}>Login</Link>
             </div>

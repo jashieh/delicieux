@@ -5,7 +5,7 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const router = express.Router();
 
-const User = require('../../models/user');
+const User = require('../../models/User');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
