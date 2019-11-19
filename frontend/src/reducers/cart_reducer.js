@@ -1,6 +1,7 @@
 import {
   ADD_RECIPE,
   SUBTRACT_RECIPE,
+  REMOVE_RECIPE,
   RECEIVE_CART,
   UPDATE_CART
 } from '../actions/cart_actions';
@@ -32,6 +33,12 @@ const CartReducer = (state = CART, action) => {
       for (let i = 0; i < nextState.length; i++)
         if (nextState[i].recipe_id === action.recipe_id)
           nextState[i].number === 1 ? nextState.splice(i, 1) : nextState[i].number--;
+      return nextState;
+
+    case REMOVE_RECIPE:
+      for (let i = 0; i < nextState.length; i++)
+        if (nextState[i].recipe_id === action.recipe_id)
+          nextState.splice(i, 1);
       return nextState;
 
     case UPDATE_CART:

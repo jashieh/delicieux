@@ -22,6 +22,11 @@ class RecipeIndex extends React.Component {
     //   )
   }
 
+  componentDidUpdate(oldProps) {
+    if (oldProps.recipes !== this.props.recipes)
+      this.setState(this.state);
+  }
+
   updateRecipes() {
     this.setState({ loading: true });
     this.props.getRecipes(this.props.recipe_filters)

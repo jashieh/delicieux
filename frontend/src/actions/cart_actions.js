@@ -2,6 +2,7 @@ import * as CartAPI from '../util/cart_api_util';
 
 export const ADD_RECIPE = "ADD_RECIPE";
 export const SUBTRACT_RECIPE = "SUBTRACT_RECIPE";
+export const REMOVE_RECIPE = "REMOVE_RECIPE";
 export const RECEIVE_CART = "RECEIVE_CART";
 export const UPDATE_CART = "UPDATE_CART";
 export const RECEIVE_CART_ERRORS = "RECEIVE_CART_ERRORS";
@@ -13,8 +14,13 @@ export const addRecipe = (recipe_id) => ({
 
 export const subtractRecipe = recipe_id => ({
   type: SUBTRACT_RECIPE,
-  recipe_id
+  recipe_id,
 });
+
+export const removeRecipe = recipe_id => ({
+  type: REMOVE_RECIPE,
+  recipe_id,
+})
 
 const receiveCart = cart => ({
   type: RECEIVE_CART,
