@@ -7,9 +7,10 @@ const path = require('path');
 const app = express();
 
 const users = require("./routes/api/users");
+const recipes = require('./routes/api/recipes')
 
 mongoose
-  .connect(db, { userNewUrlParse: true })
+  .connect(db, { useNewUrlParser: true })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
@@ -35,6 +36,7 @@ app.get("/", (req, res) => res.send("Test Hello World"));
 
 
 app.use("/api/users", users);
+app.use("/api/recipes", recipes);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
