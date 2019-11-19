@@ -16,7 +16,8 @@ import { getRandomRecipe,
 } from './util/recipe_api_util';
 
 import {
-  searchIngredientByName
+  searchIngredientByName,
+  getIngredientById
 } from './util/ingredient_api_util';
 
 
@@ -50,6 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getSimilarRecipes = getSimilarRecipes;
   window.complexRecipeSearch = complexRecipeSearch;
   window.searchIngredientByName = searchIngredientByName;
+
+  window.getIngredientById = getIngredientById;
   window.getState = store.getState;
   
   window.store = store;

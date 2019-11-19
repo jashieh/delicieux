@@ -8,6 +8,10 @@ export const searchIngredientByName = (query = "", limit = 5) => {
   return axios.get(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${query}&metaInformation=true&number=${limit}&apiKey=${apiKey}`);
 }
 
+// amount = number of grams
+export const getIngredientById = (id, amount = 1, unit = "grams") => {
+  return axios.get(`https://api.spoonacular.com/food/ingredients/${id}/information?amount=${amount}&unit=${unit}&apiKey=${apiKey}`);
+}
 
 
 // Returns array of substitutes under key 'substitutes'
