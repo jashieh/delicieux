@@ -20,20 +20,6 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 
-app.get("/", (req, res) => res.send("Test Hello World"));
-
-// app.get("/", (req, res) => {
-//   console.log("xd");
-//   const user = new User({
-//     name: "justin",
-//     email: "justin@gmail.com",
-//     password: "password"
-//   })
-//   user.save();
-//   res.send("user created!");
-// })
-
-
 app.use("/api/users", users);
 
 const port = process.env.PORT || 5000;
