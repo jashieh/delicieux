@@ -4,7 +4,7 @@ export const fetchFridge = (userId) => {
   return axios.get(`/api/fridge/${userId}`);
 };
 
-export const addIngredientToFridge = (userId, ingredient) => {
+export const addFridgeIngredient = (userId, ingredient) => {
   return axios.patch(`/api/fridge/${userId}/addNewIngredient`, ingredient);
 };
 
