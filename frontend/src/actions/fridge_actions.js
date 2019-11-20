@@ -10,7 +10,7 @@ const receiveFridge = fridge => ({
 
 const receiveFridgeIngredient = ingredient => ({
   type: RECEIVE_FRIDGE_INGREDIENT,
-  ingredient
+  ingredient: ingredient.data
 });
 
 export const fetchFridge = (userId) => dispatch => (APIUtil.fetchFridge(userId)
@@ -19,5 +19,5 @@ export const fetchFridge = (userId) => dispatch => (APIUtil.fetchFridge(userId)
 
 export const addFridgeIngredient = (userId, ingredient) => dispatch => 
   (APIUtil.addFridgeIngredient(userId, ingredient).then(
-    ingredient => dispatch(receiveFridgeIngredient))
+    ingredient => dispatch(receiveFridgeIngredient(ingredient)))
 );

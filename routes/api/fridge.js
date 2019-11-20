@@ -18,7 +18,7 @@ router.patch('/:userId/addNewIngredient', (req, res) => {
   Fridge.findOneAndUpdate({ userId: req.params.userId }, 
     update, options, function (err, data){
       if(err) return res.status(400).json(err);
-      return res.json(data);
+      return res.json(req.body);
   });
 });
 
@@ -39,7 +39,7 @@ router.patch('/:userId/modifyIngredient', (req, res) => {
           .then(data => res.json(data))
           .catch(err => res.status(400).json(err))
       } else {
-        return res.json(data);
+        return res.json(data.ingredients[req.body.ingredientId]);
       }
   });
 });
