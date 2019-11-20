@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import NavBarContainer from '../nav/navbar_container';
 // import RecipeIndexContainer from '../recipe_index/recipe_index_container';
 import IngredientIndex from './ingredient/ingredient_index';
-import IngredientsList from './ingredients_list/ingredient_list';
+import IngredientsList from '../cart/cart_container';
+import RecipeIndexContainer from '../recipe_index/recipe_index_container'
 
 class MainIndex extends React.Component {
 
@@ -54,7 +55,8 @@ class MainIndex extends React.Component {
 
                   <div className="left-recipe-contain">
                     <div className="boxes-contain">
-                      <a href="#">
+                      <RecipeIndexContainer />
+                      {/* <a href="#">
                         <div className="index-boxlink-square">
                           <h3>Recipe Index</h3>
                         </div>
@@ -83,7 +85,7 @@ class MainIndex extends React.Component {
                         <div className="index-boxlink-square">
                           <h3>Recipe Index</h3>
                         </div>
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                 </div>

@@ -27,6 +27,10 @@ import {
   getIngredientById,
 } from './util/ingredient_api_util';
 
+import {
+  signup
+} from './util/session_api_util'
+
 // import { fetchFridge, addFridgeIngredient, modifyIngredient } from './util/fridge_api_util';
 
 import { fetchFridge, addFridgeIngredient, modifyIngredient } from './actions/fridge_actions';
@@ -72,6 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addCartDate = addCartDate;
   window.addCartMeal = addCartMeal;
   window.removeCartMeal = removeCartMeal;
+
+  window.signup = signup;
   
   window.store = store;
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));
