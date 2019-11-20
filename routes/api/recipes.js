@@ -10,8 +10,7 @@ router.get('/:id', (req, res) => {
     .then(recipe => res.json(recipe))
     .catch(err => res.status(400).json(err));
 });
-
-
+  
 // Adding a recipe from search by recipe ID API Call
 router.post('/indiv', (req, res) => {
   const newRecipe = new Recipe({

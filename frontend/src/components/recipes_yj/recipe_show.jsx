@@ -1,11 +1,12 @@
 import React from 'react';
 import '../stylesheets/recipes_index/recipe_show.scss'
 import ReactMinimalPieChart from 'react-minimal-pie-chart';
-import { VictoryPie } from 'victory';
+import { VictoryPie, VictoryTooltip } from 'victory';
 export default class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      pieChart: true,
       nutrition: [
         {
           nutrients: [
@@ -302,47 +303,59 @@ export default class RecipeShow extends React.Component {
         }
       ]
     };
+    this.toggleChart = this.toggleChart.bind(this);
   }
-
+  toggleChart() {
+    this.setState({pieChart: !this.state.pieChart});
+  }
   render() {
+    let chartDisp = this.state.pieChart ? (
+    <div className="chart-cont" onClick={this.toggleChart}>
+      <VictoryPie
+        animate={{
+          duration: 2000
+        }}
+        colorScale={["#3a9691", "skyblue", "lightblue"]}
+        data={[
+          { y: 56.8, label: "Carb \n 56.8%" },
+          { y: 12.9, label: "Protein \n 12.9%" },
+          { y: 30.3, label: "Fat \n 30.3%" }
+        ]}
+
+        labelComponent={<VictoryTooltip />}
+        innerRadius={200}
+        labelRadius={160}
+        padAngle={3}
+        style={{ labels: { fill: "black", fontSize: 20, fontWeight: "bold" } }}
+      />
+    </div>) : (
+      <div className="chart-cont" onClick={this.toggleChart}>
+        COOL CHART HERE
+      </div>
+    )
     return(
       <div className="cont-cont">
         <div className="recipe-show-cont">
-          <div>
+          <div className="recipe-show-ls">
             <div className="recipe-show-photo-cont">
               <img className="recipe-show-photo" src={this.state.image} />
             </div>
-            <h4>{this.state.title}</h4>
-            <div className="rs-main-cont">
-              <ul className="recipe-show-ing-list">
-                {this.state.ingredients.map((ingredient, idx) => (
-                  <li classNamkey={idx}>
-                    <div>
-                      {ingredient.name}
-                    </div>
-                  </li>
-                ))}
+            {chartDisp}
+          </div>
+            
+          <div className="rs-main-cont">
+            <h4 className="rs-title">{this.state.title}</h4>
+            <ul className="recipe-show-ing-list">
+              {this.state.ingredients.map((ingredient, idx) => (
+                <li className="rs-li-item" key={idx}>
+                  <div className="rs-li-item-pic-cont">
+                    <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/>
+                  </div>
+                    {ingredient.name}
+                </li>
+              ))}
 
-              </ul>
-              <div className="piechart-cont">
-                <VictoryPie
-                  animate={{
-                    duration: 2000
-                  }}
-                  colorScale={["#3a9691", "skyblue", "lightblue"]}
-                  data = {[
-                  {  y: 56.8, label: "Carb" },
-                  {  y: 12.9, label: "Protein" },
-                  { y: 30.3, label: "Fat" }
-                  ]}
-                  innerRadius= {200}
-                  labelRadius= {120}
-                  padAngle={3}
-                  style={{ labels: { fill: "black", fontSize: 20, fontWeight: "bold" } }}
-                />
-              </div>
-            </div>
-           
+            </ul>
           </div>
         </div>
       </div>
