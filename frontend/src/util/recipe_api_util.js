@@ -1,5 +1,4 @@
 import axios from 'axios';
-import unirest from 'unirest';
 
 const apiKey = "be025cdd9bmsh49601abc3099f49p1c31fdjsn618acb311b0a";
 
@@ -189,7 +188,7 @@ export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", 
 
 
 export const getSimilarRecipes = (id, limit = 5) => {
-  return axios.get(`https://api.spoonacular.com/recipes/${id}/similar?number=${limit}&apiKey=${apiKey}`);
+  // return axios.get(`https://api.spoonacular.com/recipes/${id}/similar?number=${limit}&apiKey=${apiKey}`);
   axios({
     "method": "GET",
     "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/similar`,
