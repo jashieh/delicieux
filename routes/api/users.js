@@ -6,11 +6,13 @@ const passport = require('passport');
 const router = express.Router();
 
 const User = require('../../models/user');
+const Fridge = require('../../models/fridge');
+const Cart = require('../../models/cart');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+router.get("/test", (req, res) => res.json({ msg: "This is the users route for meal plan" }));
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
@@ -60,6 +62,23 @@ router.post("/register", (req, res) => {
                 activityLevel: user.activityLevel
               };
               
+              const newFridge = new Fridge({ userId: user.id });
+              newFridge.save();
+
+              let currentDate = Date().toString().slice(0, 15);
+              const newCart = new Cart({ 
+                userId: user.id,
+                dates: {
+                  [currentDate]: {
+                    "BREAKFAST": undefined,
+                    "LUNCH": undefined,
+                    "DINNER": undefined
+                  }
+                },
+              });
+              console.log(newCart);
+              newCart.save();
+
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
                   success: true,
