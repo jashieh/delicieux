@@ -6,10 +6,26 @@ import {
 } from '../actions/cart_actions';
 
 const CART = {
-  "Tue Nov 19 2019": [1, 2, 3],
-  "Wed Nov 20 2019": [undefined, undefined, undefined],
-  "Thurs Nov 21 2019": [undefined, undefined, undefined],
-  "Fri Nov 22 2019": [undefined, undefined, undefined],
+  "Wed Nov 18 2019": {
+    "BREAKFAST": 1,
+    "LUNCH": 1,
+    "DINNER": undefined
+  },
+  "Tue Nov 19 2019": {
+    "BREAKFAST": 2,
+    "LUNCH": 2,
+    "DINNER": undefined
+  },
+  "Wed Nov 20 2019": {
+    "BREAKFAST": 3,
+    "LUNCH": 3,
+    "DINNER": undefined
+  },
+  "Thurs Nov 21 2019": {
+    "BREAKFAST": 4,
+    "LUNCH": 4,
+    "DINNER": undefined
+  },
 };
 
 const CartReducer = (state = CART, action) => {

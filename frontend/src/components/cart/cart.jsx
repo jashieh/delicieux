@@ -1,8 +1,6 @@
 import React from 'react';
 import CartItemContainer from './cart_item_container';
 
-const TIMES = ["BREAKFAST", "LUNCH", "DINNER"];
-
 class Cart extends React.Component {
   constructor(props) {
     super(props);
@@ -58,6 +56,7 @@ class Cart extends React.Component {
   render() {
     const { dates, currentDate } = this.props;
     const date = dates[currentDate];
+    const times = ["BREAKFAST", "LUNCH", "DINNER"];
     let recipe;
     return (
       <div className="cart">
@@ -67,10 +66,10 @@ class Cart extends React.Component {
           <div className="cart-header-right" onClick={this.nextDate}>{">"}</div>
         </div>
         <div className="cart-date">
-          {date.map((dateItem, idx) => {
-            recipe = dateItem ? this.recipe(dateItem) : undefined;
+          {times.map((time, idx) => {
+            recipe = date[time] ? this.recipe(date[time]) : undefined;
             return <CartItemContainer key={idx}
-                      time={TIMES[idx]}
+                      time={time}
                       recipe={recipe} />
           })}
         </div>

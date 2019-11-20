@@ -12,6 +12,7 @@ class CartItem extends React.Component {
 
   }
 
+  // TODO: Implement an undo button
   removeFromCart() {
     const { date, time } = this.props;
     this.props.removeRecipe(date, time);
