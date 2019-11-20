@@ -16,6 +16,12 @@ import { getRandomRecipe,
 } from './util/recipe_api_util';
 
 import {
+  getCart,
+  postCart,
+  patchCart,
+} from './util/cart_api_util';
+
+import {
   searchIngredientByName,
   getIngredientById,
 } from './util/ingredient_api_util';
@@ -57,6 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addIngredientToFridge = addIngredientToFridge;
   window.getIngredientById = getIngredientById;
   window.getState = store.getState;
+
+  window.getCart = getCart;
+  window.postCart = postCart;
+  window.patchCart = patchCart;
   
   window.store = store;
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));

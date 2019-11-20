@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Cart from './cart';
-import { getCart, updateCart } from '../../actions/cart_actions';
+import { getCart, patchCart } from '../../actions/cart_actions';
 import '../stylesheets/cart/cart.scss';
 
 const mapStateToProps = state => ({
@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getCart: (user_id) => dispatch(getCart(user_id)),
-  updateCart: (user_id, cart) => dispatch(updateCart(user_id, cart)),
+  patchCart: (user_id, cart) => dispatch(patchCart(user_id, cart)),
 });
 
 export default connect(
