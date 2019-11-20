@@ -24,9 +24,11 @@ class CartItem extends React.Component {
         <div className="cart-item">
           <div className="cart-item-time">{time}</div>
           <div className="cart-item-info">
-            <img className="cart-item-image" src={recipe.image} />
-            <div className="cart-item-name">{recipe.title}</div>
-            <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
+            <img className="cart-item-info-image" src={recipe.image} />
+            <div className="cart-item-info-text">
+              <div className="cart-item-name">{recipe.title}</div>
+              <div className="cart-item-remove" onClick={this.removeFromCart}>Remove Item</div>
+            </div>
           </div>
         </div>
       )  

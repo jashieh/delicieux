@@ -6,7 +6,7 @@ import {
 } from '../actions/cart_actions';
 
 const CART = {
-  "Tue Nov 19 2019": [undefined, undefined, undefined],
+  "Tue Nov 19 2019": [1, 2, 3],
   "Wed Nov 20 2019": [undefined, undefined, undefined],
   "Thurs Nov 21 2019": [undefined, undefined, undefined],
   "Fri Nov 22 2019": [undefined, undefined, undefined],

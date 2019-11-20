@@ -13,6 +13,9 @@ class Cart extends React.Component {
 
     this.saveCart = this.saveCart.bind(this);
     this.recipe = this.recipe.bind(this);
+
+    this.previousDate = this.previousDate.bind(this);
+    this.nextDate = this.nextDate.bind(this);
   }
 
   // gets the user's cart
@@ -42,21 +45,30 @@ class Cart extends React.Component {
       )
   }
 
+  previousDate() {
+
+  }
+
+  nextDate() {
+
+  }
+
+  //TODO: MAKE CLICKING THE CURRENT DATE OPEN A CALENDAR, WHERE WE CAN SELECT A DATE TO GO TO
+  //      WILL NEED TO POPULATE ALL DATES IN BETWEEN IF YOU SKIP DATES...SO WILL NEED TO ACCOUNT FOR THAT
   render() {
     const { dates, currentDate } = this.props;
     const date = dates[currentDate];
     let recipe;
-    debugger;
     return (
       <div className="cart">
         <div className="cart-header">
-          <div className="cart-header-left">{"<"}</div>
-          <div className="cart-header-date">{currentDate}</div>
-          <div className="cart-header-right">{">"}</div>
+          <div className="cart-header-left" onClick={this.previousDate}>{"<"}</div>
+          <div className="cart-header-date">{currentDate}</div> 
+          <div className="cart-header-right" onClick={this.nextDate}>{">"}</div>
         </div>
         <div className="cart-date">
           {date.map((dateItem, idx) => {
-            recipe = dateItem ? this.recipe(dateItem.recipe_id) : undefined;
+            recipe = dateItem ? this.recipe(dateItem) : undefined;
             return <CartItemContainer key={idx}
                       time={TIMES[idx]}
                       recipe={recipe} />
