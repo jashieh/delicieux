@@ -29,7 +29,6 @@ class IngredientSearch extends React.Component {
   }
 
   search(query) {
-    console.log(query);
     this.props.searchIngredientByName(query)
       .then(res => {
         this.setState({ results: res.data });
@@ -37,7 +36,6 @@ class IngredientSearch extends React.Component {
   }
   
   render() {
-    // console.log(this.state.results)
     const results = this.state.results.map( (ingredient, i) => {
       return (
         <IngredientSearchItemContainer key={i} ingredient={ingredient} />

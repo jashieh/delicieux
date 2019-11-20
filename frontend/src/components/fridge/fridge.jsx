@@ -13,9 +13,11 @@ class Fridge extends React.Component {
   
   render() {
     return(
-      <div>
-        fridge
+      <div className="fridge-container">
         <IngredientSearchContainer />
+        <div>
+          My current ingredients
+        </div>
       </div>
       );
   }

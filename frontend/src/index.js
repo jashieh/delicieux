@@ -47,12 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     store = configureStore(preloadedState);
-    const currentTime = Date.now() / 1000;
+    // const currentTime = Date.now() / 1000;
     
-    if (decoded.exp < currentTime) {
-      store.dispatch(logout());
-      window.location.href = '/login';
-    }
+    // if (decoded.exp < currentTime) {
+    //   store.dispatch(logout());
+    //   window.location.href = '/login';
+    // }
   } else {
     store = configureStore();
   }
