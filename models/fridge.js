@@ -2,9 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FridgeSchema = new Schema({
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: 'users'
+  userId: {
+    type: String,
+    required: true,
+    index: true
+    // type: Schema.Types.ObjectId,
+    // ref: 'users'
   },
   ingredients: {
     type: Schema.Types.Mixed, default: {} 
@@ -17,3 +20,6 @@ const FridgeSchema = new Schema({
 
 
 module.exports = Fridge = mongoose.model('fridge', FridgeSchema);
+
+
+// 5dd49eb514fe715b3dc68cd1

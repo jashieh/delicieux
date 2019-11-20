@@ -12,21 +12,21 @@ router.get('/:userId', (req, res) => {
     .catch(err => res.status(400).json(err));
 });
 
-router.post('/:userId/add', (req, res) => {
+router.patch('/:userId/add', (req, res) => {
   console.log(req.params);
   console.log(req.body);
-  // let push = {};
-  // push[req.body.ingredientId] = req.body;
-  const userFridge = Fridge.findOneAndUpdate({ userId: req.params.userId }, 
-    { ingredients: "test" }, function (err, data){});
-  // const userFridge = Fridge.findOne({ userId: req.params.userId })
-  //   .then(fridge => {
-  //     console.log(fridge);
-  //     const ingredient = req.body;
-  //     // Fridge.update({_id: fridge._id}, {$set: { ingredients[ingredient.ingredientId]: ingredient}});
-  //     // fridge.ingredients[ingredient.ingredientId] = ingredient;
-  //   })
-  //   .catch(err => res.status(400).json(err));
+  let update = { "$set": {}};
+  let options = { "upsert": true };
+  update["$set"]["ingredients." + req.body.ingredientId] = req.body;
+
+   Fridge.findOneAndUpdate({ userId: req.params.userId }, 
+    update, options, function (err, data){
+      if(err) return res.send(500, {error: err});
+      return res.send("successfully saved");
+    });
+      // .then(fridge => res.json(fridge))
+      // .catch(err => res.status(400).json(err));
+
 });
 
 

@@ -49,6 +49,9 @@ router.post("/register", (req, res) => {
               const payload = { id: user.id, name: user.name, email: user.email };
               
               //
+              console.log(user._id);
+              console.log(user.id);
+
               const newFridge = new Fridge({ userId: user.id });
               newFridge.save();
 
