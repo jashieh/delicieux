@@ -2,39 +2,47 @@ const express = require("express");
 const router = express.Router();
 const Fridge = require('../../models/fridge');
 
-
 router.get("/test", (req, res) => res.json({ msg: "This is the fridge route" }));
 
 router.get('/:userId', (req, res) => {
-  console.log(req.params.userId);
   Fridge.findOne({ userId: req.params.userId })
-    .then(fridge => res.json(fridge))
-    .catch(err => res.status(400).json(err));
+  .then(fridge => res.json(fridge))
+  .catch(err => res.status(400).json(err));
 });
 
-router.patch('/:userId/add', (req, res) => {
-  console.log(req.params);
-  console.log(req.body);
+router.patch('/:userId/addNewIngredient', (req, res) => {
   let update = { "$set": {}};
-  let options = { "upsert": true };
+  let options = { "upsert": true, new: true };
   update["$set"]["ingredients." + req.body.ingredientId] = req.body;
-
-   Fridge.findOneAndUpdate({ userId: req.params.userId }, 
+  
+  Fridge.findOneAndUpdate({ userId: req.params.userId }, 
     update, options, function (err, data){
-      if(err) return res.send(500, {error: err});
-      return res.send("successfully saved");
-    });
-      // .then(fridge => res.json(fridge))
-      // .catch(err => res.status(400).json(err));
-
+      if(err) return res.status(400).json(err);
+      return res.json(req.body);
+  });
 });
 
 
+router.patch('/:userId/modifyIngredient', (req, res) => {
+  let update = { "$inc": {}};
+  let options = { "upsert": true, new: true };
+  update["$inc"]["ingredients." + req.body.ingredientId + ".amount"] = req.body.amount;
+  
+  Fridge.findOneAndUpdate({ userId: req.params.userId }, 
+    update, options, function (err, data){
+      if(err) return res.status(400).json(err);
 
-// router.post('/new', (req, res) => {
-//   const newFridge = new Fridge({
+      // Remove ingredients from fridge if there is no more
+      if(data.ingredients[req.body.ingredientId].amount <= 0) {
+        Fridge.findOneAndUpdate({ userId: req.params.userId }, { $unset: {ingredients: req.body.ingredientId}},
+          {new: true})
+          .then(data => res.json(data))
+          .catch(err => res.status(400).json(err))
+      } else {
+        return res.json(data.ingredients[req.body.ingredientId]);
+      }
+  });
+});
 
-//   });
-// });
-
+  
 module.exports = router;

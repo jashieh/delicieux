@@ -26,8 +26,9 @@ import {
   getIngredientById,
 } from './util/ingredient_api_util';
 
-import { fetchFridge, addIngredientToFridge } from './util/fridge_api_util';
+// import { fetchFridge, addFridgeIngredient, modifyIngredient } from './util/fridge_api_util';
 
+import { fetchFridge, addFridgeIngredient } from './actions/fridge_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -60,9 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.complexRecipeSearch = complexRecipeSearch;
   window.searchIngredientByName = searchIngredientByName;
   window.fetchFridge = fetchFridge;
-  window.addIngredientToFridge = addIngredientToFridge;
+  window.addFridgeIngredient = addFridgeIngredient;
   window.getIngredientById = getIngredientById;
+  // window.modifyIngredient = modifyIngredient;
   window.getState = store.getState;
+  window.dispatch = store.dispatch;
 
   window.getCart = getCart;
   window.postCart = postCart;

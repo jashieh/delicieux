@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const apiKey = '74796f8377434d6a9de79e615fb0d2c1';
+// const apiKey = '7b45ae7dd73747a98a9ae6b4abd8a345';
 
 export const getRandomRecipe = () => {
   return axios.get(`https://api.spoonacular.com/recipes/random?apiKey=${apiKey}`);
