@@ -22,6 +22,12 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
+app.all('/', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "x-rapidapi-key");
+  next()
+});
+
 app.use('/api/users', users);
 app.use('/api/recipes', recipes);
 app.use('/api/fridge', fridge);
