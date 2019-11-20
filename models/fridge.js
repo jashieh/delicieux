@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const FridgeSchema = new Schema({
-  userId: {
-    type: String,
-    required: true 
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'users'
   },
   ingredients: {
     type: Schema.Types.Mixed, default: {} 
