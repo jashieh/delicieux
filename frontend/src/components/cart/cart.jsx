@@ -5,14 +5,22 @@ class Cart extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      loading: true
+    }
+
     this.saveCart = this.saveCart.bind(this);
     this.recipe = this.recipe.bind(this);
-    this.removeCartItem = this.removeCartItem.bind(this);
   }
 
   // gets the user's cart
   componentDidMount() {
-
+    let { getCart, userId } = this.props;
+    debugger
+    getCart(userId)
+      .then(
+        () => this.setState({ loading: false })
+      );
   }
 
   recipe(recipe_id) {
@@ -22,18 +30,19 @@ class Cart extends React.Component {
     return { id: null, title: "Recipe Not Found", img: "..." };
   }
 
-  //Removes the cart item by dispatching an action
-  removeCartItem(idx) {
-
-  }
-
   //saves the cart to database using user_id
   saveCart() {
-
+    let { patchCart, userId, cart } = this.props;
+    this.setState({ loading: true });
+    patchCart(userId, { items: cart.items })
+      .then(
+        () => this.setState( {loading: false })
+      )
   }
 
   render() {
     const { cart } = this.props;
+    debugger;
     return (
       <div className="cart">
         <div className="cart-items">
@@ -44,7 +53,7 @@ class Cart extends React.Component {
                       removeItem={() => this.removeCartItem(idx)}/>
           })}
         </div>
-        <div className="cart-save-button">Save Cart</div>
+        <div className="cart-save-button" onClick={this.saveCart}>Save Cart</div>
       </div>
     )
   }

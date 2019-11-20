@@ -3,7 +3,6 @@ import {
   SUBTRACT_RECIPE,
   REMOVE_RECIPE,
   RECEIVE_CART,
-  UPDATE_CART
 } from '../actions/cart_actions';
 
 const CART = [
@@ -41,7 +40,6 @@ const CartReducer = (state = CART, action) => {
           nextState.splice(i, 1);
       return nextState;
 
-    case UPDATE_CART:
     case RECEIVE_CART:
       return action.cart;
 

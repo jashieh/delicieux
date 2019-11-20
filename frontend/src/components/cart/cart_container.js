@@ -7,12 +7,12 @@ import '../stylesheets/cart/cart.scss';
 const mapStateToProps = state => ({
   recipes: state.entities.recipes,
   cart: state.entities.cart,
-  user_id: state.session.user_id,
+  userId: state.session.user.id,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getCart: (user_id) => dispatch(getCart(user_id)),
-  patchCart: (user_id, cart) => dispatch(patchCart(user_id, cart)),
+  getCart: (userId) => dispatch(getCart(userId)),
+  patchCart: (userId, cartItems) => dispatch(patchCart(userId, cartItems)),
 });
 
 export default connect(

@@ -7,6 +7,7 @@ const router = express.Router();
 
 const User = require('../../models/user');
 const Fridge = require('../../models/fridge');
+const Cart = require('../../models/cart');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -54,6 +55,9 @@ router.post("/register", (req, res) => {
 
               const newFridge = new Fridge({ userId: user.id });
               newFridge.save();
+
+              const newCart = new Cart({ userId: user.id, items: [] });
+              newCart.save();
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
