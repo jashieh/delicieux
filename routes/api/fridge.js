@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Fridge = require('../../models/fridge');
 
-
 router.get("/test", (req, res) => res.json({ msg: "This is the fridge route" }));
 
 router.get('/:userId', (req, res) => {
@@ -32,6 +31,8 @@ router.patch('/:userId/modifyIngredient', (req, res) => {
   Fridge.findOneAndUpdate({ userId: req.params.userId }, 
     update, options, function (err, data){
       if(err) return res.status(400).json(err);
+
+      // Remove ingredients from fridge if there is no more
       if(data.ingredients[req.body.ingredientId].amount <= 0) {
         Fridge.findOneAndUpdate({ userId: req.params.userId }, { $unset: {ingredients: req.body.ingredientId}},
           {new: true})
