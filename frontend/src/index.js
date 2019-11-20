@@ -17,8 +17,10 @@ import { getRandomRecipe,
 
 import {
   searchIngredientByName,
-  getIngredientById
+  getIngredientById,
 } from './util/ingredient_api_util';
+
+import { fetchFridge, addIngredientToFridge } from './util/fridge_api_util';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -51,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getSimilarRecipes = getSimilarRecipes;
   window.complexRecipeSearch = complexRecipeSearch;
   window.searchIngredientByName = searchIngredientByName;
-
+  window.fetchFridge = fetchFridge;
+  window.addIngredientToFridge = addIngredientToFridge;
   window.getIngredientById = getIngredientById;
   window.getState = store.getState;
   
