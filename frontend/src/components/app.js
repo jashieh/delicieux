@@ -7,6 +7,7 @@ import MainPage from './main/main';
 import LoginFormContainer from './userform/login_form_container';
 import UserForm from './userform/user_form';
 import RecipeIndexContainer from './recipe_index/recipe_index_container';
+import CartContainer from './cart/cart_container';
 import './stylesheets/App.scss';
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={ UserForm } />
       <AuthRoute exact path="/login" component={ LoginFormContainer } />
       <Route exact path="/recipes" component={RecipeIndexContainer} />
+      <Route exact path="/cart" component={CartContainer} />
       <Redirect to="/" />
     </Switch>
   </div>
