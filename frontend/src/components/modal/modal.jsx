@@ -28,14 +28,17 @@ class Modal extends React.Component {
         // component = <SignupFormContainer />;
         break;
       case 'addIngredient':
-        component = <AddIngredientContainer ingredient={modal.other}/>
+        component = <AddIngredientContainer ingredient={modal.other}/>;
+        break;
       default:
         return null;
     }
     
     return (
       <div className="modal-background" onClick={ closeModal }>
-      { component }
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          { component }
+        </div>
       </div>
       );
     }

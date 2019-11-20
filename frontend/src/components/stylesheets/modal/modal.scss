@@ -1,16 +1,21 @@
-
 .modal-background {
     position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    background: rgb(12, 11, 11);
+    background: rgba(12, 11, 11,0.6);
     // background-image: url("../giphy.gif");
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 900;
+}
+
+.modal-child {
+    position: absolute;
+    box-shadow: 1px 1px 10px;
+    z-index: 999;
 }
 
 
