@@ -1,52 +1,57 @@
-import React from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
-import { withRouter } from "react-router-dom";
+
+
+
+import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      name: "",
-      password: "",
-      password2: "",
-      errors: {}
+      errors: [],
+      passErrors: "",
+      pass2Errors: ""
     };
+
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.clearedErrors = false;
   }
 
-  update(field) {
-    return e => this.setState({ [field]: e.currentTarget.value });
-  }
-
-//   continue = e => {
-//     e.preventDefault();
-//     this.props.nextStep();
-//   };
-
-  back = e => {
-    e.preventDefault();
-    this.props.prevStep();
-  };
+  // continue = e => {
+  //   e.preventDefault();
+  //   this.props.nextStep();
+  // };
 
   handleSubmit(e) {
     e.preventDefault();
-    let user = {
-      email: this.state.email,
-      name: this.state.name,
-      password: this.state.password,
-      password2: this.state.password2
-    };
-
-    this.props.signup(user, this.props.history);
     this.props.nextStep();
+    if (this.props.values.name.length === 0) {
+      this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
+    } else if (this.props.values.password.length < 6) {
+      this.setState({ errors: this.state.errors.concat(["User at least 6 characters"]) });
+    } else if (this.props.values.password2 !== this.props.values.password ) {
+      this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
+    } else {
+      this.props.nextStep();
+    }
+
   }
 
-  renderErrors() {
+  // handlePassSubmit(e) {
+  //   e.preventDefault();
+  //   if (this.props.values.password.length === 0) {
+  //     this.setState({ errors: this.state.errors.push("Please enter a password.") });
+  //   } else if (this.state.password.length < 6) {
+  //     this.setState({ passwordErrors: ["Use at least 6 characters."] });
+  //   } else {
+  //     this.setState({ passwordErrors: [], form: "username" });
+  //   }
+  // }
+
+  renderNameErrors() {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -56,158 +61,83 @@ class SignupForm extends React.Component {
     );
   }
 
+  renderPasswordErrors() {
+    return (
+      <ul>
+        <li>{this.state.passErrors}</li>
+      </ul>
+    );
+  }
+
   render() {
+    const { values, handleChange } = this.props;
+
     return (
       <MuiThemeProvider>
         <div className="modal-background">
-          <div className="signup-form">
-            <form onSubmit={this.handleSubmit}>
-                {this.renderErrors()}
-                <br />
-                <TextField
-                  type="text"
-                  hintText="Enter Your Email"
-                  floatingLabelText="Email"
-                  value={this.state.email}
-                  onChange={this.update("email")}
-                />
-                <br />
-                <TextField
-                  type="text"
-                  hintText="Enter Your Name"
-                  floatingLabelText="Name"
-                  value={this.state.name}
-                  onChange={this.update("name")}
-                />
-                <br />
-                <TextField
-                  type="password"
-                  hintText="Enter Your Password"
-                  floatingLabelText="Password"
-                  value={this.state.password}
-                  onChange={this.update("password")}
-                />
-                <br />
-                <TextField
-                  type="password"
-                  hintText="Confirm Password"
-                  floatingLabelText="Confirm Password"
-                  value={this.state.password2}
-                  onChange={this.update("password2")}
-                />
-                <br />
-                <RaisedButton
-                  type="submit"
-                  label="Submit"
-                  primary={true}
-                  color="secondary"
-                  styles={styles.button}
-                />
-                <div className="signup-text">
-                  <h1>Already Have an Account?</h1>
-                  <Link to="/login">
-                    <div className="login-contain">
-                      Login
+          <div className="signup-text">délicieux</div>
+          <a className="signup-form" class="btn">
+              <span>
+                <span>
+                  <span>
+                    <div className="signup-contain">
+                      <div className="signup-text-contain">
+                          <div>
+                            <TextField
+                              hintText="Enter Your Name"
+                              floatingLabelText="Name"
+                              onChange={handleChange("name")}
+                              defaultValue={values.name}
+                            />
+                          </div>
+                          <div>
+                            <TextField
+                              hintText="Enter Your Email"
+                              floatingLabelText="Email"
+                              onChange={handleChange("email")}
+                              defaultValue={values.email}
+                            />
+                          </div>
+                          <div>  
+                            <TextField
+                              type="password"
+                              hintText="Enter Your Password"
+                              floatingLabelText="Password"
+                              defaultValue={values.password}
+                              onChange={handleChange("password")}
+                            />
+                          </div>
+                          <div> 
+                            <TextField
+                              type="password"
+                              hintText="Confirm Password"
+                              floatingLabelText="Password"
+                              defaultValue={values.password2}
+                              onChange={handleChange("password2")}
+                            />
+                          </div>
+                          
+                          <RaisedButton
+                            label="Continue"
+                            primary={true}
+                            onClick={this.handleSubmit}
+                          />
+                        </div>
+                        <div className="go-back">
+                          <h2>Already have an account?</h2>
+                          <Link to="/login">Login</Link>
+                        </div>
                     </div>
-                  </Link>
-                </div>
-            </form>
-          </div>
+                  </span>
+                </span>
+              </span>
+            </a>
         </div>
       </MuiThemeProvider>
     );
   }
 }
 
-const styles = { button: { margin: 100} };
-
-export default withRouter(SignupForm);
+export default SignupForm;
 
 
-// import React from "react";
-// import { withRouter } from "react-router-dom";
-
-// class SignupForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       email: "",
-//       name: "",
-//       password: "",
-//       password2: "",
-//       errors: {}
-//     };
-//     this.handleSubmit = this.handleSubmit.bind(this);
-//     this.clearedErrors = false;
-//   }
-
-//   update(field) {
-//     return e => this.setState({ [field]: e.currentTarget.value });
-//   }
-
-//   handleSubmit(e) {
-//     e.preventDefault();
-//     let user = {
-//       email: this.state.email,
-//       name: this.state.name,
-//       password: this.state.password,
-//       password2: this.state.password2
-//     };
-
-//     this.props.signup(user, this.props.history);
-//   }
-
-//   renderErrors() {
-//     return (
-//       <ul>
-//         {Object.keys(this.state.errors).map((error, i) => (
-//           <li key={`error-${i}`}>{this.state.errors[error]}</li>
-//         ))}
-//       </ul>
-//     );
-//   }
-
-//   render() {
-//     return (
-//       <div className="login-form" onClick={e => e.stopPropagation()}>
-//         <form onSubmit={this.handleSubmit}>
-//           <div className="login-form">
-//             <br />
-//             <input
-//               type="text"
-//               value={this.state.email}
-//               onChange={this.update("email")}
-//               placeholder="Email"
-//             />
-//             <br />
-//             <input
-//               type="text"
-//               value={this.state.name}
-//               onChange={this.update("name")}
-//               placeholder="Name"
-//             />
-//             <br />
-//             <input
-//               type="password"
-//               value={this.state.password}
-//               onChange={this.update("password")}
-//               placeholder="Password"
-//             />
-//             <br />
-//             <input
-//               type="password"
-//               value={this.state.password2}
-//               onChange={this.update("password2")}
-//               placeholder="Confirm Password"
-//             />
-//             <br />
-//             <input type="submit" value="Submit" />
-//             {this.renderErrors()}
-//           </div>
-//         </form>
-//       </div>
-//     );
-//   }
-// }
-
-// export default withRouter(SignupForm);

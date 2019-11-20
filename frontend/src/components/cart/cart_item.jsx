@@ -4,44 +4,52 @@ class CartItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addToCart = this.addToCart.bind(this);
-    this.subtractFromCart = this.subtractFromCart.bind(this);
+    this.recipe = this.recipe.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
-  // gets the user's cart
-  componentDidMount() {
+  recipe() {
+    let { date, time, cart, recipes } = this.props;
+    let recipeId = null;
+    if(cart.dates[date]) { //Just a precaution
+      recipeId = cart.dates[date][time];
+    }
 
+    for (let i = 0; i < recipes.length; i++)
+      if (recipes[i].id === recipeId) return recipes[i];
+
+    return recipeId ? { id: null, title: "ERROR: Recipe Not Found", img: "..." } : null
   }
 
-  addToCart() {
-    this.props.addRecipe(this.props.recipe.id);
-  }
-
-  subtractFromCart() {
-    this.props.subtractRecipe(this.props.recipe.id);
-  }
-
+  // TODO: Implement an undo button
   removeFromCart() {
-    this.props.removeRecipe(this.props.recipe.id);
+    const { date, time, cart } = this.props;
+    this.props.removeCartMeal(cart.id, { date, time })
   }
 
   render() {
-    const { cart_item, recipe } = this.props;
-    return (
-      <div className="cart-item">
-        <img className="cart-item-image" src={recipe.image} />
-        <div className="cart-item-info">
-          <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
-          <div className="cart-item-name">{recipe.title}</div>
-          <div className="cart-item-actions">
-            <div className="cart-item-subtract" onClick={this.subtractFromCart}>-</div>
-            <div className="cart-item-number">{cart_item.number}</div>
-            <div className="cart-item-add" onClick={this.addToCart}>+</div>
+    const { time } = this.props;
+    let recipe = this.recipe();
+    if (recipe) 
+      return (
+        <div className="cart-item">
+          <div className="cart-item-time">{time}</div>
+          <div className="cart-item-info">
+            <img className="cart-item-info-image" src={recipe.image} />
+            <div className="cart-item-info-text">
+              <div className="cart-item-name">{recipe.title}</div>
+              <div className="cart-item-remove" onClick={this.removeFromCart}>Remove Item</div>
+            </div>
           </div>
         </div>
-      </div>
-    )  
+      )  
+    else
+      return (
+        <div className="cart-item">
+          <div className="cart-item-time">{time}</div>
+          <div className="cart-item-info"></div>
+        </div>
+      )
   }
 }
 

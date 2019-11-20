@@ -1,47 +1,32 @@
 import {
   ADD_RECIPE,
-  SUBTRACT_RECIPE,
   REMOVE_RECIPE,
+  ADD_DATE,
   RECEIVE_CART,
-  UPDATE_CART
 } from '../actions/cart_actions';
 
-const CART = [
-  { recipe_id: 1, number: 1 },
-  { recipe_id: 2, number: 2 },
-  { recipe_id: 3, number: 3 },
-  { recipe_id: 4, number: 4 }
-];
-
-const CartReducer = (state = CART, action) => {
+const CartReducer = (state = {}, action) => {
   Object.freeze(state);
-  let nextState = [];
-  for (let i = 0; i < state.length; i++)
-    nextState.push(Object.assign({}, state[i]));
+  let nextState = Object.assign({}, state);
 
   switch (action.type) {
     case ADD_RECIPE:
-      for (let i = 0; i < nextState.length; i++)
-        if (nextState[i].recipe_id === action.recipe_id) {
-          nextState[i].number++;
-          return nextState;
-        }
-      nextState.push({ recipe_id: action.recipe_id, number: 1 }) // NEW ITEM
-      return nextState;
-
-    case SUBTRACT_RECIPE:
-      for (let i = 0; i < nextState.length; i++)
-        if (nextState[i].recipe_id === action.recipe_id)
-          nextState[i].number === 1 ? nextState.splice(i, 1) : nextState[i].number--;
+      nextState.dates[action.date][action.time] = action.recipeId;
       return nextState;
 
     case REMOVE_RECIPE:
-      for (let i = 0; i < nextState.length; i++)
-        if (nextState[i].recipe_id === action.recipe_id)
-          nextState.splice(i, 1);
+      nextState.dates[action.date][action.time] = undefined;
       return nextState;
 
-    case UPDATE_CART:
+    case ADD_DATE:
+      if (nextState[action.date]) return nextState;
+      nextState.dates[action.date] = { 
+        "BREAKFAST": undefined, 
+        "LUNCH": undefined,
+        "DINNER": undefined,
+      };
+      return nextState;
+
     case RECEIVE_CART:
       return action.cart;
 

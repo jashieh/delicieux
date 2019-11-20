@@ -14,6 +14,30 @@ const UserSchema = new Schema({
     type: String,
     required: true
   },
+  height: {
+    type: Number,
+    required: false
+  },
+  weight: {
+    type: Number,
+    required: false
+  },
+  age: {
+    type: Number,
+    required: false
+  },
+  gender: {
+    type: String,
+    enum: ['M', 'F'],
+    default: 'F',
+    required: false
+  },
+  activityLevel: {
+    type: Number,
+    enum: [1,2,3,4,5],
+    default: 1,
+    required: false
+  },
   date: {
     type: Date,
     default: Date.now

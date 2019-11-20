@@ -5,67 +5,97 @@ import TextField from "material-ui/TextField";
 import RaisedButton from "material-ui/RaisedButton";
 
 class FormPersonalDetails extends React.Component {
-
-    continue = e => {
-        e.preventDefault();
-        this.props.nextStep();
+  constructor(props) {
+    super(props);
+    this.state = {
+      errors: {}
     };
+    this.renderErrors = this.renderErrors.bind(this);
+    this.handleSignup = this.handleSignup.bind(this);
+  }
 
-    back = e => {
-        e.preventDefault();
-        this.props.prevStep();
+  continue = e => {
+    e.preventDefault();
+    this.props.nextStep();
+  };
+
+  back = e => {
+    e.preventDefault();
+    this.props.prevStep();
+  };
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser === true) {
+      this.props.history.push("/index");
     }
+    this.setState({ errors: nextProps.errors });
+  }
 
-    render() {
-        const { values, handleChange } = this.props;
+  handleSignup() {
+    const { email, name, password, password2, height, weight, age } = this.props.values;
+    return e => {
+      e.preventDefault();
+      this.props.signup({ email, name, password, password2, height, weight, age });
+    };
+  }
 
-        return (
-          <MuiThemeProvider>
-            <div className="modal-background">
-              <div className="signup-form">
-                <React.Fragment>
-                  <TextField
-                    hintText="Enter Your Height"
-                    floatingLabelText="Height"
-                    onChange={handleChange("height")}
-                    defaultValue={values.occupation}
-                  />
-                  <br />
-                  <TextField
-                    hintText="Enter Your Weight"
-                    floatingLabelText="Weight"
-                    onChange={handleChange("weight")}
-                    defaultValue={values.weight}
-                  />
-                  <br />
-                  <TextField
-                    hintText="Enter Your Email"
-                    floatingLabelText="Email"
-                    onChange={handleChange("email")}
-                    defaultValue={values.email}
-                  />
-                  <br />
-                  <RaisedButton
-                    label="Continue"
-                    primary={true}
-                    styles={styles.button}
-                    onClick={this.continue}
-                  />
-                  <RaisedButton
-                    label="Back"
-                    primary={false}
-                    styles={styles.button}
-                    onClick={this.back}
-                  />
-                </React.Fragment>
-              </div>
-            </div>
-          </MuiThemeProvider>
-        );
+  renderErrors() {
+    return (
+      <ul>
+        {Object.keys(this.state.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+        ))}
+      </ul>
+    );
+  }
+
+  render() {
+    const { values, handleChange } = this.props;
+
+    return (
+      <MuiThemeProvider>
+        <div className="modal-background">
+          <a className="signup-form" class="btn">
+              <span>
+                <span>
+                  <span>
+            <form>
+              <TextField
+                hintText="Enter Your Height"
+                floatingLabelText="Height"
+                onChange={handleChange("height")}
+                defaultValue={values.height}
+              />
+              <br />
+              <TextField
+                hintText="Enter Your Weight"
+                floatingLabelText="Weight"
+                onChange={handleChange("weight")}
+                defaultValue={values.weight}
+              />
+              <br />
+              <TextField
+                hintText="Enter Your Age"
+                floatingLabelText="Age"
+                onChange={handleChange("age")}
+                defaultValue={values.age}
+              />
+              <br />
+              {/* {this.renderErrors()} */}
+              <RaisedButton label="Back" primary={false} onClick={this.back} />
+              <button className="submit-button" onClick={this.handleSignup()}>
+                Sign Up
+              </button>
+            </form>
+         
+                    </span>
+                </span>
+              </span>
+            </a>
+        </div>
+      </MuiThemeProvider>
+    );
   }
 }
 
-const styles = { button: { margin: 50 } };
-
 export default FormPersonalDetails;
-

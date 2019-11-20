@@ -1,30 +1,38 @@
 import * as CartAPI from '../util/cart_api_util';
 
 export const ADD_RECIPE = "ADD_RECIPE";
-export const SUBTRACT_RECIPE = "SUBTRACT_RECIPE";
 export const REMOVE_RECIPE = "REMOVE_RECIPE";
+export const ADD_DATE = "ADD_DATE";
+export const SWITCH_DATE = "SWITCH_DATE";
 export const RECEIVE_CART = "RECEIVE_CART";
-export const UPDATE_CART = "UPDATE_CART";
 export const RECEIVE_CART_ERRORS = "RECEIVE_CART_ERRORS";
 
-export const addRecipe = (recipe_id) => ({
+export const addRecipe = ({date, time, recipeId}) => ({
   type: ADD_RECIPE,
-  recipe_id,
+  date,
+  time,
+  recipeId,
 });
 
-export const subtractRecipe = recipe_id => ({
-  type: SUBTRACT_RECIPE,
-  recipe_id,
-});
-
-export const removeRecipe = recipe_id => ({
+export const removeRecipe = ({date, time}) => ({
   type: REMOVE_RECIPE,
-  recipe_id,
-})
+  date,
+  time,
+});
 
-const receiveCart = cart => ({
+export const addDate = ({date}) => {return {
+  type: ADD_DATE,
+  date,
+}};
+
+export const switchDate = date => ({
+  type: SWITCH_DATE,
+  date,
+});
+
+const receiveCart = payload => ({
   type: RECEIVE_CART,
-  cart
+  cart: payload.data
 });
 
 const receiveCartErrors = errors => ({
@@ -32,24 +40,41 @@ const receiveCartErrors = errors => ({
   errors,
 });
 
-export const getCart = user_id => dispatch => (
+export const getCart = userId => dispatch => (
   CartAPI
-    .getCart(user_id)
+    .getCart(userId)
     .then(
-      cart => dispatch(receiveCart(cart)),
+      payload => dispatch(receiveCart(payload)),
       errors => dispatch(receiveCartErrors(errors))
     )
 );
 
-// Doesn't change state, just updates the backend
-export const patchCart = (user_id, cart) => dispatch => (
+export const addCartDate = (cartId, dateInfo) => dispatch => (
   CartAPI
-    .patchCart(user_id, cart)
+    .addCartDate(cartId, dateInfo)
     .then(
-      null,
+      () => dispatch(addDate(dateInfo)),
       errors => dispatch(receiveCartErrors(errors)),
     )
 );
+
+export const addCartMeal = (cartId, mealInfo) => dispatch => (
+  CartAPI
+    .setCartMeal(cartId, mealInfo)
+    .then(
+      () => dispatch(addRecipe(mealInfo)),
+      errors => dispatch(receiveCartErrors(errors)),
+    )
+)
+
+export const removeCartMeal = (cartId, mealInfo) => dispatch => (
+  CartAPI
+    .setCartMeal(cartId, mealInfo)
+    .then(
+      () => dispatch(removeRecipe(mealInfo)),
+      errors => dispatch(receiveCartErrors(errors)),
+    )
+)
 
 
 
