@@ -12,8 +12,21 @@ import { getRandomRecipe,
   getRecipeById,
   getRecipesByIngredients,
   searchRecipeByName,
-  getIngredientSubstitutes
+  complexRecipeSearch
 } from './util/recipe_api_util';
+
+import {
+  getCart,
+  postCart,
+  patchCart,
+} from './util/cart_api_util';
+
+import {
+  searchIngredientByName,
+  getIngredientById,
+} from './util/ingredient_api_util';
+
+import { fetchFridge, addIngredientToFridge } from './util/fridge_api_util';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,8 +57,16 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getRecipeById = getRecipeById;
   window.searchRecipeByName = searchRecipeByName;
   window.getSimilarRecipes = getSimilarRecipes;
-  window.getIngredientSubstitutes = getIngredientSubstitutes;
+  window.complexRecipeSearch = complexRecipeSearch;
+  window.searchIngredientByName = searchIngredientByName;
+  window.fetchFridge = fetchFridge;
+  window.addIngredientToFridge = addIngredientToFridge;
+  window.getIngredientById = getIngredientById;
   window.getState = store.getState;
+
+  window.getCart = getCart;
+  window.postCart = postCart;
+  window.patchCart = patchCart;
   
   window.store = store;
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));

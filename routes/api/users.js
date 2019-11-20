@@ -5,7 +5,8 @@ const keys = require('../../config/keys');
 const passport = require('passport');
 const router = express.Router();
 
-const User = require('../../models/User');
+const User = require('../../models/user');
+const Fridge = require('../../models/fridge');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -47,6 +48,13 @@ router.post("/register", (req, res) => {
             .then(user => {
               const payload = { id: user.id, name: user.name, email: user.email };
               
+              //
+              console.log(user._id);
+              console.log(user.id);
+
+              const newFridge = new Fridge({ userId: user.id });
+              newFridge.save();
+
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
                   success: true,
