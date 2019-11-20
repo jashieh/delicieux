@@ -20,14 +20,35 @@ router.post('/:userId', (req, res) => {
     .then(cart => res.json(cart));
 });
 
-// do I need to add a condition for when it fails, or can't be saved?
-router.patch('/:userId', (req, res) => {
+// For addCartDate
+router.patch('/:cartId/addDate/', (req, res) => {
+  let options = { new: true }
+  let update = { $set: {} };
+  update["$set"][`dates.${req.body.date}`] = {
+    "BREAKFAST": undefined,
+    "LUNCH": undefined,
+    "DINNER": undefined,
+  };
+
   Cart.findOneAndUpdate(
-    { userId: req.params.userId }, 
-    req.body, // { dates: "Updated Cart" }
-    { new: true }, 
-    (err, result) => err ? res.json(err) : res.json(result)
+    { _id: req.params.cartId }, 
+    update,
+    options, 
+    (err, result) => err ? res.status(400).json(err) : res.json(result)
   )
+});
+
+router.patch("/:cartId/addMeal/", (req, res) => {
+  let options = { new: true };
+  let update = { $set: {} };
+  update["$set"][`dates.${req.body.date}.${req.body.time}`] = req.body.recipeId;
+
+  Cart.findOneAndUpdate(
+    { _id: req.params.cartId },
+    update,
+    options,
+    (err, result) => (err ? res.status(400).json(err) : res.json(result))
+  );
 });
 
 module.exports = router;

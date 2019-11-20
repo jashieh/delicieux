@@ -51,7 +51,7 @@ const CartReducer = (state = CART, action) => {
       return nextState;
 
     case RECEIVE_CART:
-      return action.dates;
+      return action.cart;
 
     default:
       return state;

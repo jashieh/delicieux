@@ -30,10 +30,10 @@ export const switchDate = date => ({
   date,
 });
 
-const receiveCart = payload => ({
+const receiveCart = payload => {debugger; return {
   type: RECEIVE_CART,
-  dates: payload.data.dates
-});
+  cart: payload.data
+}};
 
 const receiveCartErrors = errors => ({
   type: RECEIVE_CART_ERRORS,
@@ -49,16 +49,32 @@ export const getCart = userId => dispatch => (
     )
 );
 
-// Doesn't change state, just updates the backend
-// SWAPS OUT THE BACKEND'S OBJECT WITH A NEW OBJECT
-export const patchCart = (userId, dates) => dispatch => (
+export const addCartDate = (cartId, dateInfo) => dispatch => (
   CartAPI
-    .patchCart(userId, dates)
+    .addCartDate(cartId, dateInfo)
     .then(
       null,
       errors => dispatch(receiveCartErrors(errors)),
     )
 );
+
+export const addCartMeal = (cartId, mealInfo) => dispatch => (
+  CartAPI
+    .addCartMeal(cartId, mealInfo)
+    .then(
+      null,
+      null
+    )
+)
+
+export const removeCartMeal = (cartId, mealInfo) => dispatch => (
+  CartAPI
+    .addCartMeal(cartId, mealInfo)
+    .then(
+      null,
+      null
+    )
+)
 
 
 

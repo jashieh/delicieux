@@ -8,6 +8,12 @@ export const postCart = userId => {
   return axios.post(`/api/carts/${userId}`);
 };
 
-export const patchCart = (userId, cartData) => {
-  return axios.patch(`/api/carts/${userId}`, cartData);
+// dateInfo = { date: ... }
+export const addCartDate = (cartId, dateInfo) => {
+  return axios.patch(`/api/carts/${cartId}/addDate/`, dateInfo);
+};
+
+// mealInfo = { date: ..., time: ..., recipeId: ... }
+export const addCartMeal = (cartId, mealInfo) => {
+  return axios.patch(`/api/carts/${cartId}/addMeal/`, mealInfo);
 };
