@@ -27,159 +27,577 @@ app.use("/api/recipes", recipes);
 
 app.get("/api/recipes/", (req, res) => {
     const recipe = new Recipe({
-      vegetarian: true,
-      vegan: true,
-      glutenFree: false,
-      dairyFree: true,
-      veryHealthy: true,
-      cheap: false,
-      veryPopular: true,
-      sustainable: false,
-      weightWatcherSmartPoints: 6,
-      gaps: "no",
-      lowFodmap: false,
-      ketogenic: false,
-      whole30: false,
-      preparationMinutes: 5,
-      cookingMinutes: 10,
-      sourceUrl: "http://minimalistbaker.com/three-color-pasta-with-roasted-red-pepper-sauce/",
-      spoonacularSourceUrl: "https://spoonacular.com/three-color-pasta-with-sun-dried-tomato-sauce-500803",
-      aggregateLikes: 799,
-      spoonacularScore: 100,
-      healthScore: 98,
-      creditsText: "Minimalist Baker",
-      sourceName: "Minimalist Baker",
-      pricePerServing: 218.7,
-      id: 500803,
-      title: "Three Color Pasta with Sun Dried Tomato Sauce",
-      readyInMinutes: 15,
-      servings: 1,
-      image: "https://spoonacular.com/recipeImages/500803-312x231.jpg",
-      imageType: "jpg",
-      cuisines: [],
-      dishTypes: [
-        "side dish"
-      ],
-      diets: [
-        "dairy free",
-        "lacto ovo vegetarian",
-        "vegan"
-      ],
-      occasions: [],
-      winePairing: {
-        "pairedWines": [],
-        "pairingText": "No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.",
-        "productMatches": []
-      },
-      analyzedInstructions: [],
-      usedIngredientCount: 0,
-      missedIngredientCount: 5,
-      ingredients: [
-        {
-          "id": 11124,
-          "amount": 1,
-          "unit": "",
-          "unitLong": "",
-          "unitShort": "",
-          "aisle": "Produce",
-          "name": "carrot",
-          "original": "1 carrot",
-          "originalString": "1 carrot",
-          "originalName": "carrot",
-          "metaInformation": [],
-          "image": "https://spoonacular.com/cdn/ingredients_100x100/sliced-carrot.png"
-        },
-        {
-          "id": 11955,
-          "amount": 3,
-          "unit": "Tablespoons",
-          "unitLong": "Tablespoons",
-          "unitShort": "Tbsp",
-          "aisle": "Canned and Jarred;Produce",
-          "name": "sun dried tomato",
-          "original": "3 Tablespoons sun dried tomato spread (or pureed sun dried tomatos)",
-          "originalString": "3 Tablespoons sun dried tomato spread (or pureed sun dried tomatos)",
-          "originalName": "sun dried tomato spread (or pureed sun dried tomatos)",
-          "metaInformation": [
-            "dried",
-            "pureed",
-            "(or sun tomatos)"
+        vegetarian: false,
+        vegan: false,
+        glutenFree: false,
+        dairyFree: false,
+        veryHealthy: false,
+        cheap: false,
+        veryPopular: false,
+        sustainable: false,
+        weightWatcherSmartPoints: 17,
+        gaps: "no",
+        lowFodmap: false,
+        ketogenic: false,
+        whole30: false,
+        sourceUrl: "http://fullbellysisters.blogspot.com/2012/06/pasta-with-garlic-scallions-cauliflower.html",
+        spoonacularSourceUrl: "https://spoonacular.com/pasta-with-garlic-scallions-cauliflower-breadcrumbs-716429",
+        aggregateLikes: 209,
+        spoonacularScore: 83,
+        healthScore: 19,
+        creditsText: "Full Belly Sisters",
+        license: "CC BY-SA 3.0",
+        sourceName: "Full Belly Sisters",
+        pricePerServing: 163.15,
+        ingredients: [
+          {
+            "id": 1001,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "butter-sliced.jpg",
+            "consitency": "solid",
+            "name": "butter",
+            "original": "1 tbsp butter",
+            "originalString": "1 tbsp butter",
+            "originalName": "butter",
+            "amount": 1,
+            "unit": "tbsp",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 1,
+                "unitShort": "Tbsp",
+                "unitLong": "Tbsp"
+              },
+              "metric": {
+                "amount": 1,
+                "unitShort": "Tbsp",
+                "unitLong": "Tbsp"
+              }
+            }
+          },
+          {
+            "id": 10011135,
+            "aisle": "Produce",
+            "image": "cauliflower.jpg",
+            "consitency": "solid",
+            "name": "cauliflower florets",
+            "original": "about 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces",
+            "originalString": "about 2 cups frozen cauliflower florets, thawed, cut into bite-sized pieces",
+            "originalName": "about frozen cauliflower florets, thawed, cut into bite-sized pieces",
+            "amount": 2,
+            "unit": "cups",
+            "meta": [
+              "frozen",
+              "thawed",
+              "cut into bite-sized pieces"
+            ],
+            "metaInformation": [
+              "frozen",
+              "thawed",
+              "cut into bite-sized pieces"
+            ],
+            "measures": {
+              "us": {
+                "amount": 2,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 473.176,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          },
+          {
+            "id": 1041009,
+            "aisle": "Cheese",
+            "image": "cheddar-cheese.png",
+            "consitency": "solid",
+            "name": "cheese",
+            "original": "2 tbsp grated cheese (I used romano)",
+            "originalString": "2 tbsp grated cheese (I used romano)",
+            "originalName": "grated cheese (I used romano)",
+            "amount": 2,
+            "unit": "tbsp",
+            "meta": [
+              "grated",
+              "(I used romano)"
+            ],
+            "metaInformation": [
+              "grated",
+              "(I used romano)"
+            ],
+            "measures": {
+              "us": {
+                "amount": 2,
+                "unitShort": "Tbsps",
+                "unitLong": "Tbsps"
+              },
+              "metric": {
+                "amount": 2,
+                "unitShort": "Tbsps",
+                "unitLong": "Tbsps"
+              }
+            }
+          },
+          {
+            "id": 1034053,
+            "aisle": "Oil, Vinegar, Salad Dressing",
+            "image": "olive-oil.jpg",
+            "consitency": "liquid",
+            "name": "extra virgin olive oil",
+            "original": "1-2 tbsp extra virgin olive oil",
+            "originalString": "1-2 tbsp extra virgin olive oil",
+            "originalName": "extra virgin olive oil",
+            "amount": 1,
+            "unit": "tbsp",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 1,
+                "unitShort": "Tbsp",
+                "unitLong": "Tbsp"
+              },
+              "metric": {
+                "amount": 1,
+                "unitShort": "Tbsp",
+                "unitLong": "Tbsp"
+              }
+            }
+          },
+          {
+            "id": 11215,
+            "aisle": "Produce",
+            "image": "garlic.jpg",
+            "consitency": "solid",
+            "name": "garlic",
+            "original": "5-6 cloves garlic",
+            "originalString": "5-6 cloves garlic",
+            "originalName": "garlic",
+            "amount": 5,
+            "unit": "cloves",
+            "meta": [],
+            "metaInformation": [],
+            "measures": {
+              "us": {
+                "amount": 5,
+                "unitShort": "cloves",
+                "unitLong": "cloves"
+              },
+              "metric": {
+                "amount": 5,
+                "unitShort": "cloves",
+                "unitLong": "cloves"
+              }
+            }
+          },
+          {
+            "id": 20420,
+            "aisle": "Pasta and Rice",
+            "image": "fusilli.jpg",
+            "consitency": "solid",
+            "name": "pasta",
+            "original": "6-8 ounces pasta (I used linguine)",
+            "originalString": "6-8 ounces pasta (I used linguine)",
+            "originalName": "pasta (I used linguine)",
+            "amount": 6,
+            "unit": "ounces",
+            "meta": [
+              "(I used linguine)"
+            ],
+            "metaInformation": [
+              "(I used linguine)"
+            ],
+            "measures": {
+              "us": {
+                "amount": 6,
+                "unitShort": "oz",
+                "unitLong": "ounces"
+              },
+              "metric": {
+                "amount": 170.097,
+                "unitShort": "g",
+                "unitLong": "grams"
+              }
+            }
+          },
+          {
+            "id": 1032009,
+            "aisle": "Spices and Seasonings",
+            "image": "red-pepper-flakes.jpg",
+            "consitency": "solid",
+            "name": "red pepper flakes",
+            "original": "couple of pinches red pepper flakes, optional",
+            "originalString": "couple of pinches red pepper flakes, optional",
+            "originalName": "couple of red pepper flakes, optional",
+            "amount": 2,
+            "unit": "pinches",
+            "meta": [
+              "red"
+            ],
+            "metaInformation": [
+              "red"
+            ],
+            "measures": {
+              "us": {
+                "amount": 2,
+                "unitShort": "pinches",
+                "unitLong": "pinches"
+              },
+              "metric": {
+                "amount": 2,
+                "unitShort": "pinches",
+                "unitLong": "pinches"
+              }
+            }
+          },
+          {
+            "id": 1102047,
+            "aisle": "Spices and Seasonings",
+            "image": "salt-and-pepper.jpg",
+            "consitency": "solid",
+            "name": "salt and pepper",
+            "original": "salt and pepper, to taste",
+            "originalString": "salt and pepper, to taste",
+            "originalName": "salt and pepper, to taste",
+            "amount": 2,
+            "unit": "servings",
+            "meta": [
+              "to taste"
+            ],
+            "metaInformation": [
+              "to taste"
+            ],
+            "measures": {
+              "us": {
+                "amount": 2,
+                "unitShort": "servings",
+                "unitLong": "servings"
+              },
+              "metric": {
+                "amount": 2,
+                "unitShort": "servings",
+                "unitLong": "servings"
+              }
+            }
+          },
+          {
+            "id": 11291,
+            "aisle": "Produce",
+            "image": "spring-onions.jpg",
+            "consitency": "solid",
+            "name": "scallions",
+            "original": "3 scallions, chopped, white and green parts separated",
+            "originalString": "3 scallions, chopped, white and green parts separated",
+            "originalName": "scallions, chopped, white and green parts separated",
+            "amount": 3,
+            "unit": "",
+            "meta": [
+              "white",
+              "green",
+              "separated",
+              "chopped"
+            ],
+            "metaInformation": [
+              "white",
+              "green",
+              "separated",
+              "chopped"
+            ],
+            "measures": {
+              "us": {
+                "amount": 3,
+                "unitShort": "",
+                "unitLong": ""
+              },
+              "metric": {
+                "amount": 3,
+                "unitShort": "",
+                "unitLong": ""
+              }
+            }
+          },
+          {
+            "id": 14106,
+            "aisle": "Alcoholic Beverages",
+            "image": "white-wine.jpg",
+            "consitency": "liquid",
+            "name": "white wine",
+            "original": "2-3 tbsp white wine",
+            "originalString": "2-3 tbsp white wine",
+            "originalName": "white wine",
+            "amount": 2,
+            "unit": "tbsp",
+            "meta": [
+              "white"
+            ],
+            "metaInformation": [
+              "white"
+            ],
+            "measures": {
+              "us": {
+                "amount": 2,
+                "unitShort": "Tbsps",
+                "unitLong": "Tbsps"
+              },
+              "metric": {
+                "amount": 2,
+                "unitShort": "Tbsps",
+                "unitLong": "Tbsps"
+              }
+            }
+          },
+          {
+            "id": 99025,
+            "aisle": "Pasta and Rice",
+            "image": "breadcrumbs.jpg",
+            "consitency": "solid",
+            "name": "whole wheat bread crumbs",
+            "original": "1/4 cup whole wheat bread crumbs (I used panko)",
+            "originalString": "1/4 cup whole wheat bread crumbs (I used panko)",
+            "originalName": "whole wheat bread crumbs (I used panko)",
+            "amount": 0.25,
+            "unit": "cup",
+            "meta": [
+              "whole wheat",
+              "(I used panko)"
+            ],
+            "metaInformation": [
+              "whole wheat",
+              "(I used panko)"
+            ],
+            "measures": {
+              "us": {
+                "amount": 0.25,
+                "unitShort": "cups",
+                "unitLong": "cups"
+              },
+              "metric": {
+                "amount": 59.147,
+                "unitShort": "ml",
+                "unitLong": "milliliters"
+              }
+            }
+          }
+        ],
+        id: 716429,
+        title: "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+        readyInMinutes: 45,
+        servings: 2,
+        image: "https://spoonacular.com/recipeImages/716429-556x370.jpg",
+        imageType: "jpg",
+        nutrition: {
+          nutrients: [
+            {
+              "title": "Calories",
+              "amount": 584.46,
+              "unit": "cal",
+              "percentOfDailyNeeds": 29.22
+            },
+            {},
+            {},
+            {
+              "title": "Carbohydrates",
+              "amount": 83.71,
+              "unit": "g",
+              "percentOfDailyNeeds": 27.9
+            },
+            {
+              "title": "Sugar",
+              "amount": 5.36,
+              "unit": "g",
+              "percentOfDailyNeeds": 5.95
+            },
+            {
+              "title": "Cholesterol",
+              "amount": 31.02,
+              "unit": "mg",
+              "percentOfDailyNeeds": 10.34
+            },
+            {
+              "title": "Sodium",
+              "amount": 451.42,
+              "unit": "mg",
+              "percentOfDailyNeeds": 19.63
+            },
+            {
+              "title": "Alcohol",
+              "amount": 1.55,
+              "unit": "g",
+              "percentOfDailyNeeds": 8.58
+            },
+            {
+              "title": "Protein",
+              "amount": 18.98,
+              "unit": "g",
+              "percentOfDailyNeeds": 37.97
+            },
+            {
+              "title": "Selenium",
+              "amount": 57.72,
+              "unit": "µg",
+              "percentOfDailyNeeds": 82.45
+            },
+            {
+              "title": "Vitamin C",
+              "amount": 56.62,
+              "unit": "mg",
+              "percentOfDailyNeeds": 68.64
+            },
+            {
+              "title": "Manganese",
+              "amount": 1.11,
+              "unit": "mg",
+              "percentOfDailyNeeds": 55.52
+            },
+            {
+              "title": "Vitamin K",
+              "amount": 58.27,
+              "unit": "µg",
+              "percentOfDailyNeeds": 55.49
+            },
+            {
+              "title": "Phosphorus",
+              "amount": 304.38,
+              "unit": "mg",
+              "percentOfDailyNeeds": 30.44
+            },
+            {
+              "title": "Fiber",
+              "amount": 6.73,
+              "unit": "g",
+              "percentOfDailyNeeds": 26.92
+            },
+            {
+              "title": "Folate",
+              "amount": 87.14,
+              "unit": "µg",
+              "percentOfDailyNeeds": 21.79
+            },
+            {
+              "title": "Vitamin B6",
+              "amount": 0.43,
+              "unit": "mg",
+              "percentOfDailyNeeds": 21.46
+            },
+            {
+              "title": "Magnesium",
+              "amount": 71.55,
+              "unit": "mg",
+              "percentOfDailyNeeds": 17.89
+            },
+            {
+              "title": "Calcium",
+              "amount": 178.12,
+              "unit": "mg",
+              "percentOfDailyNeeds": 17.81
+            },
+            {
+              "title": "Potassium",
+              "amount": 597.53,
+              "unit": "mg",
+              "percentOfDailyNeeds": 17.07
+            },
+            {
+              "title": "Iron",
+              "amount": 3.07,
+              "unit": "mg",
+              "percentOfDailyNeeds": 17.04
+            },
+            {
+              "title": "Copper",
+              "amount": 0.33,
+              "unit": "mg",
+              "percentOfDailyNeeds": 16.43
+            },
+            {
+              "title": "Zinc",
+              "amount": 2.12,
+              "unit": "mg",
+              "percentOfDailyNeeds": 14.15
+            },
+            {
+              "title": "Vitamin B5",
+              "amount": 1.17,
+              "unit": "mg",
+              "percentOfDailyNeeds": 11.69
+            },
+            {
+              "title": "Vitamin B2",
+              "amount": 0.2,
+              "unit": "mg",
+              "percentOfDailyNeeds": 11.5
+            },
+            {
+              "title": "Vitamin A",
+              "amount": 537.51,
+              "unit": "IU",
+              "percentOfDailyNeeds": 10.75
+            },
+            {
+              "title": "Vitamin B3",
+              "amount": 2.14,
+              "unit": "mg",
+              "percentOfDailyNeeds": 10.71
+            },
+            {
+              "title": "Vitamin B1",
+              "amount": 0.16,
+              "unit": "mg",
+              "percentOfDailyNeeds": 10.46
+            },
+            {
+              "title": "Vitamin E",
+              "amount": 1.53,
+              "unit": "mg",
+              "percentOfDailyNeeds": 10.2
+            },
+            {
+              "title": "Vitamin B12",
+              "amount": 0.14,
+              "unit": "µg",
+              "percentOfDailyNeeds": 2.28
+            },
+            {
+              "title": "Vitamin D",
+              "amount": 0.2,
+              "unit": "µg",
+              "percentOfDailyNeeds": 1.31
+            }
           ],
-          "extendedName": "pureed sun dried tomato",
-          "image": "https://spoonacular.com/cdn/ingredients_100x100/sundried-tomatoes.jpg"
+          "ingredients": [],
+          "caloricBreakdown": {
+            "percentProtein": 12.89,
+            "percentFat": 30.29,
+            "percentCarbs": 56.82
+          },
+          "weightPerServing": {
+            "amount": 269,
+            "unit": "g"
+          }
         },
-        {
-          "id": 11549,
-          "amount": 0.5,
-          "unit": "cup",
-          "unitLong": "cups",
-          "unitShort": "cup",
-          "aisle": "Canned and Jarred",
-          "name": "tomato sauce",
-          "original": "1/2 - 1/3 cup tomato sauce",
-          "originalString": "1/2 - 1/3 cup tomato sauce",
-          "originalName": "tomato sauce",
-          "metaInformation": [],
-          "image": "https://spoonacular.com/cdn/ingredients_100x100/tomato-sauce-or-pasta-sauce.jpg"
+        cuisines: [],
+        dishTypes: [
+          "lunch",
+          "main course",
+          "main dish",
+          "dinner"
+        ],
+        diets: [],
+        occasions: [],
+        winePairing: {
+          "pairedWines": [],
+          "pairingText": "No one wine will suit every pasta dish. Pasta in a tomato-based sauce will usually work well with a medium-bodied red, such as a montepulciano or chianti. Pasta with seafood or pesto will fare better with a light-bodied white, such as a pinot grigio. Cheese-heavy pasta can pair well with red or white - you might try a sangiovese wine for hard cheeses and a chardonnay for soft cheeses. We may be able to make a better recommendation if you ask again with a specific pasta dish.",
+          "productMatches": []
         },
-        {
-          "id": 10020124,
-          "amount": 2,
-          "unit": "ounces",
-          "unitLong": "ounces",
-          "unitShort": "oz",
-          "aisle": "Pasta and Rice",
-          "name": "whole wheat spaghetti",
-          "original": "2 ounces whole wheat spaghetti (a small handful)",
-          "originalString": "2 ounces whole wheat spaghetti (a small handful)",
-          "originalName": "whole wheat spaghetti (a small handful)",
-          "metaInformation": [
-            "whole wheat",
-            "(a small handful)"
-          ],
-          "image": "https://spoonacular.com/cdn/ingredients_100x100/whole-wheat-spaghetti.jpg"
-        },
-        {
-          "id": 11477,
-          "amount": 1,
-          "unit": "small",
-          "unitLong": "small",
-          "unitShort": "small",
-          "aisle": "Produce",
-          "name": "zucchini",
-          "original": "1 small-medium zucchini",
-          "originalString": "1 small-medium zucchini",
-          "originalName": "-medium zucchini",
-          "metaInformation": [],
-          "image": "https://spoonacular.com/cdn/ingredients_100x100/zucchini.jpg"
-        }
-      ],
-      likes: 0,
-      usedIngredients: [],
-      unusedIngredients: [],
-      nutrition: [
-        {
-          "title": "Calories",
-          "amount": 310.483,
-          "unit": "cal"
-        },
-        {
-          "title": "Protein",
-          "amount": 14.0237,
-          "unit": "g"
-        },
-        {
-          "title": "Fat",
-          "amount": 1.98379,
-          "unit": "g"
-        },
-        {
-          "title": "Carbohydrates",
-          "amount": 67.0094,
-          "unit": "g"
-        }
-      ]
-    });
+        "instructions": "",
+        "analyzedInstructions": []
+      });
+
+        
     recipe.save()
       .then(recipe => res.json(recipe));
 });

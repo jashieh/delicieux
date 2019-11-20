@@ -1,0 +1,35 @@
+.recipe-show-cont {
+  display: flex;
+  width: 520px;
+  height: 600px;
+  padding: 10px;
+  border: 1px solid lightgray;
+  justify-content: center;
+}
+.recipe-show-photo-cont {
+  height: 300px;
+  width: 500px;
+  overflow: hidden;
+}
+.recipe-show-photo {
+  height: 100%;
+  width: 100%;
+}
+.cont-cont {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.recipe-show-ing-list {
+  padding-left: 20px;
+  margin: 5px 0;
+}
+.rs-main-cont {
+  margin: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+.piechart-cont {
+  height: 200px;
+  width: 200px;
+}

@@ -20,7 +20,7 @@ router.post('/indiv', (req, res) => {
     sourceUrl: req.body.sourceUrl,
     image: req.body.image,
     ingredients: req.body.extendedIngredients,
-    nutrition: req.body.nutrition,
+    nutrition: req.body.nutrition.nutrients,
     cuisines: req.body.cuisines,
     diets: req.body.diets,
     spoonacularScore: req.body.spoonacularScore,
