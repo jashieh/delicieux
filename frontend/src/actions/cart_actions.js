@@ -40,9 +40,9 @@ const receiveCartErrors = errors => ({
   errors,
 });
 
-export const getCart = user_id => dispatch => (
+export const getCart = userId => dispatch => (
   CartAPI
-    .getCart(user_id)
+    .getCart(userId)
     .then(
       payload => dispatch(receiveCart(payload)),
       errors => dispatch(receiveCartErrors(errors))
@@ -51,9 +51,9 @@ export const getCart = user_id => dispatch => (
 
 // Doesn't change state, just updates the backend
 // SWAPS OUT THE BACKEND'S OBJECT WITH A NEW OBJECT
-export const patchCart = (user_id, cartDates) => dispatch => (
+export const patchCart = (userId, dates) => dispatch => (
   CartAPI
-    .patchCart(user_id, cartDates)
+    .patchCart(userId, dates)
     .then(
       null,
       errors => dispatch(receiveCartErrors(errors)),

@@ -35,20 +35,33 @@ class Cart extends React.Component {
 
   //saves the cart to database using user_id
   saveCart() {
-    let { patchCart, userId, cart } = this.props;
+    debugger;
+    let { patchCart, userId, dates } = this.props;
     this.setState({ loading: true });
-    patchCart(userId, { cartDates: cart.dates })
+    patchCart(userId, { dates: dates })
       .then(
         () => this.setState( {loading: false })
       )
   }
 
   previousDate() {
+    const { currentDate, dates, switchDate } = this.props;
+    let previousDate = new Date(currentDate);
+    previousDate.setDate(previousDate.getDate() - 1);
 
+    let date = previousDate.toString().slice(0, 15);
+    if (dates[date]) switchDate(date);
   }
 
   nextDate() {
+    const { currentDate, dates, switchDate, addDate } = this.props;
+    let nextDate = new Date(currentDate);
+    nextDate.setDate(nextDate.getDate() + 1);
 
+    let date = nextDate.toString().slice(0, 15);
+
+    if (!dates[date]) addDate(date);
+    switchDate(date);
   }
 
   //TODO: MAKE CLICKING THE CURRENT DATE OPEN A CALENDAR, WHERE WE CAN SELECT A DATE TO GO TO
