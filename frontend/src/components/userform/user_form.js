@@ -1,13 +1,19 @@
 import React from 'react';
-import FormPersonalDetails from './form_personal_details';
-import LoginFormContainer from './login_form_container';
-import SignupFormContainer from './signup_form_container';
+import SignupForm from './signup_form';
+import FormPersonalContainer from './form_personal_container';
 
 class UserForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            step: 1
+        this.state ={
+            step: 1,
+            name: "",
+            email: "",
+            password: "",
+            password2: "",
+            height: "",
+            weight: "",
+            age: ""
         }
     }
 
@@ -26,35 +32,33 @@ class UserForm extends React.Component {
     }
 
     handleChange = input => e => {
-        this.setState({[input]: e.target.value})
+        this.setState({ [input]: e.target.value })
     }
 
-
     render() {
-
         const { step } = this.state;
-        const { firstName, lastName, email } = this.state;
-        const values = { firstName, lastName, email };
+        const { name, email, password, password2, height, weight, age } = this.state;
+        const values = { name, email, password, password2, height, weight, age }; 
+
 
         switch(step) {
             case 1:
                 return (
-                    <SignupFormContainer
+                    <SignupForm
                         nextStep={this.nextStep}
-                        prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         values={values}
                     />
-                );
+                )
             case 2:
                 return (
-                    <FormPersonalDetails
+                    <FormPersonalContainer
                         nextStep={this.nextStep}
                         prevStep={this.prevStep}
                         handleChange={this.handleChange}
                         values={values}
                     />
-                );
+                )
         }
     }
 }

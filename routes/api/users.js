@@ -20,7 +20,6 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
   });
 });
 
-
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   
@@ -36,7 +35,12 @@ router.post("/register", (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        height: req.body.height,
+        weight: req.body.weight,
+        age: req.body.age,
+        gender: req.body.gender,
+        activityLevel: req.body.activityLevel
       });
       
       bcrypt.genSalt(10, (err, salt) => {
@@ -45,7 +49,16 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           newUser.save()
             .then(user => {
-              const payload = { id: user.id, name: user.name, email: user.email };
+              const payload = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                height: user.height,
+                weight: user.weight,
+                age: user.age,
+                gender: user.gender,
+                activityLevel: user.activityLevel
+              };
               
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -83,7 +96,7 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
       .then(isMatch => {
           if (isMatch) {
-              const payload = { id: user.id, name: user.name, email: user.email };
+              const payload = { id: user.id, name: user.name, email: user.email, height: user.height, weight: user.weight, age: user.age, gender: user.gender, activityLevel: user.activityLevel };
 
           jwt.sign(
               payload,
@@ -102,6 +115,26 @@ router.post('/login', (req, res) => {
       })
     })
 });
+
+
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      res.json({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        height: user.height,
+        weight: user.weight,
+        age: user.age,
+        gender: user.gender,
+        activityLevel: user.activityLevel
+      });
+    })
+    .catch (err =>
+      res.status(404).json({ nouserfound: 'No User found with this ID' })
+    )
+})
 
 
 module.exports = router;  
