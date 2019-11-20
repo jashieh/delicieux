@@ -6,7 +6,7 @@ const CartSchema = new Schema({
     type: String,
     required: true
   },
-  items: []
+  dates: {}
 });
 
 module.exports = Cart = mongoose.model('carts', CartSchema);

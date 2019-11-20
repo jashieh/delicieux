@@ -24,7 +24,7 @@ router.post('/:userId', (req, res) => {
 router.patch('/:cartId', (req, res) => {
   Cart.findOneAndUpdate(
     { _id: req.params.cartId }, 
-    req.body, 
+    req.body, // { dates: "Updated Cart" }
     { new: true }, 
     (err, result) => err ? res.json(err) : res.json(result)
   )

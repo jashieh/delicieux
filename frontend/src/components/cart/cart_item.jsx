@@ -4,8 +4,6 @@ class CartItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addToCart = this.addToCart.bind(this);
-    this.subtractFromCart = this.subtractFromCart.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
@@ -14,34 +12,31 @@ class CartItem extends React.Component {
 
   }
 
-  addToCart() {
-    this.props.addRecipe(this.props.recipe.id);
-  }
-
-  subtractFromCart() {
-    this.props.subtractRecipe(this.props.recipe.id);
-  }
-
   removeFromCart() {
-    this.props.removeRecipe(this.props.recipe.id);
+    const { date, time } = this.props;
+    this.props.removeRecipe(date, time);
   }
 
   render() {
-    const { cart_item, recipe } = this.props;
-    return (
-      <div className="cart-item">
-        <img className="cart-item-image" src={recipe.image} />
-        <div className="cart-item-info">
-          <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
-          <div className="cart-item-name">{recipe.title}</div>
-          <div className="cart-item-actions">
-            <div className="cart-item-subtract" onClick={this.subtractFromCart}>-</div>
-            <div className="cart-item-number">{cart_item.number}</div>
-            <div className="cart-item-add" onClick={this.addToCart}>+</div>
+    const { time, recipe } = this.props;
+    if (recipe) 
+      return (
+        <div className="cart-item">
+          <div className="cart-item-time">{time}</div>
+          <div className="cart-item-info">
+            <img className="cart-item-image" src={recipe.image} />
+            <div className="cart-item-name">{recipe.title}</div>
+            <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
           </div>
         </div>
-      </div>
-    )  
+      )  
+    else
+      return (
+        <div className="cart-item">
+          <div className="cart-item-time">{time}</div>
+          <div className="cart-item-info"></div>
+        </div>
+      )
   }
 }
 

@@ -23,4 +23,4 @@ const App = () => (
 
 export default App;
 
-// Install npm i material-ui
+// Install npm i material-uiy

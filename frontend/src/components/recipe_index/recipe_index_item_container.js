@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import RecipeIndexItem from './recipe_index_item';
-import { addRecipe, subtractRecipe, removeRecipe } from '../../actions/cart_actions'
+import { addRecipe } from '../../actions/cart_actions'
 import { rotateRecipe } from '../../actions/recipe_actions'
 
 const mapStateToProps = (state, ownProps) => ({
@@ -13,8 +13,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addRecipe: (recipe_id) => dispatch(addRecipe(recipe_id)),
-  subtractRecipe: (recipe_id) => dispatch(subtractRecipe(recipe_id)),
-  removeRecipe: (recipe_id) => dispatch(removeRecipe(recipe_id)),
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
 });
 

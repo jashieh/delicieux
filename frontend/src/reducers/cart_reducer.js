@@ -1,47 +1,37 @@
 import {
   ADD_RECIPE,
-  SUBTRACT_RECIPE,
   REMOVE_RECIPE,
   RECEIVE_CART,
+  ADD_DATE,
 } from '../actions/cart_actions';
 
-const CART = [
-  { recipe_id: 1, number: 1 },
-  { recipe_id: 2, number: 2 },
-  { recipe_id: 3, number: 3 },
-  { recipe_id: 4, number: 4 }
-];
+const CART = {
+  "Tue Nov 19 2019": [undefined, undefined, undefined],
+  "Wed Nov 20 2019": [undefined, undefined, undefined],
+  "Thurs Nov 21 2019": [undefined, undefined, undefined],
+  "Fri Nov 22 2019": [undefined, undefined, undefined],
+};
 
 const CartReducer = (state = CART, action) => {
   Object.freeze(state);
-  let nextState = [];
-  for (let i = 0; i < state.length; i++)
-    nextState.push(Object.assign({}, state[i]));
+  let nextState = Object.assign({}, state);
 
   switch (action.type) {
     case ADD_RECIPE:
-      for (let i = 0; i < nextState.length; i++)
-        if (nextState[i].recipe_id === action.recipe_id) {
-          nextState[i].number++;
-          return nextState;
-        }
-      nextState.push({ recipe_id: action.recipe_id, number: 1 }) // NEW ITEM
-      return nextState;
-
-    case SUBTRACT_RECIPE:
-      for (let i = 0; i < nextState.length; i++)
-        if (nextState[i].recipe_id === action.recipe_id)
-          nextState[i].number === 1 ? nextState.splice(i, 1) : nextState[i].number--;
+      nextState[action.date][action.time] = action.recipe_id;
       return nextState;
 
     case REMOVE_RECIPE:
-      for (let i = 0; i < nextState.length; i++)
-        if (nextState[i].recipe_id === action.recipe_id)
-          nextState.splice(i, 1);
+      nextState[action.date][action.time] = undefined;
+      return nextState;
+
+    case ADD_DATE:
+      if (nextState[action.date]) return nextState;
+      nextState[action.date] = [undefined, undefined, undefined];
       return nextState;
 
     case RECEIVE_CART:
-      return action.cart;
+      return action.dates;
 
     default:
       return state;
