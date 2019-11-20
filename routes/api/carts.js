@@ -5,29 +5,46 @@ const Cart = require('../../models/cart');
 // gets using the user_id?
 router.get('/:userId', (req, res) => {
   Cart.findOne({ userId: req.params.userId })
-    .then(cart => res.json(cart))
+    .then(cart => {
+      let reformatted = {
+        id: cart._id,
+        dates: cart.dates,
+        userId: cart.userId,
+      }
+      res.json(reformatted)
+    })
     .catch(err => res.status(404).json(err));
 });
 
-// do I need to make sure it doesn't already exist?
-router.post('/:userId', (req, res) => {
-  const newCart = new Cart({
-    userId: req.params.userId,
-    dates: {}
-  });
+// For addCartDate
+router.patch('/:cartId/addDate/', (req, res) => {
+  let options = { new: true }
+  let update = { $set: {} };
+  update["$set"][`dates.${req.body.date}`] = {
+    "BREAKFAST": undefined,
+    "LUNCH": undefined,
+    "DINNER": undefined,
+  };
 
-  newCart.save()
-    .then(cart => res.json(cart));
+  Cart.findOneAndUpdate(
+    { _id: req.params.cartId }, 
+    update,
+    options, 
+    (err, result) => err ? res.status(400).json(err) : res.json(result)
+  )
 });
 
-// do I need to add a condition for when it fails, or can't be saved?
-router.patch('/:userId', (req, res) => {
+router.patch("/:cartId/addMeal/", (req, res) => {
+  let options = { new: true };
+  let update = { $set: {} };
+  update["$set"][`dates.${req.body.date}.${req.body.time}`] = req.body.recipeId;
+
   Cart.findOneAndUpdate(
-    { userId: req.params.userId }, 
-    req.body, // { dates: "Updated Cart" }
-    { new: true }, 
-    (err, result) => err ? res.json(err) : res.json(result)
-  )
+    { _id: req.params.cartId },
+    update,
+    options,
+    (err, result) => (err ? res.status(400).json(err) : res.json(result))
+  );
 });
 
 module.exports = router;

@@ -4,10 +4,12 @@ export const getCart = userId => {
   return axios.get(`/api/carts/${userId}`);
 };
 
-export const postCart = userId => {
-  return axios.post(`/api/carts/${userId}`);
+// dateInfo = { date: ... }
+export const addCartDate = (cartId, dateInfo) => {
+  return axios.patch(`/api/carts/${cartId}/addDate/`, dateInfo);
 };
 
-export const patchCart = (userId, cartData) => {
-  return axios.patch(`/api/carts/${userId}`, cartData);
+// mealInfo = { date: ..., time: ..., recipeId: ... }
+export const setCartMeal = (cartId, mealInfo) => {
+  return axios.patch(`/api/carts/${cartId}/addMeal/`, mealInfo);
 };

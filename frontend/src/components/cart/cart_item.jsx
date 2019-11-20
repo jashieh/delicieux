@@ -4,22 +4,32 @@ class CartItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.recipe = this.recipe.bind(this);
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
-  // gets the user's cart
-  componentDidMount() {
+  recipe() {
+    let { date, time, cart, recipes } = this.props;
+    let recipeId = null;
+    if(cart.dates[date]) { //Just a precaution
+      recipeId = cart.dates[date][time];
+    }
 
+    for (let i = 0; i < recipes.length; i++)
+      if (recipes[i].id === recipeId) return recipes[i];
+
+    return recipeId ? { id: null, title: "ERROR: Recipe Not Found", img: "..." } : null
   }
 
   // TODO: Implement an undo button
   removeFromCart() {
-    const { date, time } = this.props;
-    this.props.removeRecipe(date, time);
+    const { date, time, cart } = this.props;
+    this.props.removeCartMeal(cart.id, { date, time })
   }
 
   render() {
-    const { time, recipe } = this.props;
+    const { time } = this.props;
+    let recipe = this.recipe();
     if (recipe) 
       return (
         <div className="cart-item">

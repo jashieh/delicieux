@@ -17,9 +17,10 @@ import { getRandomRecipe,
 
 import {
   getCart,
-  postCart,
-  patchCart,
-} from './util/cart_api_util';
+  addCartDate,
+  addCartMeal,
+  removeCartMeal,
+} from './actions/cart_actions';
 
 import {
   searchIngredientByName,
@@ -68,8 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
 
   window.getCart = getCart;
-  window.postCart = postCart;
-  window.patchCart = patchCart;
+  window.addCartDate = addCartDate;
+  window.addCartMeal = addCartMeal;
+  window.removeCartMeal = removeCartMeal;
   
   window.store = store;
   ReactDOM.render(<Root store={store} />, document.getElementById('root'));

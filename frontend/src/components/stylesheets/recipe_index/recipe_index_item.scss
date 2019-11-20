@@ -27,6 +27,8 @@
 }
 
 .recipe-index-item-name {
+  height: 20%;
+  width: 100%;
   overflow-wrap: normal;
   text-align: center;
 }
@@ -36,15 +38,6 @@
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
-}
-
-.recipe-index-item-actions {
-  height: 20%;
-  width: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .recipe-index-item-number {
@@ -59,11 +52,18 @@
   margin-left: 8px;
 }
 
-.recipe-index-item-add, .recipe-index-item-subtract {
+.recipe-index-item-add {
+  height: 20%;
+  width: 100%;
+
   font-size: 14px;
   font-weight: bold;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.recipe-index-item-add:hover, .recipe-index-item-subtract:hover {
+.recipe-index-item-add:hover {
   cursor: pointer;
 }
