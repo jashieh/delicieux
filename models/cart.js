@@ -6,7 +6,10 @@ const CartSchema = new Schema({
     type: String,
     required: true
   },
-  dates: {}
+  dates: {
+    type: Schema.Types.Mixed,
+    default: {}
+  },
 });
 
 module.exports = Cart = mongoose.model('carts', CartSchema);

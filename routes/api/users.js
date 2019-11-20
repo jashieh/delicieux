@@ -56,7 +56,18 @@ router.post("/register", (req, res) => {
               const newFridge = new Fridge({ userId: user.id });
               newFridge.save();
 
-              const newCart = new Cart({ userId: user.id, items: [] });
+              let currentDate = Date().toString().slice(0, 15);
+              const newCart = new Cart({ 
+                userId: user.id,
+                dates: {
+                  [currentDate]: {
+                    "BREAKFAST": undefined,
+                    "LUNCH": undefined,
+                    "DINNER": undefined
+                  }
+                },
+              });
+              console.log(newCart);
               newCart.save();
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {

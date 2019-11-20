@@ -13,17 +13,17 @@ router.get('/:userId', (req, res) => {
 router.post('/:userId', (req, res) => {
   const newCart = new Cart({
     userId: req.params.userId,
-    items: [],
+    dates: {}
   });
 
   newCart.save()
-    .then(cart => sres.json(cart));
+    .then(cart => res.json(cart));
 });
 
 // do I need to add a condition for when it fails, or can't be saved?
-router.patch('/:cartId', (req, res) => {
+router.patch('/:userId', (req, res) => {
   Cart.findOneAndUpdate(
-    { _id: req.params.cartId }, 
+    { userId: req.params.userId }, 
     req.body, // { dates: "Updated Cart" }
     { new: true }, 
     (err, result) => err ? res.json(err) : res.json(result)

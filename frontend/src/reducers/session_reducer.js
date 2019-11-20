@@ -13,7 +13,6 @@ const initialState = {
 };
 
 export default function(state = initialState, action) {
-  let nextState;
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return {
