@@ -4,36 +4,32 @@ const Schema = mongoose.Schema;
 const RecipeSchema = new Schema({
   // Core Pieces
   title: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   recipeId: {
     type: Number,
-    required: true,
+    // required: true,
     index: true
   },
   sourceUrl: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
-  extendedIngredients: [],
+  ingredients: [new Schema({
+    id: Number,
+    amount: Number,
+    unit: String,
+    name: String,
+    image: String
+  })],
 
+  image: String,
   // Probably don't need this until we maybe add custom recipes!!
-  // extendedIngredients: [ingredientSchema],
+  // extendedIngredients: [],
 
-  nutrition: {
-    nutrients: [],
-    caloricBreakdown: {
-      percentProtein: Number,
-      percentFat: Number,
-      percentCarbs: Number,
-    },
-    weightPerServing: {
-      amount: Number,
-      unit: String,
-    }
-  },
-
+  nutrition: [],
+  
   // Selectors, can add or remove based on costliness of DB
   cuisines: [],
   diets: [],

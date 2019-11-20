@@ -11,7 +11,7 @@ const Fridge = require('../../models/fridge');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 
-router.get("/test", (req, res) => res.json({ msg: "This is the users route" }));
+router.get("/test", (req, res) => res.json({ msg: "This is the users route for meal plan" }));
 
 router.get('/current', passport.authenticate('jwt', {session: false}), (req, res) => {
   res.json({
