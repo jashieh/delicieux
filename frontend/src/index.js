@@ -24,6 +24,7 @@ import {
 import {
   searchIngredientByName,
   getIngredientById,
+  getConvertAmounts
 } from './util/ingredient_api_util';
 
 import { fetchFridge, addIngredientToFridge } from './util/fridge_api_util';
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addIngredientToFridge = addIngredientToFridge;
   window.getIngredientById = getIngredientById;
   window.getState = store.getState;
-
+    window.getConvertAmounts = getConvertAmounts;
   window.getCart = getCart;
   window.postCart = postCart;
   window.patchCart = patchCart;

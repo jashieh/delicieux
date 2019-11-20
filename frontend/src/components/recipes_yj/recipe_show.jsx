@@ -313,7 +313,7 @@ export default class RecipeShow extends React.Component {
     <div className="chart-cont" onClick={this.toggleChart}>
       <VictoryPie
         animate={{
-          duration: 2000
+          duration: 1000
         }}
         colorScale={["#3a9691", "skyblue", "lightblue"]}
         data={[

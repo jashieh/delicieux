@@ -74,3 +74,28 @@ export const getIngredientSubstitutes = (ingredientName) => {
       console.log(error)
     })
 };
+
+export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUnit="grams") => {
+  const axios = require("axios");
+
+  return axios({
+    "method": "GET",
+    "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/convert",
+    "headers": {
+      "content-type": "application/octet-stream",
+      "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+      "x-rapidapi-key": "f9ba977a04msha79dcdbd3b845c1p1e804ajsn0a5620f33ad5"
+    }, "params": {
+      "ingredientName": ingredient,
+      "targetUnit": targetUnit,
+      "sourceUnit": sourceUnit,
+      "sourceAmount": `${sourceAmount}`
+    }
+  })
+    .then((response) => {
+      console.log(response)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
