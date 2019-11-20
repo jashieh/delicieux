@@ -29,7 +29,7 @@ class RecipeIndexItem extends React.Component {
     const { recipe, rotateToBack } = this.props;
 
     return (
-      <div className="recipe-index-item">
+      <div className="recipe-index-item" draggable="true">
         <div className="recipe-index-item-remove" onClick={rotateToBack}>X</div>
         <div className="recipe-index-item-name">{recipe.title}</div>
         <img className="recipe-index-item-image" src={recipe.image}/>
