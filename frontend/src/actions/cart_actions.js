@@ -42,9 +42,9 @@ export const getCart = user_id => dispatch => (
 );
 
 // Doesn't change state, just updates the backend
-export const updateCart = (user_id, cart) => dispatch => (
+export const patchCart = (user_id, cart) => dispatch => (
   CartAPI
-    .updateCart(user_id, cart)
+    .patchCart(user_id, cart)
     .then(
       null,
       errors => dispatch(receiveCartErrors(errors)),
