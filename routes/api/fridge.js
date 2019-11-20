@@ -36,7 +36,7 @@ router.patch('/:userId/modifyIngredient', (req, res) => {
       if(data.ingredients[req.body.ingredientId].amount <= 0) {
         Fridge.findOneAndUpdate({ userId: req.params.userId }, { $unset: {ingredients: req.body.ingredientId}},
           {new: true})
-          .then(data => res.json(data))
+          .then(data => res.json(data.ingredients[req.body.ingredientId]))
           .catch(err => res.status(400).json(err))
       } else {
         return res.json(data.ingredients[req.body.ingredientId]);

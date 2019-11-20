@@ -21,3 +21,8 @@ export const addFridgeIngredient = (userId, ingredient) => dispatch =>
   (APIUtil.addFridgeIngredient(userId, ingredient).then(
     ingredient => dispatch(receiveFridgeIngredient(ingredient)))
 );
+
+export const modifyIngredient = (userId, ingredientId, amount) => dispatch =>(
+  APIUtil.modifyIngredient(userId, ingredientId, amount).then(
+    ingredient => dispatch(receiveFridgeIngredient(ingredient)))
+);
