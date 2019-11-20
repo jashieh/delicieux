@@ -12,8 +12,8 @@ class Summary extends React.Component {
   render() {
     return (
       <div className="summary-page">
-        <CartContainer />
         <RecipeIndexContainer />
+        <CartContainer />
       </div>
     )
   }

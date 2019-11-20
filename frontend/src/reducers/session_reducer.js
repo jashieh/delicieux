@@ -3,7 +3,8 @@ import { RECEIVE_CURRENT_USER,
 } from '../actions/session_actions';
 
 import {
-  SWITCH_DATE
+  SWITCH_DATE,
+  ADD_DATE,
 } from '../actions/cart_actions';
 
 const initialState = {
@@ -28,6 +29,7 @@ export default function(state = initialState, action) {
         currentDate: undefined
       };
 
+    case ADD_DATE:
     case SWITCH_DATE:
       return {
         ...state,

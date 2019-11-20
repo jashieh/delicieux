@@ -20,7 +20,7 @@ const CartReducer = (state = {}, action) => {
 
     case ADD_DATE:
       if (nextState[action.date]) return nextState;
-      nextState[action.date] = { 
+      nextState.dates[action.date] = { 
         "BREAKFAST": undefined, 
         "LUNCH": undefined,
         "DINNER": undefined,

@@ -9,7 +9,6 @@ class Cart extends React.Component {
       loading: true
     }
 
-    this.recipe = this.recipe.bind(this);
     this.previousDate = this.previousDate.bind(this);
     this.nextDate = this.nextDate.bind(this);
   }
@@ -22,32 +21,31 @@ class Cart extends React.Component {
       );
   }
 
-  recipe(recipe_id) {
-    const { recipes } = this.props;
-    for (let i = 0; i < recipes.length; i++)
-      if (recipes[i].id === recipe_id) return recipes[i];
-    return { id: null, title: "Recipe Not Found", img: "..." };
-  }
-
   previousDate() {
-    const { currentDate, dates, switchDate, addCartDate } = this.props;
+    const { currentDate, dates, switchDate, addCartDate, cartId } = this.props;
     let previousDate = new Date(currentDate);
     previousDate.setDate(previousDate.getDate() - 1);
 
     let date = previousDate.toString().slice(0, 15);
 
-    if (!dates[date]) addCartDate({ date: date });
+    if (!dates[date])
+      addCartDate(cartId, { date: date });
+    else 
       switchDate(date);
   }
 
   nextDate() {
-    const { currentDate, dates, switchDate, addCartDate } = this.props;
+    const { currentDate, dates, switchDate, addCartDate, cartId } = this.props;
     let nextDate = new Date(currentDate);
     nextDate.setDate(nextDate.getDate() + 1);
 
     let date = nextDate.toString().slice(0, 15);
 
-    if (!dates[date]) addCartDate({ date: date });
+    // MUST PREVENT CART FROM LOADING DURING THIS, OR FOR SOME REASON THE
+    // COMPONENT WILL RE-RENDER BEFORE ADDCARTDATE EVEN HAPPENS
+    if (!dates[date])
+      addCartDate(cartId, { date: date });
+    else
       switchDate(date);
   }
 
@@ -57,11 +55,10 @@ class Cart extends React.Component {
 
     if (this.state.loading)
       return <div className="cart"></div>;
-    
+
     const { dates, currentDate } = this.props;
     const date = dates[currentDate];
     const times = ["BREAKFAST", "LUNCH", "DINNER"];
-    let recipe;
     return (
       <div className="cart">
         <div className="cart-header">
@@ -71,10 +68,8 @@ class Cart extends React.Component {
         </div>
         <div className="cart-date">
           {times.map((time, idx) => {
-            recipe = date[time] ? this.recipe(date[time]) : undefined;
             return <CartItemContainer key={idx}
-                      time={time}
-                      recipe={recipe} />
+                      time={time}/>
           })}
         </div>
         <div className="cart-save-button" onClick={this.saveCart}>Save Cart</div>
