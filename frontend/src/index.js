@@ -28,7 +28,7 @@ import {
 
 // import { fetchFridge, addFridgeIngredient, modifyIngredient } from './util/fridge_api_util';
 
-import { fetchFridge, addFridgeIngredient } from './actions/fridge_actions';
+import { fetchFridge, addFridgeIngredient, modifyIngredient } from './actions/fridge_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.fetchFridge = fetchFridge;
   window.addFridgeIngredient = addFridgeIngredient;
   window.getIngredientById = getIngredientById;
-  // window.modifyIngredient = modifyIngredient;
+  window.modifyIngredient = modifyIngredient;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
 
