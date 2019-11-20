@@ -9,21 +9,17 @@ class Cart extends React.Component {
       loading: true
     }
 
-    this.saveCart = this.saveCart.bind(this);
     this.recipe = this.recipe.bind(this);
-
     this.previousDate = this.previousDate.bind(this);
     this.nextDate = this.nextDate.bind(this);
   }
 
-  // gets the user's cart
   componentDidMount() {
-    // let { getCart, userId } = this.props;
-    // debugger
-    // getCart(userId)
-    //   .then(
-    //     () => this.setState({ loading: false })
-    //   );
+    let { getCart, userId } = this.props;
+    getCart(userId)
+      .then(
+        () => this.setState({ loading: false })
+      );
   }
 
   recipe(recipe_id) {
@@ -33,40 +29,35 @@ class Cart extends React.Component {
     return { id: null, title: "Recipe Not Found", img: "..." };
   }
 
-  //saves the cart to database using user_id
-  saveCart() {
-    debugger;
-    let { patchCart, userId, dates } = this.props;
-    this.setState({ loading: true });
-    patchCart(userId, { dates: dates })
-      .then(
-        () => this.setState( {loading: false })
-      )
-  }
-
   previousDate() {
-    const { currentDate, dates, switchDate } = this.props;
+    const { currentDate, dates, switchDate, addCartDate } = this.props;
     let previousDate = new Date(currentDate);
     previousDate.setDate(previousDate.getDate() - 1);
 
     let date = previousDate.toString().slice(0, 15);
-    if (dates[date]) switchDate(date);
+
+    if (!dates[date]) addCartDate({ date: date });
+      switchDate(date);
   }
 
   nextDate() {
-    const { currentDate, dates, switchDate, addDate } = this.props;
+    const { currentDate, dates, switchDate, addCartDate } = this.props;
     let nextDate = new Date(currentDate);
     nextDate.setDate(nextDate.getDate() + 1);
 
     let date = nextDate.toString().slice(0, 15);
 
-    if (!dates[date]) addDate(date);
-    switchDate(date);
+    if (!dates[date]) addCartDate({ date: date });
+      switchDate(date);
   }
 
   //TODO: MAKE CLICKING THE CURRENT DATE OPEN A CALENDAR, WHERE WE CAN SELECT A DATE TO GO TO
   //      WILL NEED TO POPULATE ALL DATES IN BETWEEN IF YOU SKIP DATES...SO WILL NEED TO ACCOUNT FOR THAT
   render() {
+
+    if (this.state.loading)
+      return <div className="cart"></div>;
+    
     const { dates, currentDate } = this.props;
     const date = dates[currentDate];
     const times = ["BREAKFAST", "LUNCH", "DINNER"];
