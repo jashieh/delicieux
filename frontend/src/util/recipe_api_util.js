@@ -17,12 +17,28 @@ export const getRandomRecipe = () => {
       "number": "1",
       "tags": "vegetarian%2Cdessert"
     }
-  }).then(res => console.log(res))
-    .catch(err => console.log(err))
-  //res.data
+  })
+  // .then(res => console.log(res))
+  // .catch(err => console.log(err))
 };
 
-export const getRecipeById = (id, includeNutrition = false) => {
+export const getRandomRecipes = (number) => {
+  return axios({
+    "method": "GET",
+    "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random",
+    "headers": {
+      "content-type": "application/octet-stream",
+      "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+      "x-rapidapi-key": apiKey
+    }, 
+    "params": {
+      "number": `${number}`,
+      "tags": "vegetarian%2Cdessert"
+    }
+  })
+};
+
+export const getRecipeById = (id, includeNutrition = true) => {
   // return axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=${includeNutrition}&apiKey=${apiKey}`);
   return axios({
     "method": "GET",
@@ -35,13 +51,13 @@ export const getRecipeById = (id, includeNutrition = false) => {
     "params": {
       "includeNutrition": `${includeNutrition}`
     }
-  }).then(res => console.log(res))
-    .catch(err => console.log(err))
-  //res.data
+  })
+  // .then(res => console.log(res))
+  // .catch(err => console.log(err))
 };
 
 // Input ids as an array
-export const getMultipleRecipes = (ids) => {
+export const getMultipleRecipes = (ids, includeNutrition = true) => {
   const idString = ids.join(',');
   // return axios.get(`https://api.spoonacular.com/recipes/informationBulk?${idString}&apiKey=${apiKey}`);
 
@@ -54,10 +70,12 @@ export const getMultipleRecipes = (ids) => {
       "x-rapidapi-key": apiKey
     }, 
     "params": {
-      "ids": idString
+      "ids": idString,
+      "includeNutrition": `${includeNutrition}`
     }
-  }).then(res => console.log(res))
-    .catch(err => console.log(err))
+  })
+  // .then(res => console.log(res))
+  // .catch(err => console.log(err))
 };
 
 // Ingredients as array. Ranking 1 means maximize used ingredients and ranking 2 means minimize missed ingredients
@@ -80,12 +98,12 @@ export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ign
       "ingredients": `${query}`
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -106,12 +124,12 @@ export const searchRecipeByName = (name, limit = 5) => {
       "query": name
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -179,12 +197,12 @@ export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", 
 
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -203,12 +221,12 @@ export const getSimilarRecipes = (id, limit = 5) => {
       "numer": `${limit}`
     },
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -227,13 +245,26 @@ export const extractRecipe = (url) => {
       "url": url
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
+export const getRecipe = (recipeId) => {
+  return axios.get(`/api/recipes/${recipeId}`);
+};
 
+export const postRecipeId = (recipeData) => {
+  return axios.post('/api/recipes/indiv', recipeData);
+};
 
+export const postRecipeComplex = (recipeData) => {
+  return axios.post('/api/recipes/item', recipeData);
+};
+
+export const patchRecipeImage = (recipeId, recipeData) => {
+  return axios.patch(`/api/recipes/${recipeId}/picture`, recipeData);
+};

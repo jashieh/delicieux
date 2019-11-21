@@ -19,11 +19,28 @@ export const rotateRecipe = recipe_idx => ({
   recipe_idx,
 });
 
-export const getRecipes = (filters) => dispatch => (
+export const getRandomRecipe = () => dispatch => (
   RecipeAPI
     .getRandomRecipe()
     .then(
       recipes => dispatch(receiveRecipes(recipes)),
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+)
+
+export const getRandomRecipes = (number) => dispatch => (
+  RecipeAPI
+    .getRandomRecipes(number)
+    .then(
+      ({data}) => {
+        let recipeIds = data.recipes.map(recipe => recipe.id);
+        RecipeAPI
+          .getMultipleRecipes(recipeIds)
+          .then(
+            ({data}) => dispatch(receiveRecipes(data)),
+            (errors) => dispatch(receiveRecipeErrors(errors))
+          )
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
