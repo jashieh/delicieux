@@ -85,15 +85,10 @@ class FormPersonalDetails extends React.Component {
                     />
                     <br />
                     {/* {this.renderErrors()} */}
-                    <RaisedButton
-                      label="Back"
-                      primary={false}
-                      onClick={this.back}
-                    />
-                    <button
-                      className="submit-button"
-                      onClick={this.handleSignup()}
-                    >
+                    <button className="submit" onClick={this.back}>
+                      Back
+                    </button>
+                    <button className="submit" onClick={this.handleSignup()}>
                       Sign Up
                     </button>
                   </form>
