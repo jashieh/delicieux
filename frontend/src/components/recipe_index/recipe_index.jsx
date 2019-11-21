@@ -19,11 +19,11 @@ class RecipeIndex extends React.Component {
     let type = "RECIPES_BY_INGREDIENTS";
     switch(type) {
       case "COMPLEX_RECIPES":
-          this.props.complexRecipeSearch(); break;
+        this.props.complexRecipeSearch(); break;
       case "RECIPES_BY_NAME":
         this.props.getRecipesByName("dog", 24); break;
       case "RECIPES_BY_INGREDIENTS":
-        this.props.getRecipesByIngredients(["dog"], 24); break;
+        this.props.getRecipesByIngredients(["ketchup"], 24); break;
       case "RANDOM_RECIPE":
         this.props.getRandomRecipe(); break;
       case "RANDOM_RECIPES":

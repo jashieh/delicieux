@@ -23,7 +23,11 @@ const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipeById(recipeId)
     .then(
-      ({ data }) => dispatch(receiveRecipes([data])),
+      ({ data }) => {
+        RecipeAPI
+          .postRecipeId(data);
+        dispatch(receiveRecipes([data]));
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 );
@@ -32,7 +36,12 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
   RecipeAPI
     .getMultipleRecipes(recipeIds)
     .then(
-      ({ data }) => dispatch(receiveRecipes(data)),
+      ({ data }) => {
+        for (let i = 0; i < data.length; i++)
+          RecipeAPI
+            .postRecipeId(data[i]);
+        dispatch(receiveRecipes(data));
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 );
@@ -102,7 +111,12 @@ export const complexRecipeSearch = (
       ignorePantry, fillIngredients, limit
     )
     .then(
-      ({data}) => dispatch(receiveRecipes(data.results)),
+      ({data}) => {
+        for (let i = 0; i < data.results.length; i++)
+          RecipeAPI
+            .postRecipeComplex(data.results[i]);
+        dispatch(receiveRecipes(data.results))
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 };

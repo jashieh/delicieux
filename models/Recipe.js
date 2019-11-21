@@ -15,7 +15,7 @@ const RecipeSchema = new Schema({
     required: true
   },
   image: {
-    String,
+    type: String,
     default: "",
   },
   sourceUrl: {

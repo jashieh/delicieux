@@ -8,6 +8,14 @@ class CartItem extends React.Component {
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
+  componentDidMount() {
+    debugger;
+  }
+
+  componentDidUpdate() {
+    debugger;
+  }
+
   recipe() {
     let { date, time, cart, recipes } = this.props;
     let recipeId = null;
