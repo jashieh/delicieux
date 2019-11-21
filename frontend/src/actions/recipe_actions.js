@@ -23,21 +23,31 @@ export const getRandomRecipe = () => dispatch => (
   RecipeAPI
     .getRandomRecipe()
     .then(
-      recipes => dispatch(receiveRecipes(recipes)),
+      ({ data }) => {
+        let recipeId = data.recipes[0].id;
+        RecipeAPI
+          .getRecipeById(recipeId)
+          .then(
+            ({ data }) => dispatch(receiveRecipes([data])),
+            (errors) => dispatch(receiveRecipeErrors(errors))
+          )
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
 
+// Nested structure handles the issue of returned recipes not having
+// defailed nutrition information.
 export const getRandomRecipes = (number) => dispatch => (
   RecipeAPI
     .getRandomRecipes(number)
     .then(
-      ({data}) => {
+      ({ data }) => {
         let recipeIds = data.recipes.map(recipe => recipe.id);
         RecipeAPI
           .getMultipleRecipes(recipeIds)
           .then(
-            ({data}) => dispatch(receiveRecipes(data)),
+            ({ data }) => dispatch(receiveRecipes(data)),
             (errors) => dispatch(receiveRecipeErrors(errors))
           )
       },

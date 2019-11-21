@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 
 import RecipeIndex from './recipe_index';
-import { getRandomRecipes,rotateRecipe } from '../../actions/recipe_actions';
+import { 
+  getRandomRecipe,
+  getRandomRecipes,
+  rotateRecipe } from '../../actions/recipe_actions';
 
 const mapStateToProps = (state) => ({
   recipes: state.entities.recipes,
@@ -9,6 +12,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  getRandomRecipe: () => dispatch(getRandomRecipe()),
   getRandomRecipes: (number) => dispatch(getRandomRecipes(number)),
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
 });

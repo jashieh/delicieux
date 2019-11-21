@@ -15,11 +15,13 @@ class RecipeIndex extends React.Component {
 
   // Loads all of the recipes upon mounting
   componentDidMount() {
-    let type = "RANDOM_RECIPES";
+    let type = "RANDOM_RECIPE";
     switch(type) {
+      case "RANDOM_RECIPE":
+        this.props.getRandomRecipe(); break;
       case "RANDOM_RECIPES":
       default: 
-        this.props.getRandomRecipes(24);
+        this.props.getRandomRecipes(24); break;
     }
   }
 
