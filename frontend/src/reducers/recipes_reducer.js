@@ -1,4 +1,5 @@
 import {
+  RECEIVE_RECIPE,
   RECEIVE_RECIPES,
   ROTATE_RECIPE,
 } from '../actions/recipe_actions';
@@ -58,16 +59,20 @@ const RECIPES = {
 const RecipesReducer = (state = RECIPES, action) => {
   Object.freeze(state);
   let nextState = Object.assign({}, state);
-  let temp;
+  nextState.indexOrder = [...state.indexOrder];
 
+  debugger;
   switch (action.type) {
+    case RECEIVE_RECIPE:
+      nextState[action.recipe.id] = action.recipe;
+      return nextState;
     case RECEIVE_RECIPES:
-      return action.recipes;
+      nextState = action.recipes;
+      nextState.indexOrder = Object.keys(action.recipes);
+      return nextState;
     case ROTATE_RECIPE:
-      for (let i = 0; i < state.length; i++) 
-        nextState.push(Object.assign({}, state[i]));
-      temp = nextState.splice(action.recipe_idx, 1);
-      nextState.push(temp[0]);
+      let temp = nextState.indexOrder.splice(action.recipe_idx, 1);
+      nextState.indexOrder.push(temp[0]);
       return nextState;
     default:
       return state;
