@@ -25,6 +25,7 @@ import {
 import {
   searchIngredientByName,
   getIngredientById,
+  getConvertAmounts
 } from './util/ingredient_api_util';
 
 import {
@@ -70,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getIngredientById = getIngredientById;
   window.modifyIngredient = modifyIngredient;
   window.getState = store.getState;
+window.getConvertAmounts = getConvertAmounts;
   window.dispatch = store.dispatch;
 
   window.getCart = getCart;
