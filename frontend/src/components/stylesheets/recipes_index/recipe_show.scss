@@ -1,14 +1,14 @@
 .recipe-show-cont {
   display: flex;
-  width: 520px;
-  height: 600px;
+  width: 600px;
+  height: 500px;
   padding: 10px;
   border: 1px solid lightgray;
   justify-content: center;
 }
 .recipe-show-photo-cont {
-  height: 300px;
-  width: 500px;
+  height: 150px;
+  width: 250px;
   overflow: hidden;
 }
 .recipe-show-photo {
@@ -21,15 +21,40 @@
   justify-content: center;
 }
 .recipe-show-ing-list {
-  padding-left: 20px;
   margin: 5px 0;
+  list-style: none;
 }
 .rs-main-cont {
   margin: 15px;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+
 }
-.piechart-cont {
-  height: 200px;
-  width: 200px;
+.chart-cont {
+  height: 250px;
+  width: 250px;
+}
+.recipe-show-ls {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.rs-title {
+  font-size: 20px;
+}
+.rs-li-item {
+  margin: 7px 0;
+  display: flex;
+  align-items: center;
+}
+.rs-li-item-pic-cont {
+  height: 30px;
+  width: 30px;
+}
+.rs-l-i-p {
+  height: 100%;
+  width: 100%;
 }

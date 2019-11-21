@@ -25,6 +25,7 @@ import {
 import {
   searchIngredientByName,
   getIngredientById,
+  getConvertAmounts
 } from './util/ingredient_api_util';
 
 import {
@@ -47,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     
     store = configureStore(preloadedState);
-    const currentTime = Date.now() / 1000;
+    // const currentTime = Date.now() / 1000;
     
-    if (decoded.exp < currentTime) {
-      store.dispatch(logout());
-      window.location.href = '/login';
-    }
+    // if (decoded.exp < currentTime) {
+    //   store.dispatch(logout());
+    //   window.location.href = '/login';
+    // }
   } else {
     store = configureStore();
   }
@@ -70,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getIngredientById = getIngredientById;
   window.modifyIngredient = modifyIngredient;
   window.getState = store.getState;
+window.getConvertAmounts = getConvertAmounts;
   window.dispatch = store.dispatch;
 
   window.getCart = getCart;
