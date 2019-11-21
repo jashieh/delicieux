@@ -34,7 +34,7 @@ export const getRandomRecipe = () => dispatch => (
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
-)
+);
 
 // Nested structure handles the issue of returned recipes not having
 // defailed nutrition information.
@@ -53,11 +53,28 @@ export const getRandomRecipes = (number) => dispatch => (
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
-)
+);
 
 export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ignorePantry = true) => dispatch => (
   RecipeAPI
     .getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)
+    .then(
+      ({ data }) => {
+        let recipeIds = data.map(recipe => recipe.id);
+        RecipeAPI
+          .getMultipleRecipes(recipeIds)
+          .then(
+            ({ data }) => dispatch(receiveRecipes(data)),
+            errors => dispatch(receiveRecipeErrors(errors))
+          );
+      },
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+);
+
+export const getRecipesByName = (name, limit = 5) => dispatch => (
+  RecipeAPI
+    .searchRecipeByName(name, limit)
     .then(
       ({ data }) => {
         debugger;
@@ -67,26 +84,46 @@ export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ign
           .then(
             ({ data }) => dispatch(receiveRecipes(data)),
             errors => dispatch(receiveRecipeErrors(errors))
-          )
+          );
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
+);
+
+
+export const searchRecipeByName = (name, limit = 5) => dispatch => (
+  RecipeAPI
+    .searchRecipeByName(name, limit)
+    // .then(
+    //   ({ data }) = dispatch(receiveRecipeNames([ data ])), // an action for pulling in search data so you can search a recipe by name and get the show page
+    //   errors => dispatch(receiveRecipeErrors(errors))
+    // )
+);
+
+export const complexRecipeSearch = (
+  search,
+  cuisine = "", diet = "", sort = "", sortDirection = "", 
+  minCalories = 0, maxCalories = -1,
+  maxFat = 9999, maxCarbs = 9999, minProtein = 0, 
+  ignorePantry = true, fillIngredients = true, limit = 3
+) => dispatch => (
+
 )
 
-export const getRecipeById = (recipeId) => dispatch => (
+const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipeById(recipeId)
     .then(
       ({ data }) => dispatch(receiveRecipes([data])),
       errors => dispatch(receiveRecipeErrors(errors))
     )
-)
+);
 
-export const getMultipleRecipes = (recipeIds) => dispatch => (
+const getMultipleRecipes = (recipeIds) => dispatch => (
   RecipeAPI
     .getMultipleRecipes(recipeIds)
     .then(
       ({ data }) => dispatch(receiveRecipes(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
-)
+);
