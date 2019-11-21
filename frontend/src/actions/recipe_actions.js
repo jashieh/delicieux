@@ -1,13 +1,21 @@
 import * as RecipeAPI from '../util/recipe_api_util';
 
+export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 export const RECEIVE_RECIPE_ERRORS = "RECEIVE_RECIPE_ERRORS";
 export const ROTATE_RECIPE = "ROTATE_RECIPE";
 
+// receives an aray of recipes
 const receiveRecipes = (recipes) => ({
   type: RECEIVE_RECIPES,
   recipes,
 });
+
+// receives a single recipe
+const receiveRecipe = (recipe) => ({
+  type: RECEIVE_RECIPE,
+  recipe,
+})
 
 const receiveRecipeErrors = (errors) => ({
   type: RECEIVE_RECIPE_ERRORS,
@@ -18,6 +26,15 @@ export const rotateRecipe = recipe_idx => ({
   type: ROTATE_RECIPE,
   recipe_idx,
 });
+
+export const getRecipe = (recipeId) => dispatch => (
+  RecipeAPI
+    .getRecipe(recipeId)
+    .then(
+      payload => dispatch(receiveRecipe(recipe)),
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+)
 
 const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
