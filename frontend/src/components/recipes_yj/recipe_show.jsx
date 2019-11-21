@@ -220,12 +220,12 @@ export default class RecipeShow extends React.Component {
       "cookingMinute": 10,
       "diets": [],
       "_id": "5dd46d9f661ec599e6804620",
-      "vegetarian": false,
+      "vegetarian": true,
       "vegan": false,
       "glutenFree": false,
       "dairyFree": false,
       "veryPopular": false,
-      "ketogenic": false,
+      "ketogenic": true,
       "sourceUrl": "http://fullbellysisters.blogspot.com/2012/06/pasta-with-garlic-scallions-cauliflower.html",
       "spoonacularScore": 83,
       "title": "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
@@ -341,6 +341,16 @@ export default class RecipeShow extends React.Component {
   toggleChart() {
     this.setState({pieChart: !this.state.pieChart});
   }
+  handleBarOn(type) {
+    return (e) => {
+      this.setState({[type]: true})
+    }
+  }
+  handleBarOff(type) {
+    return (e) => {
+      this.setState({[type]: false})
+    }
+  }
   render() {
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
@@ -366,28 +376,28 @@ export default class RecipeShow extends React.Component {
         labelComponent={<VictoryLabel 
           active={false}/>}
         // innerRadius={200}
-        labelRadius={140}
+        labelRadius={80}
         // padAngle={1}
         style={{ 
           labels:{ 
           fill: "black", fontSize: 20, fontWeight: "bold" 
         }, data: {
-          fillOpacity: 0.9, stroke: "darkblue", strokeWidth: 3
+          fillOpacity: 0.9, stroke: "black", strokeWidth: 3
       }, }}
       />
     </div>) : (
       <div className="bar-chart-cont" onClick={this.toggleChart}>
         {/* COOL CHART HERE */}
        
-          {this.nutrition.map((nutrient) => {
+          {this.nutrition.map((nutrient, idx) => {
             if( ["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
               let title = nutrient.title
               let percent = Math.floor(nutrient.amount / this.state.nutritionReq[title] * 100)
               return (
-                <div className="bar-graph-cont">
+                <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
                   <div> {title} </div>
                   <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)`}}>
-                     {percent}%
+                     { this.state[title] ? <div>{Math.floor(nutrient.amount)}</div> : <div>{percent}%</div>}
                   </div>
                 </div>
               )
@@ -413,10 +423,18 @@ export default class RecipeShow extends React.Component {
             <div className="recipe-show-photo-cont">
               <img className="recipe-show-photo" src={this.state.image} />
             </div>
-            <div>
-              <div>
-
+            <div className="rs-icon-cont">
+              <div className="rs-icon">
+                <p>{this.state.cookingMinute}m</p>
               </div>
+              {this.state.vegetarian ?
+              <div className="rs-icon">
+                <p>Veg</p>
+              </div> : null}
+              {this.state.ketogenic ?
+              <div className="rs-icon">
+                <p>Keto</p>
+              </div> : null}
             </div>
             {chartDisp}
           </div>
