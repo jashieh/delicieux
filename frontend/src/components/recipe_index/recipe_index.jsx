@@ -49,7 +49,6 @@ class RecipeIndex extends React.Component {
   render() {
     const { recipes } = this.props;
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
-    debugger;
     return (
       <div className="recipe-index">
         {indexRecipes.slice(0, 8).map((recipe, idx) => {
