@@ -1,6 +1,7 @@
 import React from 'react';
 
 import IngredientSearchContainer from './ingredient_search_container';
+import FridgeIngredientsContainer from './fridge_ingredients_container';
 
 class Fridge extends React.Component {
   constructor(props) {
@@ -13,11 +14,9 @@ class Fridge extends React.Component {
   
   render() {
     return(
-      <div className="fridge-container">
+      <div className="fridge-container" >
         <IngredientSearchContainer />
-        <div>
-          My current ingredients
-        </div>
+        <FridgeIngredientsContainer />
       </div>
       );
   }
