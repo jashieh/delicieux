@@ -6,14 +6,24 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 
-import { getRandomRecipe, 
+import { 
+  getRandomRecipe, 
+  // getRandomRecipes, 
   extractRecipe,
   getSimilarRecipes,
   getRecipeById,
   getRecipesByIngredients,
   searchRecipeByName,
-  complexRecipeSearch
+  complexRecipeSearch,
+  getRecipe,
+  postRecipeId,
+  postRecipeComplex,
+  patchRecipeImage,
 } from './util/recipe_api_util';
+
+import {
+  getRandomRecipes,
+} from './actions/recipe_actions';
 
 import {
   getCart,
@@ -61,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   window.getRandomRecipe = getRandomRecipe;
+  window.getRandomRecipes = getRandomRecipes;
   window.getRecipesByIngredients = getRecipesByIngredients;
   window.extractRecipe = extractRecipe;
   window.getRecipeById = getRecipeById;
@@ -81,6 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addCartDate = addCartDate;
   window.addCartMeal = addCartMeal;
   window.removeCartMeal = removeCartMeal;
+
+  window.getRecipe = getRecipe;
+  window.postRecipeId = postRecipeId;
+  window.postRecipeComplex = postRecipeComplex;
+  window.patchRecipeImage = patchRecipeImage;
 
   window.signup = signup;
   

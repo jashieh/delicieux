@@ -25,7 +25,23 @@ export const getRandomRecipe = (number = 1, tags) => {
   //res.data
 };
 
-export const getRecipeById = (id, includeNutrition = false) => {
+export const getRandomRecipes = (number) => {
+  return axios({
+    "method": "GET",
+    "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random",
+    "headers": {
+      "content-type": "application/octet-stream",
+      "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+      "x-rapidapi-key": apiKey
+    }, 
+    "params": {
+      "number": `${number}`,
+      "tags": "vegetarian%2Cdessert"
+    }
+  })
+};
+
+export const getRecipeById = (id, includeNutrition = true) => {
   // return axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=${includeNutrition}&apiKey=${apiKey}`);
   return axios({
     "method": "GET",
@@ -45,7 +61,7 @@ export const getRecipeById = (id, includeNutrition = false) => {
 };
 
 // Input ids as an array
-export const getMultipleRecipes = (ids) => {
+export const getMultipleRecipes = (ids, includeNutrition = true) => {
   const idString = ids.join(',');
   // return axios.get(`https://api.spoonacular.com/recipes/informationBulk?${idString}&apiKey=${apiKey}`);
 
@@ -58,7 +74,8 @@ export const getMultipleRecipes = (ids) => {
       "x-rapidapi-key": apiKey
     }, 
     "params": {
-      "ids": idString
+      "ids": idString,
+      "includeNutrition": `${includeNutrition}`
     }
   })
     // .then(res => console.log(res))
@@ -171,7 +188,6 @@ export const complexRecipeSearch = (search, cuisine, diet, sort, sortDirection, 
       "ignorePantry": `${ignorePantry}`,
       "addRecipeInformation": "true",
       "fillIngredients": "true"
-
     }
   })
     // .then((response) => {
@@ -230,5 +246,18 @@ export const extractRecipe = (url) => {
     // })
 };
 
+export const getRecipe = (recipeId) => {
+  return axios.get(`/api/recipes/${recipeId}`);
+};
 
+export const postRecipeId = (recipeData) => {
+  return axios.post('/api/recipes/indiv', recipeData);
+};
 
+export const postRecipeComplex = (recipeData) => {
+  return axios.post('/api/recipes/item', recipeData);
+};
+
+export const patchRecipeImage = (recipeId, recipeData) => {
+  return axios.patch(`/api/recipes/${recipeId}/picture`, recipeData);
+};

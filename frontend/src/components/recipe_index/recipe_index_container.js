@@ -1,7 +1,14 @@
 import { connect } from 'react-redux';
 
 import RecipeIndex from './recipe_index';
-import { rotateRecipe } from '../../actions/recipe_actions';
+import { 
+  getRandomRecipe,
+  getRandomRecipes,
+  getRecipesByIngredients,
+  getRecipesByName,
+  complexRecipeSearch,
+  rotateRecipe 
+} from '../../actions/recipe_actions';
 
 const mapStateToProps = (state) => ({
   recipes: state.entities.recipes,
@@ -9,7 +16,20 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  // getRecipes: (filters) => dispatch(getRecipes(filters)),
+  getRandomRecipe: () => dispatch(getRandomRecipe()),
+  getRandomRecipes: (number) => dispatch(getRandomRecipes(number)),
+  getRecipesByIngredients: (ingredients, limit, ranking, ignorePantry) => dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)),
+  getRecipesByName: (name, limit) => dispatch(getRecipesByName(name, limit)),
+  complexRecipeSearch: (
+    search, cuisine, diet, sort, sortDirection,
+    minCalories, maxCalories, maxFat, maxCarbs, minProtein,
+    ignorePantry, fillIngredients, limit
+  ) => dispatch(complexRecipeSearch(
+    search, cuisine, diet, sort, sortDirection,
+    minCalories, maxCalories, maxFat, maxCarbs, minProtein,
+    ignorePantry, fillIngredients, limit
+  )),
+
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
 });
 
