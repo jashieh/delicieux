@@ -2,9 +2,15 @@ import { RECEIVE_CURRENT_USER,
   RECEIVE_USER_LOGOUT, 
 } from '../actions/session_actions';
 
+import {
+  SWITCH_DATE,
+  ADD_DATE,
+} from '../actions/cart_actions';
+
 const initialState = {
   isAuthenticated: false,
-  user: {}
+  user: {},
+  currentDate: Date().toString().slice(0, 15)
 };
 
 export default function(state = initialState, action) {
@@ -13,13 +19,23 @@ export default function(state = initialState, action) {
       return {
         ...state,   
         isAuthenticated: !!action.currentUser,
-        user: action.currentUser
+        user: action.currentUser,
+        currentDate: Date().toString().slice(0, 15)
       };
     case RECEIVE_USER_LOGOUT:
       return {
         isAuthenticated: false,
-        user: undefined
+        user: undefined,
+        currentDate: undefined
       };
+
+    case ADD_DATE:
+    case SWITCH_DATE:
+      return {
+        ...state,
+        currentDate: action.date
+      };
+      
     default:
       return state;
   }

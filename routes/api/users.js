@@ -7,6 +7,7 @@ const router = express.Router();
 
 const User = require('../../models/user');
 const Fridge = require('../../models/fridge');
+const Cart = require('../../models/cart');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -20,7 +21,6 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     email: req.user.email
   });
 });
-
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
@@ -37,7 +37,12 @@ router.post("/register", (req, res) => {
       const newUser = new User({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        height: req.body.height,
+        weight: req.body.weight,
+        age: req.body.age,
+        gender: req.body.gender,
+        activityLevel: req.body.activityLevel
       });
       
       bcrypt.genSalt(10, (err, salt) => {
@@ -46,14 +51,33 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           newUser.save()
             .then(user => {
-              const payload = { id: user.id, name: user.name, email: user.email };
+              const payload = {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                height: user.height,
+                weight: user.weight,
+                age: user.age,
+                gender: user.gender,
+                activityLevel: user.activityLevel
+              };
               
-              //
-              console.log(user._id);
-              console.log(user.id);
-
               const newFridge = new Fridge({ userId: user.id });
               newFridge.save();
+
+              let currentDate = Date().toString().slice(0, 15);
+              const newCart = new Cart({ 
+                userId: user.id,
+                dates: {
+                  [currentDate]: {
+                    "BREAKFAST": undefined,
+                    "LUNCH": undefined,
+                    "DINNER": undefined
+                  }
+                },
+              });
+              console.log(newCart);
+              newCart.save();
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
                 res.json({
@@ -91,7 +115,7 @@ router.post('/login', (req, res) => {
       bcrypt.compare(password, user.password)
       .then(isMatch => {
           if (isMatch) {
-              const payload = { id: user.id, name: user.name, email: user.email };
+              const payload = { id: user.id, name: user.name, email: user.email, height: user.height, weight: user.weight, age: user.age, gender: user.gender, activityLevel: user.activityLevel };
 
           jwt.sign(
               payload,
@@ -110,6 +134,26 @@ router.post('/login', (req, res) => {
       })
     })
 });
+
+
+router.get('/:id', (req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      res.json({
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        height: user.height,
+        weight: user.weight,
+        age: user.age,
+        gender: user.gender,
+        activityLevel: user.activityLevel
+      });
+    })
+    .catch (err =>
+      res.status(404).json({ nouserfound: 'No User found with this ID' })
+    )
+})
 
 
 module.exports = router;  

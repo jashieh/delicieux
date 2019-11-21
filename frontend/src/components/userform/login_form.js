@@ -20,7 +20,7 @@ class LoginForm extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
-      this.props.history.push("/");
+      this.props.history.push("/index");
     }
 
     this.setState({ errors: nextProps.errors });
@@ -58,37 +58,43 @@ class LoginForm extends React.Component {
     return (
       <MuiThemeProvider>
         <div className="modal-background">
-          <div className="login-form">
-            <form onSubmit={this.handleSubmit}>
-              <div>
-                <br />
-                <TextField
-                  type="text"
-                  hintText="Enter Your Email"
-                  floatingLabelText="Email"
-                  value={this.state.email}
-                  onChange={this.update("email")}
-                />
-                <br />
-              
-                <TextField
-                  type="password"
-                  hintText="Enter Your Password"
-                  floatingLabelText="Password"
-                  value={this.state.password}
-                  onChange={this.update("password")}
-                />
-                <br />
-                <input type="submit" value="Submit" />
-                {this.renderErrors()}
-                <div>
-                  <h2>Don't have an account?</h2>
-                  <Link to="/signup">Sign Up</Link>
-                </div>
-              </div>
-            </form>
+            <a className="signup-form" class="btn">
+              <span>
+                <span>
+                  <span>
+                    <form onSubmit={this.handleSubmit}>
+                      <div>
+                        <br />
+                        <TextField
+                          type="text"
+                          hintText="Enter Your Email"
+                          floatingLabelText="Email"
+                          value={this.state.email}
+                          onChange={this.update("email")}
+                        />
+                        <br />
+                      
+                        <TextField
+                          type="password"
+                          hintText="Enter Your Password"
+                          floatingLabelText="Password"
+                          value={this.state.password}
+                          onChange={this.update("password")}
+                        />
+                        <br />
+                        <input type="submit" value="Submit" />
+                        {this.renderErrors()}
+                        <div>
+                          <h2>Don't have an account?</h2>
+                          <Link to="/signup">Sign Up</Link>
+                        </div>
+                      </div>
+                    </form>   
+                  </span>
+                </span>
+              </span>
+            </a>
           </div>
-        </div>
       </MuiThemeProvider>
     );
   }

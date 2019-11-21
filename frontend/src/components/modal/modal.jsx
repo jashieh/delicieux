@@ -3,52 +3,58 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 // import LoginFormContainer from '../session/login_form_container';
 // import SignupFormContainer from '../session/signup_form_container';
+import AddIngredientContainer from '../fridge/add_ingredient_container';
 import "../stylesheets/modal/modal.scss";
 
 class Modal extends React.Component {
-
-    constructor(props) {
-        super(props);
+  
+  constructor(props) {
+    super(props);
+  }
+  
+  render() {
+    const { modal, closeModal } = this.props
+    if (!modal) {
+      return null;
     }
 
-    render() {
-        const { modal, closeModal } = this.props
-
-        if (!modal) {
-            return null;
-        }
-
-        let component;
-        switch (modal) {
-            case 'login':
-                // component = <LoginFormContainer />;
-                break;
-            case 'signup':
-                // component = <SignupFormContainer />;
-                break;
-            default:
-                return null;
-        }
-
-        return (
-            <div className="modal-background" onClick={ closeModal }>
-                { component }
-            </div>
-        );
+  
+    let component;
+    switch (modal.type) {
+      case 'login':
+        // component = <LoginFormContainer />;
+        break;
+      case 'signup':
+        // component = <SignupFormContainer />;
+        break;
+      case 'addIngredient':
+        component = <AddIngredientContainer ingredient={modal.other}/>;
+        break;
+      default:
+        return null;
     }
-
-}
-
-const mSTP = (state) => {
+    
+    return (
+      <div className="modal-background" onClick={ closeModal }>
+        <div className="modal-child" onClick={e => e.stopPropagation()}>
+          { component }
+        </div>
+      </div>
+      );
+    }
+    
+  }
+  
+  const mSTP = (state) => {
     return ({
-        modal: state.ui.modal
+      modal: state.ui.modal
     });
-};
-
-const mDTP = (dispatch) => {
+  };
+  
+  const mDTP = (dispatch) => {
     return ({
-        closeModal: () => dispatch(closeModal())
+      closeModal: () => dispatch(closeModal())
     });
-};
-
-export default connect(mSTP, mDTP)(Modal);
+  };
+  
+  export default connect(mSTP, mDTP)(Modal);

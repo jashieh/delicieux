@@ -4,6 +4,7 @@ const apiKey = "be025cdd9bmsh49601abc3099f49p1c31fdjsn618acb311b0a";
 
 // Searches for matches starting with query string. 
 // Returns name, id and image of ingredients  
+
 export const searchIngredientByName = (query = "", limit = 5, intolerances) => {
   const allergies = intolerances.join(",")
   // return axios.get(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${query}&metaInformation=true&number=${limit}&apiKey=${apiKey}`);
@@ -51,6 +52,7 @@ export const getIngredientById = (id, amount = 1, unit = "gram") => {
       console.log(error)
     })
 }
+
 
 
 // Returns array of substitutes under key 'substitutes'
