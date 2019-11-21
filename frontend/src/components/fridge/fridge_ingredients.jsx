@@ -19,10 +19,13 @@ class FridgeIngredients extends React.Component {
 
     return(
       <div className="fridge-ingredients-container">
-        My Ingredients
-        <ul>
-          {ingredients}
-        </ul>
+        <div className="fridge-contain">
+          <div className="ingredients-contain">
+            <ul>
+              {ingredients}
+            </ul>
+          </div>
+        </div>
       </div>
     );
   }
