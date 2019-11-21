@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.getIngredientById = getIngredientById;
   window.modifyIngredient = modifyIngredient;
   window.getState = store.getState;
-window.getConvertAmounts = getConvertAmounts;
+  window.getConvertAmounts = getConvertAmounts;
   window.dispatch = store.dispatch;
 
   window.getCart = getCart;

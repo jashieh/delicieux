@@ -1,0 +1,114 @@
+.fridge-container {
+    height: 100vh;
+    width: 100%;
+    border: 5px solid black;
+}
+
+
+.ingredient-search-container {
+    background-color: green;
+}
+
+.ingredient-search-box {
+    position: relative;
+}
+
+.ingredient-search-ul {
+    position: absolute;
+    background-color: purple;
+    box-sizing: border-box;
+    padding: 20px;
+    width: 300px;
+}
+
+.ingredient-search-li {
+    padding: 5px 15px 5px 15px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ingredient-search-li:hover {
+    cursor: pointer;
+    filter: brightness(80%);
+    background-color: red;
+}
+
+
+.add-ingredient-modal-container {
+    width: 540px;
+    height: 360px;
+    border-radius: 5px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    box-shadow: 1px 1px 10px;
+
+}
+
+.add-ingredient-modal-header {
+    width: 100%;
+    background-color: teal;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 20px;
+}
+
+.add-ingredient-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 230px;
+    min-height: 130px;
+}
+
+.add-ingredient-input-text {
+    align-self: flex-start;
+}
+
+.add-ingredient-input {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0 0 0 10px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px;
+}
+
+
+.add-ingredient-modal-footer {
+    width: 100%;
+    padding: 20px;
+    background-color: teal;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.add-ingredient-submit {
+    cursor: pointer;
+    background-color: red;
+    border-radius: 8px;
+    padding: 10px 15px 10px 15px;
+}
+
+.fridge-ingredients-container {
+    background-color: grey;
+}
+
+.error {
+    color: #f04747;
+}
+
+
