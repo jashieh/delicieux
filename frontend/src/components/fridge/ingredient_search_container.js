@@ -5,7 +5,8 @@ import { searchIngredientByName } from '../../actions/ingredient_actions';
 import IngredientSearch from './ingredient_seach';
 
 const mapStateToProps = (state, ownProps) => ({
-  userId: state.session.user.id
+  userId: state.session.user.id,
+  modal: state.ui.modal
 });
 
 const mapDispatchToProps = dispatch => ({

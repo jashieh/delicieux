@@ -23,14 +23,18 @@ class IngredientSearch extends React.Component {
     this.update = this.update.bind(this);
     this.search = debounce(this.search, 100);
     this.handleClick = this.handleClick.bind(this);
+    this.hitEnter = this.hitEnter.bind(this);
   }
 
   componentDidMount() {
     document.addEventListener('mousedown', this.handleClick);
+    document.addEventListener('keydown', this.hitEnter);
+
   }
 
   componentWillUnmount() {
     document.removeEventListener('mousedown', this.handleClick);
+    document.removeEventListener('keydown', this.hitEnter);
   }
 
   update(e) {
@@ -54,19 +58,31 @@ class IngredientSearch extends React.Component {
       this.setState({ visible: false, query: "" });
     }
   }
+
+  hitEnter(e) {
+    if(e.key === "Enter" && this.props.modal) {
+      this.setState({ visible: false, query: "" });
+    }
+  }
   
   render() {
-    const results = this.state.results.map( (ingredient, i) => {
-      return (
-        <IngredientSearchItemContainer key={i} ingredient={ingredient} />
-      );
-    });
+    let results;
+    if(this.state.results.length > 0) {
+      results = this.state.results.map( (ingredient, i) => {
+        return (
+          <IngredientSearchItemContainer key={i} ingredient={ingredient} />
+        );
+      });
+    } else {
+      results = <li className="ingredient-search-li">No Matches</li>
+    }
 
     return(
       <div className="ingredient-search-container" >
         <div className="ingredient-search-box">
           <input type="text" value={this.state.query} onChange={this.update}
-            className="ingredient-search-input" placeholder="Search Ingredients"/>
+            className="search-input" placeholder="Search Ingredients"
+          />
           { this.state.visible && <ul className="ingredient-search-ul" ref={node => this.node = node}>
             { results }
           </ul> }
