@@ -35,6 +35,7 @@
 .chart-cont {
   height: 250px;
   width: 250px;
+  display: flex;
 }
 .recipe-show-ls {
   padding: 5px;
@@ -57,4 +58,45 @@
 .rs-l-i-p {
   height: 100%;
   width: 100%;
+}
+.chart-test {
+  margin: 5px;
+  height: 16px;
+  width: 100px;
+  text-align: -10px;
+  border-radius: 8px;
+  text-align: center;
+  // background: linear-gradient(90deg, #FFC0CB 70%, #00FFFF 100%)
+}
+
+.bar-graph-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  margin: 3px 0;
+  border: 1px solid gray;
+
+}
+.bar-chart-cont {
+  height: 250px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+.rs-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  text-align: center;
+  border: 2px solid gray;
+  color: gray;
+  margin-right: 10px;
+}
+.rs-icon-cont {
+  display: flex;
+  margin-left: 15px;
 }

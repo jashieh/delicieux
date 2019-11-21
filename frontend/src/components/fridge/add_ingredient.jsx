@@ -1,5 +1,4 @@
 import React from 'react';
-import { closeModal } from '../../actions/modal_actions';
 
 class AddIngredient extends React.Component {
   constructor(props) {
@@ -38,11 +37,13 @@ class AddIngredient extends React.Component {
   handleSubmit(e) {
     if(this.props.fridge.ingredients.hasOwnProperty(this.props.ingredient.id)) {
       this.props.modifyIngredient(this.props.userId, this.props.ingredient, 
-        parseInt(this.state.amount));
+        parseInt(this.state.amount))
+          .then(() => {this.props.closeModal()});
     } else {
         if(parseInt(this.state.amount) > 0) {
           this.props.addFridgeIngredient(this.props.userId, this.props.ingredient, 
-            parseInt(this.state.amount));
+            parseInt(this.state.amount))
+              .then(() => {this.props.closeModal()});
         } else {
           this.setState({ error: "Amount must be greater than 0."})
         }

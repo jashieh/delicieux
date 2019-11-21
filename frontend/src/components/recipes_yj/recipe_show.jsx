@@ -1,11 +1,24 @@
 import React from 'react';
 import '../stylesheets/recipes_index/recipe_show.scss'
 import ReactMinimalPieChart from 'react-minimal-pie-chart';
-import { VictoryPie, VictoryTooltip } from 'victory';
+import { VictoryPie, VictoryTooltip, VictoryLabel, VictoryChart } from 'victory';
 export default class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      nutritionReq: {
+        "Calories": 2000,
+        "Carbohydrates": 300,
+        "Protein": 65,
+        "Fat": 50,
+        "Fiber": 30,
+      },
+      pieData: [
+        { x: "Carbs", y: 100, label: "56.8%" },
+        { x: "Protein", y: 0, label: "12.9%" },
+        { x: "Fat", y: 0, label: "30.3%" }
+      ],
+      label: false,
       pieChart: true,
       nutrition: [
         {
@@ -15,6 +28,12 @@ export default class RecipeShow extends React.Component {
               "amount": 584.46,
               "unit": "cal",
               "percentOfDailyNeeds": 29.22
+            },
+            {
+              "title": "Fat",
+            "amount": 26.21,
+            "unit": "g",
+            "percentOfDailyNeeds": 40.32,
             },
             {
               "title": "Carbohydrates",
@@ -201,12 +220,12 @@ export default class RecipeShow extends React.Component {
       "cookingMinute": 10,
       "diets": [],
       "_id": "5dd46d9f661ec599e6804620",
-      "vegetarian": false,
+      "vegetarian": true,
       "vegan": false,
       "glutenFree": false,
       "dairyFree": false,
       "veryPopular": false,
-      "ketogenic": false,
+      "ketogenic": true,
       "sourceUrl": "http://fullbellysisters.blogspot.com/2012/06/pasta-with-garlic-scallions-cauliflower.html",
       "spoonacularScore": 83,
       "title": "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
@@ -303,42 +322,119 @@ export default class RecipeShow extends React.Component {
         }
       ]
     };
+    this.nutrition = Object.values(this.state.nutrition[0].nutrients);
     this.toggleChart = this.toggleChart.bind(this);
+  }
+  componentDidMount() {
+    // fetchRecipe(this.props.recipeId)
+    setTimeout(() => {
+      this.setState({
+        pieData: [
+          { x: "Carbs", y: 56.8, label: "56.8%" },
+          { x: "Protein", y: 12.9, label: "12.9%" },
+          { x: "Fat", y: 30.3, label: "30.3%" }
+        ],
+        labeL: true
+      })}, 1000)
+    
   }
   toggleChart() {
     this.setState({pieChart: !this.state.pieChart});
+  }
+  handleBarOn(type) {
+    return (e) => {
+      this.setState({[type]: true})
+    }
+  }
+  handleBarOff(type) {
+    return (e) => {
+      this.setState({[type]: false})
+    }
   }
   render() {
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
       <VictoryPie
         animate={{
-          duration: 1000
+          duration: 2000
         }}
         colorScale={["#3a9691", "skyblue", "lightblue"]}
-        data={[
-          { y: 56.8, label: "Carb \n 56.8%" },
-          { y: 12.9, label: "Protein \n 12.9%" },
-          { y: 30.3, label: "Fat \n 30.3%" }
-        ]}
-
+        data={this.state.pieData}
+          events={[{
+            target: "data",
+            eventHandlers: {
+              onMouseOver: () => {
+                return [
+                  {
+                    target: "labels",
+                    mutation: ({ text }) => {
+                return text === "data" ? null : { text: "clicked" };
+                  }}]
+                }
+          }}]}
         labelComponent={<VictoryTooltip />}
-        innerRadius={200}
-        labelRadius={160}
-        padAngle={3}
-        style={{ labels: { fill: "black", fontSize: 20, fontWeight: "bold" } }}
+        labelComponent={<VictoryLabel 
+          active={false}/>}
+        // innerRadius={200}
+        labelRadius={80}
+        // padAngle={1}
+        style={{ 
+          labels:{ 
+          fill: "black", fontSize: 20, fontWeight: "bold" 
+        }, data: {
+          fillOpacity: 0.9, stroke: "black", strokeWidth: 3
+      }, }}
       />
     </div>) : (
-      <div className="chart-cont" onClick={this.toggleChart}>
-        COOL CHART HERE
+      <div className="bar-chart-cont" onClick={this.toggleChart}>
+        {/* COOL CHART HERE */}
+       
+          {this.nutrition.map((nutrient, idx) => {
+            if( ["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
+              let title = nutrient.title
+              let percent = Math.floor(nutrient.amount / this.state.nutritionReq[title] * 100)
+              return (
+                <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
+                  <div> {title} </div>
+                  <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)`}}>
+                     { this.state[title] ? <div>{Math.floor(nutrient.amount)}</div> : <div>{percent}%</div>}
+                  </div>
+                </div>
+              )
+            }
+          })}
+       
+        {/* <VictoryChart 
+          animate= {{duration: 2000}}
+          colorScale={["#3a9691", "skyblue", "lightblue"]}
+          data={[
+              { x: 1, y: 10, label: "56.8%" },
+              { x: 2, y: 15, label: "12.9%" },
+              { x: 3, y: 13, label: "30.3%" }
+            ]}
+        /> */}
       </div>
-    )
+
+    );
     return(
       <div className="cont-cont">
         <div className="recipe-show-cont">
           <div className="recipe-show-ls">
             <div className="recipe-show-photo-cont">
               <img className="recipe-show-photo" src={this.state.image} />
+            </div>
+            <div className="rs-icon-cont">
+              <div className="rs-icon">
+                <p>{this.state.cookingMinute}m</p>
+              </div>
+              {this.state.vegetarian ?
+              <div className="rs-icon">
+                <p>Veg</p>
+              </div> : null}
+              {this.state.ketogenic ?
+              <div className="rs-icon">
+                <p>Keto</p>
+              </div> : null}
             </div>
             {chartDisp}
           </div>

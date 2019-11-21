@@ -20,20 +20,17 @@ class IngredientSearch extends React.Component {
       visible: false
     };
 
-    this.fridgeContainer = null;
-
     this.update = this.update.bind(this);
     this.search = debounce(this.search, 100);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    this.fridgeContainer = document.querySelector('.fridge-container');
-    this.fridgeContainer.addEventListener('mousedown', this.handleClick);
+    document.addEventListener('mousedown', this.handleClick);
   }
 
   componentWillUnmount() {
-    this.fridgeContainer.removeEventListener('mousedown', this.handleClick);
+    document.removeEventListener('mousedown', this.handleClick);
   }
 
   update(e) {
@@ -42,15 +39,19 @@ class IngredientSearch extends React.Component {
   }
 
   search(query) {
-    this.props.searchIngredientByName(query)
-      .then(res => {
-        this.setState({ results: res.data, visible: true });
+    if(query !== "") {
+      this.props.searchIngredientByName(query)
+        .then(res => {
+          this.setState({ results: res.data, visible: true });
       });
+    } else {
+      this.setState({ visible: false });
+    }
   }
 
   handleClick(e) {
     if(!(this.node && this.node.contains(e.target))) {
-      this.setState({ visible: false });
+      this.setState({ visible: false, query: "" });
     }
   }
   
@@ -65,7 +66,7 @@ class IngredientSearch extends React.Component {
       <div className="ingredient-search-container" >
         <div className="ingredient-search-box">
           <input type="text" value={this.state.query} onChange={this.update}
-            className="search-input" placeholder="Search Ingredients"/>
+            className="ingredient-search-input" placeholder="Search Ingredients"/>
           { this.state.visible && <ul className="ingredient-search-ul" ref={node => this.node = node}>
             { results }
           </ul> }
