@@ -13,6 +13,7 @@ router.get('/:recipeId', (req, res) => {
   
 // Adding a recipe from search by recipe ID API Call
 router.post('/indiv', (req, res) => {
+  console.log(req.body);
   const newRecipe = new Recipe({
     recipeId: req.body.id,
     title: req.body.title,

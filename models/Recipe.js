@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// NOTE: MUST CREATE A UNIQUE INDEX ON recipeId ON MONGODB WEBSITE
 const RecipeSchema = new Schema({
   // Core Information
   recipeId: {
