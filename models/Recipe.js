@@ -1,16 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// NOTE: MUST CREATE A UNIQUE INDEX ON recipeId ON MONGODB WEBSITE
 const RecipeSchema = new Schema({
-  // Core Pieces
-  title: {
-    type: String
-    // required: true
-  },
+  // Core Information
   recipeId: {
     type: Number,
-    // required: true,
-    index: true
+    required: true,
+    index: true,
+    unique: true
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  image: {
+    String,
+    default: "",
   },
   sourceUrl: {
     type: String
@@ -23,24 +29,23 @@ const RecipeSchema = new Schema({
     name: String,
     image: String
   })],
-
-  image: String,
-  // Probably don't need this until we maybe add custom recipes!!
-  // extendedIngredients: [],
-
-  nutrition: [],
+  // extendedIngredients: [], //Probably don't need this until we maybe add custom recipes!!
   
-  // Selectors, can add or remove based on costliness of DB
+  nutrition: [],
+  servings: Number,
+  
+  // Selector Properties, optional depending on DB cost
+  spoonacularScore: Number,
   cuisines: [],
   diets: [],
-  spoonacularScore: Number,
-  servings: Number,
+  dishtypes: [],
+  
+  // Booleans
+  dairyFree: Boolean,
+  glutenFree: Boolean,
   ketogenic: Boolean,
   vegan: Boolean,
   vegetarian: Boolean,
-
-  glutenFree: Boolean,
-  dairyFree: Boolean,
   veryPopular: Boolean,
 });
 
