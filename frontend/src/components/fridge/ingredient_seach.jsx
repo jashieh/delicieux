@@ -31,6 +31,7 @@ class IngredientSearch extends React.Component {
   search(query) {
     this.props.searchIngredientByName(query)
       .then(res => {
+        console.log(res);
         this.setState({ results: res.data });
       });
   }

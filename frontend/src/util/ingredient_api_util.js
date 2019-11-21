@@ -5,7 +5,7 @@ const apiKey = "be025cdd9bmsh49601abc3099f49p1c31fdjsn618acb311b0a";
 // Searches for matches starting with query string. 
 // Returns name, id and image of ingredients  
 
-export const searchIngredientByName = (query = "", limit = 5, intolerances) => {
+export const searchIngredientByName = (query = "", limit = 5, intolerances=[]) => {
   const allergies = intolerances.join(",")
   // return axios.get(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${query}&metaInformation=true&number=${limit}&apiKey=${apiKey}`);
   return axios({
@@ -22,12 +22,12 @@ export const searchIngredientByName = (query = "", limit = 5, intolerances) => {
       "metaInformation": "true"
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 }
 
 // amount = number of grams
@@ -45,12 +45,12 @@ export const getIngredientById = (id, amount = 1, unit = "gram") => {
       "unit": `${unit}`
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 }
 
 
@@ -69,12 +69,12 @@ export const getIngredientSubstitutes = (ingredientName) => {
       "ingredientName": ingredientName
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUnit="grams") => {
@@ -94,10 +94,10 @@ export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUn
       "sourceAmount": `${sourceAmount}`
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 }

@@ -17,8 +17,9 @@ export const getRandomRecipe = () => {
       "number": "1",
       "tags": "vegetarian%2Cdessert"
     }
-  }).then(res => console.log(res))
-    .catch(err => console.log(err))
+  })
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
   //res.data
 };
 
@@ -35,8 +36,9 @@ export const getRecipeById = (id, includeNutrition = false) => {
     "params": {
       "includeNutrition": `${includeNutrition}`
     }
-  }).then(res => console.log(res))
-    .catch(err => console.log(err))
+  })
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
   //res.data
 };
 
@@ -56,8 +58,9 @@ export const getMultipleRecipes = (ids) => {
     "params": {
       "ids": idString
     }
-  }).then(res => console.log(res))
-    .catch(err => console.log(err))
+  })
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
 };
 
 // Ingredients as array. Ranking 1 means maximize used ingredients and ranking 2 means minimize missed ingredients
@@ -80,12 +83,12 @@ export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ign
       "ingredients": `${query}`
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -106,12 +109,12 @@ export const searchRecipeByName = (name, limit = 5) => {
       "query": name
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -179,12 +182,12 @@ export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", 
 
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -203,12 +206,12 @@ export const getSimilarRecipes = (id, limit = 5) => {
       "numer": `${limit}`
     },
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
@@ -227,12 +230,12 @@ export const extractRecipe = (url) => {
       "url": url
     }
   })
-    .then((response) => {
-      console.log(response)
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+    // .then((response) => {
+    //   console.log(response)
+    // })
+    // .catch((error) => {
+    //   console.log(error)
+    // })
 };
 
 
