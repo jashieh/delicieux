@@ -2,15 +2,50 @@
     height: 100vh;
     width: 100%;
     border: 5px solid black;
+    background-color: yellow;
+
+    .contain-all {
+        height: 90%;
+        width: 90%;
+        background-color: red;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: row;
+        
+
+        .left-fridge {
+            width: 50%;
+            height: 90%;
+            margin: auto 0;
+            background-color: pink;
+            display: flex;
+        }
+
+        .right-fridge {
+            flex-grow: 1;
+            height: 100%;
+            
+        }
+    }
 }
 
 
 .ingredient-search-container {
+    align-self: center;
+    height: 200px;
     background-color: green;
+    width: 100%;
 }
 
 .ingredient-search-box {
     position: relative;
+    display: flex;
+
+    .search-input {
+        margin: 50px auto;
+        
+    }
+
 }
 
 .ingredient-search-ul {
@@ -48,7 +83,6 @@
     align-items: center;
     box-sizing: border-box;
     box-shadow: 1px 1px 10px;
-
 }
 
 .add-ingredient-modal-header {
@@ -105,6 +139,34 @@
 
 .fridge-ingredients-container {
     background-color: grey;
+    height: 100%;
+    width: 100%;
+
+    .fridge-contain {
+        width: 78%;
+        height: 100%;
+        // background-color: rgb(0, 0, 0);
+        background: rgb(98,98,93);
+background: linear-gradient(98deg, rgba(98,98,93,1) 0%, rgba(117,118,115,1) 35%, rgba(97,98,97,1) 44%, rgba(80,81,81,1) 52%, rgba(69,70,71,1) 57%, rgba(60,62,63,1) 61%, rgba(49,51,53,1) 66%, rgba(43,45,48,1) 72%, rgba(40,42,45,1) 78%, rgba(15,18,22,1) 98%);
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .ingredients-contain {
+            width: 90%;
+            height: 90%;
+            background-color: rgb(145, 17, 38);
+            
+
+            li {
+                width: 45%;
+                padding: 10px;
+                margin: 2px;
+                background-color: rgba(59, 60, 65, 0.865);
+            }
+        }
+    }
 }
 
 .error {
