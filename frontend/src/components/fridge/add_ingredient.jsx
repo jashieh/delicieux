@@ -8,29 +8,30 @@ class AddIngredient extends React.Component {
       error: ""
     };
 
-    this.modal = null;
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.hitEnter = this.hitEnter.bind(this);
+    this.keyEvent = this.keyEvent.bind(this);
   }
 
   componentDidMount() {
-    this.modal = document.querySelector('.add-ingredient-modal-container');
-    this.modal.addEventListener('keydown', this.hitEnter);
+    // this.modal = document.querySelector('.add-ingredient-modal-container');
+    document.addEventListener('keydown', this.keyEvent);
   }
 
   componentWillUnmount() {
-    this.modal.removeEventListener('keydown', this.hitEnter);
+    document.removeEventListener('keydown', this.keyEvent);
   }
 
   update(e) {
     this.setState({ amount: e.target.value, error: "" });
   }
 
-  hitEnter(e) {
+  keyEvent(e) {
     if(e.key === 'Enter') {
       this.handleSubmit();
+    } else if(e.key === 'Escape') {
+      this.props.closeModal();
     }
   }
 
