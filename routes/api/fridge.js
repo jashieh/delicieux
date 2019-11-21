@@ -51,5 +51,41 @@ router.patch('/:userId/modifyIngredient', (req, res) => {
   });
 });
 
+router.patch('/:userId/modifyFridge', (req, res) => {
+  let update = { "$inc": {}};
+  let options = { "upsert": true, new: true };
+  // update["$inc"]["ingredients." + req.body.ingredientId + ".amount"] = req.body.amount;
+  let ingredients = req.body;
+  
+  Object.keys(ingredients).forEach(id => {
+    update["$inc"]["ingredients." + id + ".amount"] = ingredients[id].amount;
+  });
+
+  Fridge.findOneAndUpdate({ userId: req.params.userId }, 
+    update, options, function (err, data){
+      if(err) return res.status(400).json(err);
+      let unset = { "$unset": {}};
+      let i = 0;
+      Object.keys(data.ingredients).forEach(id => {
+        if(data.ingredients[id].amount <= 0) {
+          unset["$unset"]["ingredients." + id] = "";
+          i++;
+        }
+      });
+      // console.log(data.ingredients);
+      // Remove ingredients from fridge if there is no more
+      if(i > 0) {
+        Fridge.findOneAndUpdate({ userId: req.params.userId }, unset,
+          {new: true})
+          .then(data => res.json(data))
+          .catch(err => res.status(400).json(err))
+      } else {
+        return res.json(data);
+      }
+  });
+
+
+});
+
 
 module.exports = router;
