@@ -1,25 +1,61 @@
-.recipe-show-cont {
-  display: flex;
-  width: 600px;
-  height: 500px;
-  padding: 10px;
-  border: 1px solid lightgray;
-  justify-content: center;
-}
-.recipe-show-photo-cont {
-  height: 150px;
-  width: 250px;
-  overflow: hidden;
-}
-.recipe-show-photo {
-  height: 100%;
-  width: 100%;
-}
 .cont-cont {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .recipe-show-cont {
+    display: flex;
+    width: 600px;
+    height: 500px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    justify-content: center;
+
+      .recipe-show-ls {
+        padding: 5px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .recipe-show-photo-cont {
+          height: 150px;
+          width: 250px;
+          overflow: hidden;
+
+          .recipe-show-photo {
+            height: 100%;
+            width: 100%;
+          }
+        }
+        .rs-icon-cont {
+          display: flex;
+          margin-left: 15px;
+
+          .rs-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+            text-align: center;
+            border: 2px solid gray;
+            color: gray;
+            margin-right: 10px;
+          }
+        }
+        .chart-cont {
+          height: 250px;
+          width: 250px;
+          display: flex;
+      }
+    }
+
 }
+
+
+
+
 .recipe-show-ing-list {
   margin: 5px 0;
   list-style: none;
@@ -32,17 +68,8 @@
   align-items: flex-end;
 
 }
-.chart-cont {
-  height: 250px;
-  width: 250px;
-  display: flex;
-}
-.recipe-show-ls {
-  padding: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+
+
 .rs-title {
   font-size: 20px;
 }
@@ -84,19 +111,6 @@
   display: flex;
   flex-direction: column;
 }
-.rs-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 100%;
-  text-align: center;
-  border: 2px solid gray;
-  color: gray;
-  margin-right: 10px;
-}
-.rs-icon-cont {
-  display: flex;
-  margin-left: 15px;
+
+
 }
