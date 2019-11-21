@@ -4,9 +4,13 @@
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/styles/typography'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
+
+
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -74,64 +78,66 @@ class SignupForm extends React.Component {
 
     return (
       <MuiThemeProvider>
-        <div className="modal-background">
+        <div className="session-background">
           <div className="signup-text">délicieux</div>
           <a className="signup-form" class="btn">
+            <span>
               <span>
                 <span>
-                  <span>
-                    <div className="signup-contain">
-                      <div className="signup-text-contain">
-                          <div>
-                            <TextField
-                              hintText="Enter Your Name"
-                              floatingLabelText="Name"
-                              onChange={handleChange("name")}
-                              defaultValue={values.name}
-                            />
-                          </div>
-                          <div>
-                            <TextField
-                              hintText="Enter Your Email"
-                              floatingLabelText="Email"
-                              onChange={handleChange("email")}
-                              defaultValue={values.email}
-                            />
-                          </div>
-                          <div>  
-                            <TextField
-                              type="password"
-                              hintText="Enter Your Password"
-                              floatingLabelText="Password"
-                              defaultValue={values.password}
-                              onChange={handleChange("password")}
-                            />
-                          </div>
-                          <div> 
-                            <TextField
-                              type="password"
-                              hintText="Confirm Password"
-                              floatingLabelText="Password"
-                              defaultValue={values.password2}
-                              onChange={handleChange("password2")}
-                            />
-                          </div>
-                          
-                          <RaisedButton
-                            label="Continue"
-                            primary={true}
-                            onClick={this.handleSubmit}
-                          />
-                        </div>
-                        <div className="go-back">
-                          <h2>Already have an account?</h2>
-                          <Link to="/login">Login</Link>
-                        </div>
+                  <div className="signup-contain">
+                    <div className="signup-text-contain">
+                      <div>
+                        <TextField
+                          style={{
+                            color: "blue"
+                          }}
+                          inputStyle={{ color: "white" }}
+                          hintText="Enter Your Name"
+                          floatingLabelText="Name"
+                          onChange={handleChange("name")}
+                          defaultValue={values.name}
+                        />
+                      </div>
+                      <div>
+                        <TextField
+                          inputStyle={{ color: "white" }}
+                          hintText="Enter Your Email"
+                          floatingLabelText="Email"
+                          onChange={handleChange("email")}
+                          defaultValue={values.email}
+                        />
+                      </div>
+                      <div>
+                        <TextField
+                          inputStyle={{ color: "white" }}
+                          type="password"
+                          hintText="Enter Your Password"
+                          floatingLabelText="Password"
+                          defaultValue={values.password}
+                          onChange={handleChange("password")}
+                        />
+                      </div>
+                      <div>
+                        <TextField
+                          inputStyle={{ color: "white" }}
+                          type="password"
+                          hintText="Confirm Password"
+                          floatingLabelText="Password"
+                          defaultValue={values.password2}
+                          onChange={handleChange("password2")}
+                        />
+                      </div>
                     </div>
-                  </span>
+                    <button className="submit" onClick={this.handleSubmit}>Continue</button>
+                    <div className="go-back">
+                      <h2>Already have an account?</h2>
+                      <Link to="/login">Login</Link>
+                    </div>
+                  </div>
                 </span>
               </span>
-            </a>
+            </span>
+          </a>
         </div>
       </MuiThemeProvider>
     );
