@@ -31,7 +31,7 @@ export const getRecipe = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      payload => dispatch(receiveRecipe(recipe)),
+      payload => dispatch(receiveRecipe(payload)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
