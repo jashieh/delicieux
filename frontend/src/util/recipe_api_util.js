@@ -194,7 +194,6 @@ export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", 
       "query": search,
       "addRecipeInformation": "true",
       "fillIngredients": `${fillIngredients}`
-
     }
   })
     // .then((response) => {

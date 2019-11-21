@@ -6,6 +6,7 @@ import {
   getRandomRecipes,
   getRecipesByIngredients,
   getRecipesByName,
+  complexRecipeSearch,
   rotateRecipe 
 } from '../../actions/recipe_actions';
 
@@ -19,6 +20,15 @@ const mapDispatchToProps = (dispatch) => ({
   getRandomRecipes: (number) => dispatch(getRandomRecipes(number)),
   getRecipesByIngredients: (ingredients, limit, ranking, ignorePantry) => dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)),
   getRecipesByName: (name, limit) => dispatch(getRecipesByName(name, limit)),
+  complexRecipeSearch: (
+    search, cuisine, diet, sort, sortDirection,
+    minCalories, maxCalories, maxFat, maxCarbs, minProtein,
+    ignorePantry, fillIngredients, limit
+  ) => dispatch(complexRecipeSearch(
+    search, cuisine, diet, sort, sortDirection,
+    minCalories, maxCalories, maxFat, maxCarbs, minProtein,
+    ignorePantry, fillIngredients, limit
+  )),
 
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
 });

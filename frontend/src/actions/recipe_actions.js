@@ -101,14 +101,23 @@ export const searchRecipeByName = (name, limit = 5) => dispatch => (
 );
 
 export const complexRecipeSearch = (
-  search,
+  search="",
   cuisine = "", diet = "", sort = "", sortDirection = "", 
-  minCalories = 0, maxCalories = -1,
-  maxFat = 9999, maxCarbs = 9999, minProtein = 0, 
+  minCalories = 0, maxCalories = 9999, maxFat = 9999, maxCarbs = 9999, minProtein = 0, 
   ignorePantry = true, fillIngredients = true, limit = 3
-) => dispatch => (
-
-)
+) => dispatch => {
+  debugger;
+  RecipeAPI
+    .complexRecipeSearch(
+      search, cuisine, diet, sort, sortDirection, 
+      minCalories, maxCalories, maxFat, maxCarbs, minProtein,
+      ignorePantry, fillIngredients, limit
+    )
+    .then(
+      ({data}) => {debugger; dispatch(receiveRecipes(data));},
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+};
 
 const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
