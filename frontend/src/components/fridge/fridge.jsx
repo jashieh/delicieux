@@ -1,6 +1,8 @@
 import React from 'react';
 
 import IngredientSearchContainer from './ingredient_search_container';
+import FridgeIngredientsContainer from './fridge_ingredients_container';
+import NavbarContainer from '../nav/navbar_container';
 
 class Fridge extends React.Component {
   constructor(props) {
@@ -13,10 +15,15 @@ class Fridge extends React.Component {
   
   render() {
     return(
-      <div className="fridge-container">
-        <IngredientSearchContainer />
-        <div>
-          My current ingredients
+      <div className="fridge-container" >
+        <NavbarContainer />
+        <div className="contain-all">
+          <div className="left-fridge" >
+            <IngredientSearchContainer />
+          </div>
+          <div className="right-fridge" >
+            <FridgeIngredientsContainer />
+          </div>
         </div>
       </div>
       );

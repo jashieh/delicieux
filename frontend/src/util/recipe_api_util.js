@@ -4,7 +4,9 @@ import axios from 'axios';
 const apiKey = "be025cdd9bmsh49601abc3099f49p1c31fdjsn618acb311b0a";
 
 
-export const getRandomRecipe = () => {
+export const getRandomRecipe = (number = 1, tags) => {
+  if (!tags) tags = [];
+  let tagStr = tags.join(",");
   return axios({
     "method": "GET",
     "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random",
@@ -14,12 +16,13 @@ export const getRandomRecipe = () => {
       "x-rapidapi-key": apiKey
     }, 
     "params": {
-      "number": "1",
-      "tags": "vegetarian%2Cdessert"
+      "number": `${number}`,
+      "tags": tagStr
     }
   })
-  // .then(res => console.log(res))
-  // .catch(err => console.log(err))
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
+  //res.data
 };
 
 export const getRandomRecipes = (number) => {
@@ -52,8 +55,9 @@ export const getRecipeById = (id, includeNutrition = true) => {
       "includeNutrition": `${includeNutrition}`
     }
   })
-  // .then(res => console.log(res))
-  // .catch(err => console.log(err))
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
+  //res.data
 };
 
 // Input ids as an array
@@ -74,12 +78,12 @@ export const getMultipleRecipes = (ids, includeNutrition = true) => {
       "includeNutrition": `${includeNutrition}`
     }
   })
-  // .then(res => console.log(res))
-  // .catch(err => console.log(err))
+    // .then(res => console.log(res))
+    // .catch(err => console.log(err))
 };
 
 // Ingredients as array. Ranking 1 means maximize used ingredients and ranking 2 means minimize missed ingredients
-export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ignorePantry = true) => {
+export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 1, ignorePantry = true) => {
   const query = ingredients.join(',');
   // return axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&ranking=${ranking}&ignorePantry=${ignorePantry}&number=${limit}&apiKey=${apiKey}`);
 
@@ -133,9 +137,9 @@ export const searchRecipeByName = (name, limit = 5) => {
 };
 
 
-// cuisine: string => italian, korean, american, chinese, etc. as lowercase
-// diet: string => vegetarian, ketogenic, gluten free
-// includeIngredients: string => tomato, cheese, noodles
+// cuisine: array => [italian, korean, american, chinese, etc.] as lowercase
+// diet: array => ["vegetarian", "ketogenic", "gluten free"]
+// includeIngredients: array => [tomato, cheese, noodles]
 // sort: string => calories, cholesterol, carbohydrates
 // sortDirection: asc/desc 
 // maxCalories/minCalories: int 
@@ -143,31 +147,19 @@ export const searchRecipeByName = (name, limit = 5) => {
 // ignorePantry: true/false
 // fillIngredients: true/false
 
-export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", sortDirection = "", minCalories = 0, maxCalories = -1, 
-  maxFat = 9999, maxCarbs = 9999, minProtein = 0, ignorePantry = true, fillIngredients = true, limit = 3) => {
+export const complexRecipeSearch = (search, cuisine, diet, sort, sortDirection, minCalories, maxCalories, 
+  maxFat, maxCarbs, minProtein, ignorePantry = true, limit = 3) => {
   
-  const cuisineStr = cuisine === "" ? "" : `cuisine=${cuisine}`;
-  const dietStr = diet === "" ? "" : `diet=${diet}`;
-  const ignorePantryStr = `ignorePantry=${ignorePantry}`;
-  // const includeIngredientsStr = includeIngredients === "" ? "" : `includeIngredients=${includeIngredients}`;
-  const fillIngredientsStr = `fillIngredients=${fillIngredients}`;
-  const sortStr = sort === "" ? "" : `sort=${sort}`;
-  const sortDirectionStr = sortDirection === "" ? "" : `sortDirection=${sortDirection}`;
-  const minCaloriesStr = `minCalories=${minCalories}`; 
-  const maxCaloriesStr = maxCalories === -1 ? "" : `maxCalories=${maxCalories}`; 
-  const maxFatStr = `maxFat=${maxFat}`;
-  const maxCarbsStr = `maxCarbs=${maxCarbs}`;
-  const limitStr = `number=${limit}`;
-
-  const params = [cuisineStr, dietStr, ignorePantryStr, fillIngredientsStr, sortStr, 
-    sortDirectionStr, minCaloriesStr, maxCaloriesStr, maxFatStr, maxCarbsStr, limitStr];
-  let queryStr = "";
-
-  for(let i = 0; i < params.length; i++) {
-    if(params[i] !== "") {
-      queryStr += params[i] + "&";
-    }
-  }
+  if (!cuisine) cuisine = [];
+  if (!diet) diet = [];
+  if (!minCalories) minCalories = 0;
+  if (!maxCalories) maxCalories = 9999;
+  if (!maxFat) maxFat = 9999;
+  if (!maxCarbs) maxCarbs = 9999;
+  if (!minProtein) minProtein = 0;
+  if (!limit) limit = 3;
+  const cuisineStr = cuisine.join(",");
+  const dietStr = diet.join(",");
 
   // console.log(queryStr);
   // return axios.get(`https://api.spoonacular.com/recipes/complexSearch?${queryStr}apiKey=${apiKey}`);
@@ -181,8 +173,8 @@ export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", 
       "x-rapidapi-key": apiKey
     }, 
     "params": {
-      "cuisine": `${cuisine}`,
-      "diet": `${diet}`,
+      "cuisine": `${cuisineStr}`,
+      "diet": `${dietStr}`,
       "ignorePantry": `${ignorePantry}`,
       "minCalories": `${minCalories}`,
       "maxCalories": `${maxCalories}`,
@@ -191,9 +183,11 @@ export const complexRecipeSearch = (search, cuisine = "", diet = "", sort = "", 
       "minProtein": `${minProtein}`,
       "number": `${limit}`,
       "sort": `${sort}`,
+      "sortDirection": `${sortDirection}`,
       "query": search,
+      "ignorePantry": `${ignorePantry}`,
       "addRecipeInformation": "true",
-      "fillIngredients": `${fillIngredients}`
+      "fillIngredients": "true"
     }
   })
     // .then((response) => {
@@ -239,7 +233,7 @@ export const extractRecipe = (url) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": "f9ba977a04msha79dcdbd3b845c1p1e804ajsn0a5620f33ad5"
+      "x-rapidapi-key": apiKey
     }, "params": {
       "url": url
     }

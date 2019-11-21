@@ -42,9 +42,11 @@ import {
   signup
 } from './util/session_api_util'
 
-// import { fetchFridge, addFridgeIngredient, modifyIngredient } from './util/fridge_api_util';
+import { modifyFridge } from './util/fridge_api_util';
 
 import { fetchFridge, addFridgeIngredient, modifyIngredient } from './actions/fridge_actions';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -81,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addFridgeIngredient = addFridgeIngredient;
   window.getIngredientById = getIngredientById;
   window.modifyIngredient = modifyIngredient;
+  window.modifyFridge = modifyFridge;
   window.getState = store.getState;
   window.getConvertAmounts = getConvertAmounts;
   window.dispatch = store.dispatch;

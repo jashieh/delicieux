@@ -16,11 +16,21 @@ class IngredientSearch extends React.Component {
     super(props);
     this.state = {
       query: "",
-      results: []
+      results: [],
+      visible: false
     };
 
     this.update = this.update.bind(this);
-    this.search = debounce(this.search, 1000);
+    this.search = debounce(this.search, 100);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClick);
   }
 
   update(e) {
@@ -29,26 +39,38 @@ class IngredientSearch extends React.Component {
   }
 
   search(query) {
-    this.props.searchIngredientByName(query)
-      .then(res => {
-        this.setState({ results: res.data });
+    if(query !== "") {
+      this.props.searchIngredientByName(query)
+        .then(res => {
+          this.setState({ results: res.data, visible: true });
       });
+    } else {
+      this.setState({ visible: false });
+    }
+  }
+
+  handleClick(e) {
+    if(!(this.node && this.node.contains(e.target))) {
+      this.setState({ visible: false, query: "" });
+    }
   }
   
   render() {
     const results = this.state.results.map( (ingredient, i) => {
       return (
         <IngredientSearchItemContainer key={i} ingredient={ingredient} />
-        // <li key={i} >{ ingredient.name }</li>
       );
     });
 
     return(
-      <div className="ingredient-search-container">
-        <input type="text" value={this.state.query} onChange={this.update}/>
-        <ul className="ingredient-search-ul">
-          { results }
-        </ul>
+      <div className="ingredient-search-container" >
+        <div className="ingredient-search-box">
+          <input type="text" value={this.state.query} onChange={this.update}
+            className="ingredient-search-input" placeholder="Search Ingredients"/>
+          { this.state.visible && <ul className="ingredient-search-ul" ref={node => this.node = node}>
+            { results }
+          </ul> }
+        </div>
       </div>
     );
   }

@@ -10,7 +10,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => (
       <Component {...props} />
     ) : (
       // change this later
-      <Redirect to="/" />
+      <Redirect to="/index" />
     )
   )} />
 );

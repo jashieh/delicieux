@@ -54,44 +54,48 @@ class FormPersonalDetails extends React.Component {
 
     return (
       <MuiThemeProvider>
-        <div className="modal-background">
+        <div className="session-background">
           <a className="signup-form" class="btn">
+            <span>
               <span>
                 <span>
-                  <span>
-            <form>
-              <TextField
-                hintText="Enter Your Height"
-                floatingLabelText="Height"
-                onChange={handleChange("height")}
-                defaultValue={values.height}
-              />
-              <br />
-              <TextField
-                hintText="Enter Your Weight"
-                floatingLabelText="Weight"
-                onChange={handleChange("weight")}
-                defaultValue={values.weight}
-              />
-              <br />
-              <TextField
-                hintText="Enter Your Age"
-                floatingLabelText="Age"
-                onChange={handleChange("age")}
-                defaultValue={values.age}
-              />
-              <br />
-              {/* {this.renderErrors()} */}
-              <RaisedButton label="Back" primary={false} onClick={this.back} />
-              <button className="submit-button" onClick={this.handleSignup()}>
-                Sign Up
-              </button>
-            </form>
-         
-                    </span>
+                  <form>
+                    <TextField
+                      inputStyle={{ color: "white" }}
+                      hintText="Enter Your Height"
+                      floatingLabelText="Height"
+                      onChange={handleChange("height")}
+                      defaultValue={values.height}
+                    />
+                    <br />
+                    <TextField
+                      inputStyle={{ color: "white" }}
+                      hintText="Enter Your Weight"
+                      floatingLabelText="Weight"
+                      onChange={handleChange("weight")}
+                      defaultValue={values.weight}
+                    />
+                    <br />
+                    <TextField
+                      inputStyle={{ color: "white" }}
+                      hintText="Enter Your Age"
+                      floatingLabelText="Age"
+                      onChange={handleChange("age")}
+                      defaultValue={values.age}
+                    />
+                    <br />
+                    {/* {this.renderErrors()} */}
+                    <button className="submit" onClick={this.back}>
+                      Back
+                    </button>
+                    <button className="submit" onClick={this.handleSignup()}>
+                      Sign Up
+                    </button>
+                  </form>
                 </span>
               </span>
-            </a>
+            </span>
+          </a>
         </div>
       </MuiThemeProvider>
     );
