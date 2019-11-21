@@ -29,7 +29,7 @@ export const getRandomRecipe = () => dispatch => (
           .getRecipeById(recipeId)
           .then(
             ({ data }) => dispatch(receiveRecipes([data])),
-            (errors) => dispatch(receiveRecipeErrors(errors))
+            errors => dispatch(receiveRecipeErrors(errors))
           )
       },
       errors => dispatch(receiveRecipeErrors(errors))
@@ -48,9 +48,45 @@ export const getRandomRecipes = (number) => dispatch => (
           .getMultipleRecipes(recipeIds)
           .then(
             ({ data }) => dispatch(receiveRecipes(data)),
-            (errors) => dispatch(receiveRecipeErrors(errors))
+            errors => dispatch(receiveRecipeErrors(errors))
           )
       },
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+)
+
+export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ignorePantry = true) => dispatch => (
+  RecipeAPI
+    .getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)
+    .then(
+      ({ data }) => {
+        debugger;
+        let recipeIds = data.map(recipe => recipe.id);
+        RecipeAPI
+          .getMultipleRecipes(recipeIds)
+          .then(
+            ({ data }) => dispatch(receiveRecipes(data)),
+            errors => dispatch(receiveRecipeErrors(errors))
+          )
+      },
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+)
+
+export const getRecipeById = (recipeId) => dispatch => (
+  RecipeAPI
+    .getRecipeById(recipeId)
+    .then(
+      ({ data }) => dispatch(receiveRecipes([data])),
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+)
+
+export const getMultipleRecipes = (recipeIds) => dispatch => (
+  RecipeAPI
+    .getMultipleRecipes(recipeIds)
+    .then(
+      ({ data }) => dispatch(receiveRecipes(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )

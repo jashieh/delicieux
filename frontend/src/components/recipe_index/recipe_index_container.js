@@ -4,6 +4,7 @@ import RecipeIndex from './recipe_index';
 import { 
   getRandomRecipe,
   getRandomRecipes,
+  getRecipesByIngredients,
   rotateRecipe } from '../../actions/recipe_actions';
 
 const mapStateToProps = (state) => ({
@@ -14,6 +15,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getRandomRecipe: () => dispatch(getRandomRecipe()),
   getRandomRecipes: (number) => dispatch(getRandomRecipes(number)),
+  getRecipesByIngredients: (ingredients, limit, ranking, ignorePantry) => dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)),
+
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
 });
 
