@@ -170,8 +170,6 @@ export const complexRecipeSearch = (
   const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");
 
-
-  debugger;
   // console.log(queryStr);
   // return axios.get(`https://api.spoonacular.com/recipes/complexSearch?${queryStr}apiKey=${apiKey}`);
 
