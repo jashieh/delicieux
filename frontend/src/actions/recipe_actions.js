@@ -149,12 +149,23 @@ export const complexRecipeSearch = ({
         for (let i = 0; i < apiData.length; i++) {
           RecipeAPI
             .getRecipe(apiData[i].id)
-            .then(
-              ({ data }) => apiData[i] = data,
-              () => RecipeAPI.postRecipeComplex(apiData[i])
-            )
+            .then(({ data }) => {
+              apiData[i] = data;
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+            })
+            .catch(() => {
+              RecipeAPI.postRecipeComplex(apiData[i])
+                .then(data => {console.log(data); console.log(apiData[i]);});
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+            });
+          // RecipeAPI
+          //   .getRecipe(apiData[i].id)
+          //   .then(
+          //     ({ data }) => apiData[i] = data,
+          //     () => RecipeAPI.postRecipeComplex(apiData[i])
+          //   )
         }
-        dispatch(receiveRecipes(apiData))
+        // dispatch(receiveRecipes(apiData))
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )

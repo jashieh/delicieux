@@ -16,13 +16,13 @@ class RecipeIndex extends React.Component {
   // Loads all of the recipes upon mounting
   componentDidMount() {
     debugger;
-    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes } = this.props;
+    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch } = this.props;
     fetchFridge(user.id)
       .then(
         ({ fridge }) => {
           let { ingredients } = fridge;
           ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
-          ingredients.length === 0 ? getRandomRecipes(5) : getRecipesByIngredients(ingredients, 5);
+          ingredients.length === 0 ? complexRecipeSearch({}) : getRecipesByIngredients(ingredients, 5);
         }
       );
   }
