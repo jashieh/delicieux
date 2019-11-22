@@ -67,7 +67,7 @@ const RecipesReducer = (state = RECIPES, action) => {
       nextState[action.recipe.recipeId] = action.recipe;
       return nextState;
     case RECEIVE_RECIPES:
-      nextState = action.recipes;
+      nextState = Object.assign(nextState, action.recipes);
       nextState.indexOrder = Object.keys(action.recipes);
       return nextState;
     case ROTATE_RECIPE:
