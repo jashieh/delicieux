@@ -7,7 +7,8 @@
     .contain-all {
         height: 90%;
         width: 90%;
-        background-color: red;
+        // background-color: red;
+        
         margin: 0 auto;
         display: flex;
         flex-direction: row;
@@ -35,7 +36,8 @@
 
 .ingredient-search-container {
     // align-self: center;
-    height: 200px;
+    height: max-content;
+    // background-color: rgb(150, 26, 26);
     background-color: black;
     // background-color: green;
     width: 100%;
@@ -43,41 +45,71 @@
 }
 
 .ingredient-search-box {
-    position: relative;
+    // position: relative;
     display: flex;
+    // background-color: blue;
+    background-color: black;
+    height: 100%;
+    justify-content: center;
+    margin-top: 20px;
 
-    .search-input {
-        margin: 50px auto;
-        padding: 20px;
-        border-radius: 5px;
-        animation: FadeIn 1s;
+    .ingredient-search-contain {
+        position: relative;
+        width: max-content;
+        height: 100%;
+        background-color: black;
+
+
+            .search-input {
+                // margin: 50px auto;
+                padding: 20px 15px;
+                width: 300px;
+                border-radius: 2px;
+                animation: FadeIn 1s;
+                border: 1px solid white;
+                background-color: rgb(19, 17, 17);
+
+            }
+
+            .search-input:focus {
+                outline: none;
+                // border: none;
+                border: 1px solid white;
+                color: rgb(182, 182, 182);
+                background-color: #2A2C2F;
+            }
+            
+            .ingredient-search-ul {
+                position: absolute;
+                background-color: #2A2C2F;
+                box-sizing: border-box;
+                width: 300px;
+                font-weight: 400;
+                font-size: 15px;
+                font-family: Open Sans;
+        
+        
+                .ingredient-search-li {
+                    padding: 12px 15px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+                
+                
+                .ingredient-search-li:hover {
+                    cursor: pointer;
+                    filter: brightness(80%);
+                    background-color: #24B6FF;
+                    color: white;
+                    font-weight: 600;
+                }
+        
+            }    
+
     }
-
-}
-
-.ingredient-search-ul {
-    position: absolute;
-    background-color: purple;
-    box-sizing: border-box;
-    padding: 20px;
-    width: 300px;
-}
-
-.ingredient-search-li {
-    padding: 5px 15px 5px 15px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.ingredient-search-li:hover {
-    cursor: pointer;
-    filter: brightness(80%);
-    background-color: red;
-}
+}    
 
 
 .add-ingredient-modal-container {
