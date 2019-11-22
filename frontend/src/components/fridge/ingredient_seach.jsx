@@ -80,12 +80,14 @@ class IngredientSearch extends React.Component {
     return(
       <div className="ingredient-search-container" >
         <div className="ingredient-search-box">
-          <input type="text" value={this.state.query} onChange={this.update}
-            className="search-input" placeholder="Search Ingredients"
-          />
-          { this.state.visible && <ul className="ingredient-search-ul" ref={node => this.node = node}>
-            { results }
-          </ul> }
+          <div className="ingredient-search-contain">
+            <input type="text" value={this.state.query} onChange={this.update}
+              className="search-input" placeholder="Search Ingredients"
+            />
+            { this.state.visible && <ul className="ingredient-search-ul" ref={node => this.node = node}>
+              { results }
+            </ul> }
+          </div>
         </div>
       </div>
     );
