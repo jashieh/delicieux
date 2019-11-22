@@ -169,7 +169,7 @@ export const complexRecipeSearch = (
   if (!ignorePantry) ignorePantry = true;
   if (!limit) limit = 10;
 
-  const cuisineStr = cuisine.join(",");
+  // const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");
 
   // console.log(queryStr);
@@ -185,7 +185,7 @@ export const complexRecipeSearch = (
     }, 
     "params": {
       "query": search,
-      "cuisine": `${cuisineStr}`,
+      "cuisine": `${cuisine}`,
       "diet": `${dietStr}`,
       "intolerances": `${intolerances}`,
       "sort": `${sort}`,
@@ -201,12 +201,6 @@ export const complexRecipeSearch = (
       "fillIngredients": "true"
     }
   })
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
 };
 
 
