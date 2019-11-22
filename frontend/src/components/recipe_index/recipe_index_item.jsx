@@ -10,25 +10,12 @@ class RecipeIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addToCart = this.addToCart.bind(this);
     this.onDragStart = this.onDragStart.bind(this);
-  }
-
-  addToCart() {
-    let times = ["BREAKFAST", "LUNCH", "DINNER"];
-    let { cart, currentDate, recipe } = this.props;
-    let date = cart.dates[currentDate];
-    for (let i = 0; i < times.length; i++) {
-      if (!date[times[i]]) {
-        this.props.addCartMeal(cart.id, { date: currentDate, time: times[i], recipeId: recipe.id })
-        break;
-      }
-    }
   }
 
   onDragStart(e) {
     let { recipe } = this.props;
-    e.dataTransfer.setData("recipeId", recipe.id);
+    e.dataTransfer.setData("recipeId", recipe.recipeId);
   }
 
 

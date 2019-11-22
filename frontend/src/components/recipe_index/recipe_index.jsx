@@ -16,7 +16,7 @@ class RecipeIndex extends React.Component {
   // Loads all of the recipes upon mounting
   componentDidMount() {
     debugger;
-    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes } = this.props;
+    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch } = this.props;
     fetchFridge(user.id)
       .then(
         ({ fridge }) => {
