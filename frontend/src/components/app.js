@@ -29,7 +29,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={ LoginFormContainer } />
       <ProtectedRoute exact path="/summary" component={SummaryContainer} />
       <ProtectedRoute exact path="/index" component={MainIndex} />
-      <ProtectedRoute exact path="/profile/:id" component={UserProfileContainer} />
+      <ProtectedRoute exact path="/profile/" component={UserProfileContainer} />
       <Redirect to="/" />
     </Switch>
   </div>

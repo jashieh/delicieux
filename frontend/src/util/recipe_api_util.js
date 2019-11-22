@@ -147,17 +147,27 @@ export const searchRecipeByName = (name, limit = 5) => {
 // ignorePantry: true/false
 // fillIngredients: true/false
 
-export const complexRecipeSearch = (search, cuisine, diet, sort, sortDirection, minCalories, maxCalories, 
-  maxFat, maxCarbs, minProtein, ignorePantry = true, limit = 3) => {
-  
+// TAKES IN AN OPTIONS HASH
+export const complexRecipeSearch = (
+  {search, cuisine, diet, sort, sortDirection, 
+  minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
+  ignorePantry, limit}) => {
+
+  if (!search) search = "";
   if (!cuisine) cuisine = [];
   if (!diet) diet = [];
+  if (!sort) sort = "";
+  if (!sortDirection) sortDirection = "asc";
+
   if (!minCalories) minCalories = 0;
   if (!maxCalories) maxCalories = 9999;
   if (!maxFat) maxFat = 9999;
   if (!maxCarbs) maxCarbs = 9999;
   if (!minProtein) minProtein = 0;
-  if (!limit) limit = 3;
+
+  if (!ignorePantry) ignorePantry = true;
+  if (!limit) limit = 10;
+
   const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");
 
@@ -173,19 +183,18 @@ export const complexRecipeSearch = (search, cuisine, diet, sort, sortDirection, 
       "x-rapidapi-key": apiKey
     }, 
     "params": {
+      "query": search,
       "cuisine": `${cuisineStr}`,
       "diet": `${dietStr}`,
-      "ignorePantry": `${ignorePantry}`,
+      "sort": `${sort}`,
+      "sortDirection": `${sortDirection}`,
       "minCalories": `${minCalories}`,
       "maxCalories": `${maxCalories}`,
       "maxFat": `${maxFat}`,
       "maxCarbs": `${maxCarbs}`,
       "minProtein": `${minProtein}`,
-      "number": `${limit}`,
-      "sort": `${sort}`,
-      "sortDirection": `${sortDirection}`,
-      "query": search,
       "ignorePantry": `${ignorePantry}`,
+      "number": `${limit}`,
       "addRecipeInformation": "true",
       "fillIngredients": "true"
     }

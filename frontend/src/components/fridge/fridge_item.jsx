@@ -1,6 +1,12 @@
 import React from 'react';
 
 class FridgeItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+  
   render() {
     return(
       <li onClick={() => this.props.openModal(this.props.ingredient)}>
