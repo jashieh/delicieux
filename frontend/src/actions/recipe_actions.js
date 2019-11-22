@@ -13,10 +13,10 @@ const receiveRecipes = (recipes) => ({
 });
 
 // receives a single recipe
-const receiveRecipe = (recipe) => ({
+const receiveRecipe = (recipe) => {debugger; return {
   type: RECEIVE_RECIPE,
   recipe,
-});
+}};
 
 const receiveRecipeErrors = (errors) => ({
   type: RECEIVE_RECIPE_ERRORS,
@@ -32,7 +32,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      ({data}) => dispatch(receiveRecipe(data)),
+      ({data}) =>  {debugger; dispatch(receiveRecipe(data))},
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
@@ -42,8 +42,13 @@ const getRecipeById = (recipeId) => dispatch => (
     .getRecipeById(recipeId)
     .then(
       ({ data }) => {
+        let apiData = data;
         RecipeAPI
-          .postRecipeId(data);
+          .getRecipe(apiData.id)
+          .then(
+            ({ data }) => (apiData = data),
+            () => RecipeAPI.postRecipeId(apiData)
+          );
         dispatch(receiveRecipes([data]));
       },
       errors => dispatch(receiveRecipeErrors(errors))
@@ -55,10 +60,16 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
     .getMultipleRecipes(recipeIds)
     .then(
       ({ data }) => {
-        for (let i = 0; i < data.length; i++)
+        let apiData = data;
+        for (let i = 0; i < apiData.length; i++) {
           RecipeAPI
-            .postRecipeId(data[i]);
-        dispatch(receiveRecipes(data));
+            .getRecipe(apiData[i].id)
+            .then(
+              ({ data }) => apiData[i] = data,
+              () => RecipeAPI.postRecipeId(apiData[i])
+            )
+        }
+        dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -116,24 +127,28 @@ export const getRecipesByName = (name, limit = 5) => dispatch => (
 
 
 export const complexRecipeSearch = (
-  search="",
-  cuisine = "", diet = "", sort = "", sortDirection = "", 
-  minCalories = 0, maxCalories = 9999, maxFat = 9999, maxCarbs = 9999, minProtein = 0, 
-  ignorePantry = true, fillIngredients = true, limit = 3
+  search, cuisine, diet, sort, sortDirection, 
+  minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
+  ignorePantry, limit
 ) => dispatch => {
-  debugger;
   RecipeAPI
     .complexRecipeSearch(
       search, cuisine, diet, sort, sortDirection, 
       minCalories, maxCalories, maxFat, maxCarbs, minProtein,
-      ignorePantry, fillIngredients, limit
+      ignorePantry, limit
     )
     .then(
       ({data}) => {
-        for (let i = 0; i < data.results.length; i++)
+        let apiData = data.results;
+        for (let i = 0; i < apiData.length; i++) {
           RecipeAPI
-            .postRecipeComplex(data.results[i]);
-        dispatch(receiveRecipes(data.results))
+            .getRecipe(apiData[i].id)
+            .then(
+              ({ data }) => apiData[i] = data,
+              () => RecipeAPI.postRecipeComplex(apiData[i])
+            )
+        }
+        dispatch(receiveRecipes(apiData))
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
