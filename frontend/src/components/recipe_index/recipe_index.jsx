@@ -16,20 +16,14 @@ class RecipeIndex extends React.Component {
   // Loads all of the recipes upon mounting
   componentDidMount() {
     debugger;
-    let type = "COMPLEX_RECIPES";
-    switch(type) {
-      case "COMPLEX_RECIPES":
-        this.props.complexRecipeSearch({}); break;
-      case "RECIPES_BY_NAME":
-        this.props.getRecipesByName("dog", 24); break;
-      case "RECIPES_BY_INGREDIENTS":
-        this.props.getRecipesByIngredients(["dog"], 10); break;
-      case "RANDOM_RECIPE":
-        this.props.getRandomRecipe(); break;
-      case "RANDOM_RECIPES":
-      default: 
-        this.props.getRandomRecipes(24); break;
-    }
+    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes } = this.props;
+    fetchFridge(user.id)
+      .then(
+        ({ fridge }) => {
+          let ingredients = Object.keys(fridge.ingredients);
+          ingredients.length === 0 ? getRandomRecipes(24) : getRecipesByIngredients(ingredients);
+        }
+      );
   }
 
   componentDidUpdate(oldProps) {
