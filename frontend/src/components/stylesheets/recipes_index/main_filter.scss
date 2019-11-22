@@ -81,19 +81,77 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
-    .filter-dd-item2 {
-      background: red;
-      text-align: center;
-      margin: 0 10px;
-      height: 20px;
-      width: 60px;
-      border: 1px solid black;
-      border-radius: 10px;
-    }
-    .filter-dd-item2:hover {
-      background: blue;
-      cursor: pointer;
-    }
+    flex-wrap: flex;
   }
+  .filter-bot-cuisine {
+    height: 150px;
+    width: 600px;
+    background: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+}
+.filter-dd-item1 {
+  display: flex;
+  background-color: red;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;
+  height: 20px;
+  width: 120px;
+  border: 1px solid black;
+  border-radius: 10px;
+  user-select: none;
+  padding: 0 5px;
+}
+.filter-dd-item1:hover {
+  background: blue;
+  cursor: pointer;
+}
+.filter-dd-item2 {
+  background-color: red;
+  text-align: center;
+  margin: 0 10px;
+  height: 20px;
+  width: 90px;
+  border: 1px solid black;
+  border-radius: 10px;
+  user-select: none;
+}
+.filter-dd-item2:hover {
+  background: blue;
+  cursor: pointer;
+}
+.filter-x {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+.filter-x:hover {
+  cursor: pointer;
+  color: white;
+}
+.filter-bot-diet {
+  height: 150px;
+  width: 600px;
+  background: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.filter-bot-allergies {
+  height: 150px;
+  width: 600px;
+  background: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
 }

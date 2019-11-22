@@ -447,7 +447,7 @@ export default class RecipeShow extends React.Component {
                   <div className="rs-li-item-pic-cont">
                     <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/>
                   </div>
-                    {ingredient.name}
+                    {ingredient.amount} {ingredient.unit} {ingredient.name}
                 </li>
               ))}
 
