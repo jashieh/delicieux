@@ -15,21 +15,21 @@ class RecipeIndex extends React.Component {
 
   // Loads all of the recipes upon mounting
   componentDidMount() {
-    debugger;
-    let type = "RECIPES_BY_INGREDIENTS";
-    switch(type) {
-      case "COMPLEX_RECIPES":
-          this.props.complexRecipeSearch(); break;
-      case "RECIPES_BY_NAME":
-        this.props.getRecipesByName("dog", 24); break;
-      case "RECIPES_BY_INGREDIENTS":
-        this.props.getRecipesByIngredients(["dog"], 24); break;
-      case "RANDOM_RECIPE":
-        this.props.getRandomRecipe(); break;
-      case "RANDOM_RECIPES":
-      default: 
-        this.props.getRandomRecipes(24); break;
-    }
+    // debugger;
+    // let type = "RECIPES_BY_INGREDIENTS";
+    // switch(type) {
+    //   case "COMPLEX_RECIPES":
+    //     this.props.complexRecipeSearch(); break;
+    //   case "RECIPES_BY_NAME":
+    //     this.props.getRecipesByName("dog", 24); break;
+    //   case "RECIPES_BY_INGREDIENTS":
+    //     this.props.getRecipesByIngredients(["ketchup"], 24); break;
+    //   case "RANDOM_RECIPE":
+    //     this.props.getRandomRecipe(); break;
+    //   case "RANDOM_RECIPES":
+    //   default: 
+    //     this.props.getRandomRecipes(24); break;
+    // }
   }
 
   componentDidUpdate(oldProps) {
@@ -48,9 +48,10 @@ class RecipeIndex extends React.Component {
 
   render() {
     const { recipes } = this.props;
+    const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
     return (
       <div className="recipe-index">
-        {recipes.slice(0, 8).map((recipe, idx) => {
+        {indexRecipes.slice(0, 8).map((recipe, idx) => {
           return <RecipeIndexItemContainer key={idx}
                     recipe={recipe} 
                     rotateToBack={() => this.props.rotateRecipe(idx)}/>

@@ -5,7 +5,6 @@ import { getCart, switchDate, addCartDate } from '../../actions/cart_actions';
 import '../stylesheets/cart/cart.scss';
 
 const mapStateToProps = state => ({
-  recipes: state.entities.recipes,
   dates: state.entities.cart.dates,
 
   cartId: state.entities.cart.id,
