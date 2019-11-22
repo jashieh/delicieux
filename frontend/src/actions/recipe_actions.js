@@ -32,7 +32,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      (data) =>  dispatch(receiveRecipe(data)),
+      ({data}) =>  dispatch(receiveRecipe(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
@@ -68,7 +68,7 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
               ({ data }) => apiData[i] = data,
               () => RecipeAPI.postRecipeId(apiData[i])
             )
-        }
+        } 
         dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
       },
       errors => dispatch(receiveRecipeErrors(errors))

@@ -5,10 +5,17 @@ const Recipe = require('../../models/Recipe');
 router.get("/test", (req, res) => res.json({ msg: "This is the recipes route for meal plan" }));
 
 // Return recipe by a specific id,
+// NOTE: FINDONE ALWAYS SUCCEEDS...DOESN'T RETURN A PROMISE
 router.get('/:recipeId', (req, res) => {
   Recipe.findOne({ recipeId: req.params.recipeId })
-    .then(recipe => res.json(recipe))
-    .catch(err => res.status(400).json(err));
+    .then(
+      recipe => {
+        if (recipe)
+          res.json(recipe);
+        else
+          res.status(400).json({error: "NOT FOUND"});
+      }
+    );
 });
   
 // Adding a recipe from search by recipe ID API Call
