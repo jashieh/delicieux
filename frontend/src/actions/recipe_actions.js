@@ -13,10 +13,10 @@ const receiveRecipes = (recipes) => ({
 });
 
 // receives a single recipe
-const receiveRecipe = (recipe) => {debugger; return {
+const receiveRecipe = (recipe) => ({
   type: RECEIVE_RECIPE,
   recipe,
-}};
+});
 
 const receiveRecipeErrors = (errors) => ({
   type: RECEIVE_RECIPE_ERRORS,
@@ -32,7 +32,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      ({data}) =>  {debugger; dispatch(receiveRecipe(data))},
+      ({data}) =>  dispatch(receiveRecipe(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
@@ -125,18 +125,18 @@ export const getRecipesByName = (name, limit = 5) => dispatch => (
     )
 );
 
-
-export const complexRecipeSearch = (
+// TAKES AN OPTIONS HASH
+export const complexRecipeSearch = ({
   search, cuisine, diet, sort, sortDirection, 
   minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
   ignorePantry, limit
-) => dispatch => {
+}) => dispatch => {
   RecipeAPI
-    .complexRecipeSearch(
+    .complexRecipeSearch({
       search, cuisine, diet, sort, sortDirection, 
       minCalories, maxCalories, maxFat, maxCarbs, minProtein,
       ignorePantry, limit
-    )
+    })
     .then(
       ({data}) => {
         let apiData = data.results;

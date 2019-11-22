@@ -147,10 +147,11 @@ export const searchRecipeByName = (name, limit = 5) => {
 // ignorePantry: true/false
 // fillIngredients: true/false
 
+// TAKES IN AN OPTIONS HASH
 export const complexRecipeSearch = (
-  search, cuisine, diet, sort, sortDirection, 
+  {search, cuisine, diet, sort, sortDirection, 
   minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
-  ignorePantry, limit) => {
+  ignorePantry, limit}) => {
 
   if (!search) search = "";
   if (!cuisine) cuisine = [];

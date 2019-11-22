@@ -9,6 +9,7 @@ class RecipeIndexItem extends React.Component {
     super(props);
 
     this.addToCart = this.addToCart.bind(this);
+    this.onDragStart = this.onDragStart.bind(this);
   }
 
   addToCart() {
@@ -23,16 +24,21 @@ class RecipeIndexItem extends React.Component {
     }
   }
 
+  onDragStart(e) {
+    let { recipe } = this.props;
+    e.dataTransfer.setData("recipeId", recipe.id);
+  }
+
 
   // TODO: WHEN REMOVING ITEM, ALSO REMOVE IT COMPLETELY FROM THE CART
   render() {
     const { recipe, rotateToBack } = this.props;
 
     return (
-      <div className="recipe-index-item" draggable="true">
+      <div className="recipe-index-item" draggable onDragStart={this.onDragStart}>
         <div className="recipe-index-item-remove" onClick={rotateToBack}>X</div>
         <div className="recipe-index-item-name">{recipe.title}</div>
-        <img className="recipe-index-item-image" src={recipe.image}/>
+        <img className="recipe-index-item-image" src={recipe.image} draggable="false"/>
         <div className="recipe-index-item-add" onClick={this.addToCart}>Add to Cart</div>
       </div>
     )

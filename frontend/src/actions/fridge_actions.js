@@ -20,7 +20,7 @@ const removeFridgeIngredient = id => ({
 });
 
 export const fetchFridge = (userId) => dispatch => (APIUtil.fetchFridge(userId)
-  .then(fridge => dispatch(receiveFridge(fridge)))
+  .then(({ data }) => dispatch(receiveFridge(data)))
 );
 
 export const addFridgeIngredient = (userId, ingredient, amount) => dispatch => 
