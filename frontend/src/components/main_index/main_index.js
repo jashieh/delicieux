@@ -90,7 +90,6 @@ class MainIndex extends React.Component {
                   </div>
                 </div>
               </div>
-
               <div className="right">
                 <div className="right-contain">
                   <div className="ingredient-contain">

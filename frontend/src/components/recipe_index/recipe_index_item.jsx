@@ -39,7 +39,7 @@ class RecipeIndexItem extends React.Component {
         <div className="recipe-index-item-remove" onClick={rotateToBack}>X</div>
         <div className="recipe-index-item-name">{recipe.title}</div>
         <img className="recipe-index-item-image" src={recipe.image} draggable="false"/>
-        <div className="recipe-index-item-add" onClick={this.addToCart}>Add to Cart</div>
+        {/* <div className="recipe-index-item-add" onClick={this.addToCart}>Add to Cart</div> */}
       </div>
     )
   }

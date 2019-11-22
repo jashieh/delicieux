@@ -397,7 +397,7 @@ export default class RecipeShow extends React.Component {
                 <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
                   <div> {title} </div>
                   <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)`}}>
-                     { this.state[title] ? <div>{Math.floor(nutrient.amount)}</div> : <div>{percent}%</div>}
+                     { this.state[title] ? <div>{Math.floor(nutrient.amount)} {nutrient.unit} </div> : <div>{percent}%</div>}
                   </div>
                 </div>
               )
