@@ -4,13 +4,22 @@ class ModifyIngredient extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      amount: 0,
+      amount: this.props.ingredient.amount,
       error: ""
     };
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.keyEvent = this.keyEvent.bind(this);
+    this.removeIngredient = this.removeIngredient.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.keyEvent);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keyEvent);
   }
 
   update(e) {
@@ -26,12 +35,18 @@ class ModifyIngredient extends React.Component {
   }
 
   handleSubmit(e) {
-
+    if(parseInt(this.state.amount) > 0) {
+      this.props.modifyIngredient(this.props.userId, this.props.ingredient, 
+        parseInt(this.state.amount - this.props.ingredient.amount))
+          .then(() => {this.props.closeModal()});
+    } else {
+      this.setState({ error: "Amount must be greater than 0."});
+    }   
   }
 
   removeIngredient() {
     this.props.modifyIngredient(this.props.userId, this.props.ingredient, 
-      -9999999999)
+      Number.MIN_SAFE_INTEGER)
         .then(() => {this.props.closeModal()});
   }
 
@@ -44,7 +59,7 @@ class ModifyIngredient extends React.Component {
       </div>
       <div className="add-ingredient-input-container">
         <div className="add-ingredient-input-text">
-          Input Amount: 
+          Modify Amount: 
         </div>
         <input type="number" className="add-ingredient-input" value={this.state.amount}
           onChange={this.update} autoFocus/>
@@ -53,7 +68,7 @@ class ModifyIngredient extends React.Component {
         { this.state.error }
       </div>
       <div>
-        <div onClick={this.removeIngredient}>
+        <div onClick={this.removeIngredient} className="add-ingredient-submit">
           Remove Ingredient
         </div>
         <div onClick={this.handleSubmit} className="add-ingredient-submit">
