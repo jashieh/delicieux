@@ -23,7 +23,7 @@ class RecipeIndex extends React.Component {
       case "RECIPES_BY_NAME":
         this.props.getRecipesByName("dog", 24); break;
       case "RECIPES_BY_INGREDIENTS":
-        this.props.getRecipesByIngredients([], 5); break;
+        this.props.getRecipesByIngredients(["dog"], 10); break;
       case "RANDOM_RECIPE":
         this.props.getRandomRecipe(); break;
       case "RANDOM_RECIPES":
