@@ -51,7 +51,10 @@ export const getRecipeById = (recipeId) => dispatch => (
           })
           .catch(() => {
             RecipeAPI.postRecipeId(apiData)
-            dispatch(receiveRecipes([apiData]));
+              .then(({data}) => {
+                apiData = data;
+                dispatch(receiveRecipes([apiData]));
+              });
           });
       },
       errors => dispatch(receiveRecipeErrors(errors))
@@ -64,7 +67,7 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
     .then(
       ({ data }) => {
         let apiData = data;
-        for (let i = 0; i < apiData.length; i++) {
+        for (let i = 0; i < apiData.length; i++)
           RecipeAPI
             .getRecipe(apiData[i].id)
             .then(({data}) => {
@@ -72,10 +75,12 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
               if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));               
             })
             .catch(() => {
-              RecipeAPI.postRecipeId(apiData[i]);
-              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+              RecipeAPI.postRecipeId(apiData[i])
+                .then(({data}) => {
+                  apiData[i] = data;
+                  if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                });
             });
-        };
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -146,7 +151,7 @@ export const complexRecipeSearch = ({
     .then(
       ({data}) => {
         let apiData = data.results;
-        for (let i = 0; i < apiData.length; i++) {
+        for (let i = 0; i < apiData.length; i++)
           RecipeAPI
             .getRecipe(apiData[i].id)
             .then(({ data }) => {
@@ -155,17 +160,11 @@ export const complexRecipeSearch = ({
             })
             .catch(() => {
               RecipeAPI.postRecipeComplex(apiData[i])
-                .then(data => {console.log(data); console.log(apiData[i]);});
-              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                .then(({data}) => {
+                  apiData[i] = data;
+                  if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                });
             });
-          // RecipeAPI
-          //   .getRecipe(apiData[i].id)
-          //   .then(
-          //     ({ data }) => apiData[i] = data,
-          //     () => RecipeAPI.postRecipeComplex(apiData[i])
-          //   )
-        }
-        // dispatch(receiveRecipes(apiData))
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
