@@ -1,25 +1,51 @@
 .recipe-index-item {
-  height: 200px;
-  width: 160px;
+  height: 250px;
+  width: 269px;
   padding: 10px;
 
-  border: 1px solid black;
-  border-radius: 5px;
+  // border: 1px solid black;
+  border-radius: 3px;
 
-  background-color: #2c2448;
+  background-color: white;
 
   display: flex;
   flex-direction: column;
-  box-shadow: 1px 1px 8px 1px #1a1919;
+  box-shadow: 1px 1px 6px 1px #dddada;
 
-  margin: 21px;
+  margin: 14px;
   margin-bottom: 0;
 
-  color: lightgray;
-  font-family: Sacramento;
-  font-size: 10px;
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 12px;
 
-  
+  .title-time {
+    display: flex;
+    flex-direction: row;
+    // line-height: 17px;
+  }
+
+  .icon-box {
+    display: flex;
+    flex-direction: row;
+    // background-color: rgb(219, 241, 247);
+    background-color: rgb(223, 242, 247);
+    border-radius: 5px;
+    font-size: 11px;
+    justify-content: space-around;
+
+    .vegan {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .leaf {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
 }
 
 .recipe-index-item-remove {
@@ -37,19 +63,45 @@
 }
 
 .recipe-index-item-name {
-  height: 20%;
   width: 100%;
   overflow-wrap: normal;
-  text-align: center;
+  // margin-top: 10px;
+  padding: 14px 9px;
+  color: rgb(29, 26, 26);
+}
 
-  color: gray;
+.make {
+  color: rgb(92, 92, 92);
+  display: block;
+  width: 25px;
+  height: 22px;
+  border: 1px solid rgb(120, 118, 118);
+  border-radius: 50%;
+  position: relative;
+  margin-top: 8px;
+  margin-right: 10px;
+
+  p {
+    position: absolute;
+    top: 20%;
+    left: 14%;
+  }
+  
 }
 
 .recipe-index-item-image {
-  height: 60%;
+  height: 150px;
   width: 100%;
   object-fit: cover;
   border-radius: 5px;
+  background-color: red;
+  overflow: hidden;
+
+  img {
+    width: 260px;
+    height: 160px;
+  }
+
 }
 
 .recipe-index-item-number {
@@ -79,3 +131,8 @@
 .recipe-index-item-add:hover {
   cursor: pointer;
 }
+
+
+
+
+

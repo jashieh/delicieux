@@ -42,7 +42,8 @@
         align-self: center;
         // margin: 0 auto;
         height: 97%;
-        background-color: blue;
+        // background-color: blue;
+        background-color: #F9F9F9;
         border-radius: 3px;
         display: flex;
         flex-direction: column;
@@ -56,9 +57,9 @@
         }
 
         .left-filter {
-            width: 700px;
+            width: 900px;
             height: 70px;
-            background-color: rgb(15, 110, 58);
+            background-color: rgb(213, 237, 225);
             margin: 10px auto;
             margin-top: 20px;
             border-radius: 3px;
@@ -87,7 +88,7 @@
                 margin: 21px;
                 margin-bottom: 0;
                 height: 130px;
-                background-color: #2c2448;
+                background-color: white;
                 float: left;
                 box-shadow: 1px 1px 8px 1px #1a1919;
         /* minus the margins (60px in total for each side of each box)
@@ -143,4 +144,7 @@
         }
     }
 }
+
+
+
 
