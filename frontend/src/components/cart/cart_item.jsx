@@ -8,14 +8,6 @@ class CartItem extends React.Component {
     this.removeFromCart = this.removeFromCart.bind(this);
   }
 
-  componentDidMount() {
-    // debugger;
-  }
-
-  componentDidUpdate() {
-    // debugger;
-  }
-
   recipe() {
     let { date, time, cart, recipes } = this.props;
     let recipeId = null;
@@ -23,6 +15,11 @@ class CartItem extends React.Component {
 
     if (recipes[recipeId])
       return recipes[recipeId];
+    else if (recipeId)
+      this.props.getRecipeDB(recipeId)
+        .then(
+          () => recipes[recipeId]
+        )
     return recipeId ? { id: null, title: "ERROR: Recipe Not Found", img: "..." } : null
   }
 

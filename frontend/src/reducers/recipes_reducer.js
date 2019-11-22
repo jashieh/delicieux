@@ -61,10 +61,9 @@ const RecipesReducer = (state = RECIPES, action) => {
   let nextState = Object.assign({}, state);
   nextState.indexOrder = [...state.indexOrder];
 
-  debugger;
   switch (action.type) {
     case RECEIVE_RECIPE:
-      nextState[action.recipe.id] = action.recipe;
+      nextState[action.recipe.recipeId] = action.recipe;
       return nextState;
     case RECEIVE_RECIPES:
       nextState = action.recipes;

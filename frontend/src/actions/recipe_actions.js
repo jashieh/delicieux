@@ -7,10 +7,10 @@ export const RECEIVE_RECIPE_ERRORS = "RECEIVE_RECIPE_ERRORS";
 export const ROTATE_RECIPE = "ROTATE_RECIPE";
 
 // receives an aray of recipes
-const receiveRecipes = (recipes) => {debugger; return {
+const receiveRecipes = (recipes) => ({
   type: RECEIVE_RECIPES,
   recipes: recipeArrayToObject(recipes),
-}};
+});
 
 // receives a single recipe
 const receiveRecipe = (recipe) => ({
@@ -28,11 +28,11 @@ export const rotateRecipe = recipe_idx => ({
   recipe_idx,
 });
 
-export const getRecipe = (recipeId) => dispatch => (
+export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      payload => dispatch(receiveRecipe(payload)),
+      ({data}) => dispatch(receiveRecipe(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
