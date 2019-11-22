@@ -16,10 +16,10 @@ class RecipeIndex extends React.Component {
   // Loads all of the recipes upon mounting
   componentDidMount() {
     debugger;
-    let type = "RECIPES_BY_INGREDIENTS";
+    let type = "COMPLEX_RECIPES";
     switch(type) {
       case "COMPLEX_RECIPES":
-        this.props.complexRecipeSearch(); break;
+        this.props.complexRecipeSearch({}); break;
       case "RECIPES_BY_NAME":
         this.props.getRecipesByName("dog", 24); break;
       case "RECIPES_BY_INGREDIENTS":

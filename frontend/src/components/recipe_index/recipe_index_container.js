@@ -20,15 +20,15 @@ const mapDispatchToProps = (dispatch) => ({
   getRandomRecipes: (number) => dispatch(getRandomRecipes(number)),
   getRecipesByIngredients: (ingredients, limit, ranking, ignorePantry) => dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)),
   getRecipesByName: (name, limit) => dispatch(getRecipesByName(name, limit)),
-  complexRecipeSearch: (
+  complexRecipeSearch: ({
     search, cuisine, diet, sort, sortDirection,
     minCalories, maxCalories, maxFat, maxCarbs, minProtein,
     ignorePantry, limit
-  ) => dispatch(complexRecipeSearch(
+  }) => dispatch(complexRecipeSearch({
     search, cuisine, diet, sort, sortDirection,
     minCalories, maxCalories, maxFat, maxCarbs, minProtein,
     ignorePantry, limit
-  )),
+  })),
 
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
 });
