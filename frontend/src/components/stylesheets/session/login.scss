@@ -37,16 +37,6 @@
     -ms-animation: fadein 2s details 0.7s ease-in; /* Internet Explorer */
     -o-animation: fadein 2s details 0.7s ease-in; /* Opera < 12.1 */
     animation: fadein 2s, details 0.7s ease-in;
-    
-    .signup-text {
-        height: 0;
-        font-family: Sacramento;
-        position: absolute;
-        top: 300px;
-        left: 38%;
-        font-size: 38px;
-        font-weight: 100;
-    }
 
     .signup-contain {
         width: 100%;
@@ -101,3 +91,26 @@
     font-weight: 300;
 }
 
+    
+.signup-text {
+    height: 0;
+    font-family: Sacramento;
+    position: absolute;
+    top: 150px;
+    // left: 47%;
+    left: 38%;
+    color: white;
+    font-size: 38px;
+    font-weight: 100;
+}
+
+.submit {
+    background-color: black;
+    border: 1px solid rgb(186, 185, 185);
+    color: white;
+    font-size: 12px;
+    padding: 10px 30px;
+    margin: 0 auto;
+    // margin-top: 10px;
+    font-family: Open Sans;
+}

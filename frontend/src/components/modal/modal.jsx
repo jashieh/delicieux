@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 // import LoginFormContainer from '../session/login_form_container';
 // import SignupFormContainer from '../session/signup_form_container';
 import AddIngredientContainer from '../fridge/add_ingredient_container';
+import ModifyIngredientContainer from '../fridge/modify_ingredient_container';
 import "../stylesheets/modal/modal.scss";
 
 class Modal extends React.Component {
@@ -29,6 +30,9 @@ class Modal extends React.Component {
         break;
       case 'addIngredient':
         component = <AddIngredientContainer ingredient={modal.other}/>;
+        break;
+      case 'modifyIngredient':
+        component = <ModifyIngredientContainer ingredient={modal.other}/>;
         break;
       default:
         return null;

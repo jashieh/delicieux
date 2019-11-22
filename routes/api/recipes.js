@@ -5,62 +5,79 @@ const Recipe = require('../../models/Recipe');
 router.get("/test", (req, res) => res.json({ msg: "This is the recipes route for meal plan" }));
 
 // Return recipe by a specific id,
-router.get('/:id', (req, res) => {
-  Recipe.findOne({ recipeId: req.body.id })
-    .then(recipe => res.json(recipe))
-    .catch(err => res.status(400).json(err));
+// NOTE: FINDONE ALWAYS SUCCEEDS...DOESN'T RETURN A PROMISE
+router.get('/:recipeId', (req, res) => {
+  Recipe.findOne({ recipeId: req.params.recipeId })
+    .then(
+      recipe => {
+        if (recipe)
+          res.json(recipe);
+        else
+          res.status(400).json({error: "NOT FOUND"});
+      }
+    );
 });
   
 // Adding a recipe from search by recipe ID API Call
 router.post('/indiv', (req, res) => {
+  console.log(req.body);
   const newRecipe = new Recipe({
-    title: req.body.title,
     recipeId: req.body.id,
-    sourceUrl: req.body.sourceUrl,
+    title: req.body.title,
     image: req.body.image,
+    sourceUrl: req.body.sourceUrl,
     ingredients: req.body.extendedIngredients,
     nutrition: req.body.nutrition.nutrients,
+    servings: req.body.servings,
+    spoonacularScore: req.body.spoonacularScore,
     cuisines: req.body.cuisines,
     diets: req.body.diets,
-    spoonacularScore: req.body.spoonacularScore,
-    servings: req.body.servings,
+    dishtypes: req.body.dishtypes,
+    dairyFree: req.body.dairyFree,
+    glutenFree: req.body.glutenFree,
     ketogenic: req.body.ketogenic,
     vegan: req.body.vegan,
     vegetarian: req.body.vegetarian,
-    glutenFree: req.body.glutenFree,
-    dairyFree: req.body.dairyFree,
     veryPopular: req.body.veryPopular,
   });
   newRecipe.save()
-    .then( recipe => res.json(recipe));
+    .then(
+      recipe => res.json(recipe),
+      err => res.status(400).json(err)
+    );
 });
 
-// Adding recipe from search complex index API Call
+// Adding recipe from search coComplexComplexComplexmplex index API Call
 router.post('/item', (req, res) => {
   const newRecipe = new Recipe({
-    title: req.body.title,
     recipeId: req.body.id,
-    sourceUrl: req.body.sourceUrl,
+    title: req.body.title,
     image: req.body.image,
+    sourceUrl: req.body.sourceUrl,
     ingredients: req.body.missedIngredients,
     nutrition: req.body.nutrition,
+    servings: req.body.servings,
+    spoonacularScore: req.body.spoonacularScore,
     cuisines: req.body.cuisines,
     diets: req.body.diets,
-    spoonacularScore: req.body.spoonacularScore,
-    servings: req.body.servings,
+    dishtypes: req.body.dishtypes,
+    dairyFree: req.body.dairyFree,
+    glutenFree: req.body.glutenFree,
     ketogenic: req.body.ketogenic,
     vegan: req.body.vegan,
     vegetarian: req.body.vegetarian,
-    glutenFree: req.body.glutenFree,
-    dairyFree: req.body.dairyFree,
-    veryPopular: req.body.veryPopular,
+    veryPopular: req.body.veryPopular
   });
-  newRecipe.save()
-    .then(recipe => res.json(recipe));
+  newRecipe.save() // TODO: figure out if unique constraint works
+    .then(
+      recipe => res.json(recipe),
+      err => res.status(400).json(err)
+    );
 });
+
 //Modifying image of picture
-router.patch('/:id/picture', (req, res)=> {
-  Recipe.findOneAndUpdate({ recipeId: req.body.recipeId }, {image: req.body.email})
+router.patch('/:recipeId/picture', (req, res)=> {
+  Recipe.findOneAndUpdate({ recipeId: req.params.recipeId }, {image: req.body.image})
     .then(recipe => res.json(recipe))
     .catch(err => res.status(400).json(err));
 });

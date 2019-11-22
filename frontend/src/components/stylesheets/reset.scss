@@ -25,6 +25,11 @@ time, mark, audio, video {
     font-size:100%;
     vertical-align:baseline;
     background:transparent;
+    font: inherit;
+    color: inherit;
+    text-align: inherit;
+    text-decoration: inherit;
+    box-sizing: inherit;
 }
 
 body {
@@ -34,6 +39,10 @@ body {
 article,aside,details,figcaption,figure,
 footer,header,hgroup,menu,nav,section {
     display:block;
+}
+
+ul {
+    list-style: none;
 }
 
 nav ul {

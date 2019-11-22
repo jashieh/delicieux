@@ -11,7 +11,7 @@ const FridgeReducer = (state = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_FRIDGE:
-      return Object.assign({}, action.fridge.data);
+      return Object.assign({}, action.fridge);
     case RECEIVE_FRIDGE_INGREDIENT:
       nextState = Object.assign({}, state);
       nextState.ingredients[action.ingredient.id] = action.ingredient;

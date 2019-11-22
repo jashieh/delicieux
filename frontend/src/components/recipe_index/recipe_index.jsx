@@ -15,11 +15,16 @@ class RecipeIndex extends React.Component {
 
   // Loads all of the recipes upon mounting
   componentDidMount() {
-    // this.props.getRecipes(this.props.recipe_filters)
-    //   .then(
-    //     this.setState({loaded: true}),
-    //     //failure
-    //   )
+    debugger;
+    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes } = this.props;
+    fetchFridge(user.id)
+      .then(
+        ({ fridge }) => {
+          let { ingredients } = fridge;
+          ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
+          ingredients.length === 0 ? getRandomRecipes(1) : getRecipesByIngredients(ingredients);
+        }
+      );
   }
 
   componentDidUpdate(oldProps) {
@@ -38,9 +43,10 @@ class RecipeIndex extends React.Component {
 
   render() {
     const { recipes } = this.props;
+    const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
     return (
       <div className="recipe-index">
-        {recipes.slice(0, 8).map((recipe, idx) => {
+        {indexRecipes.slice(0, 8).map((recipe, idx) => {
           return <RecipeIndexItemContainer key={idx}
                     recipe={recipe} 
                     rotateToBack={() => this.props.rotateRecipe(idx)}/>

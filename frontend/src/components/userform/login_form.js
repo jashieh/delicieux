@@ -26,6 +26,19 @@ class LoginForm extends React.Component {
     this.setState({ errors: nextProps.errors });
   }
 
+  handleDemo() {
+    let { email, password } = this.state;
+    let demoUser = {
+      email: "demo_user@delicious.com",
+      password: "password"
+    };
+
+    return e => {
+      e.preventDefault();
+      this.props.login(demoUser);
+    };
+  }
+
   update(field) {
     return e =>
       this.setState({
@@ -57,44 +70,53 @@ class LoginForm extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <div className="modal-background">
-            <a className="signup-form" class="btn">
+        <div className="session-background">
+          <div className="signup-text">délicieux</div>
+          <a className="signup-form" class="btn">
+            <span>
               <span>
                 <span>
-                  <span>
-                    <form onSubmit={this.handleSubmit}>
-                      <div>
-                        <br />
-                        <TextField
-                          type="text"
-                          hintText="Enter Your Email"
-                          floatingLabelText="Email"
-                          value={this.state.email}
-                          onChange={this.update("email")}
-                        />
-                        <br />
-                      
-                        <TextField
-                          type="password"
-                          hintText="Enter Your Password"
-                          floatingLabelText="Password"
-                          value={this.state.password}
-                          onChange={this.update("password")}
-                        />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
-                        <div>
-                          <h2>Don't have an account?</h2>
-                          <Link to="/signup">Sign Up</Link>
-                        </div>
+                  <form onSubmit={this.handleSubmit}>
+                    <div>
+                      <br />
+                      <TextField
+                        inputStyle={{ color: "white" }}
+                        type="text"
+                        hintText="Enter Your Email"
+                        floatingLabelText="Email"
+                        value={this.state.email}
+                        onChange={this.update("email")}
+                      />
+                      <br />
+
+                      <TextField
+                        inputStyle={{ color: "white" }}
+                        type="password"
+                        hintText="Enter Your Password"
+                        floatingLabelText="Password"
+                        value={this.state.password}
+                        onChange={this.update("password")}
+                      />
+                      <br />
+                      <input type="submit" value="Submit" className="submit" />
+                      {this.renderErrors()}
+                      <div className="go-back">
+                        <h2>Don't have an account?</h2>
+                        <Link to="/signup">Sign Up</Link>
                       </div>
-                    </form>   
-                  </span>
+
+                      <div className="buttons">
+                        <button className="submit" onClick={this.handleDemo()}>
+                          Demo User
+                        </button>
+                      </div>
+                    </div>
+                  </form>
                 </span>
               </span>
-            </a>
-          </div>
+            </span>
+          </a>
+        </div>
       </MuiThemeProvider>
     );
   }

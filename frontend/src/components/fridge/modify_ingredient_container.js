@@ -1,20 +1,19 @@
 import { connect } from 'react-redux';
 import { addFridgeIngredient, modifyIngredient } from '../../actions/fridge_actions';
-import { getIngredientById } from '../../util/ingredient_api_util';
-import { openModal } from '../../actions/modal_actions';
+import { closeModal } from '../../actions/modal_actions';
 
-import IngredientSearchItem from './ingredient_search_item';
+import ModifyIngredient from './modify_ingredient';
 
 const mapStateToProps = (state, ownProps) => ({
-  userId: state.session.user.id
+  userId: state.session.user.id,
+  fridge: state.entities.fridge
 });
 
 const mapDispatchToProps = dispatch => ({
   addFridgeIngredient: (userId, ingredient, amount) => dispatch(addFridgeIngredient(userId, ingredient, amount)),
   modifyIngredient: (userId, ingredient, amount) => dispatch(modifyIngredient(userId, ingredient, amount)),
-  getIngredientById: (id, amount, unit) => getIngredientById(id, amount, unit),
-  openModal: (other) => dispatch(openModal('addIngredient', other))
+  closeModal: () => dispatch(closeModal())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(IngredientSearchItem);
+export default connect(mapStateToProps, mapDispatchToProps)(ModifyIngredient);
 

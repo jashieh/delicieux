@@ -6,14 +6,24 @@ import jwt_decode from 'jwt-decode';
 import { setAuthToken } from './util/session_api_util';
 import { logout } from './actions/session_actions';
 
-import { getRandomRecipe, 
+import { 
+  getRandomRecipe, 
+  // getRandomRecipes, 
   extractRecipe,
   getSimilarRecipes,
   getRecipeById,
   getRecipesByIngredients,
   searchRecipeByName,
-  complexRecipeSearch
+  complexRecipeSearch,
+  getRecipe,
+  postRecipeId,
+  postRecipeComplex,
+  patchRecipeImage,
 } from './util/recipe_api_util';
+
+import {
+  getRandomRecipes,
+} from './actions/recipe_actions';
 
 import {
   getCart,
@@ -32,9 +42,11 @@ import {
   signup
 } from './util/session_api_util'
 
-// import { fetchFridge, addFridgeIngredient, modifyIngredient } from './util/fridge_api_util';
+import { modifyFridge } from './util/fridge_api_util';
 
 import { fetchFridge, addFridgeIngredient, modifyIngredient } from './actions/fridge_actions';
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -59,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   window.getRandomRecipe = getRandomRecipe;
+  window.getRandomRecipes = getRandomRecipes;
   window.getRecipesByIngredients = getRecipesByIngredients;
   window.extractRecipe = extractRecipe;
   window.getRecipeById = getRecipeById;
@@ -70,14 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addFridgeIngredient = addFridgeIngredient;
   window.getIngredientById = getIngredientById;
   window.modifyIngredient = modifyIngredient;
+  window.modifyFridge = modifyFridge;
   window.getState = store.getState;
-window.getConvertAmounts = getConvertAmounts;
+  window.getConvertAmounts = getConvertAmounts;
   window.dispatch = store.dispatch;
 
   window.getCart = getCart;
   window.addCartDate = addCartDate;
   window.addCartMeal = addCartMeal;
   window.removeCartMeal = removeCartMeal;
+
+  window.getRecipe = getRecipe;
+  window.postRecipeId = postRecipeId;
+  window.postRecipeComplex = postRecipeComplex;
+  window.patchRecipeImage = patchRecipeImage;
 
   window.signup = signup;
   
