@@ -67,26 +67,14 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
           RecipeAPI
             .getRecipe(apiData[i].id)
             .then(({data}) => {
-              console.log(`item: ${i}`);
-              console.log(apiData);
               apiData[i] = data;
-              console.log(apiData);
               requests--;
-              if (requests === 0) {
-                debugger;
-                console.log("dispatched");
-                dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS               
-              }
+              if (requests === 0) dispatch(receiveRecipes(apiData));               
             })
             .catch(() => {
               RecipeAPI.postRecipeId(apiData[i]);
-              console.log(`newItem: ${apiData[i]}`);
               requests--;
-              if (requests === 0) {
-                console.log("dispatched");
-                debugger;
-                dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
-              }              
+              if (requests === 0) dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS            
             });
         }
       },

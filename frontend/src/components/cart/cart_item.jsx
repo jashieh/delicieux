@@ -35,7 +35,7 @@ class CartItem extends React.Component {
     this.props.addCartMeal(cart.id, {
       date,
       time,
-      recipeId: e.dataTransfer.getData("recipeId")
+      recipeId: parseInt(e.dataTransfer.getData("recipeId"))
     });
   }
 
@@ -49,11 +49,7 @@ class CartItem extends React.Component {
     let recipe = this.recipe();
     if (recipe)
       return (
-        <div
-          className="cart-item"
-          onDragOver={this.onDragOver}
-          onDrop={this.onDrop}
-        >
+        <div className="cart-item" onDragOver={this.onDragOver} onDrop={this.onDrop}>
           <div className="cart-item-time">{time}</div>
           <div className="cart-item-info">
             <img className="cart-item-info-image" src={recipe.image} />
