@@ -52,7 +52,7 @@ const RECIPES = {
   // 9: {
   //   id: 9,
   //   image: "https://img-s-msn-com.akamaized.net/tenant/amp/entityid/AABrZtf.img?h=0&w=720&m=6&q=60&u=t&o=f&l=f&x=2580&y=1346",
-  //   title: "Ketchup Fruit"
+  //   title: "Ketchup Fruit" 
   // }
 }
 

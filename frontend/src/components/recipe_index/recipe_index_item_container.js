@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import RecipeIndexItem from './recipe_index_item';
-import { addCartMeal } from '../../actions/cart_actions'
+import { addCartMeal } from '../../actions/cart_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   cart: state.entities.cart,

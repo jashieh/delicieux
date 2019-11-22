@@ -13,10 +13,10 @@ const receiveRecipes = (recipes) => ({
 });
 
 // receives a single recipe
-const receiveRecipe = (recipe) => {debugger; return {
+const receiveRecipe = (recipe) => ({
   type: RECEIVE_RECIPE,
   recipe,
-}};
+});
 
 const receiveRecipeErrors = (errors) => ({
   type: RECEIVE_RECIPE_ERRORS,
@@ -32,7 +32,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      ({data}) =>  {debugger; dispatch(receiveRecipe(data))},
+      ({data}) =>  dispatch(receiveRecipe(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
