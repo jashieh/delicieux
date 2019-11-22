@@ -40,6 +40,9 @@ export default class MainFilter extends React.Component {
     this.toggleIngredients = this.toggleIngredients.bind(this);
     this.handleQuerySubmit = this.handleQuerySubmit.bind(this);
   }
+  componentDidMount() {
+    this.props.fetchFridge(this.props.userId)
+  }
   handleInput(e) {
     this.setState({ query: e.target.value });
   }
@@ -59,7 +62,32 @@ export default class MainFilter extends React.Component {
     }
   }
   handleQuerySubmit() {
-    // let 
+    let diet = [];
+    if (this.state.vegan) diet.push("vegan");
+    if (this.state.vegetarian) diet.push("vegetarian");
+    if (this.state.paleo) diet.push("paleo");
+    if (this.state.glutenFree) diet.push("gluten free");
+    if (this.state.ketogenic ) diet.push("ketogenic");
+    
+    let intolerances = [];
+    if (this.state.dairy) intolerances.push("dairy");
+    if (this.state.egg) intolerances.push("egg"); 
+    if (this.state.peanut) intolerances.push("peanut"); 
+    if (this.state.seafood) intolerances.push("seafood"); 
+    if (this.state.shellfish) intolerances.push("shellfish"); 
+    if (this.state.soy) intolerances.push("soy"); 
+    if (this.state.sulfite) intolerances.push("sulfite"); 
+    if (this.state.wheat) intolerances.push("wheat");
+    this.props.complexRecipeSearch({
+      search: this.state.query, 
+      cuisine: this.state.cuisine, 
+      diet,  
+      intolerances,
+      maxCalories: this.state.maxCalories, 
+      maxFat: this.state.maxFat, 
+      maxCarbs: this.state.maxCarbs, 
+      minProtein: this.state.minProtein
+    })
   }
   handleSlider(type) {
     const maxc = 800;
@@ -189,8 +217,13 @@ export default class MainFilter extends React.Component {
         </div>)
     }
   }     
-    
   render() {
+    if (this.props.fridge.ingredients) {
+      let ingredientParams = Object.values(this.props.fridge.ingredients).map((item) => {
+        return item.name
+      });
+      console.log(ingredientParams)
+    }
     return(
       <div >
         {this.state.ingredientToggle ? (
@@ -201,7 +234,7 @@ export default class MainFilter extends React.Component {
           </div>
         </div>
         ) : (
-      <form className="filter-cont" handleSubmit={this.handleQuerySubmit}>
+      <form className="filter-cont" onSubmit={this.handleQuerySubmit}>
         <div className="filter-top">
           <div className="filter-header">
             <h4 className="filter-h4">

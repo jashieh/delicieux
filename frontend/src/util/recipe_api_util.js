@@ -149,20 +149,21 @@ export const searchRecipeByName = (name, limit = 5) => {
 
 // TAKES IN AN OPTIONS HASH
 export const complexRecipeSearch = (
-  {search, cuisine, diet, sort, sortDirection, 
+  {search, cuisine, diet, intolerances, sort, sortDirection, 
   minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
   ignorePantry, limit}) => {
 
   if (!search) search = "";
-  if (!cuisine) cuisine = [];
-  if (!diet) diet = [];
+  if (!cuisine) cuisine = "";
+  if (!diet) diet = "";
+  if (!intolerances) intolerances = "";
   if (!sort) sort = "";
   if (!sortDirection) sortDirection = "asc";
 
   if (!minCalories) minCalories = 0;
-  if (!maxCalories) maxCalories = 9999;
-  if (!maxFat) maxFat = 9999;
-  if (!maxCarbs) maxCarbs = 9999;
+  if (!maxCalories || maxCalories === 0) maxCalories = 9999;
+  if (!maxFat || maxFat === 0) maxFat = 9999;
+  if (!maxCarbs || maxCarbs === 0) maxCarbs = 9999;
   if (!minProtein) minProtein = 0;
 
   if (!ignorePantry) ignorePantry = true;
@@ -186,6 +187,7 @@ export const complexRecipeSearch = (
       "query": search,
       "cuisine": `${cuisineStr}`,
       "diet": `${dietStr}`,
+      "intolerances": `${intolerances}`,
       "sort": `${sort}`,
       "sortDirection": `${sortDirection}`,
       "minCalories": `${minCalories}`,
