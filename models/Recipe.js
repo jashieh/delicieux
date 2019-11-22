@@ -35,6 +35,7 @@ const RecipeSchema = new Schema({
   servings: Number,
   
   // Selector Properties, optional depending on DB cost
+  cookingMinute: Number,
   spoonacularScore: Number,
   cuisines: [],
   diets: [],

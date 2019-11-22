@@ -9,6 +9,7 @@ import MainPage from './main/main';
 import LoginFormContainer from './userform/login_form_container';
 import UserForm from './userform/user_form';
 
+import MainFilterContainer from './recipes_yj/main_filter_container';
 import SummaryContainer from './index_page/summary';
 import FridgeContainer from './fridge/fridge_container';
 import RecipeIndexContainer from './recipe_index/recipe_index_container';
@@ -23,7 +24,7 @@ const App = () => (
     <Switch>
       <Route exact path="/recipeshow" component={RecipeShowContainer} />
       <Route exact path="/fridge" component={FridgeContainer} />
-
+      <Route exact path="/filter" component={MainFilterContainer}/>
       <Route exact path="/" component={ MainPage } />
       <AuthRoute exact path="/signup" component={ UserForm } />
       <AuthRoute exact path="/login" component={ LoginFormContainer } />

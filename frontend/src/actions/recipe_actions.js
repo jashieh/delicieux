@@ -138,13 +138,13 @@ export const getRecipesByName = (name, limit = 5) => dispatch => (
 
 // TAKES AN OPTIONS HASH
 export const complexRecipeSearch = ({
-  search, cuisine, diet, sort, sortDirection, 
+  search, cuisine, diet, intolerances, sort, sortDirection, 
   minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
   ignorePantry, limit
 }) => dispatch => {
   RecipeAPI
     .complexRecipeSearch({
-      search, cuisine, diet, sort, sortDirection, 
+      search, cuisine, diet, intolerances, sort, sortDirection, 
       minCalories, maxCalories, maxFat, maxCarbs, minProtein,
       ignorePantry, limit
     })
