@@ -26,7 +26,7 @@ class RecipeIndexItem extends React.Component {
 
   onDragStart(e) {
     let { recipe } = this.props;
-    e.dataTransfer.setData("recipeId", recipe.id);
+    e.dataTransfer.setData("recipeId", recipe.recipeId);
   }
 
 

@@ -61,15 +61,34 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
     .then(
       ({ data }) => {
         let apiData = data;
+        let requests = 0;
         for (let i = 0; i < apiData.length; i++) {
+          requests++;
           RecipeAPI
             .getRecipe(apiData[i].id)
-            .then(
-              ({ data }) => apiData[i] = data,
-              () => RecipeAPI.postRecipeId(apiData[i])
-            )
-        } 
-        dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
+            .then(({data}) => {
+              console.log(`item: ${i}`);
+              console.log(apiData);
+              apiData[i] = data;
+              console.log(apiData);
+              requests--;
+              if (requests === 0) {
+                debugger;
+                console.log("dispatched");
+                dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS               
+              }
+            })
+            .catch(() => {
+              RecipeAPI.postRecipeId(apiData[i]);
+              console.log(`newItem: ${apiData[i]}`);
+              requests--;
+              if (requests === 0) {
+                console.log("dispatched");
+                debugger;
+                dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
+              }              
+            });
+        }
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )

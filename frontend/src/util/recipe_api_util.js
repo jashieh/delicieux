@@ -255,9 +255,9 @@ export const extractRecipe = (url) => {
     // })
 };
 
-export const getRecipe = (recipeId) => {
-  return axios.get(`/api/recipes/${recipeId}`);
-};
+export const getRecipe = (recipeId) => (
+  axios.get(`/api/recipes/${recipeId}`)
+);
 
 export const postRecipeId = (recipeData) => {
   return axios.post('/api/recipes/indiv', recipeData);
