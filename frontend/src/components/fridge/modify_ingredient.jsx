@@ -33,7 +33,7 @@ class ModifyIngredient extends React.Component {
   render() {
     return(
       <div>
-
+        asdyaskjdasdasm,d
       </div>
     );
   }

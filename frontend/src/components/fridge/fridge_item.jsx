@@ -3,9 +3,9 @@ import React from 'react';
 class FridgeItem extends React.Component {
   render() {
     return(
-      <div onClick={() => this.props.openModal(this.props.ingredient)}>
-        { this.props.ingredient.name }
-      </div>
+      <li onClick={() => this.props.openModal(this.props.ingredient)}>
+        { this.props.ingredient.name }({this.props.ingredient.amount})
+      </li>
     );
   }
 }

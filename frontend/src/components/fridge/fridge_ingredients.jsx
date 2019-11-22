@@ -1,8 +1,16 @@
 import React from 'react';
+import FridgeItemContainer from './fridge_item_container';
 
 class FridgeIngredients extends React.Component {
   constructor(props) {
     super(props);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("e");
+    if(this.props !== nextProps) {
+      this.forceUpdate();
+    }
   }
 
   render() {
@@ -12,7 +20,8 @@ class FridgeIngredients extends React.Component {
       let fridge = this.props.ingredients;
       ingredients = Object.keys(fridge).map(ingredientId => {
         return(
-          <li>{fridge[ingredientId].name}({fridge[ingredientId].amount})</li>
+          // <li>{fridge[ingredientId].name}({fridge[ingredientId].amount})</li>
+          <FridgeItemContainer ingredient={fridge[ingredientId]} />
         );
       });
     }
