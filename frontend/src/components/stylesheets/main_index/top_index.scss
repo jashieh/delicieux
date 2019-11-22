@@ -18,21 +18,35 @@
         align-self: center;
         display: flex;
         flex-direction: row; 
+        color: white;
+        font-family: Sacramento;
+        font-size: 30px;
+        padding: 10px 20px;
         // align-content: space-between;
     }
+}
+
+.logout {
+    font-family: Open Sans;
+    background-color: rgb(14, 14, 14);
+    color: white;
+    border:  none;
+    font-size: 14px;
 }
 
 .right-left-contain {
     width: 100%;
     height: calc(100vh - 55px);
-    background-color: green;
+    // background-color: green;
+    background-color: rgb(9, 25, 63);
     display: flex;
 }
 
 .left {
     width: 70%;
     height: calc(100vh - 85px);
-    background-color: rgb(9, 25, 63);
+    // background-color: rgb(9, 25, 63);
+    background-color: #F9F9F9;
     margin: auto 0;
     display: flex;
     justify-content: center;
@@ -59,7 +73,7 @@
         .left-filter {
             width: 900px;
             height: 70px;
-            background-color: rgb(213, 237, 225);
+            background-color: rgb(238, 225, 250);
             margin: 10px auto;
             margin-top: 20px;
             border-radius: 3px;
@@ -79,7 +93,8 @@
                 width: 100%;
                 height: 100%;
                 background-color: #F9F9F9;
-                border-radius: 3px;
+                border-radius: 3px
+
 
             }
 
@@ -138,13 +153,26 @@
 
         .ingredient-contain {
             height: 100%;
-            width: 80%;
+            width: max-content;
             // change the height so that the list container grows as you increase the recipe quantity
-            background-color: rgb(29, 27, 27);
+            // background-color: rgb(29, 27, 27);
+            background-color: #F9F9F9;
         }
     }
 }
 
 
+
+.boxes-contain::-webkit-scrollbar {
+    width: 25px;
+}
+.boxes-contain::-webkit-scrollbar-track {
+    border: 7px solid #232943;
+}
+
+.boxes-contain::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 2px;
+}
 
 
