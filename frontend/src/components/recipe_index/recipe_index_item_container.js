@@ -4,7 +4,6 @@ import RecipeIndexItem from './recipe_index_item';
 import { addCartMeal } from '../../actions/cart_actions'
 
 const mapStateToProps = (state, ownProps) => ({
-  recipes: state.entities.recipes,
   cart: state.entities.cart,
   currentDate: state.session.currentDate,
   
