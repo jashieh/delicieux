@@ -32,7 +32,14 @@
       height: 30px;
       outline: none;
     }
-    .filter-text-button {
+    .filter-query-search {
+      width: 50px;
+      height: 30px;
+      background: grey;
+    }
+    
+  }
+  .filter-text-button {
       height: 38px;
       width: 50px;
       border: 1px solid black;
@@ -43,8 +50,6 @@
       cursor: pointer;
       background: gray;
     }
-  }
-
   .filter-param-cont {
     margin-top: 10px;
     display: flex;

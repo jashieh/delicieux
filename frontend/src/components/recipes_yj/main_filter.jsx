@@ -38,6 +38,7 @@ export default class MainFilter extends React.Component {
     this.handleCuisine = this.handleCuisine.bind(this);
     this.removeCuisine = this.removeCuisine.bind(this);
     this.toggleIngredients = this.toggleIngredients.bind(this);
+    this.handleQuerySubmit = this.handleQuerySubmit.bind(this);
   }
   handleInput(e) {
     this.setState({ query: e.target.value });
@@ -57,7 +58,9 @@ export default class MainFilter extends React.Component {
       this.setState({ cuisine: type.cuisine })
     }
   }
-
+  handleQuerySubmit() {
+    // let 
+  }
   handleSlider(type) {
     const maxc = 800;
     const maxn = 100;
@@ -68,7 +71,7 @@ export default class MainFilter extends React.Component {
       else {
         if (parseInt(e.target.value) > maxn) e.target.value = maxn.toString()
       }
-      this.setState({ [type]: e.target.value }, console.log(typeof this.state.maxCalories))
+      this.setState({ [type]: e.target.value })
     }
   }
   toggleIngredients() {
@@ -80,7 +83,7 @@ export default class MainFilter extends React.Component {
       this.setState({cuisine: ""});
     }
   }
-  // ["Gluten free", "Ketogenic", "Vegetarian", "Vegan", "Paleo"],
+ 
   renderTab() {
     if (this.state.tabs === 0) return null;
     else if (this.state.tabs === 1) {
@@ -170,17 +173,17 @@ export default class MainFilter extends React.Component {
           </div>
           <div class="filter-slider">
             Max Fat (0-100)
-            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} class="slider" onInput={this.handleSlider("maxFat")}/>
+            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} onInput={this.handleSlider("maxFat")}/>
             <input type="number" min="0" max="100" maxLength="3" value={this.state.maxFat} onChange={this.handleSlider("maxFat")} />
           </div>
           <div class="filter-slider">
             Max Carbs (0-100)
-            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} class="slider" onInput={this.handleSlider("maxCarbs")}/>
+            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} onInput={this.handleSlider("maxCarbs")}/>
             <input type="number" min="0" max="100" maxLength="3" value={this.state.maxCarbs} onChange={this.handleSlider("maxCarbs")} />
           </div>
           <div class="filter-slider">
             Min Protein (0-100)
-            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} class="slider" onInput={this.handleSlider("minProtein")}/>
+            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} onInput={this.handleSlider("minProtein")}/>
             <input type="number" min="0" max="100" pattern="\d" maxLength="3" value={this.state.minProtein} onChange={this.handleSlider("minProtein")} />
           </div>
         </div>)
@@ -189,16 +192,16 @@ export default class MainFilter extends React.Component {
     
   render() {
     return(
-      <div className="filter-cont">
+      <div >
         {this.state.ingredientToggle ? (
-        <div>
+        <div className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
           <div>
             <input type="text"/>
           </div>
         </div>
         ) : (
-      <div>
+      <form className="filter-cont" handleSubmit={this.handleQuerySubmit}>
         <div className="filter-top">
           <div className="filter-header">
             <h4 className="filter-h4">
@@ -211,9 +214,10 @@ export default class MainFilter extends React.Component {
                 onChange={this.handleInput}
                 value={this.state.query}
                 onKeyDown={this.handleKeyDown} />
-              <div className="filter-text-button" onClick={this.toggleIngredients}>
-                Ingr
-              </div>
+              <input type="submit" className="filter-query-search" value=""/>
+            </div>
+            <div className="filter-text-button" onClick={this.toggleIngredients}>
+              Ingr
             </div>
           </div>
           <div className="filter-param-cont">
@@ -232,7 +236,7 @@ export default class MainFilter extends React.Component {
           </div>
         </div>
         {this.renderTab()} 
-      </div>
+      </form>
         )}
       </div>
     );

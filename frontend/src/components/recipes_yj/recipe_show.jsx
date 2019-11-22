@@ -397,22 +397,12 @@ export default class RecipeShow extends React.Component {
                 <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
                   <div> {title} </div>
                   <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)`}}>
-                     { this.state[title] ? <div>{Math.floor(nutrient.amount)}</div> : <div>{percent}%</div>}
+                     { this.state[title] ? <div>{Math.floor(nutrient.amount)} {nutrient.unit}</div> : <div>{percent}%</div>}
                   </div>
                 </div>
               )
             }
           })}
-       
-        {/* <VictoryChart 
-          animate= {{duration: 2000}}
-          colorScale={["#3a9691", "skyblue", "lightblue"]}
-          data={[
-              { x: 1, y: 10, label: "56.8%" },
-              { x: 2, y: 15, label: "12.9%" },
-              { x: 3, y: 13, label: "30.3%" }
-            ]}
-        /> */}
       </div>
 
     );
