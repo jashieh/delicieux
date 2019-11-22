@@ -6,8 +6,14 @@ router.get("/test", (req, res) => res.json({ msg: "This is the fridge route" }))
 
 router.get('/:userId', (req, res) => {
   Fridge.findOne({ userId: req.params.userId })
-  .then(fridge => res.json(fridge))
-  .catch(err => res.status(400).json(err));
+    .then(
+        fridge => {
+          if (fridge)
+            res.json(fridge);
+          else
+            res.status(400).json({error: "NOT FOUND"});
+        }
+      );
 });
 
 router.patch('/:userId/addNewIngredient', (req, res) => {
