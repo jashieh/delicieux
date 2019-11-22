@@ -23,11 +23,11 @@ const mapDispatchToProps = (dispatch) => ({
   complexRecipeSearch: (
     search, cuisine, diet, sort, sortDirection,
     minCalories, maxCalories, maxFat, maxCarbs, minProtein,
-    ignorePantry, fillIngredients, limit
+    ignorePantry, limit
   ) => dispatch(complexRecipeSearch(
     search, cuisine, diet, sort, sortDirection,
     minCalories, maxCalories, maxFat, maxCarbs, minProtein,
-    ignorePantry, fillIngredients, limit
+    ignorePantry, limit
   )),
 
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
