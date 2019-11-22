@@ -37,7 +37,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
     )
 )
 
-const getRecipeById = (recipeId) => dispatch => (
+export const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipeById(recipeId)
     .then(
@@ -45,11 +45,17 @@ const getRecipeById = (recipeId) => dispatch => (
         let apiData = data;
         RecipeAPI
           .getRecipe(apiData.id)
-          .then(
-            ({ data }) => (apiData = data),
-            () => RecipeAPI.postRecipeId(apiData)
-          );
-        dispatch(receiveRecipes([data]));
+          .then(({ data }) => {
+            apiData = data;
+            dispatch(receiveRecipes([data]));
+          })
+          .catch(() => {
+            RecipeAPI.postRecipeId(apiData)
+              .then(({data}) => {
+                apiData = data;
+                dispatch(receiveRecipes([apiData]));
+              });
+          });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -61,15 +67,20 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
     .then(
       ({ data }) => {
         let apiData = data;
-        for (let i = 0; i < apiData.length; i++) {
+        for (let i = 0; i < apiData.length; i++)
           RecipeAPI
             .getRecipe(apiData[i].id)
-            .then(
-              ({ data }) => apiData[i] = data,
-              () => RecipeAPI.postRecipeId(apiData[i])
-            )
-        } 
-        dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
+            .then(({data}) => {
+              apiData[i] = data;
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));               
+            })
+            .catch(() => {
+              RecipeAPI.postRecipeId(apiData[i])
+                .then(({data}) => {
+                  apiData[i] = data;
+                  if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                });
+            });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -140,15 +151,20 @@ export const complexRecipeSearch = ({
     .then(
       ({data}) => {
         let apiData = data.results;
-        for (let i = 0; i < apiData.length; i++) {
+        for (let i = 0; i < apiData.length; i++)
           RecipeAPI
             .getRecipe(apiData[i].id)
-            .then(
-              ({ data }) => apiData[i] = data,
-              () => RecipeAPI.postRecipeComplex(apiData[i])
-            )
-        }
-        dispatch(receiveRecipes(apiData))
+            .then(({ data }) => {
+              apiData[i] = data;
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+            })
+            .catch(() => {
+              RecipeAPI.postRecipeComplex(apiData[i])
+                .then(({data}) => {
+                  apiData[i] = data;
+                  if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                });
+            });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
