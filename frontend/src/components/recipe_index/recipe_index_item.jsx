@@ -8,20 +8,7 @@ class RecipeIndexItem extends React.Component {
   constructor(props) {
     super(props);
 
-    this.addToCart = this.addToCart.bind(this);
     this.onDragStart = this.onDragStart.bind(this);
-  }
-
-  addToCart() {
-    let times = ["BREAKFAST", "LUNCH", "DINNER"];
-    let { cart, currentDate, recipe } = this.props;
-    let date = cart.dates[currentDate];
-    for (let i = 0; i < times.length; i++) {
-      if (!date[times[i]]) {
-        this.props.addCartMeal(cart.id, { date: currentDate, time: times[i], recipeId: recipe.id })
-        break;
-      }
-    }
   }
 
   onDragStart(e) {
@@ -39,7 +26,6 @@ class RecipeIndexItem extends React.Component {
         <div className="recipe-index-item-remove" onClick={rotateToBack}>X</div>
         <div className="recipe-index-item-name">{recipe.title}</div>
         <img className="recipe-index-item-image" src={recipe.image} draggable="false"/>
-        <div className="recipe-index-item-add" onClick={this.addToCart}>Add to Cart</div>
       </div>
     )
   }
