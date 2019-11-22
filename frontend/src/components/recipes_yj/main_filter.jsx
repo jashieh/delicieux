@@ -238,11 +238,3 @@ export default class MainFilter extends React.Component {
     );
   }
 }
-// cuisines: ["American", "Chinese", "French", "German", "Greek", "Indian", "Italian", "Japanese", "Korean", "Latin American", "Mediterranean", "Mexican", "Middle Eastern", "Thai", "Vietnamese"],
-// diets: ["Gluten free", "Ketogenic", "Vegetarian", "Vegan", "Paleo"],
-// nutrition: [
-//   "maxCalorie"
-//   "maxCarb"
-//   "maxFat"
-//   "minProtein"
-// ]
