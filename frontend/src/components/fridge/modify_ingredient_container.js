@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { addFridgeIngredient, modifyIngredient } from '../../actions/fridge_actions';
 import { closeModal } from '../../actions/modal_actions';
 
-import ModifyIngredient from './add_ingredient';
+import ModifyIngredient from './modify_ingredient';
 
 const mapStateToProps = (state, ownProps) => ({
   userId: state.session.user.id,

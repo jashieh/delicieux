@@ -6,13 +6,6 @@ class FridgeIngredients extends React.Component {
     super(props);
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log("e");
-    if(this.props !== nextProps) {
-      this.forceUpdate();
-    }
-  }
-
   render() {
     let ingredients;
 
