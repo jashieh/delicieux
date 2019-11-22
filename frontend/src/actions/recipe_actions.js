@@ -32,7 +32,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      ({data}) =>  dispatch(receiveRecipe(data)),
+      (data) =>  dispatch(receiveRecipe(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
