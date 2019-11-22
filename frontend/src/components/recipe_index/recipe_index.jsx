@@ -22,7 +22,8 @@ class RecipeIndex extends React.Component {
         ({ fridge }) => {
           let { ingredients } = fridge;
           ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
-          ingredients.length === 0 ? getRandomRecipes(6) : getRecipesByIngredients(ingredients);
+          console.log(ingredients);
+          ingredients.length === 0 ? getRandomRecipes(6) : getRecipesByIngredients(ingredients, 24)
         }
       );
   }
