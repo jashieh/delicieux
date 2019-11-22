@@ -37,7 +37,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
     )
 )
 
-const getRecipeById = (recipeId) => dispatch => (
+export const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipeById(recipeId)
     .then(
@@ -45,11 +45,14 @@ const getRecipeById = (recipeId) => dispatch => (
         let apiData = data;
         RecipeAPI
           .getRecipe(apiData.id)
-          .then(
-            ({ data }) => (apiData = data),
-            () => RecipeAPI.postRecipeId(apiData)
-          );
-        dispatch(receiveRecipes([data]));
+          .then(({ data }) => {
+            apiData = data;
+            dispatch(receiveRecipes([data]));
+          })
+          .catch(() => {
+            RecipeAPI.postRecipeId(apiData)
+            dispatch(receiveRecipes([apiData]));
+          });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -61,22 +64,18 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
     .then(
       ({ data }) => {
         let apiData = data;
-        let requests = 0;
         for (let i = 0; i < apiData.length; i++) {
-          requests++;
           RecipeAPI
             .getRecipe(apiData[i].id)
             .then(({data}) => {
               apiData[i] = data;
-              requests--;
-              if (requests === 0) dispatch(receiveRecipes(apiData));               
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));               
             })
             .catch(() => {
               RecipeAPI.postRecipeId(apiData[i]);
-              requests--;
-              if (requests === 0) dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS            
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
             });
-        }
+        };
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )

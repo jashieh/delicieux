@@ -35,7 +35,7 @@ class CartItem extends React.Component {
     this.props.addCartMeal(cart.id, {
       date,
       time,
-      recipeId: parseInt(e.dataTransfer.getData("recipeId"))
+      recipeId: parseInt(e.dataTransfer.getData("recipeId")),
     });
   }
 
