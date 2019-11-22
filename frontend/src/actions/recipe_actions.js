@@ -1,12 +1,21 @@
 import * as RecipeAPI from '../util/recipe_api_util';
+import { recipeArrayToObject } from "../selectors/selectors";
 
+export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
 export const RECEIVE_RECIPE_ERRORS = "RECEIVE_RECIPE_ERRORS";
 export const ROTATE_RECIPE = "ROTATE_RECIPE";
 
+// receives an aray of recipes
 const receiveRecipes = (recipes) => ({
   type: RECEIVE_RECIPES,
-  recipes,
+  recipes: recipeArrayToObject(recipes),
+});
+
+// receives a single recipe
+const receiveRecipe = (recipe) => ({
+  type: RECEIVE_RECIPE,
+  recipe,
 });
 
 const receiveRecipeErrors = (errors) => ({
@@ -19,11 +28,24 @@ export const rotateRecipe = recipe_idx => ({
   recipe_idx,
 });
 
+export const getRecipeDB = (recipeId) => dispatch => (
+  RecipeAPI
+    .getRecipe(recipeId)
+    .then(
+      ({data}) => dispatch(receiveRecipe(data)),
+      errors => dispatch(receiveRecipeErrors(errors))
+    )
+)
+
 const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipeById(recipeId)
     .then(
-      ({ data }) => dispatch(receiveRecipes([data])),
+      ({ data }) => {
+        RecipeAPI
+          .postRecipeId(data);
+        dispatch(receiveRecipes([data]));
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 );
@@ -32,7 +54,12 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
   RecipeAPI
     .getMultipleRecipes(recipeIds)
     .then(
-      ({ data }) => dispatch(receiveRecipes(data)),
+      ({ data }) => {
+        for (let i = 0; i < data.length; i++)
+          RecipeAPI
+            .postRecipeId(data[i]);
+        dispatch(receiveRecipes(data));
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 );
@@ -102,7 +129,12 @@ export const complexRecipeSearch = (
       ignorePantry, fillIngredients, limit
     )
     .then(
-      ({data}) => dispatch(receiveRecipes(data.results)),
+      ({data}) => {
+        for (let i = 0; i < data.results.length; i++)
+          RecipeAPI
+            .postRecipeComplex(data.results[i]);
+        dispatch(receiveRecipes(data.results))
+      },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 };

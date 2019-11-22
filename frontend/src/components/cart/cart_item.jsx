@@ -11,13 +11,15 @@ class CartItem extends React.Component {
   recipe() {
     let { date, time, cart, recipes } = this.props;
     let recipeId = null;
-    if(cart.dates[date]) { //Just a precaution
-      recipeId = cart.dates[date][time];
-    }
+    if(cart.dates[date]) recipeId = cart.dates[date][time]; //just a precaution
 
-    for (let i = 0; i < recipes.length; i++)
-      if (recipes[i].id === recipeId) return recipes[i];
-
+    if (recipes[recipeId])
+      return recipes[recipeId];
+    else if (recipeId)
+      this.props.getRecipeDB(recipeId)
+        .then(
+          () => recipes[recipeId]
+        )
     return recipeId ? { id: null, title: "ERROR: Recipe Not Found", img: "..." } : null
   }
 

@@ -57,7 +57,6 @@ class Cart extends React.Component {
       return <div className="cart"></div>;
 
     const { dates, currentDate } = this.props;
-    const date = dates[currentDate];
     const times = ["BREAKFAST", "LUNCH", "DINNER"];
     return (
       <div className="cart">
