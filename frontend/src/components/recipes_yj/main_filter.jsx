@@ -10,6 +10,7 @@ export default class MainFilter extends React.Component {
     this.state = {
       ingredientToggle: false,
       query: "",
+      ingredientQuery: "",
       tabs: 0,
       cuisines: ["American", "Chinese", "French", "German", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Thai"],
       allergies: ["Dairy", "Egg", "Gluten", "Peanut", "Seafood", "Shellfish", "Soy", "Sulfite", "Wheat"],
@@ -39,12 +40,15 @@ export default class MainFilter extends React.Component {
     this.removeCuisine = this.removeCuisine.bind(this);
     this.toggleIngredients = this.toggleIngredients.bind(this);
     this.handleQuerySubmit = this.handleQuerySubmit.bind(this);
+    this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
   }
   componentDidMount() {
     this.props.fetchFridge(this.props.userId)
   }
-  handleInput(e) {
-    this.setState({ query: e.target.value });
+  handleInput(type) {
+    return (e)=>{
+      this.setState({ [type]: e.target.value });
+    }
   }
   handleTab(num) {
     return (e) => {
@@ -68,7 +72,7 @@ export default class MainFilter extends React.Component {
     if (this.state.paleo) diet.push("paleo");
     if (this.state.glutenFree) diet.push("gluten free");
     if (this.state.ketogenic ) diet.push("ketogenic");
-    
+
     let intolerances = [];
     if (this.state.dairy) intolerances.push("dairy");
     if (this.state.egg) intolerances.push("egg"); 
@@ -88,6 +92,14 @@ export default class MainFilter extends React.Component {
       maxCarbs: this.state.maxCarbs, 
       minProtein: this.state.minProtein
     })
+  }
+  handleIngredientSubmit() {
+    if (this.props.fridge.ingredients) {
+      let ingredientParams = Object.values(this.props.fridge.ingredients).map((item) => {
+        return item.name
+      });
+    }
+    this.props.getRecipesByIngredients()
   }
   handleSlider(type) {
     const maxc = 800;
@@ -218,21 +230,21 @@ export default class MainFilter extends React.Component {
     }
   }     
   render() {
-    if (this.props.fridge.ingredients) {
-      let ingredientParams = Object.values(this.props.fridge.ingredients).map((item) => {
-        return item.name
-      });
-      console.log(ingredientParams)
-    }
+   
     return(
       <div >
         {this.state.ingredientToggle ? (
-        <div className="filter-cont">
+        <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
-          <div>
-            <input type="text"/>
+          <div className="filter-text-cont">
+            <input type="text"
+            className="filter-text-input"
+            placeholder="Ingredients"
+            onChange={this.handleInput("ingredientQuery")}
+            value={this.state.ingredientQuery}/>
+            <input type="submit" className="filter-query-search" value="" />
           </div>
-        </div>
+        </form>
         ) : (
       <form className="filter-cont" onSubmit={this.handleQuerySubmit}>
         <div className="filter-top">
@@ -244,9 +256,8 @@ export default class MainFilter extends React.Component {
               <input type="text"
                 className="filter-text-input"
                 placeholder="Find a recipe"
-                onChange={this.handleInput}
-                value={this.state.query}
-                onKeyDown={this.handleKeyDown} />
+                onChange={this.handleInput("query")}
+                value={this.state.query}/>
               <input type="submit" className="filter-query-search" value=""/>
             </div>
             <div className="filter-text-button" onClick={this.toggleIngredients}>
