@@ -13,10 +13,10 @@ const receiveRecipes = (recipes) => ({
 });
 
 // receives a single recipe
-const receiveRecipe = (recipe) => ({
+const receiveRecipe = (recipe) => {debugger; return {
   type: RECEIVE_RECIPE,
   recipe,
-});
+}};
 
 const receiveRecipeErrors = (errors) => ({
   type: RECEIVE_RECIPE_ERRORS,
@@ -32,7 +32,7 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      ({data}) => dispatch(receiveRecipe(data)),
+      ({data}) =>  {debugger; dispatch(receiveRecipe(data))},
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
@@ -43,7 +43,8 @@ const getRecipeById = (recipeId) => dispatch => (
     .then(
       ({ data }) => {
         RecipeAPI
-          .postRecipeId(data);
+          .postRecipeId(data)
+          .catch(() => console.log("already there"));
         dispatch(receiveRecipes([data]));
       },
       errors => dispatch(receiveRecipeErrors(errors))
@@ -57,7 +58,8 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
       ({ data }) => {
         for (let i = 0; i < data.length; i++)
           RecipeAPI
-            .postRecipeId(data[i]);
+            .postRecipeId(data[i])
+            .catch(() => console.log("already there"));
         dispatch(receiveRecipes(data));
       },
       errors => dispatch(receiveRecipeErrors(errors))
