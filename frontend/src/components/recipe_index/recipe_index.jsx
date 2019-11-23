@@ -47,7 +47,7 @@ class RecipeIndex extends React.Component {
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
     return (
       <div className="recipe-index">
-        {indexRecipes.slice(0, 8).map((recipe, idx) => {
+        {indexRecipes.map((recipe, idx) => {
           return <RecipeIndexItemContainer key={idx}
                     recipe={recipe} 
                     rotateToBack={() => this.props.rotateRecipe(idx)}/>

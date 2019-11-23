@@ -17,6 +17,10 @@ class Clock extends React.Component {
         }, 1000)
     }
 
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
+
     render() {
 
         const time = this.state.time.split("").slice(0,8)
