@@ -100,19 +100,18 @@ export const getRandomRecipe = () => dispatch => (
 
 // Nested structure handles the issue of returned recipes not having
 // defailed nutrition information.
-export const getRandomRecipes = (number) => dispatch => (
-  RecipeAPI
-    .getRandomRecipes(number)
-    .then(
-      ({ data }) => {
-        let recipeIds = data.recipes.map(recipe => recipe.id);
-        dispatch(getMultipleRecipes(recipeIds));
-      },
-      errors => dispatch(receiveRecipeErrors(errors))
-    )
-);
+export const getRandomRecipes = number => dispatch =>
+         RecipeAPI.getRandomRecipes(number)
+           .then(payload => console.log(payload))
+           .then(
+             ({ data }) => {
+               let recipeIds = data.recipes.map(recipe => recipe.id);
+               dispatch(getMultipleRecipes(recipeIds));
+             },
+             errors => dispatch(receiveRecipeErrors(errors))
+           );
 
-export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ignorePantry = true) => dispatch => (
+export const getRecipesByIngredients = (ingredients, limit, ranking, ignorePantry) => dispatch => (
   RecipeAPI
     .getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)
     .then(

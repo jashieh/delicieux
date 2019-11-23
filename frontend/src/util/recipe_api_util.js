@@ -140,7 +140,7 @@ export const searchRecipeByName = (name, limit = 5) => {
 // cuisine: array => [italian, korean, american, chinese, etc.] as lowercase
 // diet: array => ["vegetarian", "ketogenic", "gluten free"]
 // includeIngredients: array => [tomato, cheese, noodles]
-// sort: string => calories, cholesterol, carbohydrates
+// sort: string => calories, cholesterol, carbohydscorerates
 // sortDirection: asc/desc 
 // maxCalories/minCalories: int 
 // maxFat/maxCarbs: int
@@ -155,10 +155,10 @@ export const complexRecipeSearch = (
 
   if (!search) search = "";
   if (!cuisine) cuisine = "";
-  if (!diet) diet = "";
+  if (!diet) diet = [];
   if (!intolerances) intolerances = "";
-  if (!sort) sort = "";
-  if (!sortDirection) sortDirection = "asc";
+  if (!sort) sort = "meta-score";
+  if (!sortDirection) sortDirection = "desc";
 
   if (!minCalories) minCalories = 0;
   if (!maxCalories || maxCalories === 0) maxCalories = 9999;

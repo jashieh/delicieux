@@ -11,6 +11,8 @@ export default class MainFilter extends React.Component {
       ingredientToggle: false,
       query: "",
       ingredientQuery: "",
+      ingredientList: [],
+      includeFridge: true,
       tabs: 0,
       cuisines: ["American", "Chinese", "French", "German", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Thai"],
       allergies: ["Dairy", "Egg", "Gluten", "Peanut", "Seafood", "Shellfish", "Soy", "Sulfite", "Wheat"],
@@ -34,6 +36,7 @@ export default class MainFilter extends React.Component {
       maxFat: 0,
       minProtein: 0,
     }
+    this.addIngredient = this.addIngredient.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleTab = this.handleTab.bind(this);
     this.handleCuisine = this.handleCuisine.bind(this);
@@ -44,6 +47,13 @@ export default class MainFilter extends React.Component {
   }
   componentDidMount() {
     this.props.fetchFridge(this.props.userId)
+  }
+  addIngredient() {
+    let x = this.state.ingredientList;
+    x.push(this.state.ingredientQuery.trim());
+    this.setState({ingredientList: x}, ()=> {
+      this.setState({ingredientQuery: ""})
+    })
   }
   handleInput(type) {
     return (e)=>{
@@ -94,13 +104,16 @@ export default class MainFilter extends React.Component {
     })
   }
   handleIngredientSubmit() {
+    let fridgeContent = [];
     if (this.props.fridge.ingredients) {
-      let ingredientParams = Object.values(this.props.fridge.ingredients).map((item) => {
+      fridgeContent = Object.values(this.props.fridge.ingredients).map((item) => {
         return item.name
       });
     }
-    this.props.getRecipesByIngredients()
+    const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
+    this.props.getRecipesByIngredients(ingredientList)
   }
+
   handleSlider(type) {
     const maxc = 800;
     const maxn = 100;
@@ -123,7 +136,23 @@ export default class MainFilter extends React.Component {
       this.setState({cuisine: ""});
     }
   }
- 
+  removeIngredient(idx) {
+    return () => {
+      let x = this.state.ingredientList;
+      x.splice(idx.idx, 1);
+      this.setState({ingredientList: x});
+    }
+  }
+  renderIngredients() {
+    if (!this.state.ingredientList) return null;
+    return this.state.ingredientList.map((ingredient, idx) => {
+      return (
+      <div key={idx} className="filter-ing-item">
+        <span className="filter-x" onClick={this.removeIngredient({idx})}>&times;</span>
+        {ingredient} {idx}
+      </div>)
+    })
+  }
   renderTab() {
     if (this.state.tabs === 0) return null;
     else if (this.state.tabs === 1) {
@@ -233,16 +262,29 @@ export default class MainFilter extends React.Component {
    
     return(
       <div >
-        {this.state.ingredientToggle ? (
-        <form className="filter-cont">
+      {this.state.ingredientToggle ? (
+        <form className="filter-cont" onSubmit={this.handleIngredientSubmit}>
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
-          <div className="filter-text-cont">
-            <input type="text"
-            className="filter-text-input"
-            placeholder="Ingredients"
-            onChange={this.handleInput("ingredientQuery")}
-            value={this.state.ingredientQuery}/>
-            <input type="submit" className="filter-query-search" value="" />
+          <div className="filter-header">
+            <h4 className="filter-h4">
+              délicieux
+            </h4>
+            <div className="filter-text-cont">
+              <input type="text"
+              className="filter-text-input"
+              placeholder="Ingredients"
+              onChange={this.handleInput("ingredientQuery")}
+              value={this.state.ingredientQuery}/>
+              <button type="submit" className="filter-query-search" disabled={!this.state.ingredientQuery} onClick={this.addIngredient}>+</button>
+              <input type="submit" value="Search" className="filter-text-button"/>
+              <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
+                  <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
+                  Include Fridge
+              </label>  
+            </div>
+          </div>
+          <div className="filter-param-cont">
+            {this.renderIngredients()}
           </div>
         </form>
         ) : (

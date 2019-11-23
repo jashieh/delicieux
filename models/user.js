@@ -22,6 +22,12 @@ const UserSchema = new Schema({
     type: Number,
     required: false
   },
+  weeklyTarget: {
+    type: Number,
+    enum: [0,-1.0,-0.75,-0.5,-0.25,0.25,0.5,0.75,1.0],
+    default: 0,
+    required: false
+  },
   age: {
     type: Number,
     required: false
@@ -34,7 +40,7 @@ const UserSchema = new Schema({
   },
   activityLevel: {
     type: Number,
-    enum: [1,2,3,4,5],
+    enum: [1,2,3,4],
     default: 1,
     required: false
   },
