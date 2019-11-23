@@ -69,6 +69,9 @@ const RecipesReducer = (state = RECIPES, action) => {
     case RECEIVE_RECIPES:
       nextState = Object.assign(nextState, action.recipes);
       nextState.indexOrder = Object.keys(action.recipes);
+      nextState.indexOrder.sort((id1, id2) => 
+        nextState[id1].spoonacularScore > nextState[id2].spoonacularScore ? -1 : 1
+      );
       return nextState;
     case ROTATE_RECIPE:
       let temp = nextState.indexOrder.splice(action.recipe_idx, 1);

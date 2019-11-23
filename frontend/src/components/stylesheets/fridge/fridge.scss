@@ -196,13 +196,16 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        border-radius: 4px;
 
         .ingredients-contain {
             width: 90%;
             height: 90%;
             // background-color: #18201F;
-            background-color: rgb(42, 63, 61);
-            
+            // background-color: rgb(42, 63, 61);
+            // background-color: rgba(15, 48, 130, 0.372);
+            background-color: rgba(15, 48, 130, 0.55);
+            box-shadow: inset 3px 4px 5px #000;
             ul {
                 height: 90%;
                 width: 100%;

@@ -71,6 +71,7 @@ class UserProfile extends React.Component {
       activityLevel: this.state.activityLevel,
       weeklyTarget: this.state.weeklyTarget
     });
+
   }
   
   render() {
@@ -253,6 +254,7 @@ class UserProfile extends React.Component {
           Height
           <div>
             { height } cm
+
           </div>
         </div>
         <div className="profile-item-container">
@@ -261,7 +263,7 @@ class UserProfile extends React.Component {
             { activityLevel }
           </div>
         </div>     
-        <div className="profile-item-container">
+        <div className="profile-item-container" onClick={() => this.handleClick("weight")}>
           Current Weight
           <div>
             { weight } kg
@@ -271,6 +273,7 @@ class UserProfile extends React.Component {
           Weekly Target
           <div>
             { weeklyTarget }
+
           </div>
         </div> 
       </div>

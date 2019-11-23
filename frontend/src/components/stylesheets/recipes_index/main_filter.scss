@@ -1,0 +1,189 @@
+.filter-cont {
+  width: 800px;
+  min-height: 100px;
+  background: limegreen;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  .filter-header {
+    color: red;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+  }
+  .filter-text-cont {
+    margin-left: 15px;
+    border: 1px solid lightgray;
+    background: white;
+    border-radius: 2px;
+    width: 300px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 4px;
+    
+    .filter-text-input {
+      width: 250px;
+      height: 30px;
+      outline: none;
+    }
+    .filter-query-search {
+      width: 50px;
+      height: 30px;
+      background: grey;
+    }
+    
+  }
+  .filter-text-button {
+      height: 38px;
+      width: 50px;
+      border: 1px solid black;
+      border-radius: 2px;
+      background: darkgray;
+    }
+    .filter-text-button:hover {
+      cursor: pointer;
+      background: gray;
+    }
+  .filter-param-cont {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+
+    .filter-ing-item {
+      height: 30px;
+      width: 70px;
+      background: pink;
+      margin: 5px;
+      position: relative;
+    }
+    .filter-param-dropdown {
+      position: relative;
+
+      .filter-dd-cont {
+        position: absolute;
+        left: 0;
+        top: 18px;
+        width: 200px;
+        height: 50px;
+        z-index: 2;
+        background-color: purple;
+        border: 1px solid black;
+
+        .filter-dd-item {
+          background-color: white;
+          border: 1px solid black;
+          display: flex;
+          align-items: center;
+        }
+        .filter-dd-item:hover {
+          background-color: lightblue;
+        }
+      }
+    }
+  }
+  .filter-bot {
+    height: 50px;
+    width: 400px;
+    background: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: flex;
+  }
+  .filter-bot-cuisine {
+    height: 150px;
+    width: 600px;
+    background: pink;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+}
+.filter-dd-item1 {
+  display: flex;
+  background-color: red;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 10px;
+  height: 20px;
+  width: 120px;
+  border: 1px solid black;
+  border-radius: 10px;
+  user-select: none;
+  padding: 0 5px;
+}
+.filter-dd-item1:hover {
+  background: blue;
+  cursor: pointer;
+}
+.filter-dd-item2 {
+  background-color: red;
+  text-align: center;
+  margin: 0 10px;
+  height: 20px;
+  width: 90px;
+  border: 1px solid black;
+  border-radius: 10px;
+  user-select: none;
+}
+.filter-dd-item2:hover {
+  background: blue;
+  cursor: pointer;
+}
+.filter-x {
+  position: absolute;
+  top: 0;
+  right: 10px;
+}
+.filter-x:hover {
+  cursor: pointer;
+  color: white;
+}
+.filter-bot-diet {
+  height: 150px;
+  width: 600px;
+  background: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.filter-bot-allergies {
+  height: 150px;
+  width: 600px;
+  background: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.filter-slider {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.filter-nutr-slider{
+  -webkit-appearance: none;  
+  appearance: none;
+  width: 80%; 
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7; 
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+.filter-nutr-slider {
+  opacity: 1; 
+}

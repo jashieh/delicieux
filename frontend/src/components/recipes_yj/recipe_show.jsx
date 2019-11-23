@@ -14,9 +14,9 @@ export default class RecipeShow extends React.Component {
         "Fiber": 30,
       },
       pieData: [
-        { x: "Carbs", y: 100, label: "56.8%" },
-        { x: "Protein", y: 0, label: "12.9%" },
-        { x: "Fat", y: 0, label: "30.3%" }
+        { x: "", y: 100, label: "" },
+        { x: "", y: 0, label: "" },
+        { x: "", y: 0, label: "" }
       ],
       label: false,
       pieChart: true,
@@ -330,9 +330,9 @@ export default class RecipeShow extends React.Component {
     setTimeout(() => {
       this.setState({
         pieData: [
-          { x: "Carbs", y: 56.8, label: "56.8%" },
-          { x: "Protein", y: 12.9, label: "12.9%" },
-          { x: "Fat", y: 30.3, label: "30.3%" }
+          { x: "Carbs", y: 56.8, label: "Carbs" },
+          { x: "Protein", y: 12.9, label: "Protein" },
+          { x: "Fat", y: 30.3, label: "Fat"}
         ],
         labeL: true
       })}, 1000)
@@ -360,35 +360,43 @@ export default class RecipeShow extends React.Component {
         }}
         colorScale={["#3a9691", "skyblue", "lightblue"]}
         data={this.state.pieData}
-          events={[{
+        events={[{
             target: "data",
             eventHandlers: {
               onMouseOver: () => {
                 return [
                   {
                     target: "labels",
-                    mutation: ({ text }) => {
-                return text === "data" ? null : { text: "clicked" };
+                    mutation: ({ text, datum }) => {
+                return text === "data" ? null : { text: datum.label };
                   }}]
+                }, 
+                onMouseOut: () => {
+                  return [
+                    {
+                      target: "labels",
+                      mutation: ({ text }) => {
+                        return text === "data" ? { text: "x" } : null;
+                      }
+                    }]
                 }
-          }}]}
-        labelComponent={<VictoryTooltip />}
+              }
+        }]}
+        // labelComponent={<VictoryTooltip />}
         labelComponent={<VictoryLabel 
-          active={false}/>}
+          />}
         // innerRadius={200}
-        labelRadius={80}
+        labelRadius={70}
         // padAngle={1}
         style={{ 
           labels:{ 
           fill: "black", fontSize: 20, fontWeight: "bold" 
         }, data: {
           fillOpacity: 0.9, stroke: "black", strokeWidth: 3
-      }, }}
+        }, }} 
       />
     </div>) : (
       <div className="bar-chart-cont" onClick={this.toggleChart}>
-        {/* COOL CHART HERE */}
-       
           {this.nutrition.map((nutrient, idx) => {
             if( ["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
               let title = nutrient.title
@@ -397,22 +405,12 @@ export default class RecipeShow extends React.Component {
                 <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
                   <div> {title} </div>
                   <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)`}}>
-                     { this.state[title] ? <div>{Math.floor(nutrient.amount)}</div> : <div>{percent}%</div>}
+                     { this.state[title] ? <div>{Math.floor(nutrient.amount)} {nutrient.unit}</div> : <div>{percent}%</div>}
                   </div>
                 </div>
               )
             }
           })}
-       
-        {/* <VictoryChart 
-          animate= {{duration: 2000}}
-          colorScale={["#3a9691", "skyblue", "lightblue"]}
-          data={[
-              { x: 1, y: 10, label: "56.8%" },
-              { x: 2, y: 15, label: "12.9%" },
-              { x: 3, y: 13, label: "30.3%" }
-            ]}
-        /> */}
       </div>
 
     );
@@ -447,7 +445,7 @@ export default class RecipeShow extends React.Component {
                   <div className="rs-li-item-pic-cont">
                     <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/>
                   </div>
-                    {ingredient.name}
+                    {ingredient.amount} {ingredient.unit} {ingredient.name}
                 </li>
               ))}
 

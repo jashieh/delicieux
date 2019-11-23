@@ -31,12 +31,22 @@ class CartItem extends React.Component {
   }
 
   onDrop(e) {
-    let { cart, date, time } = this.props;
-    this.props.addCartMeal(cart.id, {
-      date,
-      time,
-      recipeId: e.dataTransfer.getData("recipeId")
-    });
+    if (e.dataTransfer.getData("recipeId")) {
+      let { cart, date, time, userId, addCartMeal, getCart } = this.props;
+      addCartMeal(cart.id, {
+        date,
+        time,
+        recipeId: parseInt(e.dataTransfer.getData("recipeId")),
+      })
+    }
+    // .then(
+    //   () => getCart(userId)  
+    // )
+
+    /* 
+      precaution so re-render only happens AFTER the item is added to backend
+       comment this in and comment out "ADD_RECIPE" in the cart_reducer to active
+    */
   }
 
   onDragOver(e) {
@@ -49,11 +59,7 @@ class CartItem extends React.Component {
     let recipe = this.recipe();
     if (recipe)
       return (
-        <div
-          className="cart-item"
-          onDragOver={this.onDragOver}
-          onDrop={this.onDrop}
-        >
+        <div className="cart-item" onDragOver={this.onDragOver} onDrop={this.onDrop}>
           <div className="cart-item-time">{time}</div>
           <div className="cart-item-info">
             <img className="cart-item-info-image" src={recipe.image} />

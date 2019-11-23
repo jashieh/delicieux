@@ -32,12 +32,12 @@ export const getRecipeDB = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipe(recipeId)
     .then(
-      (data) =>  dispatch(receiveRecipe(data)),
+      ({data}) =>  dispatch(receiveRecipe(data)),
       errors => dispatch(receiveRecipeErrors(errors))
     )
 )
 
-const getRecipeById = (recipeId) => dispatch => (
+export const getRecipeById = (recipeId) => dispatch => (
   RecipeAPI
     .getRecipeById(recipeId)
     .then(
@@ -45,11 +45,17 @@ const getRecipeById = (recipeId) => dispatch => (
         let apiData = data;
         RecipeAPI
           .getRecipe(apiData.id)
-          .then(
-            ({ data }) => (apiData = data),
-            () => RecipeAPI.postRecipeId(apiData)
-          );
-        dispatch(receiveRecipes([data]));
+          .then(({ data }) => {
+            apiData = data;
+            dispatch(receiveRecipes([data]));
+          })
+          .catch(() => {
+            RecipeAPI.postRecipeId(apiData)
+              .then(({data}) => {
+                apiData = data;
+                dispatch(receiveRecipes([apiData]));
+              });
+          });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -61,15 +67,20 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
     .then(
       ({ data }) => {
         let apiData = data;
-        for (let i = 0; i < apiData.length; i++) {
+        for (let i = 0; i < apiData.length; i++)
           RecipeAPI
             .getRecipe(apiData[i].id)
-            .then(
-              ({ data }) => apiData[i] = data,
-              () => RecipeAPI.postRecipeId(apiData[i])
-            )
-        }
-        dispatch(receiveRecipes(apiData)); //TODO: FIND OUT WHY THIS IS BEING SYNCRONOUS
+            .then(({data}) => {
+              apiData[i] = data;
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));               
+            })
+            .catch(() => {
+              RecipeAPI.postRecipeId(apiData[i])
+                .then(({data}) => {
+                  apiData[i] = data;
+                  if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                });
+            });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
@@ -89,19 +100,18 @@ export const getRandomRecipe = () => dispatch => (
 
 // Nested structure handles the issue of returned recipes not having
 // defailed nutrition information.
-export const getRandomRecipes = (number) => dispatch => (
-  RecipeAPI
-    .getRandomRecipes(number)
-    .then(
-      ({ data }) => {
-        let recipeIds = data.recipes.map(recipe => recipe.id);
-        dispatch(getMultipleRecipes(recipeIds));
-      },
-      errors => dispatch(receiveRecipeErrors(errors))
-    )
-);
+export const getRandomRecipes = number => dispatch =>
+         RecipeAPI.getRandomRecipes(number)
+           .then(payload => console.log(payload))
+           .then(
+             ({ data }) => {
+               let recipeIds = data.recipes.map(recipe => recipe.id);
+               dispatch(getMultipleRecipes(recipeIds));
+             },
+             errors => dispatch(receiveRecipeErrors(errors))
+           );
 
-export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 2, ignorePantry = true) => dispatch => (
+export const getRecipesByIngredients = (ingredients, limit, ranking, ignorePantry) => dispatch => (
   RecipeAPI
     .getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)
     .then(
@@ -127,28 +137,33 @@ export const getRecipesByName = (name, limit = 5) => dispatch => (
 
 // TAKES AN OPTIONS HASH
 export const complexRecipeSearch = ({
-  search, cuisine, diet, sort, sortDirection, 
+  search, cuisine, diet, intolerances, sort, sortDirection, 
   minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
   ignorePantry, limit
 }) => dispatch => {
   RecipeAPI
     .complexRecipeSearch({
-      search, cuisine, diet, sort, sortDirection, 
+      search, cuisine, diet, intolerances, sort, sortDirection, 
       minCalories, maxCalories, maxFat, maxCarbs, minProtein,
       ignorePantry, limit
     })
     .then(
       ({data}) => {
         let apiData = data.results;
-        for (let i = 0; i < apiData.length; i++) {
+        for (let i = 0; i < apiData.length; i++)
           RecipeAPI
             .getRecipe(apiData[i].id)
-            .then(
-              ({ data }) => apiData[i] = data,
-              () => RecipeAPI.postRecipeComplex(apiData[i])
-            )
-        }
-        dispatch(receiveRecipes(apiData))
+            .then(({ data }) => {
+              apiData[i] = data;
+              if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+            })
+            .catch(() => {
+              RecipeAPI.postRecipeComplex(apiData[i])
+                .then(({data}) => {
+                  apiData[i] = data;
+                  if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
+                });
+            });
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )

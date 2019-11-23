@@ -140,7 +140,7 @@ export const searchRecipeByName = (name, limit = 5) => {
 // cuisine: array => [italian, korean, american, chinese, etc.] as lowercase
 // diet: array => ["vegetarian", "ketogenic", "gluten free"]
 // includeIngredients: array => [tomato, cheese, noodles]
-// sort: string => calories, cholesterol, carbohydrates
+// sort: string => calories, cholesterol, carbohydscorerates
 // sortDirection: asc/desc 
 // maxCalories/minCalories: int 
 // maxFat/maxCarbs: int
@@ -149,26 +149,27 @@ export const searchRecipeByName = (name, limit = 5) => {
 
 // TAKES IN AN OPTIONS HASH
 export const complexRecipeSearch = (
-  {search, cuisine, diet, sort, sortDirection, 
+  {search, cuisine, diet, intolerances, sort, sortDirection, 
   minCalories, maxCalories, maxFat, maxCarbs, minProtein, 
   ignorePantry, limit}) => {
 
   if (!search) search = "";
-  if (!cuisine) cuisine = [];
+  if (!cuisine) cuisine = "";
   if (!diet) diet = [];
-  if (!sort) sort = "";
-  if (!sortDirection) sortDirection = "asc";
+  if (!intolerances) intolerances = "";
+  if (!sort) sort = "meta-score";
+  if (!sortDirection) sortDirection = "desc";
 
   if (!minCalories) minCalories = 0;
-  if (!maxCalories) maxCalories = 9999;
-  if (!maxFat) maxFat = 9999;
-  if (!maxCarbs) maxCarbs = 9999;
+  if (!maxCalories || maxCalories === 0) maxCalories = 9999;
+  if (!maxFat || maxFat === 0) maxFat = 9999;
+  if (!maxCarbs || maxCarbs === 0) maxCarbs = 9999;
   if (!minProtein) minProtein = 0;
 
   if (!ignorePantry) ignorePantry = true;
   if (!limit) limit = 10;
 
-  const cuisineStr = cuisine.join(",");
+  // const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");
 
   // console.log(queryStr);
@@ -184,8 +185,9 @@ export const complexRecipeSearch = (
     }, 
     "params": {
       "query": search,
-      "cuisine": `${cuisineStr}`,
+      "cuisine": `${cuisine}`,
       "diet": `${dietStr}`,
+      "intolerances": `${intolerances}`,
       "sort": `${sort}`,
       "sortDirection": `${sortDirection}`,
       "minCalories": `${minCalories}`,
@@ -199,12 +201,6 @@ export const complexRecipeSearch = (
       "fillIngredients": "true"
     }
   })
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
 };
 
 
@@ -255,9 +251,9 @@ export const extractRecipe = (url) => {
     // })
 };
 
-export const getRecipe = (recipeId) => {
-  return axios.get(`/api/recipes/${recipeId}`);
-};
+export const getRecipe = (recipeId) => (
+  axios.get(`/api/recipes/${recipeId}`)
+);
 
 export const postRecipeId = (recipeData) => {
   return axios.post('/api/recipes/indiv', recipeData);
