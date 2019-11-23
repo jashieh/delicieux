@@ -5,7 +5,7 @@ import NavBarContainer from '../nav/navbar_container';
 import IngredientIndex from './ingredient/ingredient_index';
 import IngredientsList from '../cart/cart_container';
 import RecipeIndexContainer from '../recipe_index/recipe_index_container'
-
+import MainFilterContainer from '../recipes_yj/main_filter_container';
 class MainIndex extends React.Component {
 
     constructor(props) {
@@ -18,7 +18,7 @@ class MainIndex extends React.Component {
             <div className="top">
               <NavBarContainer />
             </div>
-
+           <MainFilterContainer />
             <div className="right-left-contain">
               <div className="left">
                 <div className="left-contain">

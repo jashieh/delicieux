@@ -14,9 +14,9 @@ export default class RecipeShow extends React.Component {
         "Fiber": 30,
       },
       pieData: [
-        { x: "Carbs", y: 100, label: "56.8%" },
-        { x: "Protein", y: 0, label: "12.9%" },
-        { x: "Fat", y: 0, label: "30.3%" }
+        { x: "", y: 100, label: "" },
+        { x: "", y: 0, label: "" },
+        { x: "", y: 0, label: "" }
       ],
       label: false,
       pieChart: true,
@@ -330,9 +330,9 @@ export default class RecipeShow extends React.Component {
     setTimeout(() => {
       this.setState({
         pieData: [
-          { x: "Carbs", y: 56.8, label: "56.8%" },
-          { x: "Protein", y: 12.9, label: "12.9%" },
-          { x: "Fat", y: 30.3, label: "30.3%" }
+          { x: "Carbs", y: 56.8, label: "Carbs" },
+          { x: "Protein", y: 12.9, label: "Protein" },
+          { x: "Fat", y: 30.3, label: "Fat"}
         ],
         labeL: true
       })}, 1000)
@@ -360,35 +360,43 @@ export default class RecipeShow extends React.Component {
         }}
         colorScale={["#3a9691", "skyblue", "lightblue"]}
         data={this.state.pieData}
-          events={[{
+        events={[{
             target: "data",
             eventHandlers: {
               onMouseOver: () => {
                 return [
                   {
                     target: "labels",
-                    mutation: ({ text }) => {
-                return text === "data" ? null : { text: "clicked" };
+                    mutation: ({ text, datum }) => {
+                return text === "data" ? null : { text: datum.label };
                   }}]
+                }, 
+                onMouseOut: () => {
+                  return [
+                    {
+                      target: "labels",
+                      mutation: ({ text }) => {
+                        return text === "data" ? { text: "x" } : null;
+                      }
+                    }]
                 }
-          }}]}
-        labelComponent={<VictoryTooltip />}
+              }
+        }]}
+        // labelComponent={<VictoryTooltip />}
         labelComponent={<VictoryLabel 
-          active={false}/>}
+          />}
         // innerRadius={200}
-        labelRadius={80}
+        labelRadius={70}
         // padAngle={1}
         style={{ 
           labels:{ 
           fill: "black", fontSize: 20, fontWeight: "bold" 
         }, data: {
           fillOpacity: 0.9, stroke: "black", strokeWidth: 3
-      }, }}
+        }, }} 
       />
     </div>) : (
       <div className="bar-chart-cont" onClick={this.toggleChart}>
-        {/* COOL CHART HERE */}
-       
           {this.nutrition.map((nutrient, idx) => {
             if( ["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
               let title = nutrient.title
