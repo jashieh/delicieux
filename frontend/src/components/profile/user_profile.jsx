@@ -263,7 +263,7 @@ class UserProfile extends React.Component {
             { activityLevel }
           </div>
         </div>     
-        <div className="profile-item-container" onClick={() => this.handleClick("weight")}>
+        <div className="profile-item-container">
           Current Weight
           <div>
             { weight } kg
