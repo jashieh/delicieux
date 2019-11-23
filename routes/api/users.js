@@ -159,7 +159,6 @@ router.get('/:id', (req, res) => {
 });
 
 router.patch('/:id/edit', (req, res) => {
-  console.log(req.body)
   let update = { "$set": {}};
   let options = { "upsert": true, new: true };
   update["$set"]["height"] = req.body.height;
