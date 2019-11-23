@@ -31,12 +31,14 @@ class CartItem extends React.Component {
   }
 
   onDrop(e) {
-    let { cart, date, time, userId, addCartMeal, getCart } = this.props;
-    addCartMeal(cart.id, {
-      date,
-      time,
-      recipeId: parseInt(e.dataTransfer.getData("recipeId")),
-    })
+    if (e.dataTransfer.getData("recipeId")) {
+      let { cart, date, time, userId, addCartMeal, getCart } = this.props;
+      addCartMeal(cart.id, {
+        date,
+        time,
+        recipeId: parseInt(e.dataTransfer.getData("recipeId")),
+      })
+    }
     // .then(
     //   () => getCart(userId)  
     // )
