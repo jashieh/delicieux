@@ -14,7 +14,7 @@ class FridgeIngredients extends React.Component {
       ingredients = Object.keys(fridge).map(ingredientId => {
         return(
           // <li>{fridge[ingredientId].name}({fridge[ingredientId].amount})</li>
-          <FridgeItemContainer ingredient={fridge[ingredientId]} />
+          <FridgeItemContainer ingredient={fridge[ingredientId]} key={ingredientId}/>
         );
       });
     }

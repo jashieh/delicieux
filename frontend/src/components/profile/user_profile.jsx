@@ -28,7 +28,6 @@ class UserProfile extends React.Component {
   componentWillUnmount() {
     document.removeEventListener("keydown", this.hitEnter);
   }
-  
 
   flip() {
     return !this.state.edit
@@ -52,7 +51,17 @@ class UserProfile extends React.Component {
   }
 
   update(field) {
-    return e => this.setState({ [field]: e.target.value });
+    const min = 0;
+    const max = 999;
+    return e => {
+      if(field === "age" || field === "height"|| field === "weight") {
+        if (parseInt(e.target.value) > max) 
+          e.target.value = max.toString();
+        else if (parseInt(e.target.value) < min)
+          e.target.value = min.toString();
+      }
+      this.setState({ [field]: e.target.value });
+    }
   }
 
   hitEnter(e) {
@@ -71,7 +80,6 @@ class UserProfile extends React.Component {
       activityLevel: this.state.activityLevel,
       weeklyTarget: this.state.weeklyTarget
     });
-
   }
   
   render() {
@@ -150,6 +158,12 @@ class UserProfile extends React.Component {
             name="gender"
             value={"F"}
             defaultChecked={this.props.user.gender === "F"}/>F
+          <input type="radio" 
+            className="user-info-input" 
+            onChange={this.update("gender")}
+            name="gender"
+            value={"O"}
+            defaultChecked={this.props.user.gender === "O"}/>O
         </div>;
 
       age = <input type="number" 
@@ -254,7 +268,6 @@ class UserProfile extends React.Component {
           Height
           <div>
             { height } cm
-
           </div>
         </div>
         <div className="profile-item-container">
@@ -273,9 +286,9 @@ class UserProfile extends React.Component {
           Weekly Target
           <div>
             { weeklyTarget }
-
           </div>
         </div> 
+        Daily Caloric Need: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
       </div>
     );
   }
