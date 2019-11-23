@@ -288,7 +288,7 @@ class UserProfile extends React.Component {
             { weeklyTarget }
           </div>
         </div> 
-        Daily Caloric Need: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
+        Recommended Daily Intake: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
       </div>
     );
   }
