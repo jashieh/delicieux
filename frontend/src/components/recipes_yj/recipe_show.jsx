@@ -23,12 +23,12 @@ export default class RecipeShow extends React.Component {
     this.toggleChart = this.toggleChart.bind(this);
   }
   componentDidMount() {
-    const { recipe } = this.props;
+    const { recipe, fridge } = this.props;
     // ["Calories", "Protein", "Carbohydrates", "Fat"]
-    let calories = Object.values(this.props.recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount;
-    let protein = Object.values(this.props.recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
-    let fat = Object.values(this.props.recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
-    let carbohydrates = Object.values(this.props.recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount;
+    let calories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount;
+    let protein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
+    let fat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
+    let carbohydrates = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount;
 
     setTimeout(() => {
       this.setState({
@@ -55,8 +55,8 @@ export default class RecipeShow extends React.Component {
     }
   }
   render() {
-    debugger;
-    const { recipe } = this.props;
+    const { recipe, fridge } = this.props;
+    let fridgeList = Object.values(fridge.ingredients).map((el) => el.name);
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
       <VictoryPie
@@ -144,16 +144,20 @@ export default class RecipeShow extends React.Component {
             
           <div className="rs-main-cont">
             <h4 className="rs-title">{recipe.title}</h4>
-            <a href={recipe.sourceUrl}>{recipe.sourceName}</a>
+            <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
             <ul className="recipe-show-ing-list">
-              {recipe.ingredients.map((ingredient, idx) => (
-                <li className="rs-li-item" key={idx}>
-                  <div className="rs-li-item-pic-cont">
+              {recipe.ingredients.map((ingredient, idx) => {
+                let ingrName = ingredient.name.split(" ");
+                let subName = ingrName[ingrName.length -1];
+                let listStyle = {color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red"};
+                return (
+                <li className="rs-li-item" key={idx} style={listStyle}>
+                  <div className="rs-li-item-pic-cont" >
                     <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/>
                   </div>
                   {ingredient.amount%1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
-                </li>
-              ))}
+                </li>)
+              })}
 
             </ul>
           </div>

@@ -12,7 +12,11 @@ class MainIndex extends React.Component {
         super(props);
 
     }
+    componentDidMount() {
+      this.props.fetchFridge(this.props.userId)
+    }
     render () {
+      const { fridge } = this.props;
         return (
           <div className="contain-all">
             <div className="top">
@@ -52,12 +56,12 @@ class MainIndex extends React.Component {
                   </label>
                   <div className="menu"></div> */}
                   <div className="left-filter">
-                    <MainFilterContainer />
+                    <MainFilterContainer fridge={fridge}/>
                   </div>
 
                   <div className="left-recipe-contain">
                     <div className="boxes-contain">
-                      <RecipeIndexContainer />
+                      <RecipeIndexContainer fridge={fridge}/>
                       {/* <a href="#">
                         <div className="index-boxlink-square">
                           <h3>Recipe Index</h3>
@@ -95,7 +99,7 @@ class MainIndex extends React.Component {
               <div className="right">
                 <div className="right-contain">
                   <div className="ingredient-contain">
-                    <IngredientsList />
+                    <IngredientsList fridge={fridge}/>
                   </div>
                 </div>
               </div>

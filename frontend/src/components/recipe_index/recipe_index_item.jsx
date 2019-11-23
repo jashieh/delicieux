@@ -24,7 +24,7 @@ class RecipeIndexItem extends React.Component {
 
   // TODO: WHEN REMOVING ITEM, ALSO REMOVE IT COMPLETELY FROM THE CART
   render() {
-    const { recipe, rotateToBack } = this.props;
+    const { recipe, rotateToBack, fridge } = this.props;
     const { vegetarian, vegan, title, spoonacularScore, image, servings } = this.props.recipe
 
 

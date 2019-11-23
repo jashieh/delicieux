@@ -15,7 +15,8 @@ import {
 const mapStateToProps = (state) => ({
   user: state.session.user,
   recipes: state.entities.recipes,
-  // filters: state.filters.recipes
+  fridge: state.entities.fridge
+    // filters: state.filters.recipes
 });
 
 const mapDispatchToProps = (dispatch) => ({
