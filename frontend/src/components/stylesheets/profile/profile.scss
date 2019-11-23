@@ -7,8 +7,11 @@
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        margin-top: 10px;
-        // margin-bottom: 10px;
+        height: 50px;
         border-bottom: 1px solid gray;  
     }
+}
+
+.user-info-input {
+    width: 50px;
 }
