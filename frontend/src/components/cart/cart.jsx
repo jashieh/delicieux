@@ -71,7 +71,6 @@ class Cart extends React.Component {
                       time={time}/>
           })}
         </div>
-        <div className="cart-save-button" onClick={this.saveCart}>Save Cart</div>
       </div>
     )
   }
