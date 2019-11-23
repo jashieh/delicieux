@@ -55,6 +55,13 @@
     display: flex;
     justify-content: space-between;
 
+    .filter-ing-item {
+      height: 30px;
+      width: 70px;
+      background: pink;
+      margin: 5px;
+      position: relative;
+    }
     .filter-param-dropdown {
       position: relative;
 
