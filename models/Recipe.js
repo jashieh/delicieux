@@ -22,6 +22,7 @@ const RecipeSchema = new Schema({
     type: String
     // required: true
   },
+  sourceName: String,
   ingredients: [new Schema({
     id: Number,
     amount: Number,

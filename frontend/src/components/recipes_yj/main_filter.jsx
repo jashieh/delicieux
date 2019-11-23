@@ -240,17 +240,17 @@ export default class MainFilter extends React.Component {
             <input className="filter-nutr-slider" type="range" min="0" max="800" value={this.state.maxCalories} onInput={this.handleSlider("maxCalories")}/>
             <input type="number" min="0" max="800" maxength="3" value={this.state.maxCalories} onChange={this.handleSlider("maxCalories")} />
           </div>
-          <div class="filter-slider">
+          <div className="filter-slider">
             Max Fat (0-100)
             <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} onInput={this.handleSlider("maxFat")}/>
             <input type="number" min="0" max="100" maxLength="3" value={this.state.maxFat} onChange={this.handleSlider("maxFat")} />
           </div>
-          <div class="filter-slider">
+          <div className="filter-slider">
             Max Carbs (0-100)
             <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} onInput={this.handleSlider("maxCarbs")}/>
             <input type="number" min="0" max="100" maxLength="3" value={this.state.maxCarbs} onChange={this.handleSlider("maxCarbs")} />
           </div>
-          <div class="filter-slider">
+          <div className="filter-slider">
             Min Protein (0-100)
             <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} onInput={this.handleSlider("minProtein")}/>
             <input type="number" min="0" max="100" pattern="\d" maxLength="3" value={this.state.minProtein} onChange={this.handleSlider("minProtein")} />

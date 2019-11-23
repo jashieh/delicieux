@@ -18,7 +18,7 @@ class MainIndex extends React.Component {
             <div className="top">
               <NavBarContainer />
             </div>
-           <MainFilterContainer />
+           
             <div className="right-left-contain">
               <div className="left">
                 <div className="left-contain">
@@ -51,7 +51,9 @@ class MainIndex extends React.Component {
                     Hi
                   </label>
                   <div className="menu"></div> */}
-                  <div className="left-filter">Filters</div>
+                  <div className="left-filter">
+                    <MainFilterContainer />
+                  </div>
 
                   <div className="left-recipe-contain">
                     <div className="boxes-contain">
