@@ -25,9 +25,10 @@ class RecipeIndexItem extends React.Component {
   // TODO: WHEN REMOVING ITEM, ALSO REMOVE IT COMPLETELY FROM THE CART
   render() {
     const { recipe, rotateToBack, fridge } = this.props;
-    const { vegetarian, vegan, title, spoonacularScore, image, servings } = this.props.recipe
+    const { vegetarian, vegan, title, spoonacularScore, image, servings, readyInMinutes } = this.props.recipe
 
-
+    let timeC = recipe.readyInMinutes < 60 ? (recipe.readyInMinutes).toString() :
+      recipe.readyInMinutes < 180 ? Math.floor(recipe.readyInMinutes / 60).toString() + "h" : "3h";
     let isVegan
     if (vegetarian && vegan) {
       isVegan = "Vegan";
@@ -58,7 +59,7 @@ class RecipeIndexItem extends React.Component {
             {title.slice(0, 25) + ".."}
           </div>
           <div className="make">
-            <p>10</p>
+            <p>{timeC}</p>
           </div>
         </div>
         <div className="icon-box">

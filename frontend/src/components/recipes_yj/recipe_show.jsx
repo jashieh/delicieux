@@ -61,12 +61,15 @@ export default class RecipeShow extends React.Component {
     let fridgeList = Object.values(fridge.ingredients).map((el) => el.name);
     let calorieReq = calorieCalc(user);
     let nutritionReq =  {
-      "Calories": calorieReq,
-      "Carbohydrates": 250 * calorieReq/2000,
-      "Protein": 80 * calorieReq/2000,
-      "Fat": 75 * calorieReq/2000,
+      "Calories": calorieReq ? calorieReq : 2000,
+      "Carbohydrates": calorieReq? 250 * calorieReq/2000 : 250,
+      "Protein": calorieReq ? 80 * calorieReq/2000 : 80,
+      "Fat": calorieReq ? 75 * calorieReq/2000 : 75,
       "Fiber": 30,
       };
+    let timeC = recipe.readyInMinutes < 60 ? (recipe.readyInMinutes).toString() + "m" : 
+    recipe.readyInMinutes < 180 ? Math.floor(recipe.readyInMinutes/60).toString() + "h" : "3h+"
+
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
       Calorie Distribution
@@ -139,7 +142,7 @@ export default class RecipeShow extends React.Component {
             </div>
             <div className="rs-icon-cont">
               <div className="rs-icon">
-                <p>{recipe.cookingMinute}m</p>
+                <p>{timeC}</p>
               </div>
               {recipe.vegetarian ?
               <div className="rs-icon">
@@ -149,6 +152,10 @@ export default class RecipeShow extends React.Component {
               <div className="rs-icon">
                 <p>Keto</p>
               </div> : null}
+              {recipe.ketogenic ?
+                <div className="rs-icon">
+                  <p>Paleo</p>
+                </div> : null}
             </div>
             {chartDisp}
           </div>
@@ -164,7 +171,7 @@ export default class RecipeShow extends React.Component {
                 return (
                 <li className="rs-li-item" key={idx} style={listStyle}>
                   <div className="rs-li-item-pic-cont" >
-                    <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/>
+                    {ingredient.image ? <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/> : null}
                   </div>
                   {ingredient.amount%1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
                 </li>)
