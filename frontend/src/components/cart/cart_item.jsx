@@ -92,7 +92,7 @@ class CartItem extends React.Component {
                 </div>
                 <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       );

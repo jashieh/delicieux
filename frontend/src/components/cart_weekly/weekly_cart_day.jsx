@@ -28,24 +28,32 @@ class WeeklyCartDay extends React.Component {
     const { recipes, cart, date } = this.props;
     let recipe;
     return (
-      <div className="weekly-cart-day">
-        <div className="weekly-cart-day-date">{date}</div>
-        <div className="weekly-cart-day-meals">
+      <div className="weekly-cart">
+        <div className="weekly-cart-header-date">{date}</div>
+        <div className="weekly-cart-date">
           { TIMES.map((time, idx) => {
             recipe = recipes[cart.dates[date][time]];
             if (recipe)
               return (
                 <div className="weekly-cart-item" key={idx}>
-                  <div className="weekly-cart-item-header">{time}</div>
-                  <div className="weekly-cart-item-info">
-                    <img className="weekly-cart-item-info-image" src={recipe.image} />
-                    <div className="weekly-cart-item-info-text">
-                      <div className="weekly-cart-item-name">{recipe.title}</div>
-                      <div className="weekly-cart-item-remove" onClick={(e) => this.removeItem(e, time)}>
-                        Remove Item
-                      </div>
-                      <div className="weekly-cart-item-eat" onClick={(e) => this.makeItem(e, recipe)}>
-                        Made Item
+                  <div className="weekly-cart-item-time">{time}</div>
+                  <div className="weekly-cart-item-main">
+                    <div className="weekly-cart-item-info">
+                      <div className="weekly-cart-item-info-text">
+                        <div className="weekly-cart-item-info-left">
+                          <div className="weekly-cart-item-name">{recipe.title.slice(0, 20) + ".."}</div>
+                          <div className="weekly-cart-item-buttons">
+                            <div className="weekly-cart-item-remove" onClick={(e) => this.removeItem(e, time)}>
+                              Remove
+                            </div>
+                            <div className="weekly-cart-item-eat" onClick={(e) => this.makeItem(e, recipe)}>
+                              Make Meal
+                            </div>
+                          </div>
+                        </div>
+                        <div className="weekly-cart-image">
+                          <img className="weekly-cart-item-info-image" src={recipe.image} />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -54,7 +62,7 @@ class WeeklyCartDay extends React.Component {
             else
               return (
                 <div className="weekly-cart-item" key={idx}>
-                  <div className="weekly-cart-item-header">{time}</div>
+                  <div className="weekly-cart-item-time">{time}</div>
                   <div className="weekly-cart-item-info"></div>
                 </div>
               );
