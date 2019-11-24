@@ -7,8 +7,6 @@ class MainPage extends React.Component {
     render() {
         return (
             <div>
-                <p>MERN Project</p>
-
                 <div className="container">
 
                     <div className="codrops-top">
