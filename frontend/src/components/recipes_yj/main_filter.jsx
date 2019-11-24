@@ -3,6 +3,7 @@ import MainFilterDropdown from './main_filter_dropdown';
 import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 import '../stylesheets/recipes_index/main_filter.scss';
+import Loupe from '../stylesheets/assets/loupe-2.png';
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -240,25 +241,34 @@ export default class MainFilter extends React.Component {
         <div className="filter-bot-allergies">
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           <div className="filter-slider">
-            Max Calories (0-800)
-            <input className="filter-nutr-slider" type="range" min="0" max="800" value={this.state.maxCalories} onInput={this.handleSlider("maxCalories")}/>
-            <input type="number" min="0" max="800" maxength="3" value={this.state.maxCalories} onChange={this.handleSlider("maxCalories")} />
+            <div>Max Calories [ 0 - 800 ]</div>
+            <div className="slider-second">
+              <input className="filter-nutr-slider" type="range" min="0" max="800" value={this.state.maxCalories} onInput={this.handleSlider("maxCalories")}/>
+            </div>
+            <input className="slide"  type="number" min="0" max="800" maxength="3" value={this.state.maxCalories} onChange={this.handleSlider("maxCalories")} />
           </div>
           <div className="filter-slider">
-            Max Fat (0-100)
-            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} onInput={this.handleSlider("maxFat")}/>
-            <input type="number" min="0" max="100" maxLength="3" value={this.state.maxFat} onChange={this.handleSlider("maxFat")} />
+            <div>Max Fat [ 0 - 100 ]</div>
+            <div className="slider-second">
+              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} onInput={this.handleSlider("maxFat")}/>
+            </div>
+            <input className="slide"  type="number" min="0" max="100" maxLength="3" value={this.state.maxFat} onChange={this.handleSlider("maxFat")} />
           </div>
           <div className="filter-slider">
-            Max Carbs (0-100)
-            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} onInput={this.handleSlider("maxCarbs")}/>
-            <input type="number" min="0" max="100" maxLength="3" value={this.state.maxCarbs} onChange={this.handleSlider("maxCarbs")} />
+            <div>Max Carbs [ 0 - 100 ]</div>
+            <div className="slider-second">
+              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} onInput={this.handleSlider("maxCarbs")}/>
+            </div>
+            <input className="slide" type="number" min="0" max="100" maxLength="3" value={this.state.maxCarbs} onChange={this.handleSlider("maxCarbs")} />
           </div>
           <div className="filter-slider">
-            Min Protein (0-100)
-            <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} onInput={this.handleSlider("minProtein")}/>
-            <input type="number" min="0" max="100" pattern="\d" maxLength="3" value={this.state.minProtein} onChange={this.handleSlider("minProtein")} />
+            <div>Min Protein [ 0 - 100 ]</div>
+            <div className="slider-second">
+              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} onInput={this.handleSlider("minProtein")}/>
+            </div>
+            <input className="slide" type="number" min="0" max="100" pattern="\d" maxLength="3" value={this.state.minProtein} onChange={this.handleSlider("minProtein")} />
           </div>
+
         </div>)
     }
   }     
@@ -267,12 +277,9 @@ export default class MainFilter extends React.Component {
     return(
       <div >
       {this.state.ingredientToggle ? (
-        <form className="filter-cont" onSubmit={this.handleIngredientSubmit}>
+        <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
           <div className="filter-header">
-            <h4 className="filter-h4">
-              délicieux
-            </h4>
             <div className="filter-text-cont">
               <input type="text"
               className="filter-text-input"
@@ -292,7 +299,7 @@ export default class MainFilter extends React.Component {
           </div>
         </form>
         ) : (
-      <form className="filter-cont" onSubmit={this.handleQuerySubmit}>
+      <form className="filter-cont">
         <div className="filter-top">
           <div className="filter-header">
             <div className="filter-text-cont">
@@ -301,23 +308,26 @@ export default class MainFilter extends React.Component {
                 placeholder="Find a recipe"
                 onChange={this.handleInput("query")}
                 value={this.state.query}/>
-              <input type="submit" className="filter-query-search" value=""/>
+                <div className="filter-query-search" onClick={this.handleQuerySubmit} >
+                  <img src={Loupe} alt=""/>
+                  {/* <input type="submit" className="filter-query-search" value=""/> */}
+                </div>
             </div>
-            <div className="filter-text-button" onClick={this.toggleIngredients}>
+            {/* <div className="filter-text-button" onClick={this.toggleIngredients}>
               Ingr
-            </div>
+            </div> */}
           </div>
           <div className="filter-param-cont">
-            <div onClick={this.handleTab(1)} style={this.state.tabs === 1 ? { backgroundColor: "pink" } : {}}>
+            <div className="filter-text" onClick={this.handleTab(1)} style={this.state.tabs === 1 ? { backgroundColor: "inherit", color: "black" } : {}}>
               Diets
             </div>
-            <div onClick={this.handleTab(2)} style={this.state.tabs === 2  ? { backgroundColor: "pink" } : {}}>
+            <div  className="filter-text" onClick={this.handleTab(2)} style={this.state.tabs === 2  ? { backgroundColor: "inherit", color: "black" } : {}}>
               Cuisines
             </div>
-            <div onClick={this.handleTab(3)} style={this.state.tabs === 3  ? { backgroundColor: "pink" } : {}}>
+            <div  className="filter-text" onClick={this.handleTab(3)} style={this.state.tabs === 3  ? { backgroundColor: "inherit", color: "black" } : {}}>
               Allergies
             </div>
-            <div onClick={this.handleTab(4)} style={this.state.tabs === 4 ? { backgroundColor: "pink" } : {}}>
+            <div  className="filter-text" onClick={this.handleTab(4)} style={this.state.tabs === 4 ? { backgroundColor: "inherit", color: "black" } : {}}>
               Nutrition
             </div>
           </div>
