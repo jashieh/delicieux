@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBarContainer from '../nav/navbar_container';  
 import WeeklyCartDayContainer from "./weekly_cart_day_container";
 import '../stylesheets/weekly_cart/weekly_cart.scss';
 
@@ -78,13 +79,16 @@ class WeeklyCart extends React.Component {
     if (dates.length > 0)
       return (
         <div className="weekly-cart">
+          <div className="top">
+            <NavBarContainer />
+          </div>
           <div className="weekly-cart-days">
-            { dates.map((date, idx) => {
-              return <WeeklyCartDayContainer date={date} key={idx}/>
+            {dates.map((date, idx) => {
+              return <WeeklyCartDayContainer date={date} key={idx} />;
             })}
           </div>
         </div>
-      )
+      );
     else
       return (
         <div className="weekly-cart"></div>
