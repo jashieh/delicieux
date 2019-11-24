@@ -1,6 +1,7 @@
 import React from 'react';
 import RecipeIndexItemContainer from './recipe_index_item_container';
 import '../stylesheets/recipe_index/recipe_index.scss';
+import flip from '../stylesheets/assets/pot.gif';
 
 class RecipeIndex extends React.Component {
   constructor(props) {
@@ -16,16 +17,33 @@ class RecipeIndex extends React.Component {
   // Loads all of the recipes upon mounting
   componentDidMount() {
     debugger;
-    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch } = this.props;
+    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch, startLoad } = this.props;
+    startLoad("loading");
     fetchFridge(user.id)
       .then(
         ({ fridge }) => {
           let { ingredients } = fridge;
           ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
           console.log(ingredients);
-          ingredients.length === 0 ? getRandomRecipes(6) : getRecipesByIngredients(ingredients, 24)
+          ingredients.length === 0 ? getRandomRecipes(24) : getRecipesByIngredients(ingredients, 24)
         }
       );
+    
+    // this.setState({loading: true}, ()=> {
+    //   fetchFridge(user.id)
+    //     .then(
+    //       ({ fridge }) => {
+    //         let { ingredients } = fridge;
+    //         ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
+    //         if (ingredients.length === 0) {
+    //           getRandomRecipes(6).then(this.setState({ loading: false }))
+    //         } else {
+    //         getRecipesByIngredients(ingredients, 24).then(this.setState({ loading: false }))
+    //         }  
+    //       }
+    //     );
+    // })
+    
   }
 
   componentDidUpdate(oldProps) {
@@ -43,15 +61,24 @@ class RecipeIndex extends React.Component {
   }
 
   render() {
-    const { recipes } = this.props;
+    const { recipes, loading } = this.props;
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
     return (
-      <div className="recipe-index">
-        {indexRecipes.map((recipe, idx) => {
-          return <RecipeIndexItemContainer key={idx}
-                    recipe={recipe} 
-                    rotateToBack={() => this.props.rotateRecipe(idx)}/>
-        })}
+      <div>
+        {loading ? (
+        <div className="loading-cont">
+          <div className="loading-img-cont">
+            <img className="loading-img" src={flip} />
+          </div>
+        </div>) : (
+          <div className="recipe-index">
+              {indexRecipes.map((recipe, idx) => {
+                return <RecipeIndexItemContainer key={idx}
+                  recipe={recipe}
+                  rotateToBack={() => this.props.rotateRecipe(idx)} />
+              })}
+          </div>
+        )}
       </div>
     )
   }

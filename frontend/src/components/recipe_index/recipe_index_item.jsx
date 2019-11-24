@@ -11,17 +11,20 @@ class RecipeIndexItem extends React.Component {
     super(props);
 
     this.onDragStart = this.onDragStart.bind(this);
+    this.handleModal = this.handleModal.bind(this);
   }
 
   onDragStart(e) {
     let { recipe } = this.props;
     e.dataTransfer.setData("recipeId", recipe.recipeId);
   }
-
+  handleModal(recipe) {
+    this.props.openModal(recipe);
+  }
 
   // TODO: WHEN REMOVING ITEM, ALSO REMOVE IT COMPLETELY FROM THE CART
   render() {
-    const { recipe, rotateToBack } = this.props;
+    const { recipe, rotateToBack, fridge } = this.props;
     const { vegetarian, vegan, title, spoonacularScore, image, servings } = this.props.recipe
 
 
@@ -44,6 +47,7 @@ class RecipeIndexItem extends React.Component {
         className="recipe-index-item"
         draggable
         onDragStart={this.onDragStart}
+        onClick={() => this.handleModal(recipe)}
       >
         <div className="recipe-index-item-image">
           <img src={image} draggable="false" />

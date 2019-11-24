@@ -41,7 +41,9 @@ router.patch('/:userId/modifyIngredient', (req, res) => {
 
       // Remove ingredients from fridge if there is no more
       if(data.ingredients[req.body.id].amount <= 0) {
-        Fridge.findOneAndUpdate({ userId: req.params.userId }, { $unset: {ingredients: req.body.id}},
+        let unset = { "$unset": {}};
+        unset["$unset"]["ingredients." + req.body.id] = req.body.id;
+        Fridge.findOneAndUpdate({ userId: req.params.userId }, unset,
           {new: true})
           .then(data => res.json(data.ingredients[req.body.id]))
           .catch(err => res.status(400).json(err))
@@ -65,12 +67,14 @@ router.patch('/:userId/modifyFridge', (req, res) => {
       if(err) return res.status(400).json(err);
       let unset = { "$unset": {}};
       let i = 0;
+
       Object.keys(data.ingredients).forEach(id => {
         if(data.ingredients[id].amount <= 0) {
           unset["$unset"]["ingredients." + id] = "";
           i++;
         }
       });
+
       
       // Remove ingredients from fridge if there is no more
       if(i > 0) {

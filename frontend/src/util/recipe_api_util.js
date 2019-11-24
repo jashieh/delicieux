@@ -195,6 +195,7 @@ export const complexRecipeSearch = (
       "maxFat": `${maxFat}`,
       "maxCarbs": `${maxCarbs}`,
       "minProtein": `${minProtein}`,
+      "maxFiber": "100",
       "ignorePantry": `${ignorePantry}`,
       "number": `${limit}`,
       "addRecipeInformation": "true",
