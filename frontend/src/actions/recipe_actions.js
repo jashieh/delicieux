@@ -164,7 +164,7 @@ export const complexRecipeSearch = ({
                   if (i === apiData.length - 1) dispatch(receiveRecipes(apiData));
                 });
             });
-      },
+                },
       errors => dispatch(receiveRecipeErrors(errors))
     )
 };
