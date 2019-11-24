@@ -32,7 +32,7 @@ class WeeklyCart extends React.Component {
   generateDates() {
     let currentDate = new Date();
     currentDate = new Date(currentDate);
-    currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+    currentDate.setDate(currentDate.getDate() - currentDate.getDay());
 
     let dateStrings = [currentDate.toDateString().slice(0, 15)];
     while (dateStrings.length < 7) {
@@ -63,7 +63,6 @@ class WeeklyCart extends React.Component {
         for (let j = 0; j < TIMES.length; j++) {
           recipeId = cart.dates[dates[i]][TIMES[j]];
           if (recipeId && !recipes[recipeId]) {
-            debugger;
             results++;
             getRecipeDB(recipeId)
               .then(() => {
