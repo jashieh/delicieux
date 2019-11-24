@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 
 import RecipeIndexItem from './recipe_index_item';
-import { openModal } from '../../actions/modal_actions';
+
+import { addCartMeal } from '../../actions/cart_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   cart: state.entities.cart,
@@ -12,7 +14,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  openModal: (other) => dispatch(openModal('showRecipe', other))
+  addCartMeal: (cartId, mealInfo) => dispatch(addCartMeal(cartId, mealInfo)),
+  openModal: (other) => dispatch(openModal('showRecipe', other)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(

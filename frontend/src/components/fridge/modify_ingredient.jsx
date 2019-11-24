@@ -67,14 +67,13 @@ class ModifyIngredient extends React.Component {
     return(
       <div className="add-ingredient-modal-container">
         <div className="title">
-              <div>
-                { this.props.ingredient.name.charAt(0).toUpperCase() + this.props.ingredient.name.slice(1) }
-              </div>
-              <div 
-                className="add-ingredient-modal-close"
-                onClick={this.props.closeModal}>
-                x
-              </div>
+          <div>
+            { this.props.ingredient.name.charAt(0).toUpperCase() + this.props.ingredient.name.slice(1) }
+          </div>
+          <div className="add-ingredient-modal-close"
+            onClick={this.props.closeModal}>
+            x
+          </div>
         </div>
         <div className="add-ingredient-body">  
           <img src={`https://spoonacular.com/cdn/ingredients_100x100/${this.props.ingredient.image}`} 

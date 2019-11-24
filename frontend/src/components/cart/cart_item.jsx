@@ -62,8 +62,14 @@ class CartItem extends React.Component {
 
   render() {
     const { time } = this.props;
-    let recipe = this.recipe();
-    if (recipe)
+    
+    let recipe = this.recipe(); 
+    
+    if (recipe && recipe.nutrition) {
+
+      let timeC = recipe.readyInMinutes < 60 ? (recipe.readyInMinutes).toString() +"m":
+        recipe.readyInMinutes < 180 ? Math.floor(recipe.readyInMinutes / 60).toString() + "h" : "3h+";
+      let calorieC = Math.floor(recipe.nutrition[0].amount)  
       return (
         <div className="cart-item" onDragOver={this.onDragOver} onDrop={this.onDrop}>
           <div className="cart-item-time">{time}</div>
@@ -82,20 +88,20 @@ class CartItem extends React.Component {
                   <div className="cuisine-image">
                     <img src={Utensil} className="uten-icon"/>
                   </div>
-                  Cuisine
+                  { recipe.cuisines && recipe.cuisines[0] ? recipe.cuisines[0] : "General"}
                 </div>
                 <div>
-                  10M
+                  {timeC}
                 </div>
                 <div>
-                  16
+                  {calorieC}
                 </div>
                 <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
               </div>
             </div>
           </div>
         </div>
-      );
+      );}
     else
       return (
         <div
