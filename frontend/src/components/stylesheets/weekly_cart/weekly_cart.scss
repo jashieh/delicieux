@@ -1,0 +1,24 @@
+.weekly-cart {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.weekly-cart-days {
+  height: 45%;
+  width: 80%;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  overflow-x: scroll;
+
+  border: 1px solid black;
+  border-radius: 5px;
+
+  margin-top: 20px;
+}
