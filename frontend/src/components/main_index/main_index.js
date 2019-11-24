@@ -56,9 +56,9 @@ class MainIndex extends React.Component {
                     Hi
                   </label>
                   <div className="menu"></div> */}
-                  <div className="left-filter">
+                  {/* <div className="left-filter"> */}
                     <MainFilterContainer fridge={fridge}/>
-                  </div>
+                  {/* </div> */}
 
                   <div className="left-recipe-contain">
                     <div className="boxes-contain">

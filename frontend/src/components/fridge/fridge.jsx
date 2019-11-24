@@ -14,7 +14,9 @@ class Fridge extends React.Component {
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
   }
-  
+  componentWillUnmount() {
+    this.props.closeModal();
+  }
   render() {
     return(
       <div className="fridge-container" >

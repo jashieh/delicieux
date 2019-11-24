@@ -162,7 +162,9 @@ export default class RecipeShow extends React.Component {
             
           <div className="rs-main-cont">
             <h4 className="rs-title">{recipe.title}</h4>
-            <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
+            <div className="rs-link">
+              <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
+            </div>
             <ul className="recipe-show-ing-list">
               {recipe.ingredients.map((ingredient, idx) => {
                 let ingrName = ingredient.name.split(" ");
