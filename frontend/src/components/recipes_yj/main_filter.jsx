@@ -103,6 +103,7 @@ export default class MainFilter extends React.Component {
       maxCarbs: this.state.maxCarbs, 
       minProtein: this.state.minProtein
     })
+    this.setState({tabs: 0});
   }
   handleIngredientSubmit() {
     let fridgeContent = [];
@@ -114,6 +115,7 @@ export default class MainFilter extends React.Component {
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
     this.props.startLoad("loading")
     this.props.getRecipesByIngredients(ingredientList)
+    this.setState({ tabs: 0 });
   }
 
   handleSlider(type) {

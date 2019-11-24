@@ -69,6 +69,7 @@ export default class RecipeShow extends React.Component {
       };
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
+      Calorie Distribution
       <VictoryPie
         animate={{
           duration: 2000
