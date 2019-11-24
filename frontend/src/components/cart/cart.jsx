@@ -61,7 +61,9 @@ class Cart extends React.Component {
     return (
       <div className="cart">
         <div className="cart-header">
-          <div className="cart-header-left" onClick={this.previousDate}>{"<"}</div>
+          <div className="cart-header-left" onClick={this.previousDate}>
+            <div>{"<"}</div>
+          </div>
           <div className="cart-header-date">{currentDate}</div> 
           <div className="cart-header-right" onClick={this.nextDate}>{">"}</div>
         </div>

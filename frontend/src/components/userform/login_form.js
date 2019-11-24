@@ -98,18 +98,21 @@ class LoginForm extends React.Component {
                         onChange={this.update("password")}
                       />
                       <br />
-                      <input type="submit" value="Submit" className="submit" />
                       {this.renderErrors()}
-                      <div className="go-back">
-                        <h2>Don't have an account?</h2>
-                        <Link to="/signup">Sign Up</Link>
+                      <div className="login-bottom">
+                        <div className="buttons">
+                          <input type="submit" value="Submit" className="submit" />
+                        </div>
+                        <div className="buttons">
+                          <button className="submit" onClick={this.handleDemo()}>
+                            Demo User
+                          </button>
+                        </div>
                       </div>
-
-                      <div className="buttons">
-                        <button className="submit" onClick={this.handleDemo()}>
-                          Demo User
-                        </button>
-                      </div>
+                        <div className="go-back">
+                          <h2>Don't have an account?</h2>
+                          <Link className="back-sign" to="/signup">Sign Up</Link>
+                        </div>
                     </div>
                   </form>
                 </span>

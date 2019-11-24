@@ -1,5 +1,6 @@
 import React from 'react';
 import NavbarContainer from '../nav/navbar_container';
+import Apron from '../stylesheets/assets/cup.png'
 
 class MainPage extends React.Component {
     
@@ -18,7 +19,7 @@ class MainPage extends React.Component {
                     <div className="st-container">
 
                         <input type="radio" name="radio-set" defaultChecked={false} id="st-control-1" />
-                        <a href="#st-panel-1">Serendipity</a>
+                        <a href="#st-panel-1">délicieux?</a>
                         <input type="radio" name="radio-set" id="st-control-2" />
                         <a href="#st-panel-2">Happiness</a>
                         <input type="radio" name="radio-set" id="st-control-3" />
@@ -31,9 +32,19 @@ class MainPage extends React.Component {
                         <div className="st-scroll">
 
                             <section className="st-panel" id="st-panel-1">
-                                <div className="st-deco" data-icon="H"></div>
-                                <h2>Serendipity</h2>
-                                <p>Banksy adipisicing eiusmod banh mi sed. Squid stumptown est odd future nisi, commodo mlkshk pop-up adipisicing retro.</p>
+                                <div className="st-deco" >
+                                    <img className="apron" src={Apron} alt="" />;
+                                </div>
+                                
+
+                                <h2>délicieux</h2>
+                                <div className="very-top">
+                                    <div className="top-top">
+                                        <div className="meter">
+                                            <span id="span-first" ><span className="progress"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
                             </section>
 
                             <section className="st-panel st-color" id="st-panel-2">

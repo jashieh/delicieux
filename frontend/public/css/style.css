@@ -1,10 +1,16 @@
+
+
+/* TEXT BOTTOM CONTAINERS */
+
 .st-container {
 	position: absolute;
 	width: 100%;
 	height: 100%;
 	top: 0;
 	left: 0;
-	font-family: 'Josefin Slab', 'Myriad Pro', Arial, sans-serif;
+	font-family: Open Sans;
+	font-weight: 100;
+	/* font-family: 'Josefin Slab', 'Myriad Pro', Arial, sans-serif; */
 }
 
 .st-container > input,
@@ -13,7 +19,7 @@
 	bottom: 0px;
 	width: 20%;
 	cursor: pointer;
-	font-size: 16px;
+	font-size: 14px;
 	height: 34px;
 	line-height: 34px;
 }
@@ -25,9 +31,9 @@
 
 .st-container > a {
 	z-index: 10;
-	font-weight: 700;
-	background: #000000;
-	color: #fff;
+	font-weight: 300;
+	background: white;
+	color: black;
 	text-align: center;
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 }
@@ -38,7 +44,10 @@
 	position: fixed;
 	width: 100%;
 	height: 34px;
-	background: #2b1c21;
+	/* background: #2b1c21; */
+	/* BOTTOM Button */
+	background: white;
+	color: black;
 	z-index: 9;
 	bottom: 0;
 }
@@ -65,7 +74,9 @@
 
 .st-container > input:checked + a,
 .st-container > input:checked:hover + a{
-	background: rgb(142, 48, 48);
+	background: white;
+	color: rgb(1, 53, 164);
+	
 }
 
 .st-container > input:checked + a:after,
@@ -78,13 +89,20 @@
 	position: absolute;
 	pointer-events: none;
 	border-bottom-color: rgb(142, 48, 48);
+	
 	border-width: 20px;
 	left: 50%;
 	margin-left: -20px;
 }
 
+
+/* TEXT ON HOVER */
+
 .st-container > input:hover + a{
-	background: rgb(142, 48, 48);;
+	/* background: rgb(142, 48, 48); */
+	font-weight: 300;
+	background: white;
+	/* background: red; */
 }
 
 .st-container > input:hover + a:after {
@@ -113,7 +131,8 @@
 }
 
 .st-panel{
-	background: rgb(142, 48, 48);
+	/* background: rgb(142, 48, 48); */
+	background: white;
 	overflow: hidden;
 } 
 
@@ -174,22 +193,22 @@
 [data-icon]:after {
     content: attr(data-icon);
     font-family: 'RaphaelIcons';
-    color: rgb(189, 132, 132);
+    color: rgb(0, 0, 0);
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
 	width: 200px;
 	height: 200px;
 	line-height: 200px;
 	text-align: center;
-	font-size: 90px;
+	font-size: 50px;
 	top: 50%;
 	left: 50%;
 	margin: -100px 0 0 -100px;
-	-webkit-transform: rotate(-45deg) translateY(25%);
+	/* -webkit-transform: rotate(-45deg) translateY(25%);
 	-moz-transform: rotate(-45deg) translateY(25%);
 	-o-transform: rotate(-45deg) translateY(25%);
 	-ms-transform: rotate(-45deg) translateY(25%);
-	transform: rotate(-45deg) translateY(25%);
+	transform: rotate(-45deg) translateY(25%); */
 }
 
 .st-panel h2 {
@@ -197,7 +216,7 @@
 	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
 	font-size: 54px;
-	font-weight: 900;
+	font-weight: 100;
 	width: 80%;
 	left: 10%;
 	text-align: center;
@@ -359,7 +378,9 @@
 
 .st-color,
 .st-deco{
-	background: black;
+	/* background: black; */
+	background: white;
+	bordeR: 1px solid black;
 	/* background: #96c5fa; */
 }
 .st-color [data-icon]:after {
@@ -402,7 +423,7 @@
 		height: 120px;
 		margin-left: -60px;
 	}
-	
+/* 	
 	[data-icon]:after {
 		font-size: 60px;
 		-webkit-transform: rotate(-45deg) translateY(15%);
@@ -410,5 +431,15 @@
 		-o-transform: rotate(-45deg) translateY(15%);
 		-ms-transform: rotate(-45deg) translateY(15%);
 		transform: rotate(-45deg) translateY(15%);
-	}
+	} */
+}
+
+
+.apron {
+	width: 38px;
+	height: 38px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	
 }

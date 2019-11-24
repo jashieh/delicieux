@@ -22,6 +22,7 @@ class MainIndex extends React.Component {
             <div className="right-left-contain">
               <div className="left">
                 <div className="left-contain">
+
                   {/* <div className="left-ingredients">
                     <IngredientIndex />
                     <div>
