@@ -134,16 +134,15 @@
 
 .weekly-cart-item-remove, .weekly-cart-item-eat {
   width: auto;
-  line-height: 18px;
+  line-height: 12px;
   font-size: 12px;
-  vertical-align: middle;
 
   border-bottom: 1px solid rgb(247, 246, 246);
 
-
   padding: 0 1px;
+  padding-bottom: 2px;
   margin-right: 10px;
-  transition: 0.4s;
+  transition: 0.3s;
 }
 
 .weekly-cart-item-remove:hover {
@@ -154,7 +153,7 @@
 
 .weekly-cart-item-eat:hover {
   cursor: pointer;
-  border-bottom: 1px solid rgb(0, 95, 0);
+  border-bottom: 1px solid rgb(3, 160, 3);
   // color: rgb(0, 95, 0);
 }
 
