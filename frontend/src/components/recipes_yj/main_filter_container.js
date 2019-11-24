@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import MainFilter from './main_filter';
 import { fetchFridge } from '../../actions/fridge_actions';
 import { complexRecipeSearch, getRecipesByIngredients } from '../../actions/recipe_actions';
+import { startLoad, stopLoad } from '../../actions/loading_actions';
 
 const mapStateToProps = state => ({
   userId: state.session.user.id,
@@ -20,6 +21,8 @@ const mapDispatchToProps = dispatch => ({
     ignorePantry, limit
   })),
   getRecipesByIngredients: (ingredients, limit, ranking, ignorePantry) =>
-    dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry))
+    dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)),
+  startLoad: load => dispatch(startLoad(load)),
+  stopLoad: () => dispatch(stopLoad())
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MainFilter)

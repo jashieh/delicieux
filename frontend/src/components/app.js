@@ -13,7 +13,7 @@ import MainFilterContainer from './recipes_yj/main_filter_container';
 import SummaryContainer from './index_page/summary';
 import FridgeContainer from './fridge/fridge_container';
 import RecipeIndexContainer from './recipe_index/recipe_index_container';
-import MainIndex from './main_index/main_index';
+import MainIndexContainer from './main_index/main_index_container';
 import UserProfileContainer from './profile/user_profile_container';
 import './stylesheets/App.scss';
 
@@ -29,7 +29,7 @@ const App = () => (
       <AuthRoute exact path="/signup" component={ UserForm } />
       <AuthRoute exact path="/login" component={ LoginFormContainer } />
       <ProtectedRoute exact path="/summary" component={SummaryContainer} />
-      <ProtectedRoute exact path="/index" component={MainIndex} />
+      <ProtectedRoute exact path="/index" component={MainIndexContainer} />
       <ProtectedRoute exact path="/profile/" component={UserProfileContainer} />
       <Redirect to="/" />
     </Switch>
