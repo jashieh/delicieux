@@ -45,7 +45,10 @@
       height: 20px;
     }
   }
+}
 
+.recipe-index-item:hover {
+  cursor: pointer;
 }
 
 .recipe-index-item-remove {

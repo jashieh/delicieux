@@ -82,6 +82,7 @@ class WeeklyCart extends React.Component {
           <div className="top">
             <NavBarContainer />
           </div>
+          <div className="weekly-cart-header">Weekly Summary</div>
           <div className="weekly-cart-days">
             {dates.map((date, idx) => {
               return <WeeklyCartDayContainer date={date} key={idx} />;
