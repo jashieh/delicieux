@@ -68,13 +68,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
 
 }
 
 
 .rs-title {
   font-size: 20px;
+}
+.rs-link {
+  display: flex;
+  justify-content: flex-start;
 }
 .rs-li-item {
   margin: 7px 0;
