@@ -455,6 +455,7 @@
 	width: 38px;
 	height: 38px;
 	position: absolute;
+
 	left: 60%;
 	top: 60%;
 	transform: rotate(-45deg);
@@ -463,4 +464,5 @@
 
 .splash-footer-tab {
 	margin: 10px 0;
+
 }

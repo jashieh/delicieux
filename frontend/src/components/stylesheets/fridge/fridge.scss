@@ -112,7 +112,8 @@
 
 
 .add-ingredient-modal-container {
-    width: 300px;
+    width: 380px;
+    // height: 200px;
     border-radius: 5px;
     background-color: white;
     display: flex;
@@ -135,13 +136,17 @@
         flex-direction: row;
         justify-content: space-between;
         position: relative;
-        padding: 16px;
-        background-color: #469e61;
+        padding: 10px;
+        padding-top: 20px;
+        padding-left: 23px;
+        background-color: #ffffff;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
-        font-size: 23px;
-        color: white;
-        box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16);
+        font-size: 19px;
+        font-family: Open Sans;
+        color: black;
+        letter-spacing: 1px;
+        // box-shadow: 1px 1px 5px 1px rgb(223, 221, 221);
 
         .add-ingredient-modal-close {
             position: absolute;
@@ -162,12 +167,17 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
-        margin-top: 20px;
-        
+        // margin-top: 20px;
+        font-family: Open Sans;
+        width: 80%;
+        // background: blue;
+        margin: 0 auto;
+        margin-top: 5px;
 
         img {
             width: 75px;
             height: 75px;
+            
         }
 
         .add-ingredient-input-container {
@@ -175,13 +185,17 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
+            
           
             .add-ingredient-input-text {
                 padding: 10px;
+                font-size: 14px;
+                letter-spacing: 1px;
             }
     
             .add-ingredient-input {
                 margin-top: 10px;
+                margin-right: 5px;
                 margin-bottom: 10px;
                 width: 65px;
                 height: 40px;
@@ -189,7 +203,8 @@
                 font-size: 16px;
                 padding: 0 0 0 10px;
                 border-radius: 5px;
-                box-shadow: 1px 1px 5px;
+                box-shadow: 1px 1px 4px 1px rgb(196, 194, 194);
+           
             }
 
             .add-ingredient-input-box {
@@ -205,6 +220,8 @@
         min-height: 30px;
         text-align: center;
         color: #f04747;
+        font-size: 14px;
+        font-family: Open Sans;
     }
 
     .add-ingredient-footer {
@@ -214,17 +231,21 @@
         margin-bottom: 10px;
 
         .add-ingredient-submit {
-            width: 50%;
-            background-color: #469e61;
+            width: 30%;
+            background-color: #6fb3e8;
             color: white;
+            font-family: Open Sans;
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
             border-radius: 8px;
             padding: 10px 15px 10px 15px;
-            box-shadow: 0 2px 5px 0 rgba(0,0,0,0.4);
+            box-shadow: 1px 1px 3px 1px rgba(194, 194, 194, 0.523);
             cursor: pointer;
         }
 
         .add-ingredient-submit:hover {
-            filter: brightness(80%);
+            filter: brightness(90%);
         }
 
         .add-ingredient-submit:active {
@@ -281,18 +302,19 @@
             background-color: rgba(15, 48, 130, 0.55);
             box-shadow: inset 3px 4px 5px #000;
             ul {
-                height: 90%;
+                height: 100%;
                 width: 100%;
                 overflow: hidden;
                 display: flex;
                 flex-direction: column;
                 flex-wrap: wrap;
+                padding: 10px;
             }
 
             li {
                 width: 30%;
-                min-width: 160px;
-                min-height: 40px;
+                min-width: 180px;
+                min-height: 38px;
                 // padding: 10px;
                 margin: 10px;
                 background-color: white;
@@ -318,6 +340,7 @@
                 div {
                     margin-top: 5px;
                     margin-bottom: 5px;
+                    font-size: 13px;
                     font-weight: 600;
                     text-align: center;
                 }
@@ -329,13 +352,13 @@
                 }
 
                 .fridge-item-name {
-                    font-weight: 600;
+                    font-weight: 400;
                 }
 
                 .fridge-item-amount {
                     min-width: 40px;
                     height: 100%;
-                    border-left: 1px solid black;
+                    // border-left: 1px solid black;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -353,12 +376,12 @@
 @keyframes FadeIn { 
   0% {
     opacity: 0;
-    transform: scale(.1);
+    transform: scale(.7);
   }
 
   85% {
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.02);
   }
   100% {
     transform: scale(1);
@@ -380,6 +403,7 @@ li:nth-child(4) { animation-delay: 2s }
     background-color: black;
     
 }
+
 
 
 

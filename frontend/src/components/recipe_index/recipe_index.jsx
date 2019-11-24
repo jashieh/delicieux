@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipeIndexItemContainer from './recipe_index_item_container';
 import '../stylesheets/recipe_index/recipe_index.scss';
-import flip from '../stylesheets/assets/pot.gif';
+import flip from '../stylesheets/assets/cook.gif';
 
 class RecipeIndex extends React.Component {
   constructor(props) {

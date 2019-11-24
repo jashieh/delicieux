@@ -83,7 +83,7 @@ class ModifyIngredient extends React.Component {
               Modify Amount: 
             </div>
             <div className="add-ingredient-input-box">
-              <input type="number" className="add-ingredient-input" value={this.state.amount}
+              <input type="number" className="add-ingredient-input" value={Math.floor(this.state.amount)}
                 onChange={this.update} autoFocus/> 
                 <div>
                   g

@@ -8,9 +8,12 @@
 
 
 .top {
-    background-color: rgb(14, 14, 14);
+    background-color: rgb(210, 234, 243);
+    // box-shadow: 1px 1px 8px 1px rgb(192, 229, 245);
+    // background: rgba(215, 202, 132, 0.906);
+    border-bottom: 1px solid rgb(213, 213, 216);
     width: 100%;
-    height: 55px;
+    height: 35px;
 
     display: flex;
     
@@ -28,8 +31,8 @@
 
 .logout {
     font-family: Open Sans;
-    background-color: rgb(14, 14, 14);
-    color: white;
+    background-color: rgb(210, 234, 243);
+    color: black;
     border:  none;
     font-size: 14px;
 }
@@ -38,15 +41,15 @@
     width: 100%;
     height: calc(100vh - 55px);
     // background-color: green;
-    background-color: rgb(9, 25, 63);
+    // background-color: rgb(9, 25, 63);
     display: flex;
 }
 
 .left {
     width: 70%;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 60px);
     // background-color: rgb(9, 25, 63);
-    background-color: #F9F9F9;
+    background-color: white;
     margin: auto 0;
     display: flex;
     justify-content: center;
@@ -57,7 +60,7 @@
         // margin: 0 auto;
         height: 97%;
         // background-color: blue;
-        background-color: #F9F9F9;
+        background-color: white;
         border-radius: 3px;
         display: flex;
         flex-direction: column;
@@ -77,6 +80,7 @@
             margin: 10px auto;
             margin-top: 20px;
             border-radius: 3px;
+            overflow: hidden;
         }
 
         .left-recipe-contain {
@@ -92,7 +96,7 @@
             .boxes-contain {
                 width: 100%;
                 height: 100%;
-                background-color: #F9F9F9;
+                background-color: white;
                 border-radius: 3px
 
 
@@ -130,7 +134,7 @@
 
 .right {
     width: 30%;
-    height: calc(100vh - 85px);
+    height: calc(100vh - 60px);
     background-color: yellow;
     margin: auto 0;
 
