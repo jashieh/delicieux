@@ -42,7 +42,8 @@ router.post("/register", (req, res) => {
         weight: req.body.weight,
         age: req.body.age,
         gender: req.body.gender,
-        activityLevel: req.body.activityLevel
+        activityLevel: req.body.activityLevel,
+        weeklyTarget: user.weeklyTarget
       });
       
       bcrypt.genSalt(10, (err, salt) => {
@@ -59,7 +60,8 @@ router.post("/register", (req, res) => {
                 weight: user.weight,
                 age: user.age,
                 gender: user.gender,
-                activityLevel: user.activityLevel
+                activityLevel: user.activityLevel,
+                weeklyTarget: user.weeklyTarget
               };
               
               const newFridge = new Fridge({ userId: user.id });
@@ -147,13 +149,31 @@ router.get('/:id', (req, res) => {
         weight: user.weight,
         age: user.age,
         gender: user.gender,
-        activityLevel: user.activityLevel
+        activityLevel: user.activityLevel,
+        weeklyTarget: user.weeklyTarget
       });
     })
     .catch (err =>
       res.status(404).json({ nouserfound: 'No User found with this ID' })
     )
-})
+});
+
+router.patch('/:id/edit', (req, res) => {
+  let update = { "$set": {}};
+  let options = { "upsert": true, new: true };
+  update["$set"]["height"] = req.body.height;
+  update["$set"]["weight"] = req.body.weight;
+  update["$set"]["age"] = req.body.age;
+  update["$set"]["gender"] = req.body.gender;
+  update["$set"]["activityLevel"] = req.body.activityLevel;
+  update["$set"]["weeklyTarget"] = req.body.weeklyTarget;
+
+  User.findByIdAndUpdate(req.params.id, update, options,
+    function(err, data) {
+      if(err) return res.status(400).json(err);
+      return res.json(data);
+  });
+});
 
 
 module.exports = router;  

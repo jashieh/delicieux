@@ -11,11 +11,13 @@ import {
 import {
   fetchFridge
 } from '../../actions/fridge_actions';
+import { startLoad, stopLoad } from '../../actions/loading_actions';
 
 const mapStateToProps = (state) => ({
   user: state.session.user,
   recipes: state.entities.recipes,
-  // filters: state.filters.recipes
+  fridge: state.entities.fridge,
+  loading: state.ui.loading
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,6 +37,8 @@ const mapDispatchToProps = (dispatch) => ({
   })),
 
   rotateRecipe: (recipe_idx) => dispatch(rotateRecipe(recipe_idx)),
+  startLoad: (load) => dispatch(startLoad(load)),
+  stopLoad: () => dispatch(stopLoad())
 });
 
 export default connect(

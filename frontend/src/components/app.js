@@ -13,7 +13,7 @@ import MainFilterContainer from './recipes_yj/main_filter_container';
 import SummaryContainer from './index_page/summary';
 import FridgeContainer from './fridge/fridge_container';
 import RecipeIndexContainer from './recipe_index/recipe_index_container';
-import MainIndex from './main_index/main_index';
+import MainIndexContainer from './main_index/main_index_container';
 import UserProfileContainer from './profile/user_profile_container';
 import WeeklyCartContainer from './cart_weekly/weekly_cart_container';
 import './stylesheets/App.scss';

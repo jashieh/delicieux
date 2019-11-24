@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background: white;
 
   .recipe-show-cont {
     display: flex;
@@ -48,6 +49,7 @@
           height: 250px;
           width: 250px;
           display: flex;
+          flex-direction: column;
       }
     }
 
@@ -59,6 +61,7 @@
 .recipe-show-ing-list {
   margin: 5px 0;
   list-style: none;
+  overflow-y: auto;
 }
 .rs-main-cont {
   margin: 15px;
