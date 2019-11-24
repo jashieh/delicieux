@@ -8,8 +8,15 @@ class WeeklyCartDay extends React.Component {
   constructor(props) {
     super(props);
 
+    this.recipe = {
+      BREAKFAST: null,
+      LUNCH: null,
+      DINNER: null,
+    };
+
     this.removeItem = this.removeItem.bind(this);
     this.makeItem = this.makeItem.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
   removeItem(e, time) {
@@ -20,30 +27,37 @@ class WeeklyCartDay extends React.Component {
 
   makeItem(e, recipe) {
     e.stopPropagation();
-    console.log(recipe)
     if (recipe.image !== "...") {
       const { user } = this.props;
       modifyFridge(user.id, recipe);
     }
   }
 
+  openModal(e, recipe) {
+    debugger;
+    e.stopPropagation();
+    if (recipe.image !== "...") 
+      this.props.openModal(recipe);
+  }
+
   render() {
     const { recipes, cart, date, openModal } = this.props;
-    let recipe;
     return (
       <div className="weekly-cart-day">
         <div className="weekly-cart-header-date">{date}</div>
         <div className="weekly-cart-date">
           { TIMES.map((time, idx) => {
-            recipe = recipes[cart.dates[date][time]];
-            if (!recipe && recipes[cart.dates[date][time]]) {
-              recipe = {
+            // Must pull recipes into an instance variable otherwise it won't be available
+            //      ... map has it's own scope!
+            this.recipe[time] = recipes[cart.dates[date][time]]; 
+            if (!this.recipe[time] && recipes[cart.dates[date][time]]) {
+              this.recipe[time] = {
                 title: "Recipe Not Found",
-                img: "...",
+                image: "...",
                 recipeId: cart.dates[date][time]
               };
             }
-            if (recipe)
+            if (this.recipe[time]) {
               return (
                 <div className="weekly-cart-item" key={idx}>
                   <div className="weekly-cart-item-time">{time}</div>
@@ -51,31 +65,34 @@ class WeeklyCartDay extends React.Component {
                     <div className="weekly-cart-item-info">
                       <div className="weekly-cart-item-info-text">
                         <div className="weekly-cart-item-info-left">
-                          <div className="weekly-cart-item-name">{recipe.title.slice(0, 20) + ".."}</div>
+                          <div className="weekly-cart-item-name">{this.recipe[time].title.slice(0, 20) + ".."}</div>
                           <div className="weekly-cart-item-buttons">
-                            <div className="weekly-cart-item-remove" onClick={(e) => this.removeItem(e, time)}>
+                            <div className="weekly-cart-item-remove" onClick={(e) => { this.removeItem(e, time) }}>
                               Remove
                             </div>
-                            <div className="weekly-cart-item-eat" onClick={(e) => this.makeItem(e, recipe)}>
+                            <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time]) }}>
                               Make Meal
                             </div>
                           </div>
                         </div>
                         <div className="weekly-cart-image">
-                          <img className="weekly-cart-item-info-image" src={recipe.image} onClick={()=>openModal(recipe)}/>
+                          <img className="weekly-cart-item-info-image" 
+                               src={this.recipe[time].image} 
+                               onClick={ (e) => this.openModal(e, this.recipe[time]) }/>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               );
-            else
+            } else {
               return (
                 <div className="weekly-cart-item" key={idx}>
                   <div className="weekly-cart-item-time">{time}</div>
                   <div className="weekly-cart-item-info"></div>
                 </div>
               );
+            }
           })}
         </div>
       </div>

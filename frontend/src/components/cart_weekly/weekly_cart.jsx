@@ -20,12 +20,15 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
-    let { getCart, user, cart } = this.props;
-    if (!cart.dates)
-      getCart(user.id)
-        .then(() => this.getRecipes())
-    else
-      this.getRecipes();
+    let { getCart, user, cart, fetchFridge } = this.props;
+    fetchFridge(user.id)
+      .then(() => {
+        if (!cart.dates)
+          getCart(user.id)
+            .then(() => this.getRecipes())
+        else
+          this.getRecipes();
+      });
   }
 
   // Generates an array of dateStrings that represent the week's cart
