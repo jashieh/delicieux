@@ -291,9 +291,6 @@ export default class MainFilter extends React.Component {
       <form className="filter-cont" onSubmit={this.handleQuerySubmit}>
         <div className="filter-top">
           <div className="filter-header">
-            <h4 className="filter-h4">
-              délicieux
-          </h4>
             <div className="filter-text-cont">
               <input type="text"
                 className="filter-text-input"
