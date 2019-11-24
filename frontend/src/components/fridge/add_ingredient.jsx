@@ -7,15 +7,13 @@ class AddIngredient extends React.Component {
       amount: 0,
       error: ""
     };
-
-
+    
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.keyEvent = this.keyEvent.bind(this);
   }
 
   componentDidMount() {
-    // this.modal = document.querySelector('.add-ingredient-modal-container');
     document.addEventListener('keydown', this.keyEvent);
   }
 
@@ -59,27 +57,42 @@ class AddIngredient extends React.Component {
     return(
       <div className="add-ingredient-modal-container">
         <div className="title">
-        <img src={`https://spoonacular.com/cdn/ingredients_100x100/${this.props.ingredient.image}`} 
-            alt=""
-            className="fridge-item-image"/>
-            <div>
+          <div>
+            { this.props.ingredient.name.charAt(0).toUpperCase() + this.props.ingredient.name.slice(1) }
+          </div>
+          <div className="add-ingredient-modal-close"
+            onClick={this.props.closeModal}>
+            x
+          </div>
+        </div>
 
-              { this.props.ingredient.name.charAt(0).toUpperCase() + this.props.ingredient.name.slice(1) }
+        <div className="add-ingredient-body">  
+          <img src={`https://spoonacular.com/cdn/ingredients_100x100/${this.props.ingredient.image}`} 
+              alt="" />
+          <div className="add-ingredient-input-container">
+            <div className="add-ingredient-input-text">
+              Input Amount: 
             </div>
-        </div>
-        <div className="add-ingredient-input-container">
-          <div className="add-ingredient-input-text">
-            Input Amount: 
+            <div className="add-ingredient-input-box">
+              <input type="number" className="add-ingredient-input" value={this.state.amount}
+                onChange={this.update} autoFocus/> 
+                <div>
+                  g
+                </div>
+            </div>
           </div>
-          <input type="number" className="add-ingredient-input" value={this.state.amount}
-            onChange={this.update} autoFocus/> g
         </div>
-          <div className="error">
-            { this.state.error }
+
+        <div className="error">
+          { this.state.error }
+        </div>
+
+        <div className="add-ingredient-footer">
+          <div onClick={this.handleSubmit} className="add-ingredient-submit">
+            Submit
           </div>
-        <div onClick={this.handleSubmit} className="add-ingredient-submit">
-          Add Ingredient
         </div>
+
       </div>
     );
   }

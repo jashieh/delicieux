@@ -7,7 +7,6 @@
     .contain-all {
         height: 90%;
         width: 90%;
-        // background-color: red;
         
         margin: 0 auto;
         display: flex;
@@ -59,7 +58,6 @@
         height: 100%;
         background-color: black;
 
-
             .search-input {
                 // margin: 50px auto;
                 padding: 20px 15px;
@@ -82,6 +80,7 @@
             .ingredient-search-ul {
                 position: absolute;
                 background-color: #2A2C2F;
+                color: grey;
                 box-sizing: border-box;
                 width: 300px;
                 font-weight: 400;
@@ -152,6 +151,10 @@
             font-weight: 600;
             cursor: pointer;
         }
+
+        .add-ingredient-modal-close:hover {
+            filter: brightness(80%);    
+        }
     }
 
     .add-ingredient-body {
@@ -220,6 +223,14 @@
             cursor: pointer;
         }
 
+        .add-ingredient-submit:hover {
+            filter: brightness(80%);
+        }
+
+        .add-ingredient-submit:active {
+            box-shadow: inset 1px 1px 5px 0 #000000;
+        }
+
         .remove-ingredient {
             position: absolute;
             right: 20px;
@@ -227,19 +238,21 @@
 
             .hover-flag {
                 position: absolute;
-                top: 25px;
+                top: -35px;
                 background-color: white;
                 border: 1px solid black;
                 padding: 5px 10px 5px 10px;
                 border-radius: 5px;
-                color: red;
+                color: #f04747;
             }
+        }
+
+        .remove-ingredient:hover {
+            color: red;
         }
     }
 
 }
-
-
 
 
 .fridge-ingredients-container {
@@ -305,7 +318,6 @@
                 div {
                     margin-top: 5px;
                     margin-bottom: 5px;
-                    margin-left: 10px;
                     font-weight: 600;
                     text-align: center;
                 }
@@ -313,6 +325,7 @@
                 .fridge-item-image {
                     height: 25px;
                     width: 25px;
+                    margin-left: 10px;
                 }
 
                 .fridge-item-name {
