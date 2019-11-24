@@ -46,7 +46,7 @@ import { modifyFridge } from './util/fridge_api_util';
 
 import { fetchFridge, addFridgeIngredient, modifyIngredient } from './actions/fridge_actions';
 
-
+import { calorieCalc } from './util/calorie_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.postRecipeId = postRecipeId;
   window.postRecipeComplex = postRecipeComplex;
   window.patchRecipeImage = patchRecipeImage;
+  window.calorieCalc = calorieCalc;
 
   window.signup = signup;
   

@@ -1,6 +1,8 @@
 
 import React from 'react';
 
+// QUESTION: WHY DOES THE HEIGHT CHANGE EVERYTIME THE CLOCK TICK?
+//           WHY DOES THIS GO AWAY WHEN I REMOVE THE MARGIN-TOP?
 class Clock extends React.Component {
     constructor(props) {
         super(props);
@@ -13,6 +15,10 @@ class Clock extends React.Component {
         this.intervalId = setInterval( () => {
             this.setState({ time : new Date().toLocaleTimeString() })
         }, 1000)
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
     }
 
     render() {

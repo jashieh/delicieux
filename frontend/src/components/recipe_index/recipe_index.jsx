@@ -22,7 +22,8 @@ class RecipeIndex extends React.Component {
         ({ fridge }) => {
           let { ingredients } = fridge;
           ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
-          ingredients.length === 0 ? getRandomRecipes(6) : getRecipesByIngredients(ingredients);
+          console.log(ingredients);
+          ingredients.length === 0 ? getRandomRecipes(6) : getRecipesByIngredients(ingredients, 24)
         }
       );
   }
@@ -46,7 +47,7 @@ class RecipeIndex extends React.Component {
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
     return (
       <div className="recipe-index">
-        {indexRecipes.slice(0, 8).map((recipe, idx) => {
+        {indexRecipes.map((recipe, idx) => {
           return <RecipeIndexItemContainer key={idx}
                     recipe={recipe} 
                     rotateToBack={() => this.props.rotateRecipe(idx)}/>
