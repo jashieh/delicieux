@@ -10,18 +10,24 @@ class WeeklyCartDay extends React.Component {
 
     this.removeItem = this.removeItem.bind(this);
     this.makeItem = this.makeItem.bind(this);
+    this.openModal = this.openModal.bind(this);
   }
 
-  removeItem(e, time) {
-    e.stopPropagation();
+  removeItem(time) {
     const { cart, date, removeCartMeal } = this.props;
     removeCartMeal(cart.id, { date, time });
   }
 
-  makeItem(e, recipe) {
-    e.stopPropagation();
-    const { user } = this.props;
-    modifyFridge(user.id, recipe);
+  makeItem(recipe) {
+    if (recipe.img !== "...") {
+      const { user } = this.props;
+      modifyFridge(user.id, recipe);
+    }
+  }
+
+  openModal(recipe) {
+    if (recipe.img !== "...") 
+      this.props.openModal(recipe);
   }
 
   render() {
@@ -33,6 +39,12 @@ class WeeklyCartDay extends React.Component {
         <div className="weekly-cart-date">
           { TIMES.map((time, idx) => {
             recipe = recipes[cart.dates[date][time]];
+            if (!recipe && cart.dates[date][time]) 
+              recipe = {
+                title: "Recipe Not Found",
+                img: "...",
+                recipeId: cart.dates[date][time]
+              };
             if (recipe)
               return (
                 <div className="weekly-cart-item" key={idx}>
@@ -43,16 +55,16 @@ class WeeklyCartDay extends React.Component {
                         <div className="weekly-cart-item-info-left">
                           <div className="weekly-cart-item-name">{recipe.title.slice(0, 20) + ".."}</div>
                           <div className="weekly-cart-item-buttons">
-                            <div className="weekly-cart-item-remove" onClick={(e) => this.removeItem(e, time)}>
+                            <div className="weekly-cart-item-remove" onClick={() => this.removeItem(time)}>
                               Remove
                             </div>
-                            <div className="weekly-cart-item-eat" onClick={(e) => this.makeItem(e, recipe)}>
+                            <div className="weekly-cart-item-eat" onClick={() => this.makeItem(recipe)}>
                               Make Meal
                             </div>
                           </div>
                         </div>
                         <div className="weekly-cart-image">
-                          <img className="weekly-cart-item-info-image" src={recipe.image} />
+                          <img className="weekly-cart-item-info-image" src={recipe.image} onClick={()=> this.openModal(recipe)}/>
                         </div>
                       </div>
                     </div>

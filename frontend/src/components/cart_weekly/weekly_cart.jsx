@@ -63,6 +63,7 @@ class WeeklyCart extends React.Component {
         for (let j = 0; j < TIMES.length; j++) {
           recipeId = cart.dates[dates[i]][TIMES[j]];
           if (recipeId && !recipes[recipeId]) {
+            debugger;
             results++;
             getRecipeDB(recipeId)
               .then(() => {
@@ -70,6 +71,8 @@ class WeeklyCart extends React.Component {
                 if (results === 0) this.setState({ dates });
               });
           }
+          else if (!recipeId) 
+            if (results === 0) this.setState( { dates} );
         }
     }
   }
