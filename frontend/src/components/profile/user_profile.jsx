@@ -18,6 +18,7 @@ class UserProfile extends React.Component {
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.hitEnter = this.hitEnter.bind(this);
+    this.updateGender = this.updateGender.bind(this);
   }
 
   componentDidMount() {
@@ -60,7 +61,12 @@ class UserProfile extends React.Component {
         else if (parseInt(e.target.value) < min)
           e.target.value = min.toString();
       }
-      this.setState({ [field]: e.target.value });
+
+      if(field === "gender") {
+        this.setState({ [field]: e.target.value }, () => this.updateGender());
+      } else {
+        this.setState({ [field]: e.target.value });
+      }
     }
   }
 
@@ -81,16 +87,43 @@ class UserProfile extends React.Component {
       weeklyTarget: this.state.weeklyTarget
     });
   }
+
+  updateGender() {
+    this.props.updateUser({ 
+      id: this.props.userId, 
+      gender: this.state.gender,
+      age: this.props.user.age, 
+      height: this.props.user.height,
+      weight: this.props.user.weight, 
+      activityLevel: this.props.user.activityLevel,
+      weeklyTarget: this.props.user.weeklyTarget
+    });
+  }
   
   render() {
     let height = this.props.user.height;
     let weight = this.props.user.weight;
     let age = this.props.user.age;
-    let gender = this.props.user.gender;
     let activityLevel; 
     let weeklyTarget;
     let edit = "Edit";
     let user;
+    let gender;
+    
+    // switch(this.props.user.gender) {
+    //   case "M":
+    //     gender = <i class="fas fa-male"></i>;
+    //     break;
+    //   case "F":
+    //     gender = <i class="fas fa-female"></i>;
+    //     break;
+    //   case "O":
+    //     gender = <i class="fas fa-paw"></i>;
+    //     break;
+    //   default:
+    //     gender = <i class="fas fa-female"></i>;
+    //     break;
+    // }
 
     switch(this.props.user.activityLevel) {
       case 1:
@@ -143,29 +176,37 @@ class UserProfile extends React.Component {
         break;
     }
 
-    if(this.state.edit) {
       gender = 
-        <div>
-          <input type="radio" 
-            className="user-info-input" 
-            onChange={this.update("gender")}
-            name="gender"
-            value={"M"}
-            defaultChecked={this.props.user.gender === "M"}/>M
-          <input type="radio" 
-            className="user-info-input" 
-            onChange={this.update("gender")}
-            name="gender"
-            value={"F"}
-            defaultChecked={this.props.user.gender === "F"}/>F
-          <input type="radio" 
-            className="user-info-input" 
-            onChange={this.update("gender")}
-            name="gender"
-            value={"O"}
-            defaultChecked={this.props.user.gender === "O"}/>O
-        </div>;
+        <div className="gender-radio-container">
+            <input type="radio" 
+              className="gender-radio" 
+              onChange={this.update("gender")}
+              name="gender"
+              value={"M"}
+              id="genderM"
+              checked={this.props.user.gender === "M"}/>
+              <label for="genderM" className="gender-icon"><i class="fas fa-male"></i></label>
+        
+            <input type="radio" 
+              className="gender-radio" 
+              onChange={this.update("gender")}
+              name="gender"
+              value={"F"}
+              id="genderF"
+              checked={this.props.user.gender === "F"}/>
+              <label for="genderF" className="gender-icon"><i class="fas fa-female"></i></label>
 
+            <input type="radio" 
+              className="gender-radio" 
+              onChange={this.update("gender")}
+              name="gender"
+              value={"O"}
+              id="genderO"
+              checked={this.props.user.gender === "O"}/>
+              <label for="genderO" className="gender-icon"><i class="fas fa-paw"></i></label>
+        </div>;
+        
+    if(this.state.edit) {
       age = <input type="number" 
         className="user-info-input" 
         value={this.state.age}
@@ -187,10 +228,10 @@ class UserProfile extends React.Component {
       activityLevel = 
         <select onChange={this.update("activityLevel")}>
           <option value="1" selected={this.props.user.activityLevel === 1}>
-              Sedentary
+            Sedentary
           </option>
           <option value="2" selected={this.props.user.activityLevel === 2}>
-              Lightly Active
+            Lightly Active
           </option>
           <option value="3" selected={this.props.user.activityLevel === 3}>
             Moderately Active
@@ -250,7 +291,7 @@ class UserProfile extends React.Component {
         </div>
         <div className="profile-item-container">
           <div>
-            Gender
+            Sex
           </div>
           <div>
             { gender }
