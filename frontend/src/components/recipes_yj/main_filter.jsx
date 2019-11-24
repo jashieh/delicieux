@@ -290,7 +290,7 @@ export default class MainFilter extends React.Component {
               <button type="submit" className="filter-query-search" disabled={!this.state.ingredientQuery} onClick={this.addIngredient}>+</button>
               <input type="submit" value="Search" className="filter-text-button"/>
               <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
-                  <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
+                  <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
               </label>  
             </div>
