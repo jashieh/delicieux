@@ -1,5 +1,6 @@
 import * as RecipeAPI from '../util/recipe_api_util';
 import { recipeArrayToObject } from "../selectors/selectors";
+import { startLoad, stopLoad } from './loading_actions';
 
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
@@ -75,14 +76,25 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
             .then(({data}) => {
               results--;
               apiData[i] = data;
-              if (results === 0) dispatch(receiveRecipes(apiData));               
+              // if (results === 0) dispatch(receiveRecipes(apiData))
+              //   .then( ()=> dispatch(stopLoad()));    
+              if (results === 0){
+                dispatch(receiveRecipes(apiData))
+                dispatch(stopLoad());    
+              } 
+
             })
             .catch(() => {
               RecipeAPI.postRecipeId(apiData[i])
                 .then((payload) => {
                   results--;
                   apiData[i] = payload.data;
-                  if (results === 0) dispatch(receiveRecipes(apiData));
+                  // if (results === 0) dispatch(receiveRecipes(apiData))
+                  //   .then(() => dispatch(stopLoad()));
+                  if (results === 0){
+                    dispatch(receiveRecipes(apiData))
+                    dispatch(stopLoad())
+                  } 
                 });
             });
           }
@@ -163,15 +175,21 @@ export const complexRecipeSearch = ({
             .then(({ data }) => {
               results--;
               apiData[i] = data;
-              if (results === 0) dispatch(receiveRecipes(apiData));
+              if (results === 0) {
+                dispatch(receiveRecipes(apiData))
+                dispatch(stopLoad())
+              }   
             })
             .catch(() => {
               RecipeAPI.postRecipeComplex(apiData[i])
                 .then(({data}) => {
                   results--;
                   apiData[i] = data;
-                  if (results === 0) dispatch(receiveRecipes(apiData));
-                });
+                  if (results === 0) {
+                    dispatch(receiveRecipes(apiData));
+                    dispatch(stopLoad())  
+                  }
+              });
             });
           }
       },

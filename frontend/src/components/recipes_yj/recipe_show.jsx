@@ -1,15 +1,17 @@
 import React from 'react';
 import '../stylesheets/recipes_index/recipe_show.scss'
 import { VictoryPie, VictoryTooltip, VictoryLabel, VictoryChart } from 'victory';
+import { calorieCalc } from '../../util/calorie_util';
+
 export default class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       nutritionReq: {
         "Calories": 2000,
-        "Carbohydrates": 300,
-        "Protein": 65,
-        "Fat": 50,
+        "Carbohydrates": 250,
+        "Protein": 80,
+        "Fat": 75,
         "Fiber": 30,
       },
       pieData: [
@@ -55,8 +57,16 @@ export default class RecipeShow extends React.Component {
     }
   }
   render() {
-    const { recipe, fridge } = this.props;
+    const { recipe, fridge, user } = this.props;
     let fridgeList = Object.values(fridge.ingredients).map((el) => el.name);
+    let calorieReq = calorieCalc(user);
+    let nutritionReq =  {
+      "Calories": calorieReq,
+      "Carbohydrates": 250 * calorieReq/2000,
+      "Protein": 80 * calorieReq/2000,
+      "Fat": 75 * calorieReq/2000,
+      "Fiber": 30,
+      };
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
       <VictoryPie
@@ -105,7 +115,7 @@ export default class RecipeShow extends React.Component {
           {recipe.nutrition.map((nutrient, idx) => {
             if( ["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
               let title = nutrient.title
-              let percent = Math.floor(nutrient.amount / this.state.nutritionReq[title] * 100)
+              let percent = Math.floor(nutrient.amount / nutritionReq[title] * 100)
               return (
                 <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
                   <div> {title} </div>

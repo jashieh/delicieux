@@ -132,7 +132,32 @@
   cursor: pointer;
 }
 
+.loading-cont {
+  display: flex;
+  flex-wrap: wrap;
 
+  width: 100%;
+  height: 500px;
+  padding-top: 50px;
+  box-sizing: border-box;
+  align-items:center;
+  justify-content: center;
+}
+.loading-img-cont {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  position: relative;
+  background: transparent;
+}
 
+.loading-img {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  left: 0;
+  background: transparent;
+}
 
 

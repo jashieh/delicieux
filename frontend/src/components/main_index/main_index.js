@@ -13,7 +13,8 @@ class MainIndex extends React.Component {
 
     }
     componentDidMount() {
-      this.props.fetchFridge(this.props.userId)
+      this.props.fetchFridge(this.props.userId);
+      this.props.fetchUser(this.props.userId);
     }
     render () {
       const { fridge } = this.props;

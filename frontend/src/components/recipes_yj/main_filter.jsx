@@ -92,6 +92,7 @@ export default class MainFilter extends React.Component {
     if (this.state.soy) intolerances.push("soy"); 
     if (this.state.sulfite) intolerances.push("sulfite"); 
     if (this.state.wheat) intolerances.push("wheat");
+    this.props.startLoad("loading")
     this.props.complexRecipeSearch({
       search: this.state.query, 
       cuisine: this.state.cuisine, 
@@ -111,6 +112,7 @@ export default class MainFilter extends React.Component {
       });
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
+    this.props.startLoad("loading")
     this.props.getRecipesByIngredients(ingredientList)
   }
 
