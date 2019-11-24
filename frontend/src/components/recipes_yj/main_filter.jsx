@@ -1,8 +1,9 @@
 import React from 'react';
 import MainFilterDropdown from './main_filter_dropdown';
 import Toggle from 'react-toggle';
-import "react-toggle/style.css";
+// import "react-toggle/style.css";
 import '../stylesheets/recipes_index/main_filter.scss';
+import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
 
 export default class MainFilter extends React.Component {
@@ -164,25 +165,25 @@ export default class MainFilter extends React.Component {
       return (
         <div className="filter-bot-diet">
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
-          <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.glutenFree} onChange={this.handleCheck("glutenFree")} />
-            Gluten Free
+          <label className="filter-dd-item1">
+            <input type="checkbox" name="glutenFree" checked={this.state.glutenFree} onChange={this.handleCheck("glutenFree")} />
+              Gluten Free
           </label>
-          <label className="filter-dd-item1" style={this.state.ketogenic ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.ketogenic} onChange={this.handleCheck("ketogenic")} />
-            Ketogenic
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="ketogenic" checked={this.state.ketogenic} onChange={this.handleCheck("ketogenic")} />
+              Ketogenic
           </label>
-          <label className="filter-dd-item1" style={this.state.vegetarian? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.vegetarian} onChange={this.handleCheck("vegetarian")} />
-            Vegetarian
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="vegetarian" checked={this.state.vegetarian} onChange={this.handleCheck("vegetarian")} />
+              Vegetarian
           </label>
-          <label className="filter-dd-item1" style={this.state.vegan ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.vegan} onChange={this.handleCheck("vegan")} />
-            Vegan
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="vegan" checked={this.state.vegan} onChange={this.handleCheck("vegan")} />
+              Vegan
           </label>
-          <label className="filter-dd-item1" style={this.state.paleo ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.paleo} onChange={this.handleCheck("paleo")} />
-            Paleo
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="paleo" checked={this.state.paleo} onChange={this.handleCheck("paleo")} />
+              Paleo
           </label>
         </div>)
     } else if (this.state.tabs === 2) {
@@ -193,8 +194,8 @@ export default class MainFilter extends React.Component {
             return (
             <div key={idx} 
               className="filter-dd-item2" 
-              onClick={this.handleCuisine({cuisine})}
-              style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}>
+              onClick={this.handleCuisine({cuisine})}>
+              {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
               {cuisine}
             </div>)
           })}
@@ -203,37 +204,37 @@ export default class MainFilter extends React.Component {
       return( 
         <div className="filter-bot-allergies">
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
-          <label className="filter-dd-item1" style={this.state.dairy ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.dairy} onChange={this.handleCheck("dairy")} />
-            Dairy
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="dairy" checked={this.state.dairy} onChange={this.handleCheck("dairy")} />
+                Dairy
           </label> 
-          <label className="filter-dd-item1" style={this.state.egg ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.egg} onChange={this.handleCheck("egg")} />
-            Egg
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="egg" checked={this.state.egg} onChange={this.handleCheck("egg")} />
+                  Egg
           </label>
-          <label className="filter-dd-item1" style={this.state.peanut ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.peanut} onChange={this.handleCheck("peanut")} />
-            Peanut
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="peanut" checked={this.state.peanut} onChange={this.handleCheck("peanut")} />
+                  Peanut
           </label>
-          <label className="filter-dd-item1" style={this.state.seafood ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.seafood} onChange={this.handleCheck("seafood")} />
-            Seafood
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="seafood" checked={this.state.seafood} onChange={this.handleCheck("seafood")} />
+                  Seafood
           </label>
-          <label className="filter-dd-item1" style={this.state.shellfish ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.shellfish} onChange={this.handleCheck("shellfish")} />
-            Shellfish
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="shellfish" checked={this.state.shellfish} onChange={this.handleCheck("shellfish")} />
+                  Shellfish
           </label>
-          <label className="filter-dd-item1" style={this.state.soy ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.soy} onChange={this.handleCheck("soy")} />
-            Soy
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="soy" checked={this.state.soy} onChange={this.handleCheck("soy")} />
+                  Soy
           </label>
-          <label className="filter-dd-item1" style={this.state.sulfite ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.sulfite} onChange={this.handleCheck("sulfite")} />
-            Sulfite
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="sulfite" checked={this.state.sulfite} onChange={this.handleCheck("sulfite")} />
+                  Sulfite
           </label>
-          <label className="filter-dd-item1" style={this.state.wheat ? { backgroundColor: "black" } : {}}>
-            <Toggle className="toggle" defaultChecked={this.state.wheat} onChange={this.handleCheck("wheat")} />
-            Wheat
+          <label className="filter-dd-item1" >
+            <input type="checkbox" name="wheat" checked={this.state.wheat} onChange={this.handleCheck("wheat")} />
+                  Wheat
           </label>
         </div>)
     } else if (this.state.tabs === 4) {
@@ -243,28 +244,28 @@ export default class MainFilter extends React.Component {
           <div className="filter-slider">
             <div>Max Calories [ 0 - 800 ]</div>
             <div className="slider-second">
-              <input className="filter-nutr-slider" type="range" min="0" max="800" value={this.state.maxCalories} onInput={this.handleSlider("maxCalories")}/>
+              <input className="filter-nutr-slider" type="range" min="0" max="800" value={this.state.maxCalories} onChange={this.handleSlider("maxCalories")}/>
             </div>
             <input className="slide"  type="number" min="0" max="800" maxength="3" value={this.state.maxCalories} onChange={this.handleSlider("maxCalories")} />
           </div>
           <div className="filter-slider">
             <div>Max Fat [ 0 - 100 ]</div>
             <div className="slider-second">
-              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} onInput={this.handleSlider("maxFat")}/>
+              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxFat} onChange={this.handleSlider("maxFat")}/>
             </div>
             <input className="slide"  type="number" min="0" max="100" maxLength="3" value={this.state.maxFat} onChange={this.handleSlider("maxFat")} />
           </div>
           <div className="filter-slider">
             <div>Max Carbs [ 0 - 100 ]</div>
             <div className="slider-second">
-              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} onInput={this.handleSlider("maxCarbs")}/>
+              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.maxCarbs} onChange={this.handleSlider("maxCarbs")}/>
             </div>
             <input className="slide" type="number" min="0" max="100" maxLength="3" value={this.state.maxCarbs} onChange={this.handleSlider("maxCarbs")} />
           </div>
           <div className="filter-slider">
             <div>Min Protein [ 0 - 100 ]</div>
             <div className="slider-second">
-              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} onInput={this.handleSlider("minProtein")}/>
+              <input className="filter-nutr-slider" type="range" min="0" max="100" value={this.state.minProtein} onChange={this.handleSlider("minProtein")}/>
             </div>
             <input className="slide" type="number" min="0" max="100" pattern="\d" maxLength="3" value={this.state.minProtein} onChange={this.handleSlider("minProtein")} />
           </div>
