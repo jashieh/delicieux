@@ -89,6 +89,18 @@
     font-family: Open Sans;
     font-size: 12px;
     font-weight: 300;
+    display: flex;
+    flex-direction: row;
+
+    h2 {
+        width: max-content;
+        align-self: center;
+        margin-right: 10px;
+    }
+
+    .back-sign {
+        width: max-content;
+    }
 }
 
     
@@ -104,13 +116,25 @@
     font-weight: 100;
 }
 
+
 .submit {
     background-color: black;
-    border: 1px solid rgb(186, 185, 185);
-    color: white;
-    font-size: 12px;
+    border: none;
+    color: rgb(176, 171, 171);
+    font-size: 13px;
     padding: 10px 30px;
     margin: 0 auto;
+    width: 130px;
     // margin-top: 10px;
     font-family: Open Sans;
 }
+
+.login-bottom {
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0px;  
+    // background-color: red;
+    justify-content: space-around;
+    
+}
+

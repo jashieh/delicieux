@@ -1,4 +1,5 @@
 import React from 'react';
+import Utensil from '../stylesheets/assets/cutlery.png';
 
 class CartItem extends React.Component {
   constructor(props) {
@@ -61,14 +62,32 @@ class CartItem extends React.Component {
       return (
         <div className="cart-item" onDragOver={this.onDragOver} onDrop={this.onDrop}>
           <div className="cart-item-time">{time}</div>
-          <div className="cart-item-info">
-            <img className="cart-item-info-image" src={recipe.image} />
-            <div className="cart-item-info-text">
-              <div className="cart-item-name">{recipe.title}</div>
-              <div className="cart-item-remove" onClick={this.removeFromCart}>
-                Remove Item
+          <div className="cart-item-main">
+
+            <div className="cart-item-info">
+              <div className="cart-item-info-text">
+                <div className="cart-item-name">{recipe.title.slice(0, 20) + ".."}</div>
+                <div className="cart-image" >
+                  <img className="cart-item-info-image" src={recipe.image} />
+                </div>
               </div>
-            </div>
+
+              <div className="cart-item-bottom">
+                <div className="cuisine">
+                  <div className="cuisine-image">
+                    <img src={Utensil} className="uten-icon"/>
+                  </div>
+                  Cuisine
+                </div>
+                <div>
+                  10M
+                </div>
+                <div>
+                  16
+                </div>
+                <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
+              </div>
+          </div>
           </div>
         </div>
       );
