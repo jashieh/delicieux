@@ -28,7 +28,7 @@ class WeeklyCartDay extends React.Component {
     const { recipes, cart, date } = this.props;
     let recipe;
     return (
-      <div className="weekly-cart">
+      <div className="weekly-cart-day">
         <div className="weekly-cart-header-date">{date}</div>
         <div className="weekly-cart-date">
           { TIMES.map((time, idx) => {

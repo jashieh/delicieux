@@ -1,6 +1,11 @@
-.weekly-cart {
-  width: 350px;
-  height: 90%;
+.weekly-cart-days {
+  min-height: 450px;
+  background-color: rgb(247, 246, 246);
+}
+
+.weekly-cart-day {
+  width: 100%;
+  height: calc(100% - 50px);
 
   padding: 10px;
   padding-left: 20px;
@@ -10,15 +15,19 @@
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  background-color: rgb(247, 246, 246);
   // background: rgb(232, 248, 214);
 }
 .weekly-cart-header-date {
+  height: 30px;
   margin: 0px 12px;
+
+  line-height: 30px;
+  text-align: center;
+  vertical-align: middle;
 }
 .weekly-cart-date {
-  width: 100%;
-  height: 890px;
+  min-width: 300px;
+  height: 400px;
   // background: blue;
   display: flex;
   flex-direction: column;
@@ -43,32 +52,39 @@
   font-size: 13px;
   font-weight: 400;
   padding: 12px 10px;
-  padding-left: 29px;
+  padding-left: 18px;
+  padding-bottom: 8px;
   // background: rgb(223, 128, 128);
   background: white;
   background: inherit;
 }
 .weekly-cart-item-info {
-  width: 90%;
-  height: 110px;
+  width: 94%;
+  height: 78px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background: rgb(245, 245, 245);
   box-shadow: 1px 1px 8px 1px #c6c4c4;
   margin: 0 auto;
   font-family: Open Sans;
   font-size: 15px;
 
+  .weekly-cart-item-info-left {
+    width: 70%;
+  }
+
   .weekly-cart-image {
     width: 30%;
+    height: 100%;
     // background: green;
     display: flex;
     justify-content: center;
 
     .weekly-cart-item-info-image {
-      width: 85%;
-      height: 85%;
+      width: 100%;
+      height: 100%;
       box-shadow: 1px 1px 5px 1px rgb(182, 181, 181);
       opacity: 90%;
       border-radius: 10px;
@@ -77,40 +93,74 @@
     }
   }
 
+  .weekly-cart-image:hover {
+    cursor: pointer;
+  }
+
 
   .weekly-cart-item-info-text {
     display: flex;
     flex-direction: row;
     margin: 10px;
-    margin-top: 13px;
-    // background: blue;
+    margin-top: 10px;
     background: inherit;
-    height: 55%;
-
-    .weekly-cart-item-name {
-      width: 70%;
-      height: 50px;
-      // background: purple !important;
-      background: inherit;
-      font-size: 14px;
-      font-weight: bold;
-      padding-top: 9px;
-      padding-left: 10px;
-      // background: white;
-    }
+    height: 100%;
   }
-
 }
 
 .weekly-cart-item-name {
-  height: 70%;
   width: 100%;
-  font-size: 16px;
-  font-weight: 300;
+  height: 20px;
+
+  // background: purple !important;
+  background: inherit;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  vertical-align: middle;
+
+  padding-top: 3px;
+  padding-left: 10px;
+}
+
+
+.weekly-cart-item-buttons {
+  display: flex;
+  justify-content: flex-start;
+
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.weekly-cart-item-remove, .weekly-cart-item-eat {
+  width: auto;
+  line-height: 18px;
+  font-size: 12px;
+  vertical-align: middle;
+
+  border-bottom: 1px solid rgb(247, 246, 246);
+
+
+  padding: 0 1px;
+  margin-right: 10px;
+  transition: 0.4s;
+}
+
+.weekly-cart-item-remove:hover {
+  cursor: pointer;
+  border-bottom: 1px solid maroon;
+  // color: maroon;
+}
+
+.weekly-cart-item-eat:hover {
+  cursor: pointer;
+  border-bottom: 1px solid rgb(0, 95, 0);
+  // color: rgb(0, 95, 0);
 }
 
 .weekly-cart-item-main {
-  height: 110px;
+  height: 120px;
+  width: 100%;
   // background: skyblue;
   background: inherit;
 
@@ -124,8 +174,4 @@
     font-size: 12px;
     margin-left: 20px;
   }
-}
-
-.weekly-cart-item-main:hover {
-  cursor: pointer;
 }
