@@ -119,7 +119,6 @@ export const getRandomRecipe = () => dispatch => (
 // defailed nutrition information.
 export const getRandomRecipes = number => dispatch =>
          RecipeAPI.getRandomRecipes(number)
-          //  .then(payload => console.log(payload))
            .then(
              ({ data }) => {
                let recipeIds = data.recipes.map(recipe => recipe.id);
