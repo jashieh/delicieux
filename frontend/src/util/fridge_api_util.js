@@ -26,15 +26,16 @@ export const modifyIngredient = (userId, ingredient, amount) => {
 
 
 // Could receive entire recipe object from state instead
-export const modifyFridge = (userId, recipeId) => {
+export const modifyFridge = (userId, recipe) => {
   let ingredients = {};
   let requests = 0;
   
   // recipe.extendedIngredients
-  getRecipeById(recipeId).then((res) => {
-    for(let i = 0; i < res.data.extendedIngredients.length; i++) {
+  // getRecipeById(recipeId).then((res) => {
+    debugger;
+    for (let i = 0; i < recipe.ingredients.length; i++) {
       requests++;
-      let ingredient = res.data.extendedIngredients[i];
+      let ingredient = recipe.ingredients[i];
       getConvertAmounts(ingredient.name, ingredient.unit, ingredient.amount)
         .then(res => {
           requests--;
@@ -47,5 +48,5 @@ export const modifyFridge = (userId, recipeId) => {
           }
       });
     }
-  })
+  // })
 };

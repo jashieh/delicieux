@@ -20,19 +20,22 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
-    let { getCart, user, cart } = this.props;
-    if (!cart.dates)
-      getCart(user.id)
-        .then(() => this.getRecipes())
-    else
-      this.getRecipes();
+    let { getCart, user, cart, fetchFridge } = this.props;
+    fetchFridge(user.id)
+      .then(() => {
+        if (!cart.dates)
+          getCart(user.id)
+            .then(() => this.getRecipes())
+        else
+          this.getRecipes();
+      });
   }
 
   // Generates an array of dateStrings that represent the week's cart
   generateDates() {
     let currentDate = new Date();
     currentDate = new Date(currentDate);
-    currentDate.setDate(currentDate.getDate() - currentDate.getDay() + 1);
+    currentDate.setDate(currentDate.getDate() - currentDate.getDay());
 
     let dateStrings = [currentDate.toDateString().slice(0, 15)];
     while (dateStrings.length < 7) {
@@ -70,6 +73,8 @@ class WeeklyCart extends React.Component {
                 if (results === 0) this.setState({ dates });
               });
           }
+          else if (!recipeId) 
+            if (results === 0) this.setState( { dates} );
         }
     }
   }
@@ -82,6 +87,7 @@ class WeeklyCart extends React.Component {
           <div className="top">
             <NavBarContainer />
           </div>
+          <div className="weekly-cart-header">Weekly Summary</div>
           <div className="weekly-cart-days">
             {dates.map((date, idx) => {
               return <WeeklyCartDayContainer date={date} key={idx} />;
