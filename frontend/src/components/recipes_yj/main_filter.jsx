@@ -51,16 +51,19 @@ export default class MainFilter extends React.Component {
     this.props.fetchFridge(this.props.userId);
 
     let input = document.getElementsByClassName("filter-text-input")[0];
-    input.addEventListener("keydown", event => {
+
+    this.enterEvent = event => {
       event.stopPropagation();
       if (event.keyCode === 13)
         this.handleQuerySubmit();
-    });
+    }
+
+    input.addEventListener("keydown", this.enterEvent);
   }
 
   componentWillUnmount() {
     let input = document.getElementsByClassName("filter-text-input")[0];
-    input.removeEventListener("keydown");
+    input.removeEventListener("keydown", this.enterEvent);
   }
   addIngredient() {
     let x = this.state.ingredientList;
