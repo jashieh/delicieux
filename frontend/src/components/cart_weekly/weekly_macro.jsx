@@ -1,6 +1,6 @@
 import React from 'react';
 import { VictoryLegend, VictoryPie, VictoryLabel } from 'victory';
-import "../stylesheets/weekly_cart/weekly_cart_day.scss";
+import "../stylesheets/weekly_cart/weekly_macro.scss";
 import { calorieCalc } from '../../util/calorie_util';
 
 export default class WeeklyMacro extends React.Component {
@@ -22,7 +22,15 @@ export default class WeeklyMacro extends React.Component {
       legendData: [
         { name: "Carbs" }, { name: "Protein" }, { name: "Fat" }
       ],
+      calories: false,
+      protein: false,
+      fat: false,
+      carbs: false,
+      fiber: false,
+
     }
+    this.handleBarOn = this.handleBarOn.bind(this);
+    this.handleBarOff = this.handleBarOff.bind(this);
   }
   componentDidMount() {
     
@@ -43,16 +51,32 @@ export default class WeeklyMacro extends React.Component {
       })
     }, 1000)
   }
-  
+  handleBarOn(type) {
+    return (e) => {
+      this.setState({ [type]: true })
+    }
+  }
+  handleBarOff(type) {
+    return (e) => {
+      this.setState({ [type]: false })
+    }
+  }
   render() {
+    let { calories, carbs, protein, fat, fiber, user } = this.props;
     let calorieReq = calorieCalc(user);
     let nutritionReq = {
-      "Calories": calorieReq ? calorieReq : 2000,
-      "Carbohydrates": calorieReq ? 250 * calorieReq / 2000 : 250,
-      "Protein": calorieReq ? 80 * calorieReq / 2000 : 80,
-      "Fat": calorieReq ? 75 * calorieReq / 2000 : 75,
-      "Fiber": 30,
+      calories: calorieReq ? calorieReq * 7 : 2000*7,
+      carbs: calorieReq ? 250 * calorieReq / 2000 * 7: 250*7,
+      protein: calorieReq ? 80 * calorieReq / 2000 * 7 : 80*7,
+      fat: calorieReq ? 75 * calorieReq / 2000 * 7 : 75*7,
+      fiber: 210,
     };
+    let caloriePer = Math.floor(calories / nutritionReq.calories * 100);
+    let carbsPer = Math.floor(carbs / nutritionReq.carbs * 100);
+    let proteinPer = Math.floor(protein / nutritionReq.protein * 100);
+    let fatPer = Math.floor(fat / nutritionReq.fat * 100);
+    let fiberPer = Math.floor(fiber / nutritionReq.fiber * 100);
+
     return(
       <div className="weekly-macro-cont">
         <div className="weekly-macro-pie">
@@ -95,25 +119,38 @@ export default class WeeklyMacro extends React.Component {
                 }}
               />
             </svg>
-
           </div>
         </div>
         <div className="weekly-macro-bar">
-          <div className="bar-chart-cont" onClick={this.toggleChart}>
-            {recipe.nutrition.map((nutrient, idx) => {
-              if (["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
-                let title = nutrient.title
-                let percent = Math.floor(nutrient.amount / nutritionReq[title] * 100)
-                return (
-                  <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
-                    <div> {title} </div>
-                    <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)` }}>
-                      {this.state[title] ? <div>{Math.floor(nutrient.amount)} {nutrient.unit}</div> : <div>{percent}%</div>}
-                    </div>
-                  </div>
-                )
-              }
-            })}
+          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("calories")} onMouseLeave={this.handleBarOff("calories")}>
+            <div> Calories </div>
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${caloriePer}%, darkgrey ${caloriePer}%)` }}>
+              {this.state.calories ? <div>{Math.floor(calories)} cal</div> : <div>{caloriePer}%</div>}
+            </div>
+          </div>
+          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("protein")} onMouseLeave={this.handleBarOff("protein")}>
+            <div> Protein </div>
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${proteinPer}%, darkgrey ${proteinPer}%)` }}>
+              {this.state.protein ? <div>{Math.floor(protein)} g</div> : <div>{proteinPer}%</div>}
+            </div>
+          </div>
+          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("fat")} onMouseLeave={this.handleBarOff("fat")}>
+            <div> Fat </div>
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${fatPer}%, darkgrey ${fatPer}%)` }}>
+              {this.state.fat ? <div>{Math.floor(fat)} g</div> : <div>{fatPer}%</div>}
+            </div>
+          </div>
+          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("carbs")} onMouseLeave={this.handleBarOff("carbs")}>
+            <div> Carbohydrates </div>
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${carbsPer}%, darkgrey ${carbsPer}%)` }}>
+              {this.state.carbs ? <div>{Math.floor(carbs)} g</div> : <div>{carbsPer}%</div>}
+            </div>
+          </div>
+          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("fiber")} onMouseLeave={this.handleBarOff("fiber")}>
+            <div> Fiber </div>
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${fiberPer}%, darkgrey ${fiberPer}%)` }}>
+              {this.state.fiber ? <div>{Math.floor(fiber)} g</div> : <div>{fiberPer}%</div>}
+            </div>
           </div>
         </div>
       </div>
