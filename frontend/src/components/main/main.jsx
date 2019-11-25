@@ -10,6 +10,9 @@ import PieChart from '../stylesheets/assets/pie_chart.gif';
 import LineChart from '../stylesheets/assets/line_chart.gif';
 import GroceryGif from '../stylesheets/assets/grocery.gif';
 
+import KitchenCounter from '../stylesheets/assets/kitchen_counter.jpg';
+import MainIndexItemContainer from './main_index_item_container';
+import { recipe1 } from './main_index_seeds';                      
 
 class MainPage extends React.Component {
     
@@ -130,8 +133,27 @@ class MainPage extends React.Component {
                                 <div className="st-deco">
 
                                 </div>
-                                <h2>Positivity</h2>
-                                <p>Mixtape fap leggings art party, butcher authentic farm-to-table you probably haven't heard of them do labore cosby sweater.</p>
+                                <div className="img-container">
+                                  <img src={KitchenCounter} className="splash-image"/>
+                                </div>
+
+                                <div className="main-index">
+                                  <div className="main-index-header">
+                                    Browse From a Diverse Menu!
+                                  </div>
+                                  <div className="main-index-rows">
+                                    <div className="main-index-row">
+                                      <MainIndexItemContainer recipe={recipe1}/>
+                                      <MainIndexItemContainer recipe={recipe1}/>
+                                      <MainIndexItemContainer recipe={recipe1}/>
+                                    </div>
+                                    <div className="main-index-row">
+                                      <MainIndexItemContainer recipe={recipe1}/>
+                                      <MainIndexItemContainer recipe={recipe1}/>
+                                      <MainIndexItemContainer recipe={recipe1}/>
+                                    </div>
+                                  </div>
+                                </div>
                             </section>
 
                             <section className="st-panel" id="st-panel-5">
@@ -143,9 +165,7 @@ class MainPage extends React.Component {
                             </section>
 
                         </div>
-
                     </div>
-
                 </div>
             </div>
         );
