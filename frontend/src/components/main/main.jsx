@@ -80,7 +80,7 @@ class MainPage extends React.Component {
                             
                             <div className="main-index">
                               <div className="main-index-header">
-                                Browse From a Diverse Menu
+                                Browse From a Diverse Menu!
                               </div>
                               <div className="main-index-rows">
                                 <div className="main-index-row">
