@@ -44,7 +44,7 @@ class MainPage extends React.Component {
 
                             <section className="st-panel st-color" id="st-panel-1">
                                 <div className="img-container">
-                                    <img src={Background1} alt=""
+                                    <img src={KitchenCounter} alt=""
                                     className="splash-img"/>
                                 </div>
                                 <div className="st-deco" >
