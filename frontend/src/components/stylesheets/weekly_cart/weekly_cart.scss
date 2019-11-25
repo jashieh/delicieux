@@ -7,6 +7,18 @@
   align-items: center;
 }
 
+.weekly-cart-header {
+  height: 5%;
+  width: 100%;
+
+  font-size: 30px;
+  line-height: 40px;
+  vertical-align: middle;
+  text-align: center;
+
+  margin-top: 20px;
+}
+
 .weekly-cart-days {
   height: 45%;
   width: 80%;
@@ -19,6 +31,4 @@
 
   border: 1px solid black;
   border-radius: 5px;
-
-  margin-top: 20px;
 }

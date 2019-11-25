@@ -23,7 +23,6 @@
 
   width: 100%;
   height: 10%;
-
 }
 
 .cart-header-date {
@@ -191,6 +190,10 @@
     font-size: 12px;
     margin-left: 20px;
   }
+}
+
+.cart-item-main:hover {
+  cursor: pointer;
 }
 
 

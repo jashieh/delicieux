@@ -63,24 +63,25 @@ class RecipeIndex extends React.Component {
   render() {
     const { recipes, loading } = this.props;
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
-    return (
-      <div>
-        {loading ? (
+    if (loading) {
+      return (
         <div className="loading-cont">
           <div className="loading-img-cont">
             <img className="loading-img" src={flip} />
           </div>
-        </div>) : (
-          <div className="recipe-index">
-              {indexRecipes.map((recipe, idx) => {
-                return <RecipeIndexItemContainer key={idx}
-                  recipe={recipe}
-                  rotateToBack={() => this.props.rotateRecipe(idx)} />
-              })}
-          </div>
-        )}
-      </div>
-    )
+        </div>
+      )
+    } else {
+      return (
+        <div className="recipe-index">
+          {indexRecipes.map((recipe, idx) => {
+            return <RecipeIndexItemContainer key={idx}
+              recipe={recipe}
+              rotateToBack={() => this.props.rotateRecipe(idx)} />
+          })}
+        </div>
+      )
+    }
   }
 }
 

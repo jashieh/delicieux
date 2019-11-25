@@ -104,27 +104,12 @@ class UserProfile extends React.Component {
     let height = this.props.user.height;
     let weight = this.props.user.weight;
     let age = this.props.user.age;
+    let edit = "Edit";
     let activityLevel; 
     let weeklyTarget;
-    let edit = "Edit";
     let user;
     let gender;
     
-    // switch(this.props.user.gender) {
-    //   case "M":
-    //     gender = <i class="fas fa-male"></i>;
-    //     break;
-    //   case "F":
-    //     gender = <i class="fas fa-female"></i>;
-    //     break;
-    //   case "O":
-    //     gender = <i class="fas fa-paw"></i>;
-    //     break;
-    //   default:
-    //     gender = <i class="fas fa-female"></i>;
-    //     break;
-    // }
-
     switch(this.props.user.activityLevel) {
       case 1:
         activityLevel = "Sedentary";
@@ -329,7 +314,7 @@ class UserProfile extends React.Component {
             { weeklyTarget }
           </div>
         </div> 
-        Daily Caloric Need: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
+        Daily Calorie Goal: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
       </div>
     );
   }

@@ -1,8 +1,5 @@
 import axios from 'axios';
-
-
-const apiKey = "be025cdd9bmsh49601abc3099f49p1c31fdjsn618acb311b0a";
-
+import key from './key';
 
 export const getRandomRecipe = (number = 1, tags) => {
   if (!tags) tags = [];
@@ -13,7 +10,7 @@ export const getRandomRecipe = (number = 1, tags) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "number": `${number}`,
@@ -32,7 +29,7 @@ export const getRandomRecipes = (number) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "number": `${number}`,
@@ -49,7 +46,7 @@ export const getRecipeById = (id, includeNutrition = true) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "includeNutrition": `${includeNutrition}`
@@ -71,7 +68,7 @@ export const getMultipleRecipes = (ids, includeNutrition = true) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "ids": idString,
@@ -93,7 +90,7 @@ export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 1, ign
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "number": `${limit}`,
@@ -121,7 +118,7 @@ export const searchRecipeByName = (name, limit = 5) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "number": `${limit}`,
@@ -181,7 +178,7 @@ export const complexRecipeSearch = (
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, 
     "params": {
       "query": search,
@@ -214,7 +211,7 @@ export const getSimilarRecipes = (id, limit = 5) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     },
     "params": {
       "numer": `${limit}`
@@ -239,7 +236,7 @@ export const extractRecipe = (url) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, "params": {
       "url": url
     }

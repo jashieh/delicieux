@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -11,6 +11,7 @@ class NavBar extends React.Component {
 
   logoutUser(e) {
       e.preventDefault();
+      this.props.history.push("/");
       this.props.logout();
   }
 
@@ -28,12 +29,16 @@ class NavBar extends React.Component {
 
   getLinks() {
       if (this.props.loggedIn) {
-        return (
-          <div>
-            <button className="logout" onClick={() => this.props.openSide("first")}>SIDE</button>
-            <button className="logout" onClick={this.logoutUser}>Logout</button>
-          </div>
-        );
+        if (this.props.location.pathname === "/") {
+          return <div></div>
+        } else {
+          return (
+            <div>
+              <button className="logout" onClick={() => this.props.openSide("first")}>SIDE</button>
+              <button className="logout" onClick={this.logoutUser}>Logout</button>
+            </div>
+          );
+        }
       } else {
         return (
             <div className="main-auth" >
@@ -48,6 +53,7 @@ class NavBar extends React.Component {
   }
 
   render() {
+    console.log(this.props.location.pathname)
       return (
         <div className="nav-main" >
             { this.getLinks() }
@@ -56,4 +62,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default withRouter(NavBar);
