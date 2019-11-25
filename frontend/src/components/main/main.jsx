@@ -66,6 +66,14 @@ class MainPage extends React.Component {
                             <div className="st-deco">
                             </div>
 
+                            
+                            
+                        </section>
+
+                        <section className="st-panel st-color" id="st-panel-4">
+                            <div className="st-deco">
+
+                            </div>
                             <div className="img-container">
                               <img src={KitchenCounter} className="splash-image"/>
                             </div>
@@ -87,21 +95,13 @@ class MainPage extends React.Component {
                                 </div>
                               </div>
                             </div>
-                            
-                        </section>
-
-                        <section className="st-panel st-color" id="st-panel-4">
-                            <div className="st-deco">
-
-                            </div>
-                            <h2>Positivity</h2>
-                            <p>Mixtape fap leggings art party, butcher authentic farm-to-table you probably haven't heard of them do labore cosby sweater.</p>
                         </section>
 
                         <section className="st-panel" id="st-panel-5">
                             <div className="st-deco">
 
                             </div>
+                            
                             <h2>Passion</h2>
                             <p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>
                         </section>
