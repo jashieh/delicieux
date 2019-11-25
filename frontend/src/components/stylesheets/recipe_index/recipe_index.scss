@@ -1,27 +1,27 @@
 .recipe-index {
   display: flex;
   flex-wrap: wrap;
-
-  width: 100%;
-  height: 100%;
-
-  box-sizing: border-box;
-
   justify-content: center;
+
+  width: calc(100% + 25px);
+  max-height: 100%;
+
+  padding-bottom: 10px;
+  box-sizing: border-box;
   
-  // overflow-x: hidden;
-  // overflow-y: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 
-  // ::-webkit-scrollbar {
-  //   width: 25px;
-  // }
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
 
-  // ::-webkit-scrollbar-track {
-  //   border: 7px solid black;
-  // }
+  ::-webkit-scrollbar-track {
+    border: 7px solid black;
+  }
 
-  // ::-webkit-scrollbar-thumb {
-  //   background: red;
-  //   border-radius: 2px;
-  // }
+  ::-webkit-scrollbar-thumb {
+    background: red;
+    border-radius: 2px;
+  }
 }

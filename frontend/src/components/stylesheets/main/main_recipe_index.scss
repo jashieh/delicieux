@@ -13,7 +13,7 @@
 .splash-image {
   height: 100vh;
   width: 100vw;
-  object-fit: cover;
+  object-fit: cover; 
 }
 
 
@@ -34,6 +34,7 @@
   background: white;
 
   border-radius: 5px;
+  box-shadow: 1px 1px 4px 1px rgb(196, 194, 194);
 }
 
 .main-index-header {

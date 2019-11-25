@@ -10,7 +10,7 @@ import PieChart from '../stylesheets/assets/pie_chart.gif';
 import LineChart from '../stylesheets/assets/line_chart.gif';
 import GroceryGif from '../stylesheets/assets/grocery.gif';
 
-import KitchenCounter from '../stylesheets/assets/kitchen_counter.jpg';
+import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
 import { recipe1 } from './main_index_seeds';                      
 
