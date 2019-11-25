@@ -63,7 +63,7 @@ class RecipeIndex extends React.Component {
   render() {
     const { recipes, loading } = this.props;
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
-    if (loading) {
+    if (true) {
       return (
         <div className="loading-cont">
           <div className="loading-img-cont">
