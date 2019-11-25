@@ -11,11 +11,17 @@ class WeeklyCart extends React.Component {
     super(props);
 
     this.state = {
-      dates: []
+      dates: [],
+      calories: 0,
+      carbs: 0,
+      protein: 0,
+      fat: 0,
+      fiber: 0
     }
 
     this.generateDates = this.generateDates.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
+    this.addMacros = this.addMacros.bind(this);
   }
 
   // generate an array of weekdates and fetch recipe info
@@ -78,10 +84,23 @@ class WeeklyCart extends React.Component {
         }
     }
   }
-
+  addMacros(recipe) {
+    let recipeCalories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount;
+    let recipeProtein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
+    let recipeFat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
+    let recipeCarbs = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount;
+    let recipeFiber = Object.values(recipe.nutrition).filter(nutrient => ["Fiber"].includes(nutrient.title))[0].amount;
+    this.setState({
+      calories: this.state.calories + recipeCalories,
+      protein: this.state.protein + recipeProtein,
+      fat: this.state.fat + recipeFat,
+      carbs: this.state.carbs + recipeCarbs,
+      fiber: this.state.fiber + recipeFiber
+    });
+  }
   render() {
     let { dates } = this.state;
-    if (dates.length > 0)
+    if (dates.length > 0){
       return (
         <div className="weekly-cart">
           <div className="top">
@@ -90,15 +109,16 @@ class WeeklyCart extends React.Component {
           <div className="weekly-cart-header">Weekly Summary</div>
           <div className="weekly-cart-days">
             {dates.map((date, idx) => {
-              return <WeeklyCartDayContainer date={date} key={idx} />;
+              return <WeeklyCartDayContainer date={date} key={idx} addMacros={this.addMacros}/>;
             })}
           </div>
         </div>
       );
-    else
+    } else {
       return (
         <div className="weekly-cart"></div>
-      )
+      );
+    }
   }
 }
 

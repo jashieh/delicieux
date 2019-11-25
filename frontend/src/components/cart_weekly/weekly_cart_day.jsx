@@ -34,14 +34,13 @@ class WeeklyCartDay extends React.Component {
   }
 
   openModal(e, recipe) {
-    debugger;
     e.stopPropagation();
     if (recipe.image !== "...") 
       this.props.openModal(recipe);
   }
 
   render() {
-    const { recipes, cart, date, openModal } = this.props;
+    const { recipes, cart, date, openModal, addMacros } = this.props;
     return (
       <div className="weekly-cart-day">
         <div className="weekly-cart-header-date">{date}</div>
@@ -58,6 +57,8 @@ class WeeklyCartDay extends React.Component {
               };
             }
             if (this.recipe[time]) {
+              addMacros(this.recipe[time])
+              debugger;
               return (
                 <div className="weekly-cart-item" key={idx}>
                   <div className="weekly-cart-item-time">{time}</div>

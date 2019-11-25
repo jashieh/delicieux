@@ -8,7 +8,6 @@ const mapStateToProps = (state, ownProps) => ({
   recipes: state.entities.recipes,
   cart: state.entities.cart,
   user: state.session.user,
-
   date: ownProps.date,
 });
 
