@@ -1,6 +1,6 @@
 import axios from 'axios';
+import key from './key';
 
-const apiKey = "be025cdd9bmsh49601abc3099f49p1c31fdjsn618acb311b0a";
 
 // Searches for matches starting with query string. 
 // Returns name, id and image of ingredients  
@@ -14,7 +14,7 @@ export const searchIngredientByName = (query = "", limit = 5, intolerances=[]) =
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": apiKey
+      "x-rapidapi-key": key.apiKey
     }, "params": {
       "number": `${limit}`,
       "intolerances": `${allergies}`,
@@ -64,7 +64,7 @@ export const getIngredientSubstitutes = (ingredientName) => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": "f9ba977a04msha79dcdbd3b845c1p1e804ajsn0a5620f33ad5"
+      "x-rapidapi-key": key.apiKey
     }, "params": {
       "ingredientName": ingredientName
     }
@@ -86,7 +86,7 @@ export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUn
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": "f9ba977a04msha79dcdbd3b845c1p1e804ajsn0a5620f33ad5"
+      "x-rapidapi-key": key.apiKey
     }, "params": {
       "ingredientName": ingredient,
       "targetUnit": targetUnit,
