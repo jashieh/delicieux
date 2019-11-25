@@ -17,12 +17,14 @@
 }
 
 .gender-radio-container {
-    border: 1px solid black;
     width: 50px;
     height: 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 5px;
+
     .gender-radio {
         margin:0;padding:0;
         -webkit-appearance:none;
@@ -44,8 +46,18 @@
         text-align: center;
     }
 
+    .gender-icon:nth-child(2) {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+    }
+
     .gender-icon:nth-child(4) {
         border-left: 1px solid green;
         border-right: 1px solid green;
+    }
+
+    .gender-icon:nth-child(6) {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
     }
 }

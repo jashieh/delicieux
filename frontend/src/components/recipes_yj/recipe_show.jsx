@@ -1,6 +1,6 @@
 import React from 'react';
 import '../stylesheets/recipes_index/recipe_show.scss'
-import { VictoryPie, VictoryTooltip, VictoryLabel, VictoryChart } from 'victory';
+import { VictoryPie, VictoryTooltip, VictoryLabel, VictoryChart, VictoryLegend, VictoryContainer } from 'victory';
 import { calorieCalc } from '../../util/calorie_util';
 
 export default class RecipeShow extends React.Component {
@@ -14,9 +14,12 @@ export default class RecipeShow extends React.Component {
         "Fat": 75,
       },
       pieData: [
-        { x: "", y: 100, label: "" },
-        { x: "", y: 0, label: "" },
-        { x: "", y: 0, label: "" }
+        { y: 100, label: "" },
+        { y: 0, label: "" },
+        { y: 0, label: "" }
+      ],
+      legendData: [
+        { name: "Carbs" }, { name: "Protein" }, { name: "Fat" }
       ],
       label: false,
       pieChart: true,
@@ -30,13 +33,17 @@ export default class RecipeShow extends React.Component {
     let protein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
     let fat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
     let carbohydrates = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount;
-
+    let calorieAc = (carbohydrates * 4) + (protein * 4)+ (fat * 9);
+    let carbPer = Math.round(carbohydrates * 4 / calorieAc * 1000) / 10;
+    let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
+    let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
+    debugger;
     setTimeout(() => {
       this.setState({
         pieData: [
-          { x: "Carbs", y: (carbohydrates * 4/calories * 100), label: "Carbs" },
-          { x: "Protein", y: (protein * 4/calories * 100), label: "Protein" },
-          { x: "Fat", y: (fat * 9/calories * 100), label: "Fat"}
+          { x: "Carbs", y: carbPer, label: `${carbPer}%` },
+          { x: "Protein", y: proteinPer, label: `${proteinPer}%` },
+          { x: "Fat", y: fatPer, label: `${fatPer}%`}
         ],
         label: true
       })}, 1000)

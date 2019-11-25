@@ -20,6 +20,7 @@
       .recipe-show-ls {
         padding: 5px;
         display: flex;
+        width: 320px;
         flex-direction: column;
         justify-content: space-between;
         // background: blue;
@@ -70,6 +71,7 @@
             font-family: EB Garamond;
             letter-spacing: 1px;
           }
+
       }
     }
 
@@ -159,6 +161,7 @@
   // background: linear-gradient(90deg, #FFC0CB 70%, #00FFFF 100%)
 }
 
+  
 .bar-graph-cont {
   display: flex;
   flex-direction: column;
@@ -183,6 +186,7 @@
     // background: blue;
     margin: 0 auto;
   }
+
 }
 
 .bar-text {

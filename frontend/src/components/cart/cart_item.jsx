@@ -26,7 +26,8 @@ class CartItem extends React.Component {
   }
 
   // TODO: Implement an undo button
-  removeFromCart() {
+  removeFromCart(e) {
+    e.stopPropagation();
     const { date, time, cart } = this.props;
     this.props.removeCartMeal(cart.id, { date, time });
   }
@@ -55,6 +56,10 @@ class CartItem extends React.Component {
     e.stopPropagation();
   }
 
+  handleModal(recipe) {
+    this.props.openModal(recipe);
+  }
+
   render() {
     const { time } = this.props;
     
@@ -68,7 +73,7 @@ class CartItem extends React.Component {
       return (
         <div className="cart-item" onDragOver={this.onDragOver} onDrop={this.onDrop}>
           <div className="cart-item-time">{time}</div>
-          <div className="cart-item-main">
+          <div className="cart-item-main" onClick={() => this.handleModal(recipe)}>
 
             <div className="cart-item-info">
               <div className="cart-item-info-text">
@@ -93,7 +98,7 @@ class CartItem extends React.Component {
                 </div>
                 <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
               </div>
-          </div>
+            </div>
           </div>
         </div>
       );}

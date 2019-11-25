@@ -69,7 +69,7 @@ class ModifyIngredient extends React.Component {
         <div className="title">
           <div>
             { this.props.ingredient.name.charAt(0).toUpperCase() + this.props.ingredient.name.slice(1) }
-          </div>
+          </div>238
           <div className="add-ingredient-modal-close"
             onClick={this.props.closeModal}>
             x
@@ -83,7 +83,7 @@ class ModifyIngredient extends React.Component {
               Modify Amount: 
             </div>
             <div className="add-ingredient-input-box">
-              <input type="number" className="add-ingredient-input" value={this.state.amount}
+              <input type="number" className="add-ingredient-input" value={Math.floor(this.state.amount)}
                 onChange={this.update} autoFocus/> 
                 <div>
                   g

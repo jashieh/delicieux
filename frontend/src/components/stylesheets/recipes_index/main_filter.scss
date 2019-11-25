@@ -65,7 +65,7 @@
       outline: none;
       background: inherit;
       border: none;
-
+      padding-left: 10px;
     }
     .filter-query-search {
       width: 50px;
@@ -174,7 +174,7 @@
   display: flex;
   background-color: inherit;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   margin: 0 10px;
   height: 20px;
   width: 120px;

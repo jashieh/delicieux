@@ -45,7 +45,10 @@
       height: 20px;
     }
   }
+}
 
+.recipe-index-item:hover {
+  cursor: pointer;
 }
 
 .recipe-index-item-remove {
@@ -98,8 +101,8 @@
   overflow: hidden;
 
   img {
-    width: 260px;
-    height: 160px;
+    width: 100%;
+    height: 150px;
   }
 
 }
@@ -144,10 +147,11 @@
   justify-content: center;
 }
 .loading-img-cont {
-  height: 200px;
-  width: 200px;
-  overflow: hidden;
+  height: 300px;
+  width: 300px;
+  // overflow: hidden;
   position: relative;
+  top: 10%;
   // background: red;
 }
 
@@ -155,8 +159,9 @@
   height: 100%;
   width: 100%;
   position: absolute;
-  top: 27%;
+  top: 0;
   left: 0;
+  z-index: 999;
   // background: transparent;
 }
 

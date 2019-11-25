@@ -4,4 +4,3 @@ import React from 'react';
 
 class WeeklyCartInfo extends React.Component {
   
-}
