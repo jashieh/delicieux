@@ -11,6 +11,8 @@ import LineChart from '../stylesheets/assets/line_chart.gif';
 import GroceryGif from '../stylesheets/assets/grocery.gif';
 import CookingPic from '../stylesheets/assets/cooking.jpg';
 import MealPlan from '../stylesheets/assets/meal_plan.jpg';
+import Freshly from '../stylesheets/assets/freshly.jpg';
+import IceCream from '../stylesheets/assets/ice_cream.webp';
 
 import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
@@ -36,7 +38,7 @@ class MainPage extends React.Component {
                         <input type="radio" name="radio-set" id="st-control-3" />
                         <a href="#st-panel-3" className="splash-footer-tab">How it works</a>
                         <input type="radio" name="radio-set" id="st-control-4" />
-                        <a href="#st-panel-4" className="splash-footer-tab">Positivity</a>
+                        <a href="#st-panel-4" className="splash-footer-tab">Preview</a>
                         <input type="radio" name="radio-set" id="st-control-5" />
                         <a href="#st-panel-5" className="splash-footer-tab">Passion</a>
 
@@ -44,7 +46,7 @@ class MainPage extends React.Component {
 
                             <section className="st-panel st-color" id="st-panel-1">
                                 <div className="img-container">
-                                    <img src={KitchenCounter} alt=""
+                                    <img src={IceCream} alt=""
                                     className="splash-img"/>
                                 </div>
                                 <div className="st-deco" >
@@ -72,7 +74,7 @@ class MainPage extends React.Component {
 
                             <section className="st-panel st-color" id="st-panel-2">
                                 <div className="img-container">
-                                    <img src={Background2} alt=""
+                                    <img src={Freshly} alt=""
                                     className="splash-img"/>
                                 </div>
                                 <div className="st-deco">
