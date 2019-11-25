@@ -48,7 +48,19 @@ export default class MainFilter extends React.Component {
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
   }
   componentDidMount() {
-    this.props.fetchFridge(this.props.userId)
+    this.props.fetchFridge(this.props.userId);
+
+    let input = document.getElementsByClassName("filter-text-input")[0];
+    input.addEventListener("keydown", event => {
+      event.stopPropagation();
+      if (event.keyCode === 13)
+        this.handleQuerySubmit();
+    });
+  }
+
+  componentWillUnmount() {
+    let input = document.getElementsByClassName("filter-text-input")[0];
+    input.removeEventListener("keydown");
   }
   addIngredient() {
     let x = this.state.ingredientList;
@@ -159,6 +171,7 @@ export default class MainFilter extends React.Component {
       </div>)
     })
   }
+
   renderTab() {
     if (this.state.tabs === 0) return null;
     else if (this.state.tabs === 1) {
