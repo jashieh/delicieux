@@ -401,7 +401,7 @@
 .st-deco{
 	/* background: black; */
 	/* background: white; */
-	bordeR: 1px solid black;
+	/* bordeR: 1px solid black; */
 	/* background: #96c5fa; */
 }
 .st-color [data-icon]:after {
@@ -475,6 +475,11 @@
 
 .splash-main-title {
 	cursor: pointer;
+	font-weight: 500 !important;
+}
+
+.splash-main-title:hover {
+	color: rgb(173, 173, 173);
 }
 
 
@@ -545,4 +550,46 @@
 
 .how-it-works {
 	top: 30% !important;
+}
+
+.the-experience {
+	top: 30% !important;
+	font-size: 40px !important;
+}
+
+.the-experience-middle-container {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	margin-top: 100px;
+}
+
+.the-experience-left {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 400px;
+}
+
+.the-experience-right {
+	width: 400px;
+}
+
+.the-experience-img {
+	height: 300px;
+	width: 400px;
+}
+
+.the-experience-sub-head {
+	font-size: 30px;
+	font-weight: 600;
+	margin-bottom: 20px;
+}
+
+.the-experience-body {
+	margin-bottom: 20px;
+	font-weight: 600;
+	color: grey;
 }
