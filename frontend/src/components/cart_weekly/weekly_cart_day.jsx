@@ -41,60 +41,62 @@ class WeeklyCartDay extends React.Component {
 
   render() {
     const { recipes, cart, date, openModal, addMacros } = this.props;
+    let cartContent = 
+      TIMES.map((time, idx) => {
+        // Must pull recipes into an instance variable otherwise it won't be available
+        //      ... map has it's own scope!
+        this.recipe[time] = recipes[cart.dates[date][time]];
+        if (!this.recipe[time] && recipes[cart.dates[date][time]]) {
+          this.recipe[time] = {
+            title: "Recipe Not Found",
+            image: "...",
+            recipeId: cart.dates[date][time]
+          };
+        }
+        if (this.recipe[time]) {
+          // addMacros(this.recipe[time]);
+          return (
+            <div className="weekly-cart-item" key={idx}>
+              <div className="weekly-cart-item-time">{time}</div>
+              <div className="weekly-cart-item-main">
+                <div className="weekly-cart-item-info">
+                  <div className="weekly-cart-item-info-text">
+                    <div className="weekly-cart-item-info-left">
+                      <div className="weekly-cart-item-name">{this.recipe[time].title.slice(0, 20) + ".."}</div>
+                      <div className="weekly-cart-item-buttons">
+                        <div className="weekly-cart-item-remove" onClick={(e) => { this.removeItem(e, time) }}>
+                          Remove
+                            </div>
+                        <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time]) }}>
+                          Make Meal
+                            </div>
+                      </div>
+                    </div>
+                    <div className="weekly-cart-image">
+                      <img className="weekly-cart-item-info-image"
+                        src={this.recipe[time].image}
+                        onClick={(e) => this.openModal(e, this.recipe[time])} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        } else {
+          return (
+            <div className="weekly-cart-item" key={idx}>
+              <div className="weekly-cart-item-time">{time}</div>
+              <div className="weekly-cart-item-info"></div>
+            </div>
+          );
+        }
+      });
+    
     return (
       <div className="weekly-cart-day">
         <div className="weekly-cart-header-date">{date}</div>
         <div className="weekly-cart-date">
-          { TIMES.map((time, idx) => {
-            // Must pull recipes into an instance variable otherwise it won't be available
-            //      ... map has it's own scope!
-            this.recipe[time] = recipes[cart.dates[date][time]]; 
-            if (!this.recipe[time] && recipes[cart.dates[date][time]]) {
-              this.recipe[time] = {
-                title: "Recipe Not Found",
-                image: "...",
-                recipeId: cart.dates[date][time]
-              };
-            }
-            if (this.recipe[time]) {
-              addMacros(this.recipe[time])
-              debugger;
-              return (
-                <div className="weekly-cart-item" key={idx}>
-                  <div className="weekly-cart-item-time">{time}</div>
-                  <div className="weekly-cart-item-main">
-                    <div className="weekly-cart-item-info">
-                      <div className="weekly-cart-item-info-text">
-                        <div className="weekly-cart-item-info-left">
-                          <div className="weekly-cart-item-name">{this.recipe[time].title.slice(0, 20) + ".."}</div>
-                          <div className="weekly-cart-item-buttons">
-                            <div className="weekly-cart-item-remove" onClick={(e) => { this.removeItem(e, time) }}>
-                              Remove
-                            </div>
-                            <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time]) }}>
-                              Make Meal
-                            </div>
-                          </div>
-                        </div>
-                        <div className="weekly-cart-image">
-                          <img className="weekly-cart-item-info-image" 
-                               src={this.recipe[time].image} 
-                               onClick={ (e) => this.openModal(e, this.recipe[time]) }/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            } else {
-              return (
-                <div className="weekly-cart-item" key={idx}>
-                  <div className="weekly-cart-item-time">{time}</div>
-                  <div className="weekly-cart-item-info"></div>
-                </div>
-              );
-            }
-          })}
+          {cartContent}
         </div>
       </div>
     )
