@@ -1,6 +1,6 @@
 import React from 'react';
 import '../stylesheets/recipes_index/recipe_show.scss'
-import { VictoryPie, VictoryTooltip, VictoryLabel, VictoryChart } from 'victory';
+import { VictoryPie, VictoryTooltip, VictoryLabel, VictoryChart, VictoryLegend, VictoryContainer } from 'victory';
 import { calorieCalc } from '../../util/calorie_util';
 
 export default class RecipeShow extends React.Component {
@@ -15,9 +15,12 @@ export default class RecipeShow extends React.Component {
         "Fiber": 30,
       },
       pieData: [
-        { x: "", y: 100, label: "" },
-        { x: "", y: 0, label: "" },
-        { x: "", y: 0, label: "" }
+        { y: 100, label: "" },
+        { y: 0, label: "" },
+        { y: 0, label: "" }
+      ],
+      legendData: [
+        { name: "Carbs" }, { name: "Protein" }, { name: "Fat" }
       ],
       label: false,
       pieChart: true,
@@ -31,13 +34,17 @@ export default class RecipeShow extends React.Component {
     let protein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
     let fat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
     let carbohydrates = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount;
-
+    let calorieAc = (carbohydrates * 4) + (protein * 4)+ (fat * 9);
+    let carbPer = Math.round(carbohydrates * 4 / calorieAc * 1000) / 10;
+    let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
+    let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
+    debugger;
     setTimeout(() => {
       this.setState({
         pieData: [
-          { x: "Carbs", y: (carbohydrates * 4/calories * 100), label: "Carbs" },
-          { x: "Protein", y: (protein * 4/calories * 100), label: "Protein" },
-          { x: "Fat", y: (fat * 9/calories * 100), label: "Fat"}
+          { x: "Carbs", y: carbPer, label: `${carbPer}%` },
+          { x: "Protein", y: proteinPer, label: `${proteinPer}%` },
+          { x: "Fat", y: fatPer, label: `${fatPer}%`}
         ],
         label: true
       })}, 1000)
@@ -72,48 +79,68 @@ export default class RecipeShow extends React.Component {
 
     let chartDisp = this.state.pieChart ? (
     <div className="chart-cont" onClick={this.toggleChart}>
-      Calorie Distribution
-      <VictoryPie
-        animate={{
-          duration: 2000
-        }}
-        colorScale={["#3a9691", "skyblue", "lightblue"]}
-        data={this.state.pieData}
-        events={[{
-            target: "data",
-            eventHandlers: {
-              onMouseOver: () => {
-                return [
-                  {
-                    target: "labels",
-                    mutation: ({ text, datum }) => {
-                return text === "data" ? null : { text: datum.label };
-                  }}]
-                }, 
-                onMouseOut: () => {
-                  return [
-                    {
-                      target: "labels",
-                      mutation: ({ text }) => {
-                        return text === "data" ? { text: "x" } : null;
-                      }
-                    }]
-                }
-              }
-        }]}
-        // labelComponent={<VictoryTooltip />}
-        labelComponent={<VictoryLabel 
-          />}
-        // innerRadius={200}
-        labelRadius={70}
-        // padAngle={1}
-        style={{ 
-          labels:{ 
-          fill: "black", fontSize: 20, fontWeight: "bold" 
-        }, data: {
-          fillOpacity: 0.9, stroke: "black", strokeWidth: 3
-        }, }} 
-      />
+        <svg width={300} height={200}
+          style={{ border: "1px solid #ccc" }}>
+          <VictoryLegend
+            standalone={false}
+            colorScale={["#3a9691", "skyblue", "lightblue"]}
+            x={20} y={40}
+            gutter={10}
+            rowGutter={-5}
+            data={this.state.legendData}
+            style={{
+              data: { fontSize: 12, lineHeight: 1 },
+              border: { stroke: "black" },
+              title: { fontSize: 14 }
+            }}
+          />
+          <VictoryPie
+            standalone={false}
+            width={300} height={200}
+            padding={{
+              left: 120, bottom: 20, top: 20
+            }}
+            animate={{
+              duration: 2000
+            }}
+            colorScale={["#3a9691", "skyblue", "lightblue"]}
+            data={this.state.pieData}
+            // events={[{
+            //   target: "data",
+            //   eventHandlers: {
+            //     onMouseOver: () => {
+            //       return [
+            //         {
+            //           target: "labels",
+            //           mutation: ({ text, datum }) => {
+            //             return text === "data" ? null : { text: datum.label };
+            //           }
+            //         }]
+            //     },
+            //     onMouseOut: () => {
+            //       return [
+            //         {
+            //           target: "labels",
+            //           mutation: ({ text }) => {
+            //             return text === "data" ? { text: "x" } : null;
+            //           }
+            //         }]
+            //     }
+            //   }
+            // }]}
+            labelComponent={<VictoryLabel
+            />}
+            labelRadius={60}
+            style={{
+              labels: {
+                fill: "black", fontSize: 15
+              }, data: {
+                fillOpacity: 0.9, stroke: "black", strokeWidth: 2
+              },
+            }}
+          />
+     </svg>
+      
     </div>) : (
       <div className="bar-chart-cont" onClick={this.toggleChart}>
           {recipe.nutrition.map((nutrient, idx) => {
