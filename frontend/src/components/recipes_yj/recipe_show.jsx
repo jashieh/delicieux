@@ -12,7 +12,6 @@ export default class RecipeShow extends React.Component {
         "Carbohydrates": 250,
         "Protein": 80,
         "Fat": 75,
-        "Fiber": 30,
       },
       pieData: [
         { x: "", y: 100, label: "" },
@@ -65,31 +64,33 @@ export default class RecipeShow extends React.Component {
       "Carbohydrates": calorieReq? 250 * calorieReq/2000 : 250,
       "Protein": calorieReq ? 80 * calorieReq/2000 : 80,
       "Fat": calorieReq ? 75 * calorieReq/2000 : 75,
-      "Fiber": 30,
       };
     let timeC = recipe.readyInMinutes < 60 ? (recipe.readyInMinutes).toString() + "m" : 
     recipe.readyInMinutes < 180 ? Math.floor(recipe.readyInMinutes/60).toString() + "h" : "3h+"
 
     let chartDisp = this.state.pieChart ? (
-    <div className="chart-cont" onClick={this.toggleChart}>
-      Calorie Distribution
-      <VictoryPie
-        animate={{
-          duration: 2000
-        }}
-        colorScale={["#3a9691", "skyblue", "lightblue"]}
-        data={this.state.pieData}
-        events={[{
-            target: "data",
-            eventHandlers: {
-              onMouseOver: () => {
-                return [
-                  {
-                    target: "labels",
-                    mutation: ({ text, datum }) => {
-                return text === "data" ? null : { text: datum.label };
-                  }}]
-                }, 
+      <div className="chart-cont" onClick={this.toggleChart}>
+        <div>Calorie Distribution</div>
+        <VictoryPie
+          animate={{
+            duration: 2000
+          }}
+          colorScale={["lightblue", "#F1EAF7", "#E0EECF"]}
+          data={this.state.pieData}
+          events={[
+            {
+              target: "data",
+              eventHandlers: {
+                onMouseOver: () => {
+                  return [
+                    {
+                      target: "labels",
+                      mutation: ({ text, datum }) => {
+                        return text === "data" ? null : { text: datum.label };
+                      }
+                    }
+                  ];
+                },
                 onMouseOut: () => {
                   return [
                     {
@@ -97,41 +98,65 @@ export default class RecipeShow extends React.Component {
                       mutation: ({ text }) => {
                         return text === "data" ? { text: "x" } : null;
                       }
-                    }]
+                    }
+                  ];
                 }
               }
-        }]}
-        // labelComponent={<VictoryTooltip />}
-        labelComponent={<VictoryLabel 
-          />}
-        // innerRadius={200}
-        labelRadius={70}
-        // padAngle={1}
-        style={{ 
-          labels:{ 
-          fill: "black", fontSize: 20, fontWeight: "bold" 
-        }, data: {
-          fillOpacity: 0.9, stroke: "black", strokeWidth: 3
-        }, }} 
-      />
-    </div>) : (
-      <div className="bar-chart-cont" onClick={this.toggleChart}>
-          {recipe.nutrition.map((nutrient, idx) => {
-            if( ["Calories", "Protein", "Carbohydrates", "Fat", "Fiber"].includes(nutrient.title)) {
-              let title = nutrient.title
-              let percent = Math.floor(nutrient.amount / nutritionReq[title] * 100)
-              return (
-                <div className="bar-graph-cont" key={idx} onMouseEnter={this.handleBarOn(title)} onMouseLeave={this.handleBarOff(title)}>
-                  <div> {title} </div>
-                  <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${percent}%, darkgrey ${percent}%)`}}>
-                     { this.state[title] ? <div>{Math.floor(nutrient.amount)} {nutrient.unit}</div> : <div>{percent}%</div>}
-                  </div>
-                </div>
-              )
             }
-          })}
+          ]}
+          // labelComponent={<VictoryTooltip />}
+          labelComponent={<VictoryLabel />}
+          // innerRadius={200}
+          labelRadius={70}
+          // padAngle={1}
+          style={{
+            parent: { maxWidth: "90%" },
+            labels: {
+              fill: "black",
+              fontSize: 24
+            }
+          }}
+        />
       </div>
-
+    ) : (
+      <div className="bar-chart-cont" onClick={this.toggleChart}>
+        {recipe.nutrition.map((nutrient, idx) => {
+          if (
+            ["Calories", "Protein", "Carbohydrates", "Fat"].includes(
+              nutrient.title
+            )
+          ) {
+            let title = nutrient.title;
+            let percent = Math.floor(
+              (nutrient.amount / nutritionReq[title]) * 100
+            );
+            return (
+              <div
+                className="bar-graph-cont"
+                key={idx}
+                onMouseEnter={this.handleBarOn(title)}
+                onMouseLeave={this.handleBarOff(title)}
+              >
+                <div> {title} </div>
+                <div
+                  className="chart-test"
+                  style={{
+                    background: `linear-gradient(90deg, black ${percent}%, tomato ${percent}%)`
+                  }}
+                >
+                  {this.state[title] ? (
+                    <div className="bar-text">
+                      {Math.floor(nutrient.amount)} {nutrient.unit}
+                    </div>
+                  ) : (
+                    <div className="bar-text">{percent}%</div>
+                  )}
+                </div>
+              </div>
+            );
+          }
+        })}
+      </div>
     );
     return(
       <div className="cont-cont">
@@ -140,7 +165,7 @@ export default class RecipeShow extends React.Component {
             <div className="recipe-show-photo-cont">
               <img className="recipe-show-photo" src={recipe.image} />
             </div>
-            <div className="rs-icon-cont">
+            {/* <div className="rs-icon-cont">
               <div className="rs-icon">
                 <p>{timeC}</p>
               </div>
@@ -156,16 +181,21 @@ export default class RecipeShow extends React.Component {
                 <div className="rs-icon">
                   <p>Paleo</p>
                 </div> : null}
-            </div>
+            </div> */}
             {chartDisp}
           </div>
             
           <div className="rs-main-cont">
-            <h4 className="rs-title">{recipe.title}</h4>
-            <div className="rs-link">
-              <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
+            <div className="modal-text-contain">
+              <h4 className="rs-title">{recipe.title}</h4>
+              <div className="rs-link">
+                <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
+              </div>
             </div>
             <ul className="recipe-show-ing-list">
+              <div className="list-title">
+                Ingredient List:
+              </div>
               {recipe.ingredients.map((ingredient, idx) => {
                 let ingrName = ingredient.name.split(" ");
                 let subName = ingrName[ingrName.length -1];

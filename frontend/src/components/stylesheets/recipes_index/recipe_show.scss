@@ -1,36 +1,48 @@
+
+
 .cont-cont {
   display: flex;
   align-items: center;
   justify-content: center;
   background: white;
+  border-radius: 10px;
 
   .recipe-show-cont {
     display: flex;
-    width: 600px;
-    height: 500px;
-    padding: 10px;
+    width: 710px;
+    height: 550px;
+    padding: 20px;
+    // background: blue;
     border: 1px solid lightgray;
     justify-content: center;
+    border-radius: 10px;
 
       .recipe-show-ls {
         padding: 5px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        // background: blue;
 
         .recipe-show-photo-cont {
-          height: 150px;
-          width: 250px;
-          overflow: hidden;
-
+          height: 265px;
+          width: 308px;
+          // overflow: hidden;
+          padding-top: 10px;
+          
           .recipe-show-photo {
             height: 100%;
             width: 100%;
+            border-radius: 23px;
+            box-shadow: 0px 5px 10px 1px black;
           }
         }
         .rs-icon-cont {
           display: flex;
-          margin-left: 15px;
+          width: 70%;
+          margin: 0px auto;
+          // background: blue;
+          justify-content: space-evenly;
 
           .rs-icon {
             display: flex;
@@ -43,51 +55,95 @@
             border: 2px solid gray;
             color: gray;
             margin-right: 10px;
+
           }
         }
         .chart-cont {
-          height: 250px;
+          height: 220px;
           width: 250px;
           display: flex;
           flex-direction: column;
+          // background: pink;
+          margin: 0 auto;
+
+          :first-child {
+            font-family: EB Garamond;
+            letter-spacing: 1px;
+          }
       }
     }
 
 }
 
-
-
-
 .recipe-show-ing-list {
-  margin: 5px 0;
+  // margin: 0 auto;
   list-style: none;
   overflow-y: auto;
+  // background: orange;
+  width: 92%;
+  margin: 0 auto;
+  font-family: EB Garamond;
+  padding-left: 13px;
+  padding-bottom: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
 }
+
+
 .rs-main-cont {
+  width: 60%;
   margin: 15px;
+  // background:blue;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  // justify-content: space-between;
   align-items: flex-start;
 
 }
 
+.modal-text-contain {
 
-.rs-title {
-  font-size: 20px;
+  // background: blue;
+  padding-left: 10px;
+
+  .rs-title {
+    font-size: 29px;
+    font-family: EB Garamond;
+    letter-spacing: 1px;
+    line-height: 39px;
+    // background: blue;
+    padding: 5px 5px 0px 0px;
+    // font-weight: bold;
+    }
+    .rs-link {
+      display: flex;
+      justify-content: flex-start;
+      font-family: EB Garamond;
+      font-size: 15px;
+      line-height: 28px;
+      margin-bottom: 8px;
+      // background: blue;
+    }
 }
-.rs-link {
-  display: flex;
-  justify-content: flex-start;
+
+.list-title {
+  font-size: 19px;
+  padding: 10px 0px;
 }
 .rs-li-item {
   margin: 7px 0;
   display: flex;
   align-items: center;
+  letter-spacing: 2.5px;
+  font-family: EB Garamond;
+  color: black !important;
+  line-height: 24px;
+  
 }
 .rs-li-item-pic-cont {
   height: 20px;
   width: 20px;
+  margin-right: 10px;
 }
 .rs-l-i-p {
   height: 100%;
@@ -95,11 +151,11 @@
 }
 .chart-test {
   margin: 5px;
-  height: 16px;
-  width: 100px;
-  text-align: -10px;
-  border-radius: 8px;
-  text-align: center;
+  height: 6px;
+  width: 95px;
+  // text-align: -10px;
+  text-align: right;
+  position: relative;
   // background: linear-gradient(90deg, #FFC0CB 70%, #00FFFF 100%)
 }
 
@@ -107,17 +163,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 150px;
-  margin: 3px 0;
-  border: 1px solid gray;
+  width: 100px;
+  height: 35px;
+  margin: 5px 23px; 
+  font-family: Open Sans;
+  font-size: 14px;
+  // background: blue;
+  padding-left: 10px;
+  // border: 1px solid gray;
+  // border-radius: 100%;
 
 }
-.bar-chart-cont {
-  height: 250px;
-  width: 250px;
-  display: flex;
-  flex-direction: column;
+  .bar-chart-cont {
+    height: 250px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // background: blue;
+    margin: 0 auto;
+  }
 }
 
-
+.bar-text {
+  position: absolute;
+  top: -20px;
+  right: -46px;
+  font-size: 13px;
+  // border: 1px solid black;
+  padding: 10px 6px;
 }

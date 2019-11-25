@@ -4,6 +4,7 @@ import Toggle from 'react-toggle';
 import "react-toggle/style.css";
 import '../stylesheets/recipes_index/main_filter.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
+import Ingredient from '../stylesheets/assets/harvest-two.png'
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -279,6 +280,7 @@ export default class MainFilter extends React.Component {
       {this.state.ingredientToggle ? (
         <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
+          <div className="filter-top">
           <div className="filter-header">
             <div className="filter-text-cont">
               <input type="text"
@@ -287,15 +289,23 @@ export default class MainFilter extends React.Component {
               onChange={this.handleInput("ingredientQuery")}
               value={this.state.ingredientQuery}/>
               <button type="submit" className="filter-query-search" disabled={!this.state.ingredientQuery} onClick={this.addIngredient}>+</button>
-              <input type="submit" value="Search" className="filter-text-button"/>
-              <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
-                  <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
-                  Include Fridge
-              </label>  
+              <div className="filter-query-search" onClick={this.handleIngredientSubmit} >
+                  <img src={Loupe} alt=""/>
+          
+              </div>
+              {/* <input type="submit" value="Search" className="filter-text-button"/> */}
             </div>
           </div>
-          <div className="filter-param-cont">
+            <div className="filter-param-cont fridge-add">
+                <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
+                    <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
+                    <p>Include Fridge</p>
+                </label>  
+            </div>
+          </div>
+          <div className="filter-bot-allergies">
             {this.renderIngredients()}
+
           </div>
         </form>
         ) : (
@@ -313,9 +323,10 @@ export default class MainFilter extends React.Component {
                   {/* <input type="submit" className="filter-query-search" value=""/> */}
                 </div>
             </div>
-            {/* <div className="filter-text-button" onClick={this.toggleIngredients}>
-              Ingr
-            </div> */}
+            <div className="filter-text-button" onClick={this.toggleIngredients}>
+               <img src={Ingredient} alt="" className="ingredient-search-img"/>
+               <span className="toggle-span">Ingredient Search</span>
+            </div>
           </div>
           <div className="filter-param-cont">
             <div className="filter-text" onClick={this.handleTab(1)} style={this.state.tabs === 1 ? { backgroundColor: "inherit", color: "black" } : {}}>
@@ -339,3 +350,6 @@ export default class MainFilter extends React.Component {
     );
   }
 }
+
+
+
