@@ -311,11 +311,11 @@ export default class MainFilter extends React.Component {
           
               </div>
               {/* <input type="submit" value="Search" className="filter-text-button"/> */}
-<!--               <input type="submit" value="Search" className="filter-text-button"/>
-              <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
+              <input type="submit" value="Search" className="filter-text-button"/>
+                <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
                   <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
-              </label>   -->
+                </label>   
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
