@@ -342,7 +342,8 @@ export default class MainFilter extends React.Component {
                 </div>
             </div>
             <div className="filter-text-button" onClick={this.toggleIngredients}>
-              Ingr
+              <img src={Ingredient} alt="" className="ingredient-search-img" />
+              <span className="toggle-span">Ingredient Search</span>
             </div>
           </div>
           <div className="filter-param-cont">
