@@ -36,7 +36,7 @@ class NavBar extends React.Component {
             <div className="nav-main">
               <div className="nav-left">
                 <button className="logout" onClick={() => this.props.openSide("first")}>SIDE</button>
-                <Link className="nav-button" to="/home">Home</Link>
+                <Link className="nav-button" to="/index">Home</Link>
                 <Link className="nav-button" to="/fridge">Fridge</Link>
                 <Link className="nav-button" to="/weeklycart">Weekly Summary</Link>
               </div>

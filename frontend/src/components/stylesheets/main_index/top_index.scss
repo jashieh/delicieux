@@ -31,12 +31,28 @@
         padding: 10px 20px;
         // align-content: space-between;
 
+        .nav-left {
+            width: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center; 
+        }
+
         .nav-button {
             font-family: Open Sans;
             color: black;
             border:  none;
             font-size: 14px;
             text-transform: none;
+        }
+
+        .nav-button:hover {
+            color:rgb(168, 168, 168);
         }
     }
 }

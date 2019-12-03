@@ -143,6 +143,7 @@
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
         font-size: 19px;
+        font-weight: 600;
         font-family: Open Sans;
         color: black;
         letter-spacing: 1px;
@@ -158,7 +159,8 @@
         }
 
         .add-ingredient-modal-close:hover {
-            filter: brightness(80%);    
+            // filter: brightness(50%);    
+            color: rgb(168, 168, 168);
         }
     }
 
