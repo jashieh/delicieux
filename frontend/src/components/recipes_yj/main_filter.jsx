@@ -5,7 +5,7 @@ import Toggle from 'react-toggle';
 import '../stylesheets/recipes_index/main_filter.scss';
 import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
-import Ingredient from '../stylesheets/assets/harvest-two.png'
+import Ingredient from '../stylesheets/assets/ginkgo.png'
 
 export default class MainFilter extends React.Component {
   constructor(props) {
