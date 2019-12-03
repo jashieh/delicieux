@@ -69,7 +69,7 @@ class ModifyIngredient extends React.Component {
         <div className="title">
           <div>
             { this.props.ingredient.name.charAt(0).toUpperCase() + this.props.ingredient.name.slice(1) }
-          </div>238
+          </div>
           <div className="add-ingredient-modal-close"
             onClick={this.props.closeModal}>
             x

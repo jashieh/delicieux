@@ -5,6 +5,7 @@ import Toggle from 'react-toggle';
 import '../stylesheets/recipes_index/main_filter.scss';
 import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
+import Ingredient from '../stylesheets/assets/harvest-two.png'
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -46,30 +47,34 @@ export default class MainFilter extends React.Component {
     this.toggleIngredients = this.toggleIngredients.bind(this);
     this.handleQuerySubmit = this.handleQuerySubmit.bind(this);
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
 
-    let input = document.getElementsByClassName("filter-text-input")[0];
-
-    this.enterEvent = event => {
-      event.stopPropagation();
-      if (event.keyCode === 13) this.handleQuerySubmit();
-    }
-    
-    input.addEventListener("keydown", this.enterEvent);
+    // let input = document.getElementsByClassName("filter-text-input")[0];
+    // input.addEventListener("keydown", event => {
+    //   event.stopPropagation();
+    //   if (event.keyCode === 13)
+    //     this.handleQuerySubmit();
+    // });
   }
 
-  componentWillUnmount() {
-    let input = document.getElementsByClassName("filter-text-input")[0];
-    input.removeEventListener("keydown", this.enterEvent);
-  }
+  // componentWillUnmount() {
+  //   let input = document.getElementsByClassName("filter-text-input")[0];
+  //   input.removeEventListener("keydown");
+  // }
   addIngredient() {
     let x = this.state.ingredientList;
-    x.push(this.state.ingredientQuery.trim());
-    this.setState({ingredientList: x}, ()=> {
-      this.setState({ingredientQuery: ""})
-    })
+    if (!x.join("").includes(this.state.ingredientQuery.trim())) {
+      x.push(this.state.ingredientQuery.trim());
+      this.setState({ ingredientList: x }, () => {
+        this.setState({ ingredientQuery: "" })
+      })
+    } else {
+      this.setState({ ingredientQuery: "" });
+    }
+    
   }
   handleInput(type) {
     return (e)=>{
@@ -89,6 +94,12 @@ export default class MainFilter extends React.Component {
   handleCuisine(type) {
     return (e) => {
       this.setState({ cuisine: type.cuisine })
+    }
+  }
+  handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      if (this.state.body) this.handleQuerySubmit();
+      else e.preventDefault();
     }
   }
   handleQuerySubmit() {
@@ -169,7 +180,7 @@ export default class MainFilter extends React.Component {
       return (
       <div key={idx} className="filter-ing-item">
         <span className="filter-x" onClick={this.removeIngredient({idx})}>&times;</span>
-        {ingredient} {idx}
+        {ingredient}
       </div>)
     })
   }
@@ -295,6 +306,7 @@ export default class MainFilter extends React.Component {
       {this.state.ingredientToggle ? (
         <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
+          <div className="filter-top">
           <div className="filter-header">
             <div className="filter-text-cont">
               <input type="text"
@@ -303,15 +315,29 @@ export default class MainFilter extends React.Component {
               onChange={this.handleInput("ingredientQuery")}
               value={this.state.ingredientQuery}/>
               <button type="submit" className="filter-query-search" disabled={!this.state.ingredientQuery} onClick={this.addIngredient}>+</button>
-              <input type="submit" value="Search" className="filter-text-button"/>
+              <div className="filter-query-search" onClick={this.handleIngredientSubmit} >
+                  <img src={Loupe} alt=""/>
+          
+              </div>
+              {/* <input type="submit" value="Search" className="filter-text-button"/> */}
+              {/* <input type="submit" value="Search" className="filter-text-button"/>
               <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
                   <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
-              </label>  
+              </label>   */}
+
             </div>
           </div>
-          <div className="filter-param-cont">
+            <div className="filter-param-cont fridge-add">
+                <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
+                    <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
+                    <p>Include Fridge</p>
+                </label>  
+            </div>
+          </div>
+          <div className="filter-bot-allergies">
             {this.renderIngredients()}
+
           </div>
         </form>
         ) : (
@@ -323,15 +349,18 @@ export default class MainFilter extends React.Component {
                 className="filter-text-input"
                 placeholder="Find a recipe"
                 onChange={this.handleInput("query")}
-                value={this.state.query}/>
+                value={this.state.query}
+                onKeyDown={this.handleKeyDown} 
+                />
                 <div className="filter-query-search" onClick={this.handleQuerySubmit} >
                   <img src={Loupe} alt=""/>
                   {/* <input type="submit" className="filter-query-search" value=""/> */}
                 </div>
             </div>
-            {/* <div className="filter-text-button" onClick={this.toggleIngredients}>
-              Ingr
-            </div> */}
+            <div className="filter-text-button" onClick={this.toggleIngredients}>
+               <img src={Ingredient} alt="" className="ingredient-search-img"/>
+               <span className="toggle-span">Ingredient Search</span>
+            </div>
           </div>
           <div className="filter-param-cont">
             <div className="filter-text" onClick={this.handleTab(1)} style={this.state.tabs === 1 ? { backgroundColor: "inherit", color: "black" } : {}}>
@@ -355,3 +384,6 @@ export default class MainFilter extends React.Component {
     );
   }
 }
+
+
+

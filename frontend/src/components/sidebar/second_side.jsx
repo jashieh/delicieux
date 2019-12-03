@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserProfileContainer from '../profile/user_profile_container';
 
 class SecondSide extends React.Component {
     constructor(props) {
@@ -17,7 +18,7 @@ class SecondSide extends React.Component {
           <div className="second-side" onClick={e => e.stopPropagation()}>
             <div className="second-drawer-contain">
                 <div>
-                    
+                    <UserProfileContainer />
                 </div>
             </div>
           </div>

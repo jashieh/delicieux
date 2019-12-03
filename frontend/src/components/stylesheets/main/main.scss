@@ -5,7 +5,7 @@
     padding-left: 20px;
 
     .main-sign {
-        color: black;
+    	color: rgb(199, 185, 169);
         font-family: Open Sans;
         font-size: 13px;
     }
@@ -20,22 +20,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     box-sizing: border-box;
-    top: 50%;
-    left: 50%;
-    width: 400px;
-    margin-left: -200px;
-    height: 100px;
+    top: 2%;
+    right: 0%;
+    width: 300px;
+    height: 80px;
     
-    h2 {
-        position: static;
-    }
+    // h2 {
+    //     position: static;
+    // }
 
 }
 
 .meter { 
-    height: 3px;
+    height: 2px;
     width: 220px;
     margin-top: 20px;
     overflow: hidden;
@@ -51,8 +50,8 @@
 }
 
 .progress {
-    background: rgb(221,51,51);
-    background: linear-gradient(98deg, rgba(221,51,51,1) 0%, rgba(156,145,91,1) 33%, rgba(56,130,54,1) 52%, rgba(108,30,52,1) 75%, rgba(136,25,55,1) 82%, rgba(235,9,64,1) 98%, rgba(200,14,59,1) 100%);
+    background: rgb(167, 141, 86);
+    // background: linear-gradient(98deg, rgba(221,51,51,1) 0%, rgba(156,145,91,1) 33%, rgba(56,130,54,1) 52%, rgba(108,30,52,1) 75%, rgba(136,25,55,1) 82%, rgba(235,9,64,1) 98%, rgba(200,14,59,1) 100%);
     animation: progressBar 3s ease-in-out;
     animation-fill-mode:both; 
 }

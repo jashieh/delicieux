@@ -23,15 +23,14 @@ const App = () => (
     <Modal />
     <Switch>
       <Route exact path="/recipeshow" component={RecipeShowContainer} />
-      <Route exact path="/fridge" component={FridgeContainer} />
       <Route exact path="/filter" component={MainFilterContainer}/>
       <Route exact path="/" component={ MainPage } />
       <AuthRoute exact path="/signup" component={ UserForm } />
       <AuthRoute exact path="/login" component={ LoginFormContainer } />
+      <ProtectedRoute exact path="/fridge" component={FridgeContainer} />
       <ProtectedRoute exact path="/index" component={ MainIndexContainer } />
       <ProtectedRoute exact path="/profile/" component={ UserProfileContainer } />
-
-      <Route exact path="/weeklyCart" component={ WeeklyCartContainer }/>
+      <ProtectedRoute exact path="/weeklyCart" component={ WeeklyCartContainer }/>
       <Redirect to="/" />
     </Switch>
   </div>
