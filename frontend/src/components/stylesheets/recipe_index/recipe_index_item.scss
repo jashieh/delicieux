@@ -148,10 +148,10 @@
 }
 .loading-img-cont {
   height: 300px;
-  width: 300px;
+  width: 400px;
   // overflow: hidden;
   position: relative;
-  top: 10%;
+  top: 50%;
   // background: red;
 }
 
@@ -161,7 +161,6 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 999;
   // background: transparent;
 }
 

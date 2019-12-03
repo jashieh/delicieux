@@ -12,20 +12,21 @@ class Side extends React.Component {
 
     render() {
     
-        const { side, closeSide } = this.props
+        const { side, closeSide } = this.props;
+
         if (!side) {
             return null;
         }
         let component
         let nextComponent;
         
-        switch (side) {
+        switch (side.type) {
             case 'first':
                 component = <FirstSide />;
                 break;
             case 'second':
                 component = <FirstSide />;
-                nextComponent = <SecondSide />;
+                nextComponent = <SecondSide page={side.page}/>;
                 break;
             default:
                 return null;
