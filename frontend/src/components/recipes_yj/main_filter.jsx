@@ -47,31 +47,34 @@ export default class MainFilter extends React.Component {
     this.toggleIngredients = this.toggleIngredients.bind(this);
     this.handleQuerySubmit = this.handleQuerySubmit.bind(this);
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
 
-    let input = document.getElementsByClassName("filter-text-input")[0];
-
-    this.enterEvent = event => {
-      event.stopPropagation();
-      if (event.keyCode === 13)
-        this.handleQuerySubmit();
-    }
-
-    input.addEventListener("keydown", this.enterEvent);
+    // let input = document.getElementsByClassName("filter-text-input")[0];
+    // input.addEventListener("keydown", event => {
+    //   event.stopPropagation();
+    //   if (event.keyCode === 13)
+    //     this.handleQuerySubmit();
+    // });
   }
 
-  componentWillUnmount() {
-    let input = document.getElementsByClassName("filter-text-input")[0];
-    input.removeEventListener("keydown", this.enterEvent);
-  }
+  // componentWillUnmount() {
+  //   let input = document.getElementsByClassName("filter-text-input")[0];
+  //   input.removeEventListener("keydown");
+  // }
   addIngredient() {
     let x = this.state.ingredientList;
-    x.push(this.state.ingredientQuery.trim());
-    this.setState({ingredientList: x}, ()=> {
-      this.setState({ingredientQuery: ""})
-    })
+    if (!x.join("").includes(this.state.ingredientQuery.trim())) {
+      x.push(this.state.ingredientQuery.trim());
+      this.setState({ ingredientList: x }, () => {
+        this.setState({ ingredientQuery: "" })
+      })
+    } else {
+      this.setState({ ingredientQuery: "" });
+    }
+    
   }
   handleInput(type) {
     return (e)=>{
@@ -91,6 +94,12 @@ export default class MainFilter extends React.Component {
   handleCuisine(type) {
     return (e) => {
       this.setState({ cuisine: type.cuisine })
+    }
+  }
+  handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      if (this.state.body) this.handleQuerySubmit();
+      else e.preventDefault();
     }
   }
   handleQuerySubmit() {
@@ -171,7 +180,7 @@ export default class MainFilter extends React.Component {
       return (
       <div key={idx} className="filter-ing-item">
         <span className="filter-x" onClick={this.removeIngredient({idx})}>&times;</span>
-        {ingredient} {idx}
+        {ingredient}
       </div>)
     })
   }
@@ -339,7 +348,9 @@ export default class MainFilter extends React.Component {
                 className="filter-text-input"
                 placeholder="Find a recipe"
                 onChange={this.handleInput("query")}
-                value={this.state.query}/>
+                value={this.state.query}
+                onKeyDown={this.handleKeyDown} 
+                />
                 <div className="filter-query-search" onClick={this.handleQuerySubmit} >
                   <img src={Loupe} alt=""/>
                   {/* <input type="submit" className="filter-query-search" value=""/> */}
