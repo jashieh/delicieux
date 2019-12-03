@@ -10,11 +10,12 @@ class FirstSide extends React.Component {
         this.handleMouseOver = this.handleMouseOver.bind(this);
     }
 
-    handleMouseOver(e) {
+    handleMouseOver(page) {
         // let that = this;
-        e.preventDefault();
-        console.log(this)
-        this.props.openSide("second");
+        // e.preventDefault();
+        // console.log(this)
+        return e => {e.preventDefault(); 
+            this.props.openSide("second", page)};
         // this.props.hoverMasterList(option);
     }
 
@@ -25,14 +26,14 @@ class FirstSide extends React.Component {
                     <div className="first-drawer-main-text">
                         délicieux
                     </div>
-                    <a class="btn" onClick={this.handleMouseOver} >
+                    <a class="btn" onClick={this.handleMouseOver("list")} >
                         <span>
                             <span>
                             <span>My List</span>
                             </span>
                         </span>
                     </a>
-                    <a class="btn" onClick={this.handleMouseOver}>
+                    <a class="btn" onClick={this.handleMouseOver("profile")}>
                         <span>
                             <span>
                             <span>Profile</span>

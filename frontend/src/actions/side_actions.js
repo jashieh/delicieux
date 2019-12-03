@@ -4,9 +4,9 @@ export const OPEN_SIDE = "OPEN_SIDE";
 export const CLOSE_SIDE = "CLOSE_SIDE";
 export const HOVER_MASTER_LIST = "HOVER_MASTER_LIST";
 
-export const openSide = side => ({
+export const openSide = (side, page) => ({
     type: OPEN_SIDE,
-    side
+    side: { type: side, page }
 });
 
 export const closeSide = () => ({

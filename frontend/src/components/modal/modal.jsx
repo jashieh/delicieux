@@ -15,12 +15,11 @@ class Modal extends React.Component {
   }
   
   render() {
-    const { modal, closeModal } = this.props
+    const { modal, closeModal } = this.props;
     if (!modal) {
       return null;
     }
 
-  
     let component;
     switch (modal.type) {
       case 'login':

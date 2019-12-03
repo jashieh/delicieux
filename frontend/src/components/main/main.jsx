@@ -31,7 +31,7 @@ class MainPage extends React.Component {
         
                     <div className="st-container">
 
-                        <input type="radio" name="radio-set" defaultChecked={false} id="st-control-1" />
+                        <input type="radio" name="radio-set" defaultChecked={true} id="st-control-1" />
                         <a href="#st-panel-1" className="splash-footer-tab">délicieux?</a>
                         <input type="radio" name="radio-set" id="st-control-2" />
                         <a href="#st-panel-2" className="splash-footer-tab">The experience</a>

@@ -2,6 +2,8 @@ import React from 'react';
 import RecipeIndexItemContainer from './recipe_index_item_container';
 import '../stylesheets/recipe_index/recipe_index.scss';
 import flip from '../stylesheets/assets/cook.gif';
+// import flip from '../stylesheets/assets/toast.gif';
+
 
 class RecipeIndex extends React.Component {
   constructor(props) {
@@ -63,7 +65,7 @@ class RecipeIndex extends React.Component {
   render() {
     const { recipes, loading } = this.props;
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
-    if (loading) {
+    if (loading || !loading) {
       return (
         <div className="loading-cont">
           <div className="loading-img-cont">
