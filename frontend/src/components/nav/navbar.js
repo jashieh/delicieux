@@ -35,13 +35,13 @@ class NavBar extends React.Component {
           return (
             <div className="nav-main">
               <div className="nav-left">
-                <button className="logout" onClick={() => this.props.openSide("first")}>SIDE</button>
+                <button className="nav-button" onClick={() => this.props.openSide("first")}>SIDE</button>
                 <Link className="nav-button" to="/index">Home</Link>
                 <Link className="nav-button" to="/fridge">Fridge</Link>
                 <Link className="nav-button" to="/weeklycart">Weekly Summary</Link>
               </div>
               <div className="nav-right">
-                <button className="logout" onClick={this.logoutUser}>Logout</button>
+                <button className="nav-button" onClick={this.logoutUser}>Logout</button>
               </div>
             </div>
           );
