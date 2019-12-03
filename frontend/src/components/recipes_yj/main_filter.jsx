@@ -325,14 +325,13 @@ export default class MainFilter extends React.Component {
                   <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
               </label>   */}
-
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
                 <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
                     <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
-                </label>  
+                </label> 
             </div>
           </div>
           <div className="filter-bot-allergies">

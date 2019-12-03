@@ -27,7 +27,7 @@
   border-radius: 3px;
   margin: 10px auto;
   margin-top: 20px;
-  padding: 10px;
+  padding: 3px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,8 +56,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
+    padding: 7px;
+    padding-top: 10px;
     box-shadow: 1px 1px 2px 1px rgb(183, 214, 238);
+    font-size: 14px;
+    color: dark grey;
+    letter-spacing: 2px;
     
     .filter-text-input {
       width: 230px;
@@ -66,17 +70,25 @@
       background: inherit;
       border: none;
       padding-left: 10px;
+
     }
+
+    ::placeholder {
+      color: grey;
+      font-family: Open Sans;
+      font-size: 15px;
+    }
+
     .filter-query-search {
-      width: 50px;
+      width: 45px;
       height: 30px;
       background: inherit;
       display: flex;
       justify-content: center;
 
       img {
-        width: 20px;
-        height: 20px;
+        width: 17px;
+        height: 17px;
         align-self: center;
       }
     }
