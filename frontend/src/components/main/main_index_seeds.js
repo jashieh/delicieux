@@ -1,327 +1,484 @@
 export const recipe1 = {
-    "image": "https://spoonacular.com/recipeImages/41813-556x370.jpg",
-    "nutrition": [
-        {
-            "title": "Calories",
-            "amount": 107.15,
-            "unit": "cal",
-            "percentOfDailyNeeds": 5.36
-        },
-        {
-            "title": "Fat",
-            "amount": 1.88,
-            "unit": "g",
-            "percentOfDailyNeeds": 2.89
-        },
-        {
-            "title": "Saturated Fat",
-            "amount": 0.25,
-            "unit": "g",
-            "percentOfDailyNeeds": 1.58
-        },
-        {
-            "title": "Carbohydrates",
-            "amount": 23.56,
-            "unit": "g",
-            "percentOfDailyNeeds": 7.85
-        },
-        {
-            "title": "Sugar",
-            "amount": 0.82,
-            "unit": "g",
-            "percentOfDailyNeeds": 0.91
-        },
-        {
-            "title": "Cholesterol",
-            "amount": 0,
-            "unit": "mg",
-            "percentOfDailyNeeds": 0
-        },
-        {
-            "title": "Sodium",
-            "amount": 107.33,
-            "unit": "mg",
-            "percentOfDailyNeeds": 4.67
-        },
-        {
-            "title": "Caffeine",
-            "amount": 11.83,
-            "unit": "mg",
-            "percentOfDailyNeeds": 3.94
-        },
-        {
-            "title": "Protein",
-            "amount": 3.29,
-            "unit": "g",
-            "percentOfDailyNeeds": 6.57
-        },
-        {
-            "title": "Manganese",
-            "amount": 6.03,
-            "unit": "mg",
-            "percentOfDailyNeeds": 301.62
-        },
-        {
-            "title": "Fiber",
-            "amount": 7.21,
-            "unit": "g",
-            "percentOfDailyNeeds": 28.84
-        },
-        {
-            "title": "Copper",
-            "amount": 0.52,
-            "unit": "mg",
-            "percentOfDailyNeeds": 25.89
-        },
-        {
-            "title": "Magnesium",
-            "amount": 92.7,
-            "unit": "mg",
-            "percentOfDailyNeeds": 23.18
-        },
-        {
-            "title": "Iron",
-            "amount": 3.38,
-            "unit": "mg",
-            "percentOfDailyNeeds": 18.76
-        },
-        {
-            "title": "Calcium",
-            "amount": 157.45,
-            "unit": "mg",
-            "percentOfDailyNeeds": 15.75
-        },
-        {
-            "title": "Potassium",
-            "amount": 475.11,
-            "unit": "mg",
-            "percentOfDailyNeeds": 13.57
-        },
-        {
-            "title": "Zinc",
-            "amount": 1.91,
-            "unit": "mg",
-            "percentOfDailyNeeds": 12.71
-        },
-        {
-            "title": "Vitamin C",
-            "amount": 6.81,
-            "unit": "mg",
-            "percentOfDailyNeeds": 8.25
-        },
-        {
-            "title": "Vitamin B6",
-            "amount": 0.13,
-            "unit": "mg",
-            "percentOfDailyNeeds": 6.52
-        },
-        {
-            "title": "Phosphorus",
-            "amount": 58.96,
-            "unit": "mg",
-            "percentOfDailyNeeds": 5.9
-        },
-        {
-            "title": "Vitamin B2",
-            "amount": 0.07,
-            "unit": "mg",
-            "percentOfDailyNeeds": 3.9
-        },
-        {
-            "title": "Vitamin B1",
-            "amount": 0.06,
-            "unit": "mg",
-            "percentOfDailyNeeds": 3.78
-        },
-        {
-            "title": "Vitamin B3",
-            "amount": 0.65,
-            "unit": "mg",
-            "percentOfDailyNeeds": 3.26
-        },
-        {
-            "title": "Folate",
-            "amount": 8.41,
-            "unit": "µg",
-            "percentOfDailyNeeds": 2.1
-        },
-        {
-            "title": "Vitamin K",
-            "amount": 1.69,
-            "unit": "µg",
-            "percentOfDailyNeeds": 1.6
-        },
-        {
-            "title": "Vitamin B5",
-            "amount": 0.12,
-            "unit": "mg",
-            "percentOfDailyNeeds": 1.18
-        }
-    ],
-    "cuisines": [],
-    "diets": [
-        "gluten free",
-        "dairy free",
-        "paleolithic",
-        "lacto ovo vegetarian",
-        "primal",
-        "fodmap friendly",
-        "whole 30",
-        "vegan"
-    ],
-    "dishtypes": [],
-    "_id": "5dda7b0e66c9242cd0ee5398",
-    "recipeId": 41813,
-    "title": "Iced Ginger Chai",
-    "sourceUrl": "http://www.elanaspantry.com/iced-ginger-chai/",
-    "sourceName": "Elana's Pantry",
-    "ingredients": [
-        {
-            "_id": "5dda7b0e66c9242cd0ee539e",
-            "id": 1022030,
-            "image": "black-pepper.png",
-            "name": "black peppercorns",
-            "amount": 10,
-            "unit": ""
-        },
-        {
-            "_id": "5dda7b0e66c9242cd0ee539d",
-            "id": 1002006,
-            "image": "cardamom.jpg",
-            "name": "cardamon pods",
-            "amount": 10,
-            "unit": ""
-        },
-        {
-            "_id": "5dda7b0e66c9242cd0ee539c",
-            "id": 2018,
-            "image": "fennel-seeds.jpg",
-            "name": "fennel seed",
-            "amount": 0.5,
-            "unit": "tsp"
-        },
-        {
-            "_id": "5dda7b0e66c9242cd0ee539b",
-            "id": 11216,
-            "image": "ginger.png",
-            "name": "fresh ginger",
-            "amount": 0.5,
-            "unit": "cup"
-        },
-        {
-            "_id": "5dda7b0e66c9242cd0ee539a",
-            "id": 10114355,
-            "image": "tea-bags.jpg",
-            "name": "rooibos tea",
-            "amount": 0.25,
-            "unit": "cup"
-        },
-        {
-            "_id": "5dda7b0e66c9242cd0ee5399",
-            "id": 14412,
-            "image": "water.png",
-            "name": "water",
-            "amount": 2,
-            "unit": "qts"
-        }
-    ],
-    "servings": 1,
-    "spoonacularScore": 98,
-    "readyInMinutes": 30,
-    "dairyFree": true,
-    "glutenFree": true,
-    "ketogenic": false,
-    "vegan": true,
-    "vegetarian": true,
-    "veryPopular": true,
-    "__v": 0
-};
-
-export const recipe2 = {
-         image: "https://spoonacular.com/recipeImages/573591-312x231.jpg",
+         image: "https://spoonacular.com/recipeImages/346466-556x370.jpeg",
          nutrition: [
            {
              title: "Calories",
-             amount: 393.004,
-             unit: "cal"
-           },
-           {
-             title: "Protein",
-             amount: 45.5059,
-             unit: "g"
+             amount: 458.75,
+             unit: "cal",
+             percentOfDailyNeeds: 22.94
            },
            {
              title: "Fat",
-             amount: 14.8836,
-             unit: "g"
+             amount: 24.91,
+             unit: "g",
+             percentOfDailyNeeds: 38.32
+           },
+           {
+             title: "Saturated Fat",
+             amount: 8.05,
+             unit: "g",
+             percentOfDailyNeeds: 50.28
            },
            {
              title: "Carbohydrates",
-             amount: 17.1274,
-             unit: "g"
+             amount: 16.35,
+             unit: "g",
+             percentOfDailyNeeds: 5.45
+           },
+           {
+             title: "Sugar",
+             amount: 8.31,
+             unit: "g",
+             percentOfDailyNeeds: 9.23
+           },
+           {
+             title: "Cholesterol",
+             amount: 129.27,
+             unit: "mg",
+             percentOfDailyNeeds: 43.09
+           },
+           {
+             title: "Sodium",
+             amount: 1373.26,
+             unit: "mg",
+             percentOfDailyNeeds: 59.71
+           },
+           {
+             title: "Alcohol",
+             amount: 2.15,
+             unit: "g",
+             percentOfDailyNeeds: 11.93
+           },
+           {
+             title: "Protein",
+             amount: 37.62,
+             unit: "g",
+             percentOfDailyNeeds: 75.24
+           },
+           {
+             title: "Vitamin B3",
+             amount: 13.18,
+             unit: "mg",
+             percentOfDailyNeeds: 65.88
+           },
+           {
+             title: "Vitamin B6",
+             amount: 1.09,
+             unit: "mg",
+             percentOfDailyNeeds: 54.69
+           },
+           {
+             title: "Phosphorus",
+             amount: 526.18,
+             unit: "mg",
+             percentOfDailyNeeds: 52.62
+           },
+           {
+             title: "Copper",
+             amount: 1.01,
+             unit: "mg",
+             percentOfDailyNeeds: 50.75
+           },
+           {
+             title: "Selenium",
+             amount: 30.91,
+             unit: "µg",
+             percentOfDailyNeeds: 44.16
+           },
+           {
+             title: "Iron",
+             amount: 7.74,
+             unit: "mg",
+             percentOfDailyNeeds: 43.02
+           },
+           {
+             title: "Zinc",
+             amount: 5.03,
+             unit: "mg",
+             percentOfDailyNeeds: 33.54
+           },
+           {
+             title: "Vitamin B2",
+             amount: 0.53,
+             unit: "mg",
+             percentOfDailyNeeds: 31.17
+           },
+           {
+             title: "Vitamin B1",
+             amount: 0.45,
+             unit: "mg",
+             percentOfDailyNeeds: 30.21
+           },
+           {
+             title: "Vitamin K",
+             amount: 27.21,
+             unit: "µg",
+             percentOfDailyNeeds: 25.91
+           },
+           {
+             title: "Manganese",
+             amount: 0.34,
+             unit: "mg",
+             percentOfDailyNeeds: 17.03
+           },
+           {
+             title: "Magnesium",
+             amount: 58.02,
+             unit: "mg",
+             percentOfDailyNeeds: 14.51
+           },
+           {
+             title: "Vitamin C",
+             amount: 11.88,
+             unit: "mg",
+             percentOfDailyNeeds: 14.4
+           },
+           {
+             title: "Vitamin B5",
+             amount: 1.44,
+             unit: "mg",
+             percentOfDailyNeeds: 14.35
+           },
+           {
+             title: "Potassium",
+             amount: 465.13,
+             unit: "mg",
+             percentOfDailyNeeds: 13.29
+           },
+           {
+             title: "Vitamin B12",
+             amount: 0.76,
+             unit: "µg",
+             percentOfDailyNeeds: 12.65
+           },
+           {
+             title: "Vitamin A",
+             amount: 523,
+             unit: "IU",
+             percentOfDailyNeeds: 10.46
            },
            {
              title: "Fiber",
-             amount: 1.2893,
-             unit: "g"
+             amount: 2.06,
+             unit: "g",
+             percentOfDailyNeeds: 8.26
+           },
+           {
+             title: "Folate",
+             amount: 25.26,
+             unit: "µg",
+             percentOfDailyNeeds: 6.31
+           },
+           {
+             title: "Calcium",
+             amount: 48.19,
+             unit: "mg",
+             percentOfDailyNeeds: 4.82
            }
          ],
          cuisines: [],
-         diets: [
-           "gluten free",
-           "dairy free",
-           "paleolithic",
-           "primal",
-           "fodmap friendly",
-           "pescatarian"
-         ],
+         diets: ["gluten free", "dairy free"],
          dishtypes: [],
-         _id: "5ddb48ba5fcecb1ac3a337a1",
-         recipeId: 573591,
-         title: "Maple Glazed Salmon",
+         _id: "5de6dd3a493fee51513b4719",
+         recipeId: 346466,
+         title: "Grilled Quail With Miso",
          sourceUrl:
-           "http://lexiscleankitchen.com/2014/05/18/maple-glazed-salmon/",
-         sourceName: "Lexi's Clean Kitchen",
+           "http://www.foodnetwork.com/recipes/food-network-kitchens/grilled-quail-with-miso-recipe.html",
+         sourceName: "Foodnetwork",
          ingredients: [
            {
-             _id: "5ddb48ba5fcecb1ac3a337a5",
-             id: 2009,
-             amount: 0.5,
-             unit: "tbsp",
-             name: "chili powder",
-             image:
-               "https://spoonacular.com/cdn/ingredients_100x100/chili-powder.jpg"
+             _id: "5de6dd3a493fee51513b471f",
+             id: 5157,
+             image: "quail.png",
+             name: "quail",
+             amount: 2.25,
+             unit: "pounds"
            },
            {
-             _id: "5ddb48ba5fcecb1ac3a337a4",
-             id: 19911,
-             amount: 2,
-             unit: "tbsp",
-             name: "maple syrup",
-             image:
-               "https://spoonacular.com/cdn/ingredients_100x100/maple-syrup.png"
+             _id: "5de6dd3a493fee51513b471e",
+             id: 43479,
+             image: "fish-sauce.jpg",
+             name: "sake",
+             amount: 0.3333333333333333,
+             unit: "cup"
            },
            {
-             _id: "5ddb48ba5fcecb1ac3a337a3",
-             id: 2028,
-             amount: 0.5,
-             unit: "tbsp",
-             name: "paprika",
-             image:
-               "https://spoonacular.com/cdn/ingredients_100x100/paprika.jpg"
+             _id: "5de6dd3a493fee51513b471d",
+             id: 11291,
+             image: "spring-onions.jpg",
+             name: "scallions",
+             amount: 4,
+             unit: ""
            },
            {
-             _id: "5ddb48ba5fcecb1ac3a337a2",
-             id: 15076,
+             _id: "5de6dd3a493fee51513b471c",
+             id: 19335,
+             image: "sugar-in-bowl.png",
+             name: "sugar",
+             amount: 3,
+             unit: "tablespoons"
+           },
+           {
+             _id: "5de6dd3a493fee51513b471b",
+             id: 4513,
+             image: "vegetable-oil.jpg",
+             name: "vegetable oil",
              amount: 1,
-             unit: "lb",
-             name: "salmon",
-             image: "https://spoonacular.com/cdn/ingredients_100x100/salmon.png"
+             unit: "tablespoon"
+           },
+           {
+             _id: "5de6dd3a493fee51513b471a",
+             id: 10116112,
+             image: "miso.jpg",
+             name: "white miso",
+             amount: 0.75,
+             unit: "cup"
            }
          ],
-         servings: 2,
-         spoonacularScore: 100,
-         readyInMinutes: 15,
+         servings: 6,
+         spoonacularScore: 66,
+         readyInMinutes: 100,
+         dairyFree: true,
+         glutenFree: true,
+         ketogenic: false,
+         vegan: false,
+         vegetarian: false,
+         veryPopular: false,
+         __v: 0
+       };
+
+export const recipe2 = {
+         image: "https://spoonacular.com/recipeImages/484740-556x370.jpg",
+         nutrition: [
+           {
+             title: "Calories",
+             amount: 654.67,
+             unit: "cal",
+             percentOfDailyNeeds: 32.73
+           },
+           {
+             title: "Fat",
+             amount: 28.29,
+             unit: "g",
+             percentOfDailyNeeds: 43.52
+           },
+           {
+             title: "Saturated Fat",
+             amount: 10.21,
+             unit: "g",
+             percentOfDailyNeeds: 63.82
+           },
+           {
+             title: "Carbohydrates",
+             amount: 10.21,
+             unit: "g",
+             percentOfDailyNeeds: 3.4
+           },
+           {
+             title: "Sugar",
+             amount: 9.01,
+             unit: "g",
+             percentOfDailyNeeds: 10.02
+           },
+           {
+             title: "Cholesterol",
+             amount: 257.21,
+             unit: "mg",
+             percentOfDailyNeeds: 85.74
+           },
+           {
+             title: "Sodium",
+             amount: 1369.43,
+             unit: "mg",
+             percentOfDailyNeeds: 59.54
+           },
+           {
+             title: "Protein",
+             amount: 83.85,
+             unit: "g",
+             percentOfDailyNeeds: 167.7
+           },
+           {
+             title: "Vitamin B12",
+             amount: 9.65,
+             unit: "µg",
+             percentOfDailyNeeds: 160.88
+           },
+           {
+             title: "Zinc",
+             amount: 15.81,
+             unit: "mg",
+             percentOfDailyNeeds: 105.38
+           },
+           {
+             title: "Vitamin B3",
+             amount: 17.34,
+             unit: "mg",
+             percentOfDailyNeeds: 86.72
+           },
+           {
+             title: "Vitamin B2",
+             amount: 1.27,
+             unit: "mg",
+             percentOfDailyNeeds: 74.89
+           },
+           {
+             title: "Phosphorus",
+             amount: 724.14,
+             unit: "mg",
+             percentOfDailyNeeds: 72.41
+           },
+           {
+             title: "Vitamin B6",
+             amount: 1.41,
+             unit: "mg",
+             percentOfDailyNeeds: 70.6
+           },
+           {
+             title: "Selenium",
+             amount: 32.97,
+             unit: "µg",
+             percentOfDailyNeeds: 47.09
+           },
+           {
+             title: "Iron",
+             amount: 7.8,
+             unit: "mg",
+             percentOfDailyNeeds: 43.33
+           },
+           {
+             title: "Potassium",
+             amount: 1114.15,
+             unit: "mg",
+             percentOfDailyNeeds: 31.83
+           },
+           {
+             title: "Vitamin B5",
+             amount: 3.02,
+             unit: "mg",
+             percentOfDailyNeeds: 30.17
+           },
+           {
+             title: "Vitamin B1",
+             amount: 0.41,
+             unit: "mg",
+             percentOfDailyNeeds: 27.44
+           },
+           {
+             title: "Copper",
+             amount: 0.54,
+             unit: "mg",
+             percentOfDailyNeeds: 27.11
+           },
+           {
+             title: "Magnesium",
+             amount: 82.84,
+             unit: "mg",
+             percentOfDailyNeeds: 20.71
+           },
+           {
+             title: "Manganese",
+             amount: 0.16,
+             unit: "mg",
+             percentOfDailyNeeds: 7.77
+           },
+           {
+             title: "Calcium",
+             amount: 55.08,
+             unit: "mg",
+             percentOfDailyNeeds: 5.51
+           },
+           {
+             title: "Vitamin E",
+             amount: 0.68,
+             unit: "mg",
+             percentOfDailyNeeds: 4.5
+           },
+           {
+             title: "Vitamin K",
+             amount: 3.51,
+             unit: "µg",
+             percentOfDailyNeeds: 3.35
+           }
+         ],
+         cuisines: [],
+         diets: ["gluten free", "dairy free"],
+         dishtypes: [],
+         _id: "5de6db3c16f1f54d72c86e0a",
+         recipeId: 484740,
+         title: "Balsamic Glazed Lamb Chops",
+         sourceUrl:
+           "http://thekitchenmccabe.com/2014/01/17/balsamic-glazed-lamb-chops/",
+         sourceName: "The Kitchen McCabe",
+         ingredients: [
+           {
+             _id: "5de6db3c16f1f54d72c86e12",
+             id: 2069,
+             image: "balsamic-vinegar.jpg",
+             name: "balsamic vinegar",
+             amount: 0.5,
+             unit: "C"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e11",
+             id: 1002030,
+             image: "pepper.jpg",
+             name: "black pepper",
+             amount: 0.25,
+             unit: "t"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e10",
+             id: 19334,
+             image: "dark-brown-sugar.png",
+             name: "brown sugar",
+             amount: 3,
+             unit: "T"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e0f",
+             id: 1002047,
+             image: "salt.jpg",
+             name: "coarse salt",
+             amount: 1,
+             unit: "T"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e0e",
+             id: 11215,
+             image: "garlic.jpg",
+             name: "garlic",
+             amount: 1,
+             unit: "T"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e0d",
+             id: 1002030,
+             image: "pepper.jpg",
+             name: "ground pepper",
+             amount: 1,
+             unit: "t"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e0c",
+             id: 17305,
+             image: "lamb-chops.png",
+             name: "lamb chops",
+             amount: 12,
+             unit: "small"
+           },
+           {
+             _id: "5de6db3c16f1f54d72c86e0b",
+             id: 4053,
+             image: "olive-oil.jpg",
+             name: "olive oil",
+             amount: 2,
+             unit: "T"
+           }
+         ],
+         servings: 6,
+         spoonacularScore: 98,
+         readyInMinutes: 45,
          dairyFree: true,
          glutenFree: true,
          ketogenic: false,
@@ -329,7 +486,7 @@ export const recipe2 = {
          vegetarian: false,
          veryPopular: true,
          __v: 0
-};
+       };
 
 export const recipe3 = {
          image: "https://spoonacular.com/recipeImages/507153-556x370.jpg",
