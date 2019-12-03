@@ -148,11 +148,11 @@ class MainPage extends React.Component {
                             <section className="st-panel st-color" id="st-panel-3">
                                 <div className="img-container">
                                     <img src={Background2} alt=""
-                                    className="splash-img"/>
+                                    className="img-container"/>
                                 </div>
                                 <div className="st-deco">
                                 </div>
-                                <div className="splash-middle-container">
+                                <div className="splash-middle-container-3">
                                     <h2 className="how-it-works">How it works</h2>
                                     <div className="splash-gif-container">
                                         <div className="splash-gif-item">
