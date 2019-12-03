@@ -17,11 +17,14 @@
 .st-container > a {
 	position: fixed;
 	bottom: 0px;
-	width: 20%;
+	width: 16.5%;
 	cursor: pointer;
-	font-size: 14px;
+	font-size: 13px;
 	height: 34px;
 	line-height: 34px;
+	margin-left: 25px;
+	color: black !important;
+	/* font-weight: 400 !important; */
 }
 
 .st-container > input {
@@ -49,7 +52,7 @@
 	/* background: #2b1c21; */
 	/* BOTTOM Button */
 	/* background: white; */
-	background-color: rgba(175, 173, 173, 0.6);
+	background-color: white;
 	color: black;
 	z-index: 9;
 	bottom: 0;
@@ -94,25 +97,16 @@
 .st-container > input:checked + a,
 .st-container > input:checked:hover + a{
 	/* background: white; */
-	/* background: rgba(175, 173, 173, 0.5); */
-	color: rgb(1, 53, 164);
-	
+	border-radius: 5px;
+	background: rgba(222, 222, 203, 0.68);
 }
 
 .st-container > input:checked + a:after,
 .st-container > input:checked:hover + a:after{
-	bottom: 100%;
-	border: solid transparent;
-	content: '';
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
-	border-bottom-color: rgb(142, 48, 48);
-	
-	border-width: 20px;
+	/* background-color: rgb(142, 48, 48); */
+	/* border-width: 20px;
 	left: 50%;
-	margin-left: -20px;
+	margin-left: -20px; */
 }
 
 
@@ -122,12 +116,13 @@
 	/* background: rgb(142, 48, 48); */
 	border-radius: 5px;
 	font-weight: 300;
-	background: rgb(228, 219, 219);
+	background: rgba(222, 222, 203, 0.68);
 	/* background: red; */
 }
 
 .st-container > input:hover + a:after {
-	border-bottom-color: rgb(142, 48, 48);
+	background: rgba(222, 222, 203, 0.68);
+	/* border-bottom-color: rgb(114, 35, 35); */
 }
 
 .st-scroll,
@@ -216,7 +211,7 @@
     content: attr(data-icon);
     font-family: 'RaphaelIcons';
     color: rgb(0, 0, 0);
-	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
+	text-shadow: 1px 1px 1px rgba(32, 18, 67, 0.2);
 	position: absolute;
 	width: 200px;
 	height: 200px;
@@ -234,20 +229,20 @@
 }
 
 .st-panel h2 {
-	color: #000000;
-	text-shadow: 1px 1px 1px rgba(151,24,64,0.2);
 	position: absolute;
-	font-size: 54px;
-	font-weight: 100;
-	width: 80%;
-	left: 10%;
+	width: 230px;
 	text-align: center;
-	line-height: 50px;
-	margin: -70px 0 0 0;
-	padding: 0;
-	top: 50%;
+	padding: 8px 0px;
+	padding-bottom: 9px;
+	letter-spacing: 1.5px;
 	-webkit-backface-visibility: hidden;
+	/* font-size: 54px; */
+	/* font-weight: 100; */
+	/* margin: -70px 0 0 0; */
+	/* top: 50%; */
+
 }
+
 
 #st-control-1:checked ~ .st-scroll #st-panel-1 h2,
 #st-control-2:checked ~ .st-scroll #st-panel-2 h2,
@@ -409,7 +404,7 @@
 	color: #060505;
 }
 .st-color .st-deco {
-	background: rgb(142, 48, 48);
+	/* background: rgb(142, 48, 48); */
 }
 .st-color h2 {
 	/* color: #fff; */
@@ -462,11 +457,8 @@
 .apron {
 	width: 38px;
 	height: 38px;
-	position: absolute;
-
-	left: 60%;
-	top: 60%;
-	transform: rotate(-45deg);
+	z-index: 100;
+	/* transform: rotate(-45deg); */
 }
 
 
@@ -476,7 +468,12 @@
 
 .splash-main-title {
 	cursor: pointer;
-	font-weight: 500 !important;
+	font-weight: 300 !important;
+	font-size: 28px !important;
+	color: rgb(119, 117, 97) !important;
+	background-color: rgba(228, 228, 209, 0.699);
+	border-radius: 5px;
+	box-shadow: 1px 1px 4px 1px rgba(187, 184, 163, 0.954);
 }
 
 .splash-main-title:hover {
@@ -489,26 +486,81 @@
 	/* z-index: 999; */
 	width: 100vw;
 	height: 100vh;
+	display: flex;
+	justify-content: center;
 }
 
 .splash-img {
-	width: 100%;
+	width: 1400px;
+	height: 720px;
+	align-self: center;
+
+}
+
+#st-panel-2 {
+	display: flex;
+	flex-direction: row;
+
+}
+
+.second-main-contain {
+	width: 97vw;
+	height: 96vh;
+	background: red;
+	margin: auto;
+	display: flex;
+	flex-direction: row;
+
+}
+
+.img-container-second {
+	width: 50%;
+	height: 100%;
+	background: blue;
+	padding: 5px 20px;
+	display: flex;
+	justify-content: center;
+}
+
+.splash-img-second {
+	width: 80%;
+	height: 94%;
+}
+
+.splash-middle {
+	width: 50%;
+	background: pink;
+	padding: 20px;
+}
+
+.splash-middle-contain {
+	display: flex;
+	flex-direction: column;
+	background: rgb(153, 228, 138);
 	height: 100%;
 }
 
+.the-exp {
+	color: blue;
+}
+
+
 .splash-middle-container {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	background: #f8f7f4;
 	position: relative;
 	left: 50%;
 	top: 20%;
 	z-index: 5;
-	width: 1000px;
+	width: 500px;
 	height: 500px;
 	margin-left: -500px;
 	box-shadow: 1px 1px 4px 1px rgb(196, 194, 194);
 }
+
+
 
 .splash-gif-container {
 	display: flex;

@@ -5,6 +5,7 @@ import Toggle from 'react-toggle';
 import '../stylesheets/recipes_index/main_filter.scss';
 import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
+import Ingredient from '../stylesheets/assets/harvest-two.png'
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -50,19 +51,8 @@ export default class MainFilter extends React.Component {
   }
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
-
-    // let input = document.getElementsByClassName("filter-text-input")[0];
-    // input.addEventListener("keydown", event => {
-    //   event.stopPropagation();
-    //   if (event.keyCode === 13)
-    //     this.handleQuerySubmit();
-    // });
   }
 
-  // componentWillUnmount() {
-  //   let input = document.getElementsByClassName("filter-text-input")[0];
-  //   input.removeEventListener("keydown");
-  // }
   addIngredient() {
     let x = this.state.ingredientList;
     if (!x.join("").includes(this.state.ingredientQuery.trim())) {
@@ -97,8 +87,7 @@ export default class MainFilter extends React.Component {
   }
   handleKeyDown(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
-      if (this.state.body) this.handleQuerySubmit();
-      else e.preventDefault();
+      this.handleQuerySubmit();
     }
   }
   handleQuerySubmit() {
@@ -141,7 +130,7 @@ export default class MainFilter extends React.Component {
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
     this.props.startLoad("loading")
     this.props.getRecipesByIngredients(ingredientList)
-    this.setState({ tabs: 0 });
+    this.setState({ tabs: 0, ingredientToggle: false });
   }
 
   handleSlider(type) {
@@ -305,6 +294,7 @@ export default class MainFilter extends React.Component {
       {this.state.ingredientToggle ? (
         <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
+          <div className="filter-top">
           <div className="filter-header">
             <div className="filter-text-cont">
               <input type="text"
@@ -313,15 +303,29 @@ export default class MainFilter extends React.Component {
               onChange={this.handleInput("ingredientQuery")}
               value={this.state.ingredientQuery}/>
               <button type="submit" className="filter-query-search" disabled={!this.state.ingredientQuery} onClick={this.addIngredient}>+</button>
-              <input type="submit" value="Search" className="filter-text-button"/>
+              <div className="filter-query-search" onClick={this.handleIngredientSubmit} >
+                  <img src={Loupe} alt=""/>
+          
+              </div>
+              {/* <input type="submit" value="Search" className="filter-text-button"/> */}
+              {/* <input type="submit" value="Search" className="filter-text-button"/>
               <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
                   <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
-              </label>  
+              </label>   */}
+
             </div>
           </div>
-          <div className="filter-param-cont">
+            <div className="filter-param-cont fridge-add">
+                <label className="filter-dd-item1">
+                    <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
+                    <p>Include Fridge</p>
+                </label>  
+            </div>
+          </div>
+          <div className="filter-bot-allergies">
             {this.renderIngredients()}
+
           </div>
         </form>
         ) : (
@@ -368,3 +372,6 @@ export default class MainFilter extends React.Component {
     );
   }
 }
+
+
+
