@@ -316,6 +316,7 @@ export default class MainFilter extends React.Component {
                   <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
               </label>   */}
+
             </div>
           </div>
             <div className="filter-param-cont fridge-add">

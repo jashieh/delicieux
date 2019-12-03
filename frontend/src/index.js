@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.postRecipeComplex = postRecipeComplex;
   window.patchRecipeImage = patchRecipeImage;
   window.calorieCalc = calorieCalc;
+  window.logout = logout;
 
   window.signup = signup;
   
