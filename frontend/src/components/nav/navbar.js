@@ -33,9 +33,16 @@ class NavBar extends React.Component {
           return <div></div>
         } else {
           return (
-            <div>
-              <button className="logout" onClick={() => this.props.openSide("first")}>SIDE</button>
-              <button className="logout" onClick={this.logoutUser}>Logout</button>
+            <div className="nav-main">
+              <div className="nav-left">
+                <button className="logout" onClick={() => this.props.openSide("first")}>SIDE</button>
+                <Link className="nav-button" to="/home">Home</Link>
+                <Link className="nav-button" to="/fridge">Fridge</Link>
+                <Link className="nav-button" to="/weeklycart">Weekly Summary</Link>
+              </div>
+              <div className="nav-right">
+                <button className="logout" onClick={this.logoutUser}>Logout</button>
+              </div>
             </div>
           );
         }
@@ -53,9 +60,8 @@ class NavBar extends React.Component {
   }
 
   render() {
-    console.log(this.props.location.pathname)
       return (
-        <div className="nav-main" >
+        <div className="nav-main">
             { this.getLinks() }
         </div>
       );

@@ -18,26 +18,33 @@ import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
 import { recipe1 } from './main_index_seeds';    
 
-const throttle = (func, limit) => {
-    let inThrottle
-    return function() {
-      const args = arguments
-      const context = this
-      if (!inThrottle) {
-        func.apply(context, args)
-        inThrottle = true
-        setTimeout(() => inThrottle = false, limit)
-      }
-    }
-}
-
 class MainPage extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.inThrottle = false;
+        this.throttleScroll = this.throttleScroll.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+
     componentDidMount() {
-        window.addEventListener('wheel', throttle(this.handleScroll, 200));
+        window.addEventListener('wheel', this.throttleScroll);
     }
 
     componentWillUnmount() {
-        window.removeEventListener('wheel', this.handleScroll);
+        window.removeEventListener('wheel', this.throttleScroll);
+    }
+
+
+    throttleScroll() {
+        const args = arguments;
+        const context = this;
+
+        if (!this.inThrottle) {
+            this.handleScroll.apply(context, args);
+            this.inThrottle = true;
+            setTimeout(() => this.inThrottle = false, 200);
+        }
     }
 
     handleScroll(e) {
@@ -58,8 +65,6 @@ class MainPage extends React.Component {
             checked.previousSibling.previousSibling.checked = true;    
         }
     }
-
-
 
     render() {
         return (

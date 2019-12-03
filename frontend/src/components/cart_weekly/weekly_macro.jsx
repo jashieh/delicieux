@@ -39,7 +39,7 @@ export default class WeeklyMacro extends React.Component {
     let carbPer = Math.round(carbs * 4 / calorieAc * 1000) / 10;
     let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
     let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
-    debugger;
+    
     setTimeout(() => {
       this.setState({
         pieData: [

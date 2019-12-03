@@ -16,16 +16,28 @@
     height: 35px;
 
     display: flex;
+    flex-direction: row;
+    align-items: center;
     
     .nav-main {
-        align-self: center;
         display: flex;
-        flex-direction: row; 
+        align-self: center;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%; 
         color: white;
         font-family: Sacramento;
         font-size: 30px;
         padding: 10px 20px;
         // align-content: space-between;
+
+        .nav-button {
+            font-family: Open Sans;
+            color: black;
+            border:  none;
+            font-size: 14px;
+            text-transform: none;
+        }
     }
 }
 
@@ -35,6 +47,7 @@
     color: black;
     border:  none;
     font-size: 14px;
+    text-transform: none;
 }
 
 .right-left-contain {
