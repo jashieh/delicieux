@@ -164,7 +164,7 @@ export const complexRecipeSearch = (
   if (!minProtein) minProtein = 0;
 
   if (!ignorePantry) ignorePantry = true;
-  if (!limit) limit = 10;
+  if (!limit) limit = 12;
 
   // const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");

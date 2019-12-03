@@ -64,11 +64,12 @@ export default class RecipeShow extends React.Component {
   }
   render() {
     const { recipe, fridge, user } = this.props;
-    let fridgeList = Object.values(fridge.ingredients).map((el) => el.name);
+    debugger;
+    let fridgeList = fridge.ingredients ? Object.values(fridge.ingredients).map((el) => el.name) : [];
     let calorieReq = calorieCalc(user);
     let nutritionReq =  {
       "Calories": calorieReq ? calorieReq : 2000,
-      "Carbohydrates": calorieReq? 250 * calorieReq/2000 : 250,
+      "Carbohydrates": calorieReq ? 250 * calorieReq/2000 : 250,
       "Protein": calorieReq ? 80 * calorieReq/2000 : 80,
       "Fat": calorieReq ? 75 * calorieReq/2000 : 75,
       };

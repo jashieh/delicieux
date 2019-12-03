@@ -141,7 +141,7 @@ export default class MainFilter extends React.Component {
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
     this.props.startLoad("loading")
-    this.props.getRecipesByIngredients(ingredientList)
+    this.props.getRecipesByIngredients(ingredientList, 12)
     this.setState({ tabs: 0 });
   }
 
