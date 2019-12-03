@@ -8,12 +8,13 @@
 
 
 .top {
-    background-color: rgb(210, 234, 243);
+    background-color: white;
     // box-shadow: 1px 1px 8px 1px rgb(192, 229, 245);
     // background: rgba(215, 202, 132, 0.906);
-    border-bottom: 1px solid rgb(213, 213, 216);
+    border-bottom: 1px solid rgb(245, 102, 77);
     width: 100%;
     height: 35px;
+    z-index: 3000;
 
     display: flex;
     
@@ -31,7 +32,7 @@
 
 .logout {
     font-family: Open Sans;
-    background-color: rgb(210, 234, 243);
+    background-color: inherit;
     color: black;
     border:  none;
     font-size: 14px;

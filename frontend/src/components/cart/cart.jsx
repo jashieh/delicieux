@@ -60,6 +60,11 @@ class Cart extends React.Component {
     const times = ["BREAKFAST", "LUNCH", "DINNER"];
     return (
       <div className="cart">
+        <div>
+          <div className="cart-text">
+            délicieux
+          </div>
+        </div>
         <div className="cart-header">
           <div className="cart-header-left" onClick={this.previousDate}>
             <div>{"<"}</div>
