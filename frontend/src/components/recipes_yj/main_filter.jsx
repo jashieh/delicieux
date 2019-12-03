@@ -65,10 +65,15 @@ export default class MainFilter extends React.Component {
   // }
   addIngredient() {
     let x = this.state.ingredientList;
-    x.push(this.state.ingredientQuery.trim());
-    this.setState({ingredientList: x}, ()=> {
-      this.setState({ingredientQuery: ""})
-    })
+    if (!x.join("").includes(this.state.ingredientQuery.trim())) {
+      x.push(this.state.ingredientQuery.trim());
+      this.setState({ ingredientList: x }, () => {
+        this.setState({ ingredientQuery: "" })
+      })
+    } else {
+      this.setState({ ingredientQuery: "" });
+    }
+    
   }
   handleInput(type) {
     return (e)=>{
@@ -92,7 +97,7 @@ export default class MainFilter extends React.Component {
   }
   handleKeyDown(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
-      if (this.state.body) this.handleSubmit(e);
+      if (this.state.body) this.handleQuerySubmit();
       else e.preventDefault();
     }
   }
@@ -174,7 +179,7 @@ export default class MainFilter extends React.Component {
       return (
       <div key={idx} className="filter-ing-item">
         <span className="filter-x" onClick={this.removeIngredient({idx})}>&times;</span>
-        {ingredient} {idx}
+        {ingredient}
       </div>)
     })
   }
@@ -328,7 +333,9 @@ export default class MainFilter extends React.Component {
                 className="filter-text-input"
                 placeholder="Find a recipe"
                 onChange={this.handleInput("query")}
-                value={this.state.query}/>
+                value={this.state.query}
+                onKeyDown={this.handleKeyDown} 
+                />
                 <div className="filter-query-search" onClick={this.handleQuerySubmit} >
                   <img src={Loupe} alt=""/>
                   {/* <input type="submit" className="filter-query-search" value=""/> */}
