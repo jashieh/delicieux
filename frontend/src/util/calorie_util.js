@@ -1,5 +1,6 @@
 // Returns daily calorie requirement based on personal profile (calories per day)
 export const calorieCalc = (user) => {
+  if (!user.height && !user.weight && !user.age) return 2000;
   let baseMetabolism;
   let calorieOffset = 0;
   let caloriesToKg = 7716;
@@ -23,6 +24,8 @@ export const calorieCalc = (user) => {
       return Math.floor(baseMetabolism * 1.55) + calorieOffset/7;
     case 4:
       return Math.floor(baseMetabolism * 1.725) + calorieOffset/7;
+    default:
+      return 2000;
   }
   // Diet goals; 3500 calories a week deficit for 1 pound
 };

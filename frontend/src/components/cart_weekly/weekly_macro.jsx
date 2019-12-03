@@ -34,13 +34,12 @@ export default class WeeklyMacro extends React.Component {
   }
   componentDidMount() {
     
-    let { calories, carbs, protein, fat } = this.props;
-    let calorieAc = (carbs * 4) + (protein * 4) + (fat * 9);
-    let carbPer = Math.round(carbs * 4 / calorieAc * 1000) / 10;
-    let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
-    let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
-    debugger;
     setTimeout(() => {
+      let { calories, carbs, protein, fat } = this.props;
+      let calorieAc = (carbs * 4) + (protein * 4) + (fat * 9);
+      let carbPer = Math.round(carbs * 4 / calorieAc * 1000) / 10;
+      let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
+      let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
       this.setState({
         pieData: [
           { x: "Carbs", y: carbPer, label: `${carbPer}%` },
@@ -49,8 +48,12 @@ export default class WeeklyMacro extends React.Component {
         ],
         label: true
       })
-    }, 1000)
+    }, 500)
   }
+  static getDerivedStateFromProps(props, state) {
+    
+  }
+  
   handleBarOn(type) {
     return (e) => {
       this.setState({ [type]: true })

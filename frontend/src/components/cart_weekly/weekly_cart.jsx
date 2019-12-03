@@ -28,6 +28,7 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
+    this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0});
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     fetchFridge(user.id)
       .then(() => {
@@ -105,9 +106,6 @@ class WeeklyCart extends React.Component {
       carbs: this.state.carbs + recipeCarbs,
       fiber: this.state.fiber + recipeFiber
     });
-    this.calories = this.calories + recipeCalories;
-
-    this.fat = this.fat + recipeFat;
   }
   render() {
     let { dates } = this.state;
