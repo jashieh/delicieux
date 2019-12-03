@@ -150,8 +150,8 @@ class MainPage extends React.Component {
                                     <img src={Background2} alt=""
                                     className="img-container"/>
                                 </div>
-                                <div className="st-deco">
-                                </div>
+                                {/* <div className="st-deco">
+                                </div> */}
                                 <div className="splash-middle-container-3">
                                     <h2 className="how-it-works">How it works</h2>
                                     <div className="splash-gif-container">

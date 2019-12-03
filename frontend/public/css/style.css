@@ -584,7 +584,7 @@
 	display: flex;
 	justify-content: space-around;
 	width: 100%;
-	margin-top: 175px;
+	margin-top: 200px;
 }
 
 .splash-gif-item {
@@ -611,7 +611,7 @@
 
 .splash-gif-body {
 	margin-top: 20px;
-	width: 150px;
+	width: 200px;
 	font-size: 14px;
 	color: grey;
 	font-weight: 600;
@@ -620,7 +620,7 @@
 }
 
 .how-it-works {
-	top: 10% !important;
+	top: 15% !important;
 	font-size: 42px;
 	white-space: nowrap;
 
