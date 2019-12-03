@@ -322,7 +322,7 @@ export default class MainFilter extends React.Component {
                 <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
                     <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
-                </label>  
+                </label> 
             </div>
           </div>
           <div className="filter-bot-allergies">
