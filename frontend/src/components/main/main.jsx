@@ -16,10 +16,51 @@ import IceCream from '../stylesheets/assets/note.jpg';
 
 import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
-import { recipe1 } from './main_index_seeds';                      
+import { recipe1 } from './main_index_seeds';    
+
+const throttle = (func, limit) => {
+    let inThrottle
+    return function() {
+      const args = arguments
+      const context = this
+      if (!inThrottle) {
+        func.apply(context, args)
+        inThrottle = true
+        setTimeout(() => inThrottle = false, limit)
+      }
+    }
+}
 
 class MainPage extends React.Component {
-    
+    componentDidMount() {
+        window.addEventListener('wheel', throttle(this.handleScroll, 200));
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('wheel', this.handleScroll);
+    }
+
+    handleScroll(e) {
+        let buttons = document.getElementsByName("radio-set");
+        let checked;
+
+        for(let i = 0; i < buttons.length; i++) {
+            if(buttons[i].checked) {
+                checked = buttons[i];
+            }
+        }
+
+        if(e.deltaY > 0 && checked.nextElementSibling &&
+            checked.nextElementSibling.nextElementSibling) {
+            checked.nextElementSibling.nextElementSibling.checked = true;
+        } else if(e.deltaY < 0 && checked.previousSibling &&
+            checked.previousSibling.previousSibling) {
+            checked.previousSibling.previousSibling.checked = true;    
+        }
+    }
+
+
+
     render() {
         return (
             <div>
