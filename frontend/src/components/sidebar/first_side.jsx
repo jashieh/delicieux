@@ -32,7 +32,7 @@ class FirstSide extends React.Component {
                             </span>
                         </span>
                     </a>
-                    <a class="btn">
+                    <a class="btn" onClick={this.handleMouseOver}>
                         <span>
                             <span>
                             <span>Profile</span>
