@@ -46,22 +46,23 @@ export default class MainFilter extends React.Component {
     this.toggleIngredients = this.toggleIngredients.bind(this);
     this.handleQuerySubmit = this.handleQuerySubmit.bind(this);
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
 
-    let input = document.getElementsByClassName("filter-text-input")[0];
-    input.addEventListener("keydown", event => {
-      event.stopPropagation();
-      if (event.keyCode === 13)
-        this.handleQuerySubmit();
-    });
+    // let input = document.getElementsByClassName("filter-text-input")[0];
+    // input.addEventListener("keydown", event => {
+    //   event.stopPropagation();
+    //   if (event.keyCode === 13)
+    //     this.handleQuerySubmit();
+    // });
   }
 
-  componentWillUnmount() {
-    let input = document.getElementsByClassName("filter-text-input")[0];
-    input.removeEventListener("keydown");
-  }
+  // componentWillUnmount() {
+  //   let input = document.getElementsByClassName("filter-text-input")[0];
+  //   input.removeEventListener("keydown");
+  // }
   addIngredient() {
     let x = this.state.ingredientList;
     x.push(this.state.ingredientQuery.trim());
@@ -87,6 +88,12 @@ export default class MainFilter extends React.Component {
   handleCuisine(type) {
     return (e) => {
       this.setState({ cuisine: type.cuisine })
+    }
+  }
+  handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      if (this.state.body) this.handleSubmit(e);
+      else e.preventDefault();
     }
   }
   handleQuerySubmit() {
@@ -327,9 +334,9 @@ export default class MainFilter extends React.Component {
                   {/* <input type="submit" className="filter-query-search" value=""/> */}
                 </div>
             </div>
-            {/* <div className="filter-text-button" onClick={this.toggleIngredients}>
+            <div className="filter-text-button" onClick={this.toggleIngredients}>
               Ingr
-            </div> */}
+            </div>
           </div>
           <div className="filter-param-cont">
             <div className="filter-text" onClick={this.handleTab(1)} style={this.state.tabs === 1 ? { backgroundColor: "inherit", color: "black" } : {}}>
