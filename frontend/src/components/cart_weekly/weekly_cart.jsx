@@ -23,7 +23,7 @@ class WeeklyCart extends React.Component {
     this.generateDates = this.generateDates.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
     this.addMacros = this.addMacros.bind(this);
-
+    this.removeMacros = this.removeMacros.bind(this);
   }
 
   // generate an array of weekdates and fetch recipe info
@@ -39,8 +39,12 @@ class WeeklyCart extends React.Component {
       });
     fetchUser(user.id);
   }
-  componentDidUpdate() {
+
+  componentDidUpdate(oldProps) {
     let { getCart, user, cart, fetchFridge } = this.props;
+
+    if (oldProps.cart !== cart)
+      this.setState(this.state);
   }
 
   // Generates an array of dateStrings that represent the week's cart
@@ -91,6 +95,7 @@ class WeeklyCart extends React.Component {
         }
     }
   }
+
   addMacros(recipe) {
     let recipeCalories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount;
     let recipeProtein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
@@ -109,6 +114,26 @@ class WeeklyCart extends React.Component {
 
     this.fat = this.fat + recipeFat;
   }
+
+  removeMacros(recipe) {
+    let recipeCalories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount;
+    let recipeProtein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
+    let recipeFat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
+    let recipeCarbs = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount;
+    let recipeFiber = Object.values(recipe.nutrition).filter(nutrient => ["Fiber"].includes(nutrient.title))[0].amount;
+
+    this.setState({
+      calories: this.state.calories - recipeCalories < 0 ? 0 : this.state.calories - recipeCalories,
+      protein: this.state.protein - recipeProtein < 0 ? 0 : this.state.protein - recipeProtein,
+      fat: this.state.fat - recipeFat < 0 ? 0 : this.state.fat - recipeFat,
+      carbs: this.state.carbs - recipeCarbs < 0 ? 0 : this.state.carbs - recipeCarbs,
+      fiber: this.state.fiber - recipeFiber < 0 ? 0 : this.state.fiber - recipeFiber,
+    });
+    this.calories = this.calories - recipeCalories < 0 ? 0 : this.calories - recipeCalories;
+
+    this.fat = this.fat - recipeFat < 0 ? 0 : this.fat - recipeFat;
+  }
+
   render() {
     let { dates } = this.state;
     if (dates.length > 0){
@@ -120,7 +145,7 @@ class WeeklyCart extends React.Component {
           <div className="weekly-cart-header">Weekly Summary</div>
           <div className="weekly-cart-days">
             {dates.map((date, idx) => {
-              return <WeeklyCartDayContainer date={date} key={idx} addMacros={this.addMacros}/>;
+              return <WeeklyCartDayContainer date={date} key={idx} addMacros={this.addMacros} removeMacros={this.removeMacros}/>;
             })}
           </div>
           <WeeklyMacro calories={this.state.calories} 

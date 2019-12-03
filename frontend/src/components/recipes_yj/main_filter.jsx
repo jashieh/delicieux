@@ -54,10 +54,9 @@ export default class MainFilter extends React.Component {
 
     this.enterEvent = event => {
       event.stopPropagation();
-      if (event.keyCode === 13)
-        this.handleQuerySubmit();
+      if (event.keyCode === 13) this.handleQuerySubmit();
     }
-
+    
     input.addEventListener("keydown", this.enterEvent);
   }
 
