@@ -86,7 +86,7 @@ class MainPage extends React.Component {
                 <div className="clr"></div>
               </div>
 
-              <div className="st-container">
+<!--               <div className="st-container">
                 <input
                   type="radio"
                   name="radio-set"
@@ -117,7 +117,34 @@ class MainPage extends React.Component {
                   <section className="st-panel st-color" id="st-panel-1">
                     <div className="img-container">
                       <img src={IceCream} alt="" className="splash-img" />
-                    </div>
+                    </div> -->
+                    <div className="st-container">
+
+                        <input type="radio" name="radio-set" defaultChecked={true} id="st-control-1" />
+                        <a href="#st-panel-1" className="splash-footer-tab">délicieux?</a>
+                        <input type="radio" name="radio-set" id="st-control-2" />
+                        <a href="#st-panel-2" className="splash-footer-tab">The experience</a>
+                        <input type="radio" name="radio-set" id="st-control-3" />
+                        <a href="#st-panel-3" className="splash-footer-tab">How it works</a>
+                        <input type="radio" name="radio-set" id="st-control-4" />
+                        <a href="#st-panel-4" className="splash-footer-tab">Preview</a>
+                        <input type="radio" name="radio-set" id="st-control-5" />
+                        <a href="#st-panel-5" className="splash-footer-tab">Passion</a>
+
+                        <div className="st-scroll">
+
+                            <section className="st-panel st-color" id="st-panel-1">
+                                <div className="img-container-first">
+                                    <img src={IceCream} alt=""
+                                    className="splash-img"/>
+                                </div>
+                                <div className="splash-loading-container">
+                                    {/* <img className="apron" src={Apron} alt="" />; */}
+                                    <h2 className="splash-main-title"
+                                        onClick={()=>this.props.history.push('/login')}>
+                                        délicieux
+                                    </h2>
+                                    {/* <div className="very-top">
                     <div className="splash-loading-container">
                       {/* <img className="apron" src={Apron} alt="" />; */}
                       <h2
@@ -139,36 +166,26 @@ class MainPage extends React.Component {
                   <section className="st-panel st-color" id="st-panel-2">
                     {/* <div className="st-deco">
                                 </div> */}
+                                
+                                <div className="second-main-contain"> 
+                                    <div className="img-container-second">
+                                        <img src={Freshly} alt="" className="splash-img-second" />
+                                    </div>
+                                    <div className="splash-middle">
+                                        <div className="splash-middle-contain">
+                                            <h1 className="the-exp">Meal planning made easy</h1>
+                                            <div className="the-exp-middle">
+                                                <div className="the-exp-left">
+                                                    <div className="the-exp-sub-head">
+                                                        Délicieux is your smart cooking sidekick
+                                                    </div>
+                                                    <div className="the-exp-body">
+                                                        Find the perfect recipe to make from the ingredients available in your fridge.
+                                                        Reach your diet goals faster with detailed nutritional information and progress visualization.
+                                                    </div>
 
-                    <div className="second-main-contain">
-                      <div className="img-container-second">
-                        <img
-                          src={Freshly}
-                          alt=""
-                          className="splash-img-second"
-                        />
-                      </div>
-                      <div className="splash-middle">
-                        <div className="splash-middle-contain">
-                          <h1 className="the-exp">Meal planning made easy</h1>
-                          <div className="the-exp-middle">
-                            <div className="the-exp-left">
-                              <div className="the-exp-sub-head">
-                                délicieux is your smart cooking sidekick
-                              </div>
-                              <div className="the-exp-body">
-                                Find the perfect recipe to make from the
-                                ingredients available in your fridge.
-                              </div>
-                              <div className="the-exp-body">
-                                Reach your diet goals faster with detailed
-                                nutritional information and progress
-                                visualization.
-                              </div>
-                            </div>
-                            {/* <div className="the-experience-right">
-                                                    <img src={MealPlan} alt="" className="the-experience-img"/>
-                                                </div> */}
+                                                </div>
+
                           </div>
                         </div>
                       </div>

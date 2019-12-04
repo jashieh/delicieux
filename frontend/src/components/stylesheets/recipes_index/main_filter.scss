@@ -25,9 +25,12 @@
   // border: 1px solid rgb(233, 232, 232);
   // box-shadow: 1px 1px 5px 1px rgb(233, 232, 232);
   // border-radius: 3px;
-  background: inherit;
+  // background: rgba(17, 12, 5, 0.79);
+  background: white;
   border-radius: 5px;
-  box-shadow: 1px 1px 3px 1px rgba(191, 190, 185, 0.619);
+  box-shadow: 1px 1px 5px 1px rgba(214, 211, 208, 0.619);
+  border: 1px solid rgba(225, 132, 18, 0.338);
+  border: 1px solid rgba(0, 0, 0, 0.44);
   margin: 10px auto;
   margin-top: 20px;
   padding: 3px 10px;
@@ -35,7 +38,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-
+  
   .filter-top {
     // background: #DFF2F7;
     display: flex;
@@ -63,7 +66,7 @@
     border-bottom: 1px solid rgb(172, 168, 168);
     // box-shadow: 1px 1px 2px 1px rgb(183, 214, 238);
     font-size: 14px;
-    color: grey;
+    color: white;
     letter-spacing: 2px;
     
     .filter-text-input {
@@ -77,6 +80,7 @@
     }
 
     ::placeholder {
+      // color: rgb(187, 183, 183);
       color: rgb(67, 66, 66);
       font-family: Open Sans;
       font-size: 15px;
