@@ -1,16 +1,21 @@
+
+
+
+
 .cart {
   width: 350px;
-  height: 600px;
+  height: 625px;
 
   padding: 10px;
-  padding-left: 20px;
+  padding-left: 40px;
   padding-right: 20px;
+  padding-top: 47px;
   border-left: 1px solid rgb(172, 169, 169);
 
   display: flex;
   flex-direction: column;
   justify-content: center; 
-  background-color: rgb(242, 241, 241);
+  background-color: white;
   // background: rgb(232, 248, 214);
 }
 
@@ -19,7 +24,9 @@
   align-items: center;
   justify-content: center;
   font-family: Open Sans;
-  font-size: 15px;
+  font-size: 12px;
+  padding-bottom: 9px;
+  padding-top: 10px;
 
   width: 100%;
   height: 10%;
@@ -79,11 +86,14 @@
   width: 100%;
   height: 161px;
   // padding-bottom: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-radius: 10px;
   // background: rgb(250, 250, 250);
-  background: rgb(224, 238, 207);
-  box-shadow: 1px 1px 7px 1px #d0cece;
+  // background: rgb(224, 238, 207);
+  // background: rgb(242, 249, 222);
+  background: white;
+  box-shadow: 1px 1px 4px 1px #d0cece;
+  // border: 1px solid rgb(189, 186, 186);
   overflow: hidden;
 }
 
@@ -104,8 +114,10 @@
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  background: rgb(245, 245, 245);
-  box-shadow: 1px 1px 8px 1px #c6c4c4;
+  // background: #E9C5C5;
+  border: 1px solid rgba(215, 132, 81, 0.742);
+  box-shadow: 1px 1px 8px 1px #f3d0d0;
+  // box-shadow: 1px 1px 8px 1px #ff0000;
   margin: 0 auto;
   font-family: Open Sans;
   font-size: 15px;
@@ -147,6 +159,7 @@
       padding-top: 9px;
       padding-left: 10px;
       // background: white;
+
     }
   }
   
@@ -163,13 +176,21 @@
   font-weight: 300;
 }
 
+.cart-item-source {
+  // background: red;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 300;
+}
+
+
 .cart-item-remove {
   width: max-content;
 
   // border: 1px solid black;
   // background: maroon;
 
-  font-size: 12px;
+  font-size: 11px;
   color: black;
   vertical-align: middle;
   text-align: center;
@@ -215,3 +236,25 @@
     }
   }
 }
+
+.cart-text {
+  font-size: 29px;
+  font-family: Sacramento;
+  letter-spacing: 1px;
+  text-align: center;
+  // text-shadow: 2px 2px 10px #ff0000;
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px rgb(242, 137, 137), 0 0 20px #fff, 0 0 30px rgb(171, 102, 49), 0 0 40px  rgb(171, 102, 49), 0 0 50px  rgb(171, 102, 49), 0 0 60px rgb(171, 102, 49);
+  }
+  to {
+    text-shadow: 2px 2px 10px  rgb(171, 102, 49);
+ }
+}
+
+

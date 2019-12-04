@@ -80,7 +80,7 @@ export const getMultipleRecipes = (ids, includeNutrition = true) => {
 };
 
 // Ingredients as array. Ranking 1 means maximize used ingredients and ranking 2 means minimize missed ingredients
-export const getRecipesByIngredients = (ingredients, limit = 5, ranking = 1, ignorePantry = true) => {
+export const getRecipesByIngredients = (ingredients, limit = 10, ranking = 1, ignorePantry = true) => {
   const query = ingredients.join(',');
   // return axios.get(`https://api.spoonacular.com/recipes/findByIngredients?ingredients=${query}&ranking=${ranking}&ignorePantry=${ignorePantry}&number=${limit}&apiKey=${apiKey}`);
 
@@ -164,7 +164,7 @@ export const complexRecipeSearch = (
   if (!minProtein) minProtein = 0;
 
   if (!ignorePantry) ignorePantry = true;
-  if (!limit) limit = 10;
+  if (!limit) limit = 12;
 
   // const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");

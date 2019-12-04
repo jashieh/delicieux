@@ -37,7 +37,6 @@ export default class RecipeShow extends React.Component {
     let carbPer = Math.round(carbohydrates * 4 / calorieAc * 1000) / 10;
     let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
     let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
-    debugger;
     setTimeout(() => {
       this.setState({
         pieData: [
@@ -65,10 +64,10 @@ export default class RecipeShow extends React.Component {
   render() {
     const { recipe, fridge, user } = this.props;
     let fridgeList = Object.values(fridge.ingredients).map((el) => el.name);
-    let calorieReq = calorieCalc(user);
+    let calorieReq = calorieCalc(user) || 2000;
     let nutritionReq =  {
       "Calories": calorieReq ? calorieReq : 2000,
-      "Carbohydrates": calorieReq? 250 * calorieReq/2000 : 250,
+      "Carbohydrates": calorieReq ? 250 * calorieReq/2000 : 250,
       "Protein": calorieReq ? 80 * calorieReq/2000 : 80,
       "Fat": calorieReq ? 75 * calorieReq/2000 : 75,
       };
