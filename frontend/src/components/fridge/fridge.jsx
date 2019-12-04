@@ -16,14 +16,15 @@ class Fridge extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("x");
-    // this.props.closeModal();
+    this.props.closeModal();
   }
 
   render() {
     return(
       <div className="fridge-container" >
-        <NavbarContainer />
+        <div className="fridge-nav">
+          <NavbarContainer />
+        </div>
         <div className="contain-all">
           <div className="left-fridge" >
             <Clock />

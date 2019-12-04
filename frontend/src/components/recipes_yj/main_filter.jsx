@@ -5,7 +5,7 @@ import Toggle from 'react-toggle';
 import '../stylesheets/recipes_index/main_filter.scss';
 import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
-import Ingredient from '../stylesheets/assets/harvest-two.png'
+import Ingredient from '../stylesheets/assets/ginkgo.png'
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -52,19 +52,8 @@ export default class MainFilter extends React.Component {
 
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
-
-    // let input = document.getElementsByClassName("filter-text-input")[0];
-    // input.addEventListener("keydown", event => {
-    //   event.stopPropagation();
-    //   if (event.keyCode === 13)
-    //     this.handleQuerySubmit();
-    // });
   }
 
-  // componentWillUnmount() {
-  //   let input = document.getElementsByClassName("filter-text-input")[0];
-  //   input.removeEventListener("keydown");
-  // }
   addIngredient() {
     let x = this.state.ingredientList;
     if (!x.join("").includes(this.state.ingredientQuery.trim())) {
@@ -103,8 +92,7 @@ export default class MainFilter extends React.Component {
 
   handleKeyDown(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
-      if (this.state.body) this.handleQuerySubmit();
-      else e.preventDefault();
+      this.handleQuerySubmit();
     }
   }
 
@@ -148,8 +136,8 @@ export default class MainFilter extends React.Component {
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
     this.props.startLoad("loading")
-    this.props.getRecipesByIngredients(ingredientList, 12)
-    this.setState({ tabs: 0 });
+    this.props.getRecipesByIngredients(ingredientList, 12);
+    this.setState({ tabs: 0, ingredientToggle: false });
   }
 
   handleSlider(type) {
@@ -339,7 +327,7 @@ export default class MainFilter extends React.Component {
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
-                <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
+                <label className="filter-dd-item1">
                     <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
                 </label> 
@@ -368,8 +356,8 @@ export default class MainFilter extends React.Component {
                 </div>
             </div>
             <div className="filter-text-button" onClick={this.toggleIngredients}>
-               <img src={Ingredient} alt="" className="ingredient-search-img"/>
-               <span className="toggle-span">Ingredient Search</span>
+              <img src={Ingredient} alt="" className="ingredient-search-img" />
+              <span className="toggle-span">Ingredient Search</span>
             </div>
           </div>
           <div className="filter-param-cont">

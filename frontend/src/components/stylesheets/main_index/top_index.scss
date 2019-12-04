@@ -8,33 +8,128 @@
 
 
 .top {
-    background-color: rgb(210, 234, 243);
+    background-color: white;
     // box-shadow: 1px 1px 8px 1px rgb(192, 229, 245);
     // background: rgba(215, 202, 132, 0.906);
-    border-bottom: 1px solid rgb(213, 213, 216);
+    border-bottom: 1px solid rgb(245, 102, 77);
     width: 100%;
     height: 35px;
+    z-index: 3000;
 
     display: flex;
+    flex-direction: row;
+    align-items: center;
     
     .nav-main {
-        align-self: center;
         display: flex;
-        flex-direction: row; 
+        align-self: center;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%; 
         color: white;
         font-family: Sacramento;
         font-size: 30px;
         padding: 10px 20px;
         // align-content: space-between;
+
+        .nav-left {
+            width: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center; 
+        }
+
+        .nav-button {
+            font-family: Open Sans;
+            color: black;
+            background: none;
+            border: none;
+            font-size: 14px;
+            text-transform: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0;
+        }
+
+        .nav-button:hover {
+            color:rgb(168, 168, 168);
+        }
     }
 }
 
+.fridge-nav {
+    background-color: rgb(78, 98, 105);
+    border-bottom: 1px solid rgb(213, 213, 216);
+    width: 100%;
+    height: 35px;
+    margin-bottom: 30px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    
+    .nav-main {
+        display: flex;
+        align-self: center;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%; 
+        color: white;
+        font-family: Sacramento;
+        font-size: 30px;
+        padding: 10px 20px;
+        // align-content: space-between;
+
+        .nav-left {
+            width: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center; 
+        }
+
+        .nav-button {
+            font-family: Open Sans;
+            color: black;
+            background: none;
+            border: none;
+            font-size: 14px;
+            text-transform: none;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0;
+        }
+
+        .nav-button:hover {
+            // color:rgb(168, 168, 168);
+            color: white;
+        }
+    }
+}
+
+
 .logout {
     font-family: Open Sans;
-    background-color: rgb(210, 234, 243);
+    background-color: inherit;
     color: black;
     border:  none;
     font-size: 14px;
+    text-transform: none;
 }
 
 .right-left-contain {

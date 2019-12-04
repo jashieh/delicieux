@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import UserProfileContainer from '../profile/user_profile_container';
+
 
 class FirstSide extends React.Component {
     constructor(props) {
@@ -26,20 +28,21 @@ class FirstSide extends React.Component {
                     <div className="first-drawer-main-text">
                         délicieux
                     </div>
-                    <a class="btn" onClick={this.handleMouseOver("list")} >
+                    <a className="btn" onClick={this.handleMouseOver("list")} >
                         <span>
                             <span>
                             <span>My List</span>
                             </span>
                         </span>
                     </a>
-                    <a class="btn" onClick={this.handleMouseOver("profile")}>
+                    <a className="btn" onClick={this.handleMouseOver("profile")}>
                         <span>
                             <span>
                             <span>Profile</span>
                             </span>
                         </span>
                     </a>
+                    <UserProfileContainer />
                 </div>
             </div>
         )
