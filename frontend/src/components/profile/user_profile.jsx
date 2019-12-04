@@ -101,6 +101,7 @@ class UserProfile extends React.Component {
   }
   
   render() {
+
     let height = this.props.user.height;
     let weight = this.props.user.weight;
     let age = this.props.user.age;

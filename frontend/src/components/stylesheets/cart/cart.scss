@@ -162,7 +162,11 @@
 
     }
   }
+  
+}
 
+.cart-item-info:hover {
+  filter: brightness(90%);
 }
 
 .cart-item-name {
@@ -193,7 +197,7 @@
 }
 
 .cart-item-remove:hover {
-  cursor: pointer;
+  color: #f04747;
 }
 
 .cart-item-main {
