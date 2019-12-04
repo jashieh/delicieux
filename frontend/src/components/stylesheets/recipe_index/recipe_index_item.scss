@@ -52,7 +52,9 @@
 
 .recipe-index-item:hover {
   cursor: pointer;
+  filter: brightness(90%);
 }
+
 
 .recipe-index-item-remove {
   position: relative;

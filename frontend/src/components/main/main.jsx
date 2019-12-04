@@ -16,6 +16,7 @@ import IceCream from '../stylesheets/assets/note.jpg';
 
 import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
+
 import { 
   recipe1,
   recipe2, 
@@ -25,8 +26,55 @@ import {
   recipe6 
 } from './main_index_seeds';                      
 
+
 class MainPage extends React.Component {
-    
+    constructor(props) {
+        super(props);
+
+        this.inThrottle = false;
+        this.throttleScroll = this.throttleScroll.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener('wheel', this.throttleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('wheel', this.throttleScroll);
+    }
+
+
+    throttleScroll() {
+        const args = arguments;
+        const context = this;
+
+        if (!this.inThrottle) {
+            this.handleScroll.apply(context, args);
+            this.inThrottle = true;
+            setTimeout(() => this.inThrottle = false, 200);
+        }
+    }
+
+    handleScroll(e) {
+        let buttons = document.getElementsByName("radio-set");
+        let checked;
+
+        for(let i = 0; i < buttons.length; i++) {
+            if(buttons[i].checked) {
+                checked = buttons[i];
+            }
+        }
+
+        if(e.deltaY > 0 && checked.nextElementSibling &&
+            checked.nextElementSibling.nextElementSibling) {
+            checked.nextElementSibling.nextElementSibling.checked = true;
+        } else if(e.deltaY < 0 && checked.previousSibling &&
+            checked.previousSibling.previousSibling) {
+            checked.previousSibling.previousSibling.checked = true;    
+        }
+    }
+
     render() {
         return (
             <div>
@@ -109,11 +157,11 @@ class MainPage extends React.Component {
                             <section className="st-panel st-color" id="st-panel-3">
                                 <div className="img-container">
                                     <img src={Background2} alt=""
-                                    className="splash-img"/>
+                                    className="img-container"/>
                                 </div>
-                                <div className="st-deco">
-                                </div>
-                                <div className="splash-middle-container">
+                                {/* <div className="st-deco">
+                                </div> */}
+                                <div className="splash-middle-container-3">
                                     <h2 className="how-it-works">How it works</h2>
                                     <div className="splash-gif-container">
                                         <div className="splash-gif-item">
