@@ -54,15 +54,16 @@
             width: 25px;
             display: flex;
             align-items: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
+            // padding-top: 10px;
+            // padding-bottom: 10px;
+            border-radius: 5px;
             margin: 0;
             cursor: pointer;
         }
 
         .side-button:hover {
-            // color:rgb(168, 168, 168);
-            filter: brightness(80%);
+            background:rgb(168, 168, 168);
+            filter: grayscale(100%);
         }
 
         .nav-button {
