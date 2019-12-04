@@ -43,6 +43,12 @@ class WeeklyCart extends React.Component {
     fetchUser(user.id);
   }
 
+  // componentDidUpdate(oldProps) {
+  //   let { getCart, user, cart, fetchFridge } = this.props;
+
+  //   if (oldProps.cart !== cart)
+  //     this.setState(this.state);
+  // }
 
   // Generates an array of dateStrings that represent the week's cart
   generateDates() {

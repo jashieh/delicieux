@@ -1,5 +1,8 @@
 import React from 'react';
 import Utensil from '../stylesheets/assets/cutlery.png';
+import Calc from '../stylesheets/assets/calc.png';
+import Clock from '../stylesheets/assets/clock-two.png';
+
 
 class CartItem extends React.Component {
   constructor(props) {
@@ -61,7 +64,7 @@ class CartItem extends React.Component {
   }
 
   render() {
-    const { time } = this.props;
+    const { time, sourceName } = this.props;
     
     let recipe = this.recipe(); 
     
@@ -77,7 +80,10 @@ class CartItem extends React.Component {
 
             <div className="cart-item-info">
               <div className="cart-item-info-text">
-                <div className="cart-item-name">{recipe.title.slice(0, 20) + ".."}</div>
+                <div className="cart-item-name">
+                  {recipe.title.slice(0, 20) + ".."}
+                  <div className="cart-item-source">{recipe.sourceName}</div>
+                </div>
                 <div className="cart-image" >
                   <img className="cart-item-info-image" src={recipe.image} />
                 </div>
@@ -90,10 +96,16 @@ class CartItem extends React.Component {
                   </div>
                   { recipe.cuisines && recipe.cuisines[0] ? recipe.cuisines[0] : "General"}
                 </div>
-                <div>
+                <div className="cuisine">
+                  <div className="cuisine-image">
+                    <img src={Clock} className="uten-icon" />
+                  </div>
                   {timeC}
                 </div>
-                <div>
+                <div className="cuisine">
+                  <div className="cuisine-image">
+                    <img src={Calc} className="uten-icon" />
+                  </div>
                   {calorieC}
                 </div>
                 <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>

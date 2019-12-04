@@ -5,7 +5,7 @@ import Toggle from 'react-toggle';
 import '../stylesheets/recipes_index/main_filter.scss';
 import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
-import Ingredient from '../stylesheets/assets/harvest-two.png'
+import Ingredient from '../stylesheets/assets/ginkgo.png'
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -129,7 +129,7 @@ export default class MainFilter extends React.Component {
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
     this.props.startLoad("loading")
-    this.props.getRecipesByIngredients(ingredientList)
+    this.props.getRecipesByIngredients(ingredientList, 12);
     this.setState({ tabs: 0, ingredientToggle: false });
   }
 
@@ -313,14 +313,13 @@ export default class MainFilter extends React.Component {
                   <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
                   Include Fridge
               </label>   */}
-
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
                 <label className="filter-dd-item1">
                     <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
-                </label>  
+                </label> 
             </div>
           </div>
           <div className="filter-bot-allergies">

@@ -16,7 +16,14 @@ import IceCream from '../stylesheets/assets/note.jpg';
 
 import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
-import { recipe1 } from './main_index_seeds';                      
+import { 
+  recipe1,
+  recipe2, 
+  recipe3, 
+  recipe4, 
+  recipe5, 
+  recipe6 
+} from './main_index_seeds';                      
 
 class MainPage extends React.Component {
     
@@ -31,7 +38,7 @@ class MainPage extends React.Component {
         
                     <div className="st-container">
 
-                        <input type="radio" name="radio-set" defaultChecked={false} id="st-control-1" />
+                        <input type="radio" name="radio-set" defaultChecked={true} id="st-control-1" />
                         <a href="#st-panel-1" className="splash-footer-tab">délicieux?</a>
                         <input type="radio" name="radio-set" id="st-control-2" />
                         <a href="#st-panel-2" className="splash-footer-tab">The experience</a>
@@ -165,13 +172,13 @@ class MainPage extends React.Component {
                                   <div className="main-index-rows">
                                     <div className="main-index-row">
                                       <MainIndexItemContainer recipe={recipe1}/>
-                                      <MainIndexItemContainer recipe={recipe1}/>
-                                      <MainIndexItemContainer recipe={recipe1}/>
+                                      <MainIndexItemContainer recipe={recipe2}/>
+                                      <MainIndexItemContainer recipe={recipe3}/>
                                     </div>
                                     <div className="main-index-row">
-                                      <MainIndexItemContainer recipe={recipe1}/>
-                                      <MainIndexItemContainer recipe={recipe1}/>
-                                      <MainIndexItemContainer recipe={recipe1}/>
+                                      <MainIndexItemContainer recipe={recipe4}/>
+                                      <MainIndexItemContainer recipe={recipe5}/>
+                                      <MainIndexItemContainer recipe={recipe6}/>
                                     </div>
                                   </div>
                                 </div>

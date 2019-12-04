@@ -67,7 +67,7 @@ export default class RecipeShow extends React.Component {
     let calorieReq = calorieCalc(user) || 2000;
     let nutritionReq =  {
       "Calories": calorieReq ? calorieReq : 2000,
-      "Carbohydrates": calorieReq? 250 * calorieReq/2000 : 250,
+      "Carbohydrates": calorieReq ? 250 * calorieReq/2000 : 250,
       "Protein": calorieReq ? 80 * calorieReq/2000 : 80,
       "Fat": calorieReq ? 75 * calorieReq/2000 : 75,
       };
