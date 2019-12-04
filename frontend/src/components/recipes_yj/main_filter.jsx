@@ -49,21 +49,11 @@ export default class MainFilter extends React.Component {
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
+
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
-
-    // let input = document.getElementsByClassName("filter-text-input")[0];
-    // input.addEventListener("keydown", event => {
-    //   event.stopPropagation();
-    //   if (event.keyCode === 13)
-    //     this.handleQuerySubmit();
-    // });
   }
 
-  // componentWillUnmount() {
-  //   let input = document.getElementsByClassName("filter-text-input")[0];
-  //   input.removeEventListener("keydown");
-  // }
   addIngredient() {
     let x = this.state.ingredientList;
     if (!x.join("").includes(this.state.ingredientQuery.trim())) {
@@ -74,34 +64,38 @@ export default class MainFilter extends React.Component {
     } else {
       this.setState({ ingredientQuery: "" });
     }
-    
   }
+
   handleInput(type) {
     return (e)=>{
       this.setState({ [type]: e.target.value });
     }
   }
+
   handleTab(num) {
     return (e) => {
       this.setState({tabs: num})
     }
   }
+
   handleCheck(type) {
     return (e) => {
       this.setState({ [type]: !this.state[type] })
     }
   }
+
   handleCuisine(type) {
     return (e) => {
       this.setState({ cuisine: type.cuisine })
     }
   }
+
   handleKeyDown(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
-      if (this.state.body) this.handleQuerySubmit();
-      else e.preventDefault();
+      this.handleQuerySubmit();
     }
   }
+
   handleQuerySubmit() {
     let diet = [];
     if (this.state.vegan) diet.push("vegan");
@@ -132,6 +126,7 @@ export default class MainFilter extends React.Component {
     })
     this.setState({tabs: 0});
   }
+
   handleIngredientSubmit() {
     let fridgeContent = [];
     if (this.props.fridge.ingredients) {
@@ -141,8 +136,8 @@ export default class MainFilter extends React.Component {
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
     this.props.startLoad("loading")
-    this.props.getRecipesByIngredients(ingredientList, 12)
-    this.setState({ tabs: 0 });
+    this.props.getRecipesByIngredients(ingredientList, 12);
+    this.setState({ tabs: 0, ingredientToggle: false });
   }
 
   handleSlider(type) {
@@ -158,15 +153,18 @@ export default class MainFilter extends React.Component {
       this.setState({ [type]: e.target.value })
     }
   }
+
   toggleIngredients() {
     this.setState({ingredientToggle: !this.state.ingredientToggle});
   }
+
   removeCuisine(e) {
     e.stopPropagation();
     if (e.target.classList.value === "filter-bot-cuisine") {
       this.setState({cuisine: ""});
     }
   }
+
   removeIngredient(idx) {
     return () => {
       let x = this.state.ingredientList;
@@ -174,6 +172,7 @@ export default class MainFilter extends React.Component {
       this.setState({ingredientList: x});
     }
   }
+
   renderIngredients() {
     if (!this.state.ingredientList) return null;
     return this.state.ingredientList.map((ingredient, idx) => {
@@ -299,8 +298,8 @@ export default class MainFilter extends React.Component {
         </div>)
     }
   }     
+  
   render() {
-   
     return(
       <div >
       {this.state.ingredientToggle ? (
@@ -328,7 +327,7 @@ export default class MainFilter extends React.Component {
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
-                <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
+                <label className="filter-dd-item1">
                     <Toggle className="toggle" defaultChecked={this.state.includeFridge} onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
                 </label> 
@@ -357,8 +356,8 @@ export default class MainFilter extends React.Component {
                 </div>
             </div>
             <div className="filter-text-button" onClick={this.toggleIngredients}>
-               <img src={Ingredient} alt="" className="ingredient-search-img"/>
-               <span className="toggle-span">Ingredient Search</span>
+              <img src={Ingredient} alt="" className="ingredient-search-img" />
+              <span className="toggle-span">Ingredient Search</span>
             </div>
           </div>
           <div className="filter-param-cont">

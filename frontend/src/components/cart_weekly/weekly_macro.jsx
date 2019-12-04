@@ -14,6 +14,7 @@ export default class WeeklyMacro extends React.Component {
         "Fat": 75,
         "Fiber": 30,
       },
+      weeklyNutrition: {},
       pieData: [
         { y: 100, label: "" },
         { y: 0, label: "" },
@@ -33,14 +34,15 @@ export default class WeeklyMacro extends React.Component {
     this.handleBarOff = this.handleBarOff.bind(this);
   }
   componentDidMount() {
-    
     let { calories, carbs, protein, fat } = this.props;
+    this.state.nutritionReq = Object.assign({}, this.props);
     let calorieAc = (carbs * 4) + (protein * 4) + (fat * 9);
     let carbPer = Math.round(carbs * 4 / calorieAc * 1000) / 10;
     let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
     let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
-    debugger;
+
     setTimeout(() => {
+      console.log(this.props.calories);
       this.setState({
         pieData: [
           { x: "Carbs", y: carbPer, label: `${carbPer}%` },
@@ -49,8 +51,23 @@ export default class WeeklyMacro extends React.Component {
         ],
         label: true
       })
-    }, 1000)
+    }, 2000)
   }
+  // static getDerivedStateFromProps(props, state) {
+  //   if (props.calories !== state.weeklyNutrition.calories) {
+  //     return { 
+  //       weeklyNutrition: {
+  //         calories: props.calories,
+  //         carbs: props.carbs,
+  //         protein: props.protein,
+  //         fat: props.fat,
+  //         fiber: props.fiber
+  //       }
+  //     }
+  //   }
+  //   return null;
+  // }
+ 
   handleBarOn(type) {
     return (e) => {
       this.setState({ [type]: true })
@@ -63,6 +80,11 @@ export default class WeeklyMacro extends React.Component {
   }
   render() {
     let { calories, carbs, protein, fat, fiber, user } = this.props;
+    let pieCalorie = (carbs * 4) + (protein * 4) + (fat * 9);
+    let pieCarb = Math.round(carbs * 4 / pieCalorie * 1000) / 10;
+    let pieProtein = Math.round(protein * 4 / pieCalorie * 1000) / 10;
+    let pieFat = Math.round(fat * 9 / pieCalorie * 1000) / 10;
+
     let calorieReq = calorieCalc(user);
     let nutritionReq = {
       calories: calorieReq ? calorieReq * 7 : 2000*7,
@@ -102,11 +124,15 @@ export default class WeeklyMacro extends React.Component {
                 padding={{
                   left: 120, bottom: 20, top: 20
                 }}
-                animate={{
-                  duration: 2000
-                }}
+                // animate={{
+                //   duration: 1000
+                // }}
                 colorScale={["#3a9691", "skyblue", "lightblue"]}
-                data={this.state.pieData}
+                data={[
+                  { x: "Carbs", y: pieCarb, label: `${pieCarb}%` },
+                  { x: "Protein", y: pieProtein, label: `${pieProtein}%` },
+                  { x: "Fat", y: pieFat, label: `${pieFat}%` }
+                ]}
                 labelComponent={<VictoryLabel
                 />}
                 labelRadius={60}
