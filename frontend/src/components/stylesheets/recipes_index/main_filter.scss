@@ -20,11 +20,14 @@
 .filter-cont {
   width: 900px;
   min-height: 70px;
-  background-color: white;
-  // background: #DFF2F7;
-  border: 1px solid rgb(233, 232, 232);
-  box-shadow: 1px 1px 5px 1px rgb(233, 232, 232);
-  border-radius: 3px;
+  // background-color: rgb(249, 247, 227);
+  // // background: #DFF2F7;
+  // border: 1px solid rgb(233, 232, 232);
+  // box-shadow: 1px 1px 5px 1px rgb(233, 232, 232);
+  // border-radius: 3px;
+  background: inherit;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px 1px rgba(191, 190, 185, 0.619);
   margin: 10px auto;
   margin-top: 20px;
   padding: 3px 10px;
@@ -46,21 +49,21 @@
     // background: #DFF2F7;
     // box-shadow: 1px 1px 1px 1px rgb(249, 219, 219);
     border-radius: 13px;
-    padding: 9px;
+    padding: 2px 5px;
   }
   .filter-text-cont {
-    border-radius: 11px;
-    background: #DFF2F7;
-    width: 300px;
+    // background: #DFF2F7;
+    width: 280px;
     height: 22x;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 7px;
     padding-top: 10px;
-    box-shadow: 1px 1px 2px 1px rgb(183, 214, 238);
+    border-bottom: 1px solid rgb(172, 168, 168);
+    // box-shadow: 1px 1px 2px 1px rgb(183, 214, 238);
     font-size: 14px;
-    color: dark grey;
+    color: grey;
     letter-spacing: 2px;
     
     .filter-text-input {
@@ -74,7 +77,7 @@
     }
 
     ::placeholder {
-      color: grey;
+      color: rgb(67, 66, 66);
       font-family: Open Sans;
       font-size: 15px;
     }
@@ -95,18 +98,20 @@
     
   }
   .filter-text-button {
-      height: 44px;
-      width: 50px;
+      height: 43px;
+      width: 48px;
       border-radius: 2px;
       background: rgb(255, 255, 255);
-      box-shadow: 1px 1px 2px 1px rgb(216, 213, 213);
+      // box-shadow: 0px 0px 3px 1px rgb(244, 222, 222);
+      border: 1px solid #E9C5C5;
       display: flex;
       justify-content: center;
+      margin-left: 10px;
 
       img {
-        width: 35px;
-        height: 35px;
-        margin-top: 3px;
+        width: 34px;
+        height: 32px;
+        margin-top: 5px;
       }
     }
     .filter-text-button:hover {
@@ -114,25 +119,19 @@
       background: rgb(203, 205, 205);
     }
   .filter-param-cont {
-    width: 400px;
+    width: 380px;
     height: 20px;
-    margin: auto 0px;
+    margin-top: 29px;
     margin-left: 33px;
     margin-right: 10px;
     display: flex;
     font-family: Open Sans;
-    font-size: 15px;
-    color: rgb(118, 117, 117);
+    font-size: 14px;
+    color: rgb(74, 73, 73);
     justify-content: space-between;
     // background: red;
 
-    .filter-ing-item {
-      height: 30px;
-      width: 70px;
-      background: pink;
-      margin: 5px;
-      position: relative;
-    }
+   
     .filter-param-dropdown {
       position: relative;
 
@@ -225,8 +224,8 @@
 }
 .filter-bot-diet {
   height: 70px;
-  width: 780px;
-  background:rgb(241, 234, 247);
+  width: 850px;
+  background: rgb(216, 194, 137);
   padding-top: 8px;
   border-radius: 5px;
   display: flex;
@@ -390,7 +389,12 @@ input[type=number] {
 //   font-size: 14px;
 //   // background:red;
 
-
-
+ .filter-ing-item {
+      height: 30px;
+      width: 70px;
+      background: pink;
+      margin: 5px;
+      position: relative;
+    }
 
 

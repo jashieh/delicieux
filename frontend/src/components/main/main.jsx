@@ -18,6 +18,7 @@ import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import Kitchen from '../stylesheets/assets/developer.jpg';
 import MainIndexItemContainer from './main_index_item_container';
 import MainDevelopers from './main_developers';
+
 import { 
   recipe1,
   recipe2, 
@@ -27,8 +28,55 @@ import {
   recipe6 
 } from './main_index_seeds';                      
 
+
 class MainPage extends React.Component {
-    
+    constructor(props) {
+        super(props);
+
+        this.inThrottle = false;
+        this.throttleScroll = this.throttleScroll.bind(this);
+        this.handleScroll = this.handleScroll.bind(this);
+    }
+
+    componentDidMount() {
+        window.addEventListener('wheel', this.throttleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('wheel', this.throttleScroll);
+    }
+
+
+    throttleScroll() {
+        const args = arguments;
+        const context = this;
+
+        if (!this.inThrottle) {
+            this.handleScroll.apply(context, args);
+            this.inThrottle = true;
+            setTimeout(() => this.inThrottle = false, 200);
+        }
+    }
+
+    handleScroll(e) {
+        let buttons = document.getElementsByName("radio-set");
+        let checked;
+
+        for(let i = 0; i < buttons.length; i++) {
+            if(buttons[i].checked) {
+                checked = buttons[i];
+            }
+        }
+
+        if(e.deltaY > 0 && checked.nextElementSibling &&
+            checked.nextElementSibling.nextElementSibling) {
+            checked.nextElementSibling.nextElementSibling.checked = true;
+        } else if(e.deltaY < 0 && checked.previousSibling &&
+            checked.previousSibling.previousSibling) {
+            checked.previousSibling.previousSibling.checked = true;    
+        }
+    }
+
     render() {
         return (
           <div>
@@ -121,11 +169,70 @@ class MainPage extends React.Component {
                             {/* <div className="the-experience-right">
                                                     <img src={MealPlan} alt="" className="the-experience-img"/>
                                                 </div> */}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section className="st-panel st-color" id="st-panel-3">
+                                <div className="img-container">
+                                    <img src={Background2} alt=""
+                                    className="img-container"/>
+                                </div>
+                                {/* <div className="st-deco">
+                                </div> */}
+                                <div className="splash-middle-container-3">
+                                    <h2 className="how-it-works">How it works</h2>
+                                    <div className="splash-gif-container">
+                                        <div className="splash-gif-item">
+                                            <img src={GroceryGif} alt="" className="splash-gif-2"/>
+                                            <div className="splash-gif-label">
+                                                TRACK YOUR INGREDIENTS
+                                            </div>
+                                            <div className="splash-gif-body">
+                                                Never let your groceries go to waste by keeping a dynamic digital inventory.
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="splash-gif-item">
+                                            <img src={ChooseMeal} alt="" className="splash-gif"/>
+                                            <div className="splash-gif-label">
+                                                CHOOSE YOUR MEALS
+                                            </div>
+                                            <div className="splash-gif-body">
+                                                Get recipe suggestions based on the ingredients you have and your fitness goals.
+                                            </div>
+                                        </div>
+                                        <div className="splash-gif-item">
+                                            <img src={PieChart} alt="" className="splash-gif"/>
+                                            <div className="splash-gif-label">
+                                                MACROS MADE EASY
+                                            </div>
+                                            <div className="splash-gif-body">
+                                                Stay informed with detailed nutritional information on all recipes.
+                                            </div>
+                                        </div>
+                                        <div className="splash-gif-item">
+                                            <img src={LineChart} alt="" className="splash-gif"/>
+                                            <div className="splash-gif-label">
+                                                MONITOR YOUR PROGRESS
+                                            </div>
+                                            <div className="splash-gif-body">
+                                                Reach your goals easier by visualizing your improvement.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section className="st-panel st-color" id="st-panel-4">
+                                <div className="st-deco">
+
+                                </div>
+                                <div className="img-container">
+                                  <img src={KitchenCounter} className="splash-image"/>
+                                </div>
 
                   <section className="st-panel st-color" id="st-panel-3">
                     <div className="img-container">
