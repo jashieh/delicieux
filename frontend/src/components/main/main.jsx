@@ -118,6 +118,7 @@ class MainPage extends React.Component {
                     <div className="img-container">
                       <img src={IceCream} alt="" className="splash-img" />
                     </div> */}
+                    
                     <div className="st-container">
 
                         <input type="radio" name="radio-set" defaultChecked={true} id="st-control-1" />
@@ -157,26 +158,26 @@ class MainPage extends React.Component {
                   <section className="st-panel st-color" id="st-panel-2">
                     {/* <div className="st-deco">
                                 </div> */}
-                      <div className="second-main-contain"> 
-                          <div className="img-container-second">
-                              <img src={Freshly} alt="" className="splash-img-second" />
-                          </div>
-                          <div className="splash-middle">
-                              <div className="splash-middle-contain">
-                                  <h1 className="the-exp">Meal planning made easy</h1>
-                                  <div className="the-exp-middle">
-                                      <div className="the-exp-left">
-                                          <div className="the-exp-sub-head">
-                                              Délicieux is your smart cooking sidekick
-                                          </div>
-                                          <div className="the-exp-body">
-                                              Find the perfect recipe to make from the ingredients available in your fridge.
-                                              Reach your diet goals faster with detailed nutritional information and progress visualization.
-                                          </div>
-                                      </div>
-                                      {/* <div className="the-experience-right">
-                                          <img src={MealPlan} alt="" className="the-experience-img"/>
-                                      </div> */}
+                                
+                                <div className="second-main-contain"> 
+                                    <div className="img-container-second">
+                                        <img src={Freshly} alt="" className="splash-img-second" />
+                                    </div>
+                                    <div className="splash-middle">
+                                        <div className="splash-middle-contain">
+                                            <h1 className="the-exp">Meal planning made easy</h1>
+                                            <div className="the-exp-middle">
+                                                <div className="the-exp-left">
+                                                    <div className="the-exp-sub-head">
+                                                        Délicieux is your smart cooking sidekick
+                                                    </div>
+                                                    <div className="the-exp-body">
+                                                        Find the perfect recipe to make from the ingredients available in your fridge.
+                                                        Reach your diet goals faster with detailed nutritional information and progress visualization.
+                                                    </div>
+
+                                                </div>
+
                           </div>
                         </div>
                       </div>
