@@ -44,6 +44,27 @@
             align-items: center; 
         }
 
+        .side-button {
+            font-family: Open Sans;
+            color: black;
+            background: none;
+            border: none;
+            font-size: 14px;
+            text-transform: none;
+            width: 25px;
+            display: flex;
+            align-items: center;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .side-button:hover {
+            // color:rgb(168, 168, 168);
+            filter: brightness(80%);
+        }
+
         .nav-button {
             font-family: Open Sans;
             color: black;
