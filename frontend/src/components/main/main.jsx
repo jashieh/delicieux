@@ -85,6 +85,7 @@ class MainPage extends React.Component {
                 <NavbarContainer />
                 <div className="clr"></div>
               </div>
+              {/* aasdasd */}
               {/*  */}
               {/* <div className="st-container">
                 <input
