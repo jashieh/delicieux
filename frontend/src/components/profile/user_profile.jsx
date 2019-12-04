@@ -171,7 +171,7 @@ class UserProfile extends React.Component {
               value={"M"}
               id="genderM"
               checked={this.props.user.gender === "M"}/>
-              <label htmlFor="genderM" className="gender-icon"><i class="fas fa-male"></i></label>
+              <label htmlFor="genderM" className="gender-icon"><i className="fas fa-male"></i></label>
         
             <input type="radio" 
               className="gender-radio" 
@@ -180,7 +180,7 @@ class UserProfile extends React.Component {
               value={"F"}
               id="genderF"
               checked={this.props.user.gender === "F"}/>
-              <label htmlFor="genderF" className="gender-icon"><i class="fas fa-female"></i></label>
+              <label htmlFor="genderF" className="gender-icon"><i className="fas fa-female"></i></label>
 
             <input type="radio" 
               className="gender-radio" 
@@ -189,7 +189,7 @@ class UserProfile extends React.Component {
               value={"O"}
               id="genderO"
               checked={this.props.user.gender === "O"}/>
-              <label htmlFor="genderO" className="gender-icon"><i class="fas fa-paw"></i></label>
+              <label htmlFor="genderO" className="gender-icon"><i className="fas fa-paw"></i></label>
         </div>;
         
     if(this.state.edit) {
