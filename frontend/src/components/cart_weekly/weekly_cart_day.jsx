@@ -21,7 +21,8 @@ class WeeklyCartDay extends React.Component {
 
   removeItem(e, time) {
     e.stopPropagation();
-    const { cart, date, removeCartMeal } = this.props;
+    const { cart, date, removeCartMeal, removeMacros } = this.props;
+    removeMacros(cart.dates[date][time]);
     removeCartMeal(cart.id, { date, time });
   }
 
