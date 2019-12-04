@@ -49,6 +49,7 @@ export default class MainFilter extends React.Component {
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
+
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
   }
@@ -63,33 +64,38 @@ export default class MainFilter extends React.Component {
     } else {
       this.setState({ ingredientQuery: "" });
     }
-    
   }
+
   handleInput(type) {
     return (e)=>{
       this.setState({ [type]: e.target.value });
     }
   }
+
   handleTab(num) {
     return (e) => {
       this.setState({tabs: num})
     }
   }
+
   handleCheck(type) {
     return (e) => {
       this.setState({ [type]: !this.state[type] })
     }
   }
+
   handleCuisine(type) {
     return (e) => {
       this.setState({ cuisine: type.cuisine })
     }
   }
+
   handleKeyDown(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
       this.handleQuerySubmit();
     }
   }
+
   handleQuerySubmit() {
     let diet = [];
     if (this.state.vegan) diet.push("vegan");
@@ -120,6 +126,7 @@ export default class MainFilter extends React.Component {
     })
     this.setState({tabs: 0});
   }
+
   handleIngredientSubmit() {
     let fridgeContent = [];
     if (this.props.fridge.ingredients) {
@@ -146,15 +153,18 @@ export default class MainFilter extends React.Component {
       this.setState({ [type]: e.target.value })
     }
   }
+
   toggleIngredients() {
     this.setState({ingredientToggle: !this.state.ingredientToggle});
   }
+
   removeCuisine(e) {
     e.stopPropagation();
     if (e.target.classList.value === "filter-bot-cuisine") {
       this.setState({cuisine: ""});
     }
   }
+
   removeIngredient(idx) {
     return () => {
       let x = this.state.ingredientList;
@@ -162,6 +172,7 @@ export default class MainFilter extends React.Component {
       this.setState({ingredientList: x});
     }
   }
+
   renderIngredients() {
     if (!this.state.ingredientList) return null;
     return this.state.ingredientList.map((ingredient, idx) => {
@@ -287,8 +298,8 @@ export default class MainFilter extends React.Component {
         </div>)
     }
   }     
+  
   render() {
-   
     return(
       <div >
       {this.state.ingredientToggle ? (

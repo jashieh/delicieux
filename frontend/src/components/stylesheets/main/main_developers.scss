@@ -1,0 +1,43 @@
+.main-developers {
+  width: 1400px;
+  height: 720px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  margin-left: -700px;
+  margin-top: -360px;
+
+  align-self: center;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-developer {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 600px;
+
+  .main-developer-name {
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .main-developer-image {
+    height: calc(50% + 10px);
+    border-radius: 50%; 
+    padding-bottom: 10px;
+  }
+
+  .main-developer-link {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    margin: 10px;
+  }
+}
