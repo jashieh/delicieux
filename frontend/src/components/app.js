@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import RecipeShowContainer from './recipes_yj/recipe_show';
 import Modal from './modal/modal';
 import Side from './modal/side';
-import MainPage from './main/main';
+import MainPage from './main/main_container';
 import LoginFormContainer from './userform/login_form_container';
 import UserForm from './userform/user_form';
 

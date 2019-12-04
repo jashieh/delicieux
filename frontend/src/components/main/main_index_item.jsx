@@ -13,14 +13,29 @@ class MainIndexItem extends React.Component {
 
     this.onDragStart = this.onDragStart.bind(this);
     this.handleModal = this.handleModal.bind(this);
+    this.keyEvent = this.keyEvent.bind(this);
   }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.keyEvent);
+  }
+
   componentWillUnmount() {
+    document.removeEventListener('keydown', this.keyEvent);
     this.props.closeModal();
   }
+
+  keyEvent(e) {
+    if(e.key === 'Escape') {
+      this.props.closeModal();
+    }
+  }
+
   onDragStart(e) {
     let { recipe } = this.props;
     e.dataTransfer.setData("recipeId", recipe.recipeId);
   }
+
   handleModal(recipe) {
     this.props.openModal(recipe);
   }
