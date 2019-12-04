@@ -131,13 +131,7 @@
     justify-content: space-between;
     // background: red;
 
-    .filter-ing-item {
-      height: 30px;
-      width: 70px;
-      background: pink;
-      margin: 5px;
-      position: relative;
-    }
+   
     .filter-param-dropdown {
       position: relative;
 
@@ -395,7 +389,12 @@ input[type=number] {
 //   font-size: 14px;
 //   // background:red;
 
-
-
+ .filter-ing-item {
+      height: 30px;
+      width: 70px;
+      background: pink;
+      margin: 5px;
+      position: relative;
+    }
 
 
