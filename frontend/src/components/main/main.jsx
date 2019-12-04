@@ -85,7 +85,7 @@ class MainPage extends React.Component {
                 <NavbarContainer />
                 <div className="clr"></div>
               </div>
-              
+              {/*  */}
               {/* <div className="st-container">
                 <input
                   type="radio"
