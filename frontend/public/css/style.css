@@ -481,67 +481,10 @@
 }
 
 
-.img-container {
-	position: absolute;
-	/* z-index: 999; */
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-}
-
-.splash-img {
-	width: 100%;
-	height: 720px;
-	align-self: center;
-
-}
-
 #st-panel-2 {
 	display: flex;
 	flex-direction: row;
 
-}
-
-.second-main-contain {
-	width: 97vw;
-	height: 96vh;
-	background: red;
-	margin: auto;
-	display: flex;
-	flex-direction: row;
-
-}
-
-.img-container-second {
-	width: 50%;
-	height: 100%;
-	background: blue;
-	padding: 5px 20px;
-	display: flex;
-	justify-content: center;
-}
-
-.splash-img-second {
-	width: 80%;
-	height: 94%;
-}
-
-.splash-middle {
-	width: 50%;
-	background: pink;
-	padding: 20px;
-}
-
-.splash-middle-contain {
-	display: flex;
-	flex-direction: column;
-	background: rgb(153, 228, 138);
-	height: 100%;
-}
-
-.the-exp {
-	color: blue;
 }
 
 

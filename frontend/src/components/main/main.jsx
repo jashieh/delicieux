@@ -52,7 +52,7 @@ class MainPage extends React.Component {
                         <div className="st-scroll">
 
                             <section className="st-panel st-color" id="st-panel-1">
-                                <div className="img-container">
+                                <div className="img-container-first">
                                     <img src={IceCream} alt=""
                                     className="splash-img"/>
                                 </div>
@@ -79,8 +79,7 @@ class MainPage extends React.Component {
                                 
                                 <div className="second-main-contain"> 
                                     <div className="img-container-second">
-                                        <img src={Freshly} alt=""
-                                            className="splash-img-second" />
+                                        <img src={Freshly} alt="" className="splash-img-second" />
                                     </div>
                                     <div className="splash-middle">
                                         <div className="splash-middle-contain">
@@ -88,14 +87,13 @@ class MainPage extends React.Component {
                                             <div className="the-exp-middle">
                                                 <div className="the-exp-left">
                                                     <div className="the-exp-sub-head">
-                                                        délicieux is your smart cooking sidekick
+                                                        Délicieux is your smart cooking sidekick
                                                     </div>
                                                     <div className="the-exp-body">
                                                         Find the perfect recipe to make from the ingredients available in your fridge.
-                                                    </div>
-                                                    <div className="the-exp-body">
                                                         Reach your diet goals faster with detailed nutritional information and progress visualization.
                                                     </div>
+
                                                 </div>
                                                 {/* <div className="the-experience-right">
                                                     <img src={MealPlan} alt="" className="the-experience-img"/>
