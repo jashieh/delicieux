@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => ({
   getRecipesByIngredients: (ingredients, limit, ranking, ignorePantry) =>
     dispatch(getRecipesByIngredients(ingredients, limit, ranking, ignorePantry)),
   startLoad: load => dispatch(startLoad(load)),
-  stopLoad: () => dispatch(stopLoad())
+  stopLoad: () => dispatch(stopLoad()),
+  // searchIngredientByName: query => searchIngredientByName(query)
 })
 export default connect(mapStateToProps, mapDispatchToProps)(MainFilter)

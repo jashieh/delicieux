@@ -1,7 +1,53 @@
 .weekly-macro-cont {
   display: flex;
   width: 500px;
-  .weekly-macro-pie {
+  .chart-cont {
+    height: 220px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    // background: pink;
+    margin: 0 auto;
+  }
+  .bar-graph-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  height: 35px;
+  margin: 5px 23px; 
+  font-family: Open Sans;
+  font-size: 14px;
+  // background: blue;
+  padding-left: 10px;
+  // border: 1px solid gray;
+  // border-radius: 100%;
 
+}
+  .bar-chart-cont {
+    height: 250px;
+    width: 200px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    // background: blue;
+    margin: 0 auto;
+  }
+  .bar-text {
+  position: absolute;
+  top: -20px;
+  right: -46px;
+  font-size: 13px;
+  // border: 1px solid black;
+  padding: 10px 6px;
+  }
+  .chart-test {
+    margin: 5px;
+    height: 6px;
+    width: 95px;
+    // text-align: -10px;
+    text-align: right;
+    position: relative;
+    // background: linear-gradient(90deg, #FFC0CB 70%, #00FFFF 100%)
   }
 }

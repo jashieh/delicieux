@@ -19,7 +19,6 @@ class CartItem extends React.Component {
     let { date, time, cart, recipes } = this.props;
     let recipeId = null;
     if (cart.dates[date]) recipeId = cart.dates[date][time]; //just a precaution
-
     if (recipes[recipeId]) return recipes[recipeId];
     else if (recipeId)
       this.props.getRecipeDB(recipeId).then(() => recipes[recipeId]);

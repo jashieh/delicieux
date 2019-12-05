@@ -23,8 +23,10 @@ export default class RecipeShow extends React.Component {
       ],
       label: false,
       pieChart: true,
+      instructions: false,
     };
     this.toggleChart = this.toggleChart.bind(this);
+    this.toggleRight = this.toggleRight.bind(this);
   }
   componentDidMount() {
     const { recipe, fridge } = this.props;
@@ -40,9 +42,9 @@ export default class RecipeShow extends React.Component {
     setTimeout(() => {
       this.setState({
         pieData: [
-          { x: "Carbs", y: carbPer, label: `${carbPer}%` },
-          { x: "Protein", y: proteinPer, label: `${proteinPer}%` },
-          { x: "Fat", y: fatPer, label: `${fatPer}%`}
+          { x: "Carbs", y: carbPer, label: "Carbs" },
+          { x: "Protein", y: proteinPer, label: "Protein" },
+          { x: "Fat", y: fatPer, label: "Fat" }
         ],
         label: true
       })}, 1000)
@@ -50,6 +52,9 @@ export default class RecipeShow extends React.Component {
   }
   toggleChart() {
     this.setState({pieChart: !this.state.pieChart});
+  }
+  toggleRight() {
+    this.setState({instructions: !this.state.instructions});
   }
   handleBarOn(type) {
     return (e) => {
@@ -92,7 +97,7 @@ export default class RecipeShow extends React.Component {
                     {
                       target: "labels",
                       mutation: ({ text, datum }) => {
-                        return text === "data" ? null : { text: datum.label };
+                        return { text: `${datum.y}%`};
                       }
                     }
                   ];
@@ -101,8 +106,8 @@ export default class RecipeShow extends React.Component {
                   return [
                     {
                       target: "labels",
-                      mutation: ({ text }) => {
-                        return text === "data" ? { text: "x" } : null;
+                      mutation: ({ text, datum }) => {
+                        return { text: datum.label };
                       }
                     }
                   ];
@@ -164,6 +169,38 @@ export default class RecipeShow extends React.Component {
         })}
       </div>
     );
+
+    let rightPanel = this.state.instructions ? (
+      <ol className="recipe-show-inst-list" onClick={this.toggleRight}>
+        <div className="list-title">
+          Instructions
+        </div>
+        {recipe.instructions[0].steps.map((step, idx) => {
+          let number = step.number;
+          let instr = step.step;
+          return (
+          <li className="rs-li-item" key={idx}>
+            {instr}
+          </li>)
+        })}
+      </ol>) : (
+        <ul className="recipe-show-ing-list" onClick={this.toggleRight}>
+        <div className="list-title">
+          Ingredient List
+        </div>
+        {recipe.ingredients.map((ingredient, idx) => {
+          let ingrName = ingredient.name.split(" ");
+          let subName = ingrName[ingrName.length - 1];
+          // let listStyle = { color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red" };
+          return (
+            <li className="rs-li-item" key={idx} >
+              <div className="rs-li-item-pic-cont" >
+                {ingredient.image ? <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} /> : null}
+              </div>
+              {ingredient.amount % 1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
+            </li>)
+        })}
+      </ul>);
     return(
       <div className="cont-cont">
         <div className="recipe-show-cont">
@@ -198,24 +235,7 @@ export default class RecipeShow extends React.Component {
                 <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
               </div>
             </div>
-            <ul className="recipe-show-ing-list">
-              <div className="list-title">
-                Ingredient List:
-              </div>
-              {recipe.ingredients.map((ingredient, idx) => {
-                let ingrName = ingredient.name.split(" ");
-                let subName = ingrName[ingrName.length -1];
-                let listStyle = {color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red"};
-                return (
-                <li className="rs-li-item" key={idx} style={listStyle}>
-                  <div className="rs-li-item-pic-cont" >
-                    {ingredient.image ? <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/> : null}
-                  </div>
-                  {ingredient.amount%1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
-                </li>)
-              })}
-
-            </ul>
+            {rightPanel}
           </div>
         </div>
       </div>
