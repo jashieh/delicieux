@@ -1,5 +1,4 @@
 .weekly-ingredients-container {
-    overflow: scroll;
     ul {
         height: 100%;
         width: 100%;
@@ -13,5 +12,8 @@
         flex-wrap: wrap;
         -ms-overflow-style: none; 
         scrollbar-width: none;
+        li {
+            
+        }
     }
 }

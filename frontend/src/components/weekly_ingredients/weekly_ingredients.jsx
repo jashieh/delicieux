@@ -9,7 +9,7 @@ class WeeklyIngredients extends React.Component {
 
     this.state = {
       dates: [],
-      ingredients: []
+      ingredients: {}
     }
 
     this.generateDates = this.generateDates.bind(this);
@@ -79,37 +79,26 @@ class WeeklyIngredients extends React.Component {
   }
 
   modifyIngredients(recipe) {
-    let newIngredients = [];
+    let ing = {};
     for(let i = 0; i < recipe.ingredients.length; i++) {
-      newIngredients.push(recipe.ingredients[i]);
+      ing[recipe.ingredients[i].id] = recipe.ingredients[i];
     }
-
-    newIngredients = newIngredients.concat(this.state.ingredients);
-    this.setState({ ingredients: newIngredients});
+    ing = Object.assign(ing, this.state.ingredients);
+    this.setState({ ingredients: ing });
   }
   
   render() {
-    let ing = [];
-    let filtered = [];
-    let ids = [];
-
-    for(let i = 0; i < this.state.ingredients.length; i++) {
-      if(!ids.includes(this.state.ingredients[i].id)) {
-        ids.push(this.state.ingredients[i].id);
-        filtered.push(this.state.ingredients[i]);
-
-        ing.push(
-          <WeeklyIngredientsItemContainer 
-            ingredient={this.state.ingredients[i]}
-            key={this.state.ingredients[i].id}/>
-        );
-      }
-    }
+    let ing = Object.keys(this.state.ingredients).map(id => {
+      return(
+        <WeeklyIngredientsItemContainer 
+            ingredient={this.state.ingredients[id]}
+            key={this.state.ingredients[id].id}/>
+      );
+    });
 
     return(
       <div className="weekly-ingredients-container">
         This Week's Required Ingredients
-
         <ul>
           { ing }
         </ul>
