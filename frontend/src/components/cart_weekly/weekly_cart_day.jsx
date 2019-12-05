@@ -60,12 +60,7 @@ class WeeklyCartDay extends React.Component {
     e.stopPropagation();
     if (recipe.image !== "...") {
       let newRecipe = Object.assign({}, recipe);
-      let ingredientKeys = Object.keys(newRecipe.ingredients);
-      for (let i = 0; i < ingredientKeys.length; i++) {
-        newRecipe.ingredients[i].amount *= -1;
-        debugger;
-      }
-      modifyFridge(this.props.user.id, newRecipe);
+      modifyFridge(this.props.user.id, newRecipe, false);
       this.props.unmakeRecipe(date, time);
     }
   }
