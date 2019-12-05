@@ -24,23 +24,46 @@ class WeeklyCart extends React.Component {
     this.getRecipes = this.getRecipes.bind(this);
     this.modifyMacros = this.modifyMacros.bind(this);
     this.removeMacros = this.removeMacros.bind(this);
+
+    this.addListeners = this.addListeners.bind(this);
+    this.scrollCart = this.scrollCart.bind(this);
   } 
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     // this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0}, ()=>{
-      fetchFridge(user.id)
-        .then(() => {
-          if (!cart.dates) {
-            getCart(user.id)
-              .then(() => this.getRecipes())
-          }else {
+    fetchFridge(user.id)
+      .then(() => {
+        if (!cart.dates) {
+          getCart(user.id)
+            .then(() => {
+              this.getRecipes();
+              this.addListeners();
+            })
+        } else {
             this.getRecipes();
-        }});
-    // });
-    
+            this.addListeners();
+      }});
     fetchUser(user.id);
+  }
+
+  addListeners() {
+    this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
+    this.weeklyCartDays = document.getElementsByClassName("weekly-cart-days")[0];
+    this.weeklyCart.addEventListener("wheel", (e) => { this.scrollCart(e) });
+  }
+
+  removeListeners() {
+    this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
+  }
+
+  scrollCart(e) {
+    // debugger;
+    console.log(e);
+    console.log(this.weeklyCartDays.scrollLeft);
+    this.weeklyCartDays.scrollLeft -= e.deltaY + e.deltaX;
+    console.log(this.weeklyCartDays.scrollLeft);
   }
 
 
@@ -58,7 +81,7 @@ class WeeklyCart extends React.Component {
 
     return dateStrings;
   }
-
+  
   // fetches all necessary recipes for a given week
   getRecipes() {
     let dates = this.generateDates();
@@ -94,6 +117,7 @@ class WeeklyCart extends React.Component {
     }
     }
   }
+
   modifyMacros(recipe, operation) {
     let recipeCalories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount ;
     let recipeProtein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount ;
