@@ -110,18 +110,22 @@ export default class MainFilter extends React.Component {
     if (this.state.soy) intolerances.push("soy"); 
     if (this.state.sulfite) intolerances.push("sulfite"); 
     if (this.state.wheat) intolerances.push("wheat");
-    this.props.startLoad("loading")
-    this.props.complexRecipeSearch({
-      search: this.state.query, 
-      cuisine: this.state.cuisine, 
-      diet,  
-      intolerances,
-      maxCalories: this.state.maxCalories, 
-      maxFat: this.state.maxFat, 
-      maxCarbs: this.state.maxCarbs, 
-      minProtein: this.state.minProtein
-    })
-    this.setState({tabs: 0});
+    if (intolerances.length || diet.length || this.state.query || this.state.cuisine || this.state.maxCalories 
+      || this.state.maxFat || this.state.maxCarbs || this.state.minProtein) {
+      this.props.startLoad("loading")
+      this.props.complexRecipeSearch({
+        search: this.state.query,
+        cuisine: this.state.cuisine,
+        diet,
+        intolerances,
+        maxCalories: this.state.maxCalories,
+        maxFat: this.state.maxFat,
+        maxCarbs: this.state.maxCarbs,
+        minProtein: this.state.minProtein
+      })
+      this.setState({ tabs: 0 });
+    }
+    
   }
   handleIngredientSubmit() {
     let fridgeContent = [];
@@ -234,7 +238,7 @@ export default class MainFilter extends React.Component {
             <div key={idx} 
               className="filter-dd-item2" 
               onClick={this.handleCuisine({cuisine})}
-              style={this.state.cuisine === cuisine ? { fontWeight: "bold" } : {}}>
+              style={this.state.cuisine === cuisine ? { fontWeight: "bold", textDecoration: "underline" } : {}}>
               {cuisine}
             </div>)
           })}
