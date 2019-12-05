@@ -134,7 +134,7 @@ class MainPage extends React.Component {
                         <div className="st-scroll">
 
                             <section className="st-panel st-color" id="st-panel-1">
-                                <div className="img-container">
+                                <div className="img-container-first">
                                     <img src={IceCream} alt=""
                                     className="splash-img"/>
                                 </div>
