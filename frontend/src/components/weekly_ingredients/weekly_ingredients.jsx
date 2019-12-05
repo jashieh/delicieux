@@ -92,19 +92,31 @@ class WeeklyIngredients extends React.Component {
   }
   
   render() {
-    let ing = Object.keys(this.state.ingredients).map(id => {
+    let ing = [];
+    let ids = Object.keys(this.state.ingredients);
+
+    for(let i = 0; i < ids.length; i++) {
+      let id = ids[i];
       let have = this.props.ingredients[id] ? "have" : "dont";
-      return(
-        <WeeklyIngredientsItemContainer 
-            ingredient={this.state.ingredients[id]}
-            key={this.state.ingredients[id].id}
-            have={have}/>
-      );
-    });
+      if(have === "have") {
+        ing.unshift(<WeeklyIngredientsItemContainer 
+          ingredient={this.state.ingredients[id]}
+          key={this.state.ingredients[id].id}
+          have={have}/>);
+      }
+      else {
+        ing.push(<WeeklyIngredientsItemContainer 
+          ingredient={this.state.ingredients[id]}
+          key={this.state.ingredients[id].id}
+          have={have}/>);
+      }
+    }
 
     return(
       <div className="weekly-ingredients-container">
-        This Week's Required Ingredients
+        <div className="title">
+          This Week's Required Ingredients
+        </div>
         <ul>
           { ing }
         </ul>
