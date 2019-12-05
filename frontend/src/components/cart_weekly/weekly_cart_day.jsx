@@ -46,10 +46,7 @@ class WeeklyCartDay extends React.Component {
   makeItem(e, recipe, date, time) {
     e.stopPropagation();
     if (recipe.image !== "...") {
-      Object.freeze(recipe);
-      let newRecipe = Object.assign({}, recipe);
-      modifyFridge(this.props.user.id, newRecipe);
-      debugger;
+      modifyFridge(this.props.user.id, recipe);
       this.props.makeRecipe(date, time);
     }
   }
@@ -60,7 +57,6 @@ class WeeklyCartDay extends React.Component {
   unmakeItem(e, recipe, date, time) {
     e.stopPropagation();
     if (recipe.image !== "...") {
-      Object.freeze(recipe);
       let newRecipe = Object.assign({}, recipe);
       modifyFridge(this.props.user.id, newRecipe, false);
       this.props.unmakeRecipe(date, time);

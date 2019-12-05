@@ -27,31 +27,21 @@ export const fetchFridge = (userId) => dispatch => (
   FridgeAPIUtil
     .fetchFridge(userId)
     .then(({ data }) => {
-      let results = 0;
       let ids = Object.keys(data.ingredients);
+      dispatch(receiveFridge(data));
       for (let i = 0; i < ids.length; i++) {
         let id = ids[i];
         if (data.ingredients[id].amount && !data.ingredients[id].id) {
-          results++;
           IngredientAPIUtil
             .getIngredientById(id)
             .then(ingredient => {
-              debugger;
               FridgeAPIUtil
               .addFridgeIngredient(userId, ingredient.data, data.ingredients[id].amount)
               .then(() => {
-                results--;
-                if (results === 0) {
-                  debugger;
-                  dispatch(receiveFridge(data)) 
-                }
+                // results--;
+                dispatch(receiveFridgeIngredient(ingredient));
+                data[ingredient.data.id] = ingredient.data;
               })
-            })
-            .catch(() => {
-              results--; //if ingredient can't be found but is in database anyways, must remove that entry
-              if (results === 0) {
-                dispatch(receiveFridge(data));
-              }
             })
         }
       }

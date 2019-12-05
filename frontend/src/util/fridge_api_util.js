@@ -34,7 +34,7 @@ export const modifyFridge = (userId, recipe, makeItem = true) => {
   // getRecipeById(recipeId).then((res) => {
     for (let i = 0; i < recipe.ingredients.length; i++) {
       requests++;
-      let ingredient = recipe.ingredients[i];
+      let ingredient = Object.assign({}, recipe.ingredients[i]);
       getConvertAmounts(ingredient.name, ingredient.unit, ingredient.amount)
         .then(res => {
           requests--;
