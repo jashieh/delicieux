@@ -433,3 +433,32 @@ input[type=number] {
   max-height: 100%;
   max-width: 100%;
 }
+.filter-search-ul {
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  color: black;
+  box-sizing: border-box;
+  width: 300px;
+  font-weight: 400;
+  font-size: 15px;
+  font-family: Open Sans;
+    .filter-search-li {
+      padding: 12px 15px;
+      color:black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    
+    .filter-search-li:hover {
+        cursor: pointer;
+        filter: brightness(80%);
+        background-color: #24B6FF;
+        color: white;
+        font-weight: 600;
+    }
+
+  }    

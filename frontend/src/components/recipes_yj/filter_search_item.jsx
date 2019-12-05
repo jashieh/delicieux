@@ -1,4 +1,5 @@
 import React from 'react';
+import '../stylesheets/recipes_index/main_filter.scss';
 
 export default class FilterSearchItem extends React.Component {
   constructor(props) {
@@ -23,11 +24,11 @@ export default class FilterSearchItem extends React.Component {
 
   render() {
     return (
-      <li className="ingredient-search-li"
+      <li className="filter-search-li"
         onClick={() => {this.props.addIngredient(this.props.ingredient.name)}}
         onMouseEnter={this.enter}
         onMouseLeave={this.leave}>
-        <div className="ingredient-search-li-name">
+        <div className="filter-search-li-name">
           {this.props.ingredient.name}
         </div>
         {this.state.visible && <div className="add-ingredient-plus">+</div>}

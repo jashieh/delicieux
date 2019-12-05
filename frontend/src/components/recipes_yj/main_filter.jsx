@@ -131,9 +131,12 @@ export default class MainFilter extends React.Component {
       });
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
-    this.props.startLoad("loading")
-    this.props.getRecipesByIngredients(ingredientList, 12);
-    this.setState({ tabs: 0, ingredientToggle: false });
+    debugger;
+    if (ingredientList.length) {
+      this.props.startLoad("loading");
+      this.props.getRecipesByIngredients(ingredientList, 12);
+      this.setState({ tabs: 0, ingredientToggle: false });
+    }
   }
 
   handleSlider(type) {
@@ -351,26 +354,11 @@ export default class MainFilter extends React.Component {
           <div className="filter-top">
           <div className="filter-header">
             <div className="filter-text-cont">
-              {/* <input type="text"
-              className="filter-text-input"
-              placeholder="Ingredients"
-              onChange={this.handleInput("ingredientQuery")}
-              value={this.state.ingredientQuery}/> */}
               <FilterSearchContainer addIngredient={this.addIngredient}/>
-              <button type="submit" 
-              className="filter-query-search" 
-              disabled={!this.state.ingredientQuery} 
-              onClick={this.addIngredient}>+</button>
-              <div className="filter-query-search" onClick={this.handleIngredientSubmit} >
+              <div className="filter-query-search" onClick={this.handleIngredientSubmit} 
+                style={!this.state.ingredientList.length ? {background: "white", cursor: "auto"} : {}}>
                   <img src={Loupe} alt=""/>
-          
               </div>
-              {/* <input type="submit" value="Search" className="filter-text-button"/> */}
-              {/* <input type="submit" value="Search" className="filter-text-button"/>
-              <label className="filter-dd-item1" style={this.state.glutenFree ? { backgroundColor: "black" } : {}}>
-                  <input type="checkbox" name="includFridge" checked={this.state.includFridge} onChange={this.handleCheck("includFridge")} />
-                  Include Fridge
-              </label>   */}
             </div>
           </div>
             <div className="filter-param-cont fridge-add">

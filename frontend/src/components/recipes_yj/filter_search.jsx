@@ -55,7 +55,7 @@ export default class FilterSearch extends React.Component {
 
   handleClick(e) {
     if (!(this.node && this.node.contains(e.target))) {
-      this.setState({ visible: false, query: "" });
+      this.setState({ visible: false});
     }
   }
 
@@ -74,22 +74,21 @@ export default class FilterSearch extends React.Component {
         );
       });
     } else {
-      results = <li className="ingredient-search-li">No Matches</li>
+      results = <li className="filter-search-li">No Matches</li>
     }
 
     return (
-      <div className="ingredient-search-container" >
-        <div className="ingredient-search-box">
-          <div className="ingredient-search-contain">
-            <input type="text" value={this.state.query} onChange={this.update}
-              className="search-input" placeholder="Search Ingredients"
+        <div className="filter-search-box">
+          <div className="filter-search-contain">
+            <input type="text" value={this.state.query} 
+              onChange={this.update} onClick={this.update}
+              className="filter-text-input" placeholder="Search Ingredients"
             />
-            {this.state.visible && <ul className="ingredient-search-ul" ref={node => this.node = node}>
+            {this.state.visible && <ul className="filter-search-ul" ref={node => this.node = node}>
               {results}
             </ul>}
           </div>
         </div>
-      </div>
     );
   }
 }
