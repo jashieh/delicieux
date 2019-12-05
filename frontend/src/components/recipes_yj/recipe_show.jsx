@@ -42,9 +42,9 @@ export default class RecipeShow extends React.Component {
     setTimeout(() => {
       this.setState({
         pieData: [
-          { x: "Carbs", y: carbPer, label: `${carbPer}%` },
-          { x: "Protein", y: proteinPer, label: `${proteinPer}%` },
-          { x: "Fat", y: fatPer, label: `${fatPer}%`}
+          { x: "Carbs", y: carbPer, label: "Carbs" },
+          { x: "Protein", y: proteinPer, label: "Protein" },
+          { x: "Fat", y: fatPer, label: "Fat" }
         ],
         label: true
       })}, 1000)
@@ -97,7 +97,7 @@ export default class RecipeShow extends React.Component {
                     {
                       target: "labels",
                       mutation: ({ text, datum }) => {
-                        return text === "data" ? null : { text: datum.label };
+                        return { text: `${datum.y}%`};
                       }
                     }
                   ];
@@ -106,8 +106,8 @@ export default class RecipeShow extends React.Component {
                   return [
                     {
                       target: "labels",
-                      mutation: ({ text }) => {
-                        return text === "data" ? { text: "x" } : null;
+                      mutation: ({ text, datum }) => {
+                        return { text: datum.label };
                       }
                     }
                   ];
