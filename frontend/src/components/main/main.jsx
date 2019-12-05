@@ -77,13 +77,47 @@ class MainPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="container">
-                    <div className="codrops-top">
-                        <NavbarContainer />
-                        <div className="clr"></div>
-                    </div>
-        
+          <div>
+            <div className="container">
+              <div className="codrops-top">
+                <NavbarContainer />
+                <div className="clr"></div>
+              </div>
+              {/* aasdasd */}
+              {/*  */}
+              {/* <div className="st-container">
+                <input
+                  type="radio"
+                  name="radio-set"
+                  defaultChecked={true}
+                  id="st-control-1"
+                />
+                <a href="#st-panel-1" className="splash-footer-tab">
+                  délicieux?
+                </a>
+                <input type="radio" name="radio-set" id="st-control-2" />
+                <a href="#st-panel-2" className="splash-footer-tab">
+                  The experience
+                </a>
+                <input type="radio" name="radio-set" id="st-control-3" />
+                <a href="#st-panel-3" className="splash-footer-tab">
+                  How it works
+                </a>
+                <input type="radio" name="radio-set" id="st-control-4" />
+                <a href="#st-panel-4" className="splash-footer-tab">
+                  Preview
+                </a>
+                <input type="radio" name="radio-set" id="st-control-5" defaultChecked/>
+                <a href="#st-panel-5" className="splash-footer-tab">
+                  Developers
+                </a> */}
+
+                {/* <div className="st-scroll">
+                  <section className="st-panel st-color" id="st-panel-1">
+                    <div className="img-container">
+                      <img src={IceCream} alt="" className="splash-img" />
+                    </div> */}
+                    
                     <div className="st-container">
 
                         <input type="radio" name="radio-set" defaultChecked={true} id="st-control-1" />
@@ -100,7 +134,7 @@ class MainPage extends React.Component {
                         <div className="st-scroll">
 
                             <section className="st-panel st-color" id="st-panel-1">
-                                <div className="img-container">
+                                <div className="img-container-first">
                                     <img src={IceCream} alt=""
                                     className="splash-img"/>
                                 </div>

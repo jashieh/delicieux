@@ -62,6 +62,100 @@
 }
 
 
+.splash-middle {
+    // width: 50%;
+	// background: red;
+    padding: 20px;
+    display: flex;
+    flex-grow: 1;
+    
+    .splash-middle-contain {
+        display: flex;
+        align-self: center;
+        flex-direction: column;
+        // background: rgb(153, 228, 138);
+        height: 70%;
+        width: 80%;
+        margin: 0 auto;
+        font-family: Open Sans;
+    }
+    
+    .the-exp {
+        color: rgb(56, 56, 56);
+        // background: yellow;
+        padding: 40px 0px;
+        border-bottom: 2px solid black;
+        font-weight: 400;
+        font-size: 32px;
+        letter-spacing: 0.5px;
+    }
+
+    .the-exp-sub-head {
+        font-weight: 400;
+        color: rgb(40, 39, 39);
+        // background: green;
+        padding: 28px 0px;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.632);
+    }
+
+    
+    .the-exp-body {
+        color: rgb(89, 89, 89);
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 30px;
+        // background: red;
+        padding-top: 13px;
+    }
+
+}
+
+
+
+.second-main-contain {
+	width: 97vw;
+	height: 90vh;
+    // background: red;
+    margin: 0 auto;
+    margin-top: 15px;
+	display: flex;
+    flex-direction: row;
+}
+
+.img-container-second {
+    // width: 50%;
+    width: 40%;
+	height: 100%;
+	// background: blue;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.splash-img-second {
+    width: 86%;
+    min-width: 400px;
+    max-width: 622px;
+    height: 100%;
+}
+
+
+.img-container-first {
+	/* z-index: 999; */
+	width: 97.5vw;
+    height: 91vh;
+    margin: 0 auto;
+    margin-top: 17px;
+    // background: blue;
+
+    .splash-img {
+        width: 100%;
+        height: 100%;
+        align-self: center;
+    }
+}
+
+
+
 
 
 
