@@ -16,6 +16,7 @@ class WeeklyCartDay extends React.Component {
 
     this.removeItem = this.removeItem.bind(this);
     this.makeItem = this.makeItem.bind(this);
+    this.makeItemButton = this.makeItemButton.bind(this);
     this.openModal = this.openModal.bind(this);
   }
 
@@ -26,11 +27,39 @@ class WeeklyCartDay extends React.Component {
     removeCartMeal(cart.id, { date, time });
   }
 
-  makeItem(e, recipe) {
+  makeItemButton(time) {
+    let { cart, date } = this.props;
+    if (cart.dates[date].STATUS[time])
+      return (
+        <div className="weekly-cart-item-eat" onClick={(e) => { this.unmakeItem(e, this.recipe[time], date, time) }}>
+          Unmake Meal
+        </div>
+      )
+    else
+      return (
+        <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time], date, time) }}>
+          Make Meal
+        </div>
+      )
+  }
+
+  makeItem(e, recipe, date, time) {
     e.stopPropagation();
     if (recipe.image !== "...") {
-      const { user } = this.props;
-      modifyFridge(user.id, recipe);
+      modifyFridge(this.props.user.id, recipe);
+      this.props.makeRecipe(date, time);
+    }
+  }
+
+  // BUG: modify fridge from above just zeros out the fridge if need > supply
+  // so what could happen is we make this item, zero it out, then unmake it and end up with
+  // more than we had before.
+  unmakeItem(e, recipe, date, time) {
+    e.stopPropagation();
+    if (recipe.image !== "...") {
+      let newRecipe = Object.assign({}, recipe);
+      modifyFridge(this.props.user.id, newRecipe, false);
+      this.props.unmakeRecipe(date, time);
     }
   }
 
@@ -68,9 +97,7 @@ class WeeklyCartDay extends React.Component {
                         <div className="weekly-cart-item-remove" onClick={(e) => { this.removeItem(e, time) }}>
                           Remove
                             </div>
-                        <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time]) }}>
-                          Make Meal
-                            </div>
+                        {this.makeItemButton(time)}
                       </div>
                     </div>
                     <div className="weekly-cart-image">

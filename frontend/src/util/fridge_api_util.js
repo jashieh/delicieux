@@ -26,20 +26,19 @@ export const modifyIngredient = (userId, ingredient, amount) => {
 
 
 // Could receive entire recipe object from state instead
-export const modifyFridge = (userId, recipe) => {
+export const modifyFridge = (userId, recipe, makeItem = true) => {
   let ingredients = {};
   let requests = 0;
   
   // recipe.extendedIngredients
   // getRecipeById(recipeId).then((res) => {
-    debugger;
     for (let i = 0; i < recipe.ingredients.length; i++) {
       requests++;
-      let ingredient = recipe.ingredients[i];
+      let ingredient = Object.assign({}, recipe.ingredients[i]);
       getConvertAmounts(ingredient.name, ingredient.unit, ingredient.amount)
         .then(res => {
           requests--;
-          ingredient.amount = -res.data.targetAmount;
+          ingredient.amount = makeItem ? -res.data.targetAmount : res.data.targetAmount;
           ingredient.unit = "grams";
           ingredients[ingredient.id] = ingredient;
           

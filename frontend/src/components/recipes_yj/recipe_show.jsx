@@ -236,26 +236,6 @@ export default class RecipeShow extends React.Component {
               </div>
             </div>
 
-            <ul className="recipe-show-ing-list">
-              <div className="list-title">
-                Ingredient List:
-              </div>
-              {recipe.ingredients.map((ingredient, idx) => {
-                let ingrName = ingredient.name.split(" ");
-                let subName = ingrName[ingrName.length -1];
-                console.log(fridgeList.includes(ingredient.name))
-                let listStyle = {color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red"};
-                return (
-                <li className="rs-li-item" key={idx} style={listStyle}>
-                  <div className="rs-li-item-pic-cont" >
-                    {ingredient.image ? <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`}/> : null}
-                  </div>
-                  {ingredient.amount%1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
-                </li>)
-              })}
-
-            </ul>
-
             {rightPanel}
 
           </div>
