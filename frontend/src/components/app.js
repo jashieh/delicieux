@@ -15,6 +15,7 @@ import RecipeIndexContainer from './recipe_index/recipe_index_container';
 import MainIndexContainer from './main_index/main_index_container';
 import UserProfileContainer from './profile/user_profile_container';
 import WeeklyCartContainer from './cart_weekly/weekly_cart_container';
+import WeeklyIngredientsContainer from './weekly_ingredients/weekly_ingredients_container';
 import './stylesheets/App.scss';
 
 const App = () => (
@@ -31,6 +32,11 @@ const App = () => (
       <ProtectedRoute exact path="/index" component={ MainIndexContainer } />
       <ProtectedRoute exact path="/profile/" component={ UserProfileContainer } />
       <ProtectedRoute exact path="/weeklyCart" component={ WeeklyCartContainer }/>
+
+      
+      <Route exact path="/weekly" component={ WeeklyIngredientsContainer } />
+
+      
       <Redirect to="/" />
     </Switch>
   </div>

@@ -205,6 +205,7 @@ export default class RecipeShow extends React.Component {
               {recipe.ingredients.map((ingredient, idx) => {
                 let ingrName = ingredient.name.split(" ");
                 let subName = ingrName[ingrName.length -1];
+                console.log(fridgeList.includes(ingredient.name))
                 let listStyle = {color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red"};
                 return (
                 <li className="rs-li-item" key={idx} style={listStyle}>
