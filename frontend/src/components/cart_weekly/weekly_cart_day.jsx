@@ -16,6 +16,7 @@ class WeeklyCartDay extends React.Component {
 
     this.removeItem = this.removeItem.bind(this);
     this.makeItem = this.makeItem.bind(this);
+    this.makeItemButton = this.makeItemButton.bind(this);
     this.openModal = this.openModal.bind(this);
   }
 
@@ -26,11 +27,39 @@ class WeeklyCartDay extends React.Component {
     removeCartMeal(cart.id, { date, time });
   }
 
-  makeItem(e, recipe) {
+  makeItemButton(time) {
+    let { cart, date } = this.props;
+    debugger;
+    if (cart.dates[date].STATUS[time])
+      return (
+        <div className="weekly-cart-item-eat" onClick={(e) => { this.unmakeItem(e, this.recipe[time], date, time) }}>
+          Unmake Meal
+        </div>
+      )
+    else
+      return (
+        <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time], date, time) }}>
+          Make Meal
+        </div>
+      )
+  }
+
+  makeItem(e, recipe, date, time) {
+    debugger;
     e.stopPropagation();
     if (recipe.image !== "...") {
       const { user } = this.props;
       modifyFridge(user.id, recipe);
+      this.props.makeRecipe(date, time);
+    }
+  }
+
+  unmakeItem(e, recipe, date, time) {
+    e.stopPropagation();
+    if (recipe.image !== "...") {
+      const { user } = this.props;
+      modifyFridge(user.id, recipe);
+      this.props.unmakeRecipe(date, time);
     }
   }
 
@@ -68,9 +97,7 @@ class WeeklyCartDay extends React.Component {
                         <div className="weekly-cart-item-remove" onClick={(e) => { this.removeItem(e, time) }}>
                           Remove
                             </div>
-                        <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time]) }}>
-                          Make Meal
-                            </div>
+                        {this.makeItemButton(time)}
                       </div>
                     </div>
                     <div className="weekly-cart-image">
