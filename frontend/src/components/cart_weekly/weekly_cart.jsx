@@ -51,7 +51,11 @@ class WeeklyCart extends React.Component {
   addListeners() {
     this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
     this.weeklyCartDays = document.getElementsByClassName("weekly-cart-days")[0];
-    this.weeklyCart.addEventListener("wheel", (e) => {this.scrollCart(e)});
+    this.weeklyCart.addEventListener("wheel", (e) => { this.scrollCart(e) });
+  }
+
+  removeListeners() {
+    this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
   }
 
   scrollCart(e) {

@@ -135,6 +135,16 @@
     justify-content: space-between;
     // background: red;
 
+    .filter-text {
+      width: 100px;
+      text-align: center
+    }
+
+    .filter-text:hover {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
    
     .filter-param-dropdown {
       position: relative;
@@ -217,6 +227,7 @@
   cursor: pointer;
   font-weight: bold;
 }
+
 .filter-x {
   position: absolute;
   top: 0;
