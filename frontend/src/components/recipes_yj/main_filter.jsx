@@ -8,6 +8,7 @@ import Loupe from '../stylesheets/assets/loupe-2.png';
 import Ingredient from '../stylesheets/assets/ginkgo.png';
 import Check from '../stylesheets/assets/checkmark.jpg';
 import ThickCheck from '../stylesheets/assets/thickcheck.png';
+import FilterSearchContainer from './filter_search_container';
 
 export default class MainFilter extends React.Component {
   constructor(props) {
@@ -55,10 +56,10 @@ export default class MainFilter extends React.Component {
     this.props.fetchFridge(this.props.userId);
   }
 
-  addIngredient() {
+  addIngredient(search) {
     let x = this.state.ingredientList;
-    if (!x.join("").includes(this.state.ingredientQuery.trim())) {
-      x.push(this.state.ingredientQuery.trim());
+    if (!x.join("").includes(search.trim())) {
+      x.push(search.trim());
       this.setState({ ingredientList: x }, () => {
         this.setState({ ingredientQuery: "" })
       })
@@ -350,11 +351,12 @@ export default class MainFilter extends React.Component {
           <div className="filter-top">
           <div className="filter-header">
             <div className="filter-text-cont">
-              <input type="text"
+              {/* <input type="text"
               className="filter-text-input"
               placeholder="Ingredients"
               onChange={this.handleInput("ingredientQuery")}
-              value={this.state.ingredientQuery}/>
+              value={this.state.ingredientQuery}/> */}
+              <FilterSearchContainer addIngredient={this.addIngredient}/>
               <button type="submit" 
               className="filter-query-search" 
               disabled={!this.state.ingredientQuery} 
