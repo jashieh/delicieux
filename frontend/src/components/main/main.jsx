@@ -16,6 +16,7 @@ import IceCream from '../stylesheets/assets/note.jpg';
 
 import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
 import MainIndexItemContainer from './main_index_item_container';
+import MainDevelopers from './main_developers';
 
 import { 
   recipe1,
@@ -49,7 +50,7 @@ class MainPage extends React.Component {
         const args = arguments;
         const context = this;
 
-        if (!this.inThrottle && !this.props) {
+        if (!this.inThrottle && !this.props.modal) {
             this.handleScroll.apply(context, args);
             this.inThrottle = true;
             setTimeout(() => this.inThrottle = false, 200);
@@ -267,11 +268,7 @@ class MainPage extends React.Component {
                             </section>
 
                             <section className="st-panel" id="st-panel-5">
-                                <div className="st-deco">
-
-                                </div>
-                                <h2>Passion</h2>
-                                <p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>
+                              <MainDevelopers/>
                             </section>
 
                         </div>

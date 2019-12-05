@@ -27,8 +27,28 @@
   flex-direction: row;
   align-items: center;
 
+  overflow-y: hidden;
   overflow-x: scroll;
 
-  border: 1px solid black;
+  border-left: 1px solid rgb(173, 174, 230);
+  border-right: 1px solid rgb(173, 174, 230);
+
   border-radius: 5px;
+}
+
+// @KELLY: should we also add a custom scrollbar to the index?
+.weekly-cart-days::-webkit-scrollbar {
+  height: 1px;
+  // display: none;
+}
+
+.weekly-cart-days::-webkit-scrollbar-track {
+  background: rgba(173, 174, 230, 0.5);
+}
+
+.weekly-cart-days::-webkit-scrollbar-thumb {
+  background: rgb(173, 174, 230);
+  height: 1px;
+  // border: 1px black solid;
+  // border-radius: 2px;
 }

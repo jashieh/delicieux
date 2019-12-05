@@ -68,7 +68,7 @@ export default class RecipeShow extends React.Component {
   }
   render() {
     const { recipe, fridge, user } = this.props;
-    let fridgeList = Object.values(fridge.ingredients).map((el) => el.name);
+    let fridgeList = fridge.ingredients ? Object.values(fridge.ingredients).map((el) => el.name) : [];
     let calorieReq = calorieCalc(user) || 2000;
     let nutritionReq =  {
       "Calories": calorieReq ? calorieReq : 2000,
@@ -235,7 +235,9 @@ export default class RecipeShow extends React.Component {
                 <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
               </div>
             </div>
+
             {rightPanel}
+
           </div>
         </div>
       </div>

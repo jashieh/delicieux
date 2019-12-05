@@ -26,7 +26,7 @@ export const modifyIngredient = (userId, ingredient, amount) => {
 
 
 // Could receive entire recipe object from state instead
-export const modifyFridge = (userId, recipe) => {
+export const modifyFridge = (userId, recipe, makeItem = true) => {
   let ingredients = {};
   let requests = 0;
   debugger;
@@ -39,7 +39,7 @@ export const modifyFridge = (userId, recipe) => {
       getConvertAmounts(ingredient.name, ingredient.unit, ingredient.amount)
         .then(res => {
           requests--;
-          ingredient.amount = -res.data.targetAmount;
+          ingredient.amount = makeItem ? -res.data.targetAmount : res.data.targetAmount;
           ingredient.unit = "grams";
           ingredients[ingredient.id] = ingredient;
           

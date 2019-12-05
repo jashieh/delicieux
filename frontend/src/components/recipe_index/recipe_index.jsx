@@ -1,7 +1,7 @@
 import React from 'react';
 import RecipeIndexItemContainer from './recipe_index_item_container';
 import '../stylesheets/recipe_index/recipe_index.scss';
-import flip from '../stylesheets/assets/cook.gif';
+import flip from '../stylesheets/assets/load2.gif';
 // import flip from '../stylesheets/assets/toast.gif';
 
 
@@ -18,11 +18,12 @@ class RecipeIndex extends React.Component {
 
   // Loads all of the recipes upon mounting
   componentDidMount() {
-    let { user, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch, startLoad } = this.props;
+    let { user, fridge, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch, startLoad } = this.props;
+    debugger;
     startLoad("loading");
     fetchFridge(user.id)
       .then(
-        ({ fridge }) => {
+        () => {
           let { ingredients } = fridge;
           ingredients = Object.keys(ingredients).map((id) => ingredients[id].name);
           console.log(ingredients);

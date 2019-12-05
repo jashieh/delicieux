@@ -1,277 +1,323 @@
-
-
 * {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /* Remove all underline/italicize/etc. */
 
-
 .top {
-    background-color: white;
-    // box-shadow: 1px 1px 8px 1px rgb(192, 229, 245);
-    // background: rgba(215, 202, 132, 0.906);
-    border-bottom: 1px solid rgb(245, 102, 77);
-    width: 100%;
-    height: 35px;
-    z-index: 3000;
-
+  background-color: white;
+  // box-shadow: 1px 1px 8px 1px rgb(192, 229, 245);
+  // background: rgba(215, 202, 132, 0.906);
+  border-bottom: 1px solid rgb(245, 102, 77);
+  width: 100%;
+  height: 35px;
+  z-index: 3000;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  .nav-main {
     display: flex;
+    align-self: center;
+    justify-content: space-between;
     flex-direction: row;
-    align-items: center;
+    width: 100%;
+    color: white;
+    font-family: Sacramento;
+    font-size: 30px;
+    padding: 10px 20px;
+    // align-content: space-between;
     
-    .nav-main {
-        display: flex;
-        align-self: center;
-        justify-content: space-between;
-        flex-direction: row;
-        width: 100%; 
-        color: white;
-        font-family: Sacramento;
-        font-size: 30px;
-        padding: 10px 20px;
-        // align-content: space-between;
-
-        .nav-left {
-            width: 25%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center; 
-        }
-
-        .nav-button {
-            font-family: Open Sans;
-            color: black;
-            background: none;
-            border: none;
-            font-size: 14px;
-            text-transform: none;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin: 0;
-        }
-
-        .nav-button:hover {
-            color:rgb(168, 168, 168);
-        }
+    .nav-left {
+      width: 24%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+    
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .side-button {
+      font-family: Open Sans;
+      color: black;
+      background: none;
+      border: none;
+      font-size: 14px;
+      text-transform: none;
+      width: 25px;
+      display: flex;
+      align-items: center;
+      // padding-top: 10px;
+      // padding-bottom: 10px;
+      border-radius: 5px;
+      margin: 0;
+      cursor: pointer;
+    }
+    
+    .side-button:hover {
+      background: rgb(168, 168, 168);
+      filter: grayscale(100%);
+    }
+    
+    .nav-button {
+      font-family: Open Sans;
+      color: black;
+      background: none;
+      border: none;
+      font-size: 14px;
+      text-transform: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin: 0;
+    }
+    
+    .nav-button:hover {
+      color: rgb(168, 168, 168);
+    }
+  }
 }
 
 .fridge-nav {
-    background-color: rgb(78, 98, 105);
-    border-bottom: 1px solid rgb(213, 213, 216);
-    width: 100%;
-    height: 35px;
-    margin-bottom: 30px;
-
+  background-color: rgb(78, 98, 105);
+  border-bottom: 1px solid rgb(213, 213, 216);
+  width: 100%;
+  height: 35px;
+  margin-bottom: 30px;
+  
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  .nav-main {
     display: flex;
+    align-self: center;
+    justify-content: space-between;
     flex-direction: row;
-    align-items: center;
+    width: 100%;
+    color: white;
+    font-family: Sacramento;
+    font-size: 30px;
+    padding: 10px 20px;
+    // align-content: space-between;
     
-    .nav-main {
-        display: flex;
-        align-self: center;
-        justify-content: space-between;
-        flex-direction: row;
-        width: 100%; 
-        color: white;
-        font-family: Sacramento;
-        font-size: 30px;
-        padding: 10px 20px;
-        // align-content: space-between;
-
-        .nav-left {
-            width: 25%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center; 
-        }
-
-        .nav-button {
-            font-family: Open Sans;
-            color: black;
-            background: none;
-            border: none;
-            font-size: 14px;
-            text-transform: none;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            margin: 0;
-        }
-
-        .nav-button:hover {
-            // color:rgb(168, 168, 168);
-            color: white;
-        }
+    .nav-left {
+      width: 25%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+    
+    .nav-right {
+      display: flex;
+      align-items: center;
+    }
+    
+    .side-button {
+      font-family: Open Sans;
+      color: black;
+      background: none;
+      border: none;
+      font-size: 14px;
+      text-transform: none;
+      width: 25px;
+      display: flex;
+      align-items: center;
+      border-radius: 5px;
+      margin: 0;
+      cursor: pointer;
+    }
+    
+    .nav-button {
+      font-family: Open Sans;
+      color: black;
+      background: none;
+      border: none;
+      font-size: 14px;
+      text-transform: none;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      margin: 0;
+    }
+    
+    .nav-button:hover {
+      // color:rgb(168, 168, 168);
+      color: white;
+    }
+  }
 }
 
-
 .logout {
-    font-family: Open Sans;
-    background-color: inherit;
-    color: black;
-    border:  none;
-    font-size: 14px;
-    text-transform: none;
+  font-family: Open Sans;
+  background-color: inherit;
+  color: black;
+  border: none;
+  font-size: 14px;
+  text-transform: none;
 }
 
 .right-left-contain {
-    width: 100%;
-    height: calc(100vh - 55px);
-    // background-color: green;
-    // background-color: rgb(9, 25, 63);
-    display: flex;
+  width: 100%;
+  height: calc(100vh - 55px);
+  // background-color: green;
+  // background-color: rgb(9, 25, 63);
+  display: flex;
 }
 
 .left {
-    width: 1000px;
-    height: calc(100vh - 60px);
-    // background-color: rgb(9, 25, 63);
+  width: 1000px;
+  height: calc(100vh - 60px);
+  // background-color: rgb(9, 25, 63);
+  background-color: white;
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  
+  .left-contain {
+    width: 950px;
+    align-self: center;
+    // margin: 0 auto;
+    height: 97%;
     background-color: white;
-    margin: auto 0;
+    border-radius: 3px;
     display: flex;
-    justify-content: center;
-
-    .left-contain {
-        width: 950px;
-        align-self: center;
-        // margin: 0 auto;
-        height: 97%;
+    flex-direction: column;
+    
+    
+    .left-ingredients {
+      width: 600px;
+      height: 70px;
+      background-color: rgb(255, 174, 0);
+      margin: 10px auto;
+    }
+    
+    .left-filter {
+      width: 900px;
+      height: 70px;
+      background-color: rgb(238, 225, 250);
+      margin: 10px auto;
+      margin-top: 20px;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    
+    .left-recipe-contain {
+      width: 900px;
+      height: 70px;
+      background-color: rgb(60, 69, 101);
+      border-radius: 3px;
+      margin: 10px auto;
+      flex-grow: 1;
+      overflow: hidden;
+      display: flex;
+      
+      .boxes-contain {
+        width: 100%;
+        height: 100%;
         background-color: white;
         border-radius: 3px;
+      }
+      
+      
+      .left-recipe-contain {
+        width: 900px;
+        height: 70px;
+        background-color: rgb(60, 69, 101);
+        border-radius: 3px;
+        margin: 10px auto;
+        flex-grow: 1;
+        overflow: hidden;
         display: flex;
-        flex-direction: column;
-
-
-        .left-ingredients {
-            width: 600px;
-            height: 70px;
-            background-color: rgb(255, 174, 0);
-            margin: 10px auto;
-        }
-
-        .left-filter {
-            width: 900px;
-            height: 70px;
-            background-color: rgb(238, 225, 250);
-            margin: 10px auto;
-            margin-top: 20px;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .left-recipe-contain {
-            width: 900px;
-            height: 70px;
-            background-color: rgb(60, 69, 101);
-            border-radius: 3px;
-            margin: 10px auto;
-            flex-grow: 1;
-            overflow: hidden;
-            display: flex;
-
-            .boxes-contain {
-                width: 100%;
-                height: 100%;
-                background-color: white;
-                border-radius: 3px;
-
-            }
-
-            .index-boxlink-square {
-                width: calc(30% - 20px) !important;
-                margin: 21px;
-                margin-bottom: 0;
-                height: 130px;
-                background-color: white;
-                float: left;
-                box-shadow: 1px 1px 8px 1px #1a1919;
-        /* minus the margins (60px in total for each side of each box)
-        we need to override the width from the div!!  */
-                display: flex;
-                padding: 20px;
-
-                h3 {
-                    align-items: center;
-                    align-self: center;
-                    font-weight: normal;
-
-                }
-            }
-
-            .index-links div h3 {
-                line-height: 70px;
-            }
+        
+        .boxes-contain {
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          border-radius: 3px;
+          
         }
         
+        .index-boxlink-square {
+          width: calc(30% - 20px) !important;
+          margin: 21px;
+          margin-bottom: 0;
+          height: 130px;
+          background-color: white;
+          float: left;
+          box-shadow: 1px 1px 8px 1px #1a1919;
+          
+          /* minus the margins (60px in total for each side of each box)
+          we need to override the width from the div!!  */
+          display: flex;
+          padding: 20px;
+          
+          h3 {
+            align-items: center;
+            align-self: center;
+            font-weight: normal;
+          }
+        }
+        
+        .index-links div h3 {
+          line-height: 70px;
+        }
+      }
     }
-
+  }
 }
-
-.right {
+  
+  .right {
     width: 30%;
     height: calc(100vh - 60px);
     background-color: yellow;
     margin: auto 0;
-
+    
     .right-contain {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      // background: darkgrey;
+      background: white;
+      padding: 10px;
+      // padding-left: 20px;
+      
+      .macro-contain {
+        height: 200px;
+        width: 80%;
+        // margin: 10px auto;
+        flex-grow: 3;
+        background-color: pink;
+      }
+      
+      .ingredient-contain {
         height: 100%;
-        // background: darkgrey;
-        background: white;
-        padding: 10px;
-        // padding-left: 20px;
-
-
-        .macro-contain {
-            height: 200px;
-            width: 80%;
-            // margin: 10px auto;
-            flex-grow: 3;
-            background-color: pink;
-        }
-
-        .ingredient-contain {
-            height: 100%;
-            width: max-content;
-            // change the height so that the list container grows as you increase the recipe quantity
-            // background-color: rgb(29, 27, 27);
-            background-color: #F9F9F9;
-        }
+        width: max-content;
+        // change the height so that the list container grows as you increase the recipe quantity
+        // background-color: rgb(29, 27, 27);
+        background-color: #f9f9f9;
+      }
     }
-}
-
-
-
-.boxes-contain::-webkit-scrollbar {
+  }
+  
+  .boxes-contain::-webkit-scrollbar {
     width: 25px;
-}
-.boxes-contain::-webkit-scrollbar-track {
+  }
+  .boxes-contain::-webkit-scrollbar-track {
     border: 7px solid #232943;
-}
-
-.boxes-contain::-webkit-scrollbar-thumb {
+  }
+  
+  .boxes-contain::-webkit-scrollbar-thumb {
     background: red;
     border-radius: 2px;
-}
-
-
+  }
+  
