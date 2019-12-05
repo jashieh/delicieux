@@ -4,12 +4,12 @@ class WeeklyIngredientsItem extends React.Component {
   render() {
     return(
       <li>
-        <div className="fridge-item-image-container">
+        <div className="weekly-ing-image-container">
           <img src={`https://spoonacular.com/cdn/ingredients_100x100/${this.props.ingredient.image}`} 
             alt=""
-            className="fridge-item-image"/>
+            className="weekly-ing-image"/>
         </div>
-        <div className="fridge-item-name">
+        <div className={`weekly-ing-name ${this.props.have}`}>
         { this.props.ingredient.name }
         </div>
         {/* <div className="fridge-item-amount">

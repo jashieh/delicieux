@@ -86,13 +86,19 @@ class WeeklyIngredients extends React.Component {
     ing = Object.assign(ing, this.state.ingredients);
     this.setState({ ingredients: ing });
   }
+
+  compare() {
+
+  }
   
   render() {
     let ing = Object.keys(this.state.ingredients).map(id => {
+      let have = this.props.ingredients[id] ? "have" : "dont";
       return(
         <WeeklyIngredientsItemContainer 
             ingredient={this.state.ingredients[id]}
-            key={this.state.ingredients[id].id}/>
+            key={this.state.ingredients[id].id}
+            have={have}/>
       );
     });
 
