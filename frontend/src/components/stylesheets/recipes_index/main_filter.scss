@@ -1,4 +1,4 @@
-  // width: 950px;
+// width: 950px;
   // align-self: center;
   // // margin: 0 auto;
   // height: 97%;
@@ -57,7 +57,7 @@
   .filter-text-cont {
     // background: #DFF2F7;
     width: 280px;
-    height: 22x;
+    height: 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -87,17 +87,25 @@
     }
 
     .filter-query-search {
-      width: 45px;
+      width: 30px;
       height: 30px;
       background: inherit;
       display: flex;
       justify-content: center;
+      
+      
 
       img {
         width: 17px;
         height: 17px;
         align-self: center;
       }
+      
+    }
+    .filter-query-search:hover{
+        cursor: pointer;
+        background: #d3d3d3;
+        border-radius: 3px;
     }
     
   }
@@ -134,8 +142,10 @@
     color: rgb(74, 73, 73);
     justify-content: space-between;
     // background: red;
-
-   
+    .filter-param-text:hover {
+      cursor: pointer;
+      color: #a8a8a8;
+    }
     .filter-param-dropdown {
       position: relative;
 
@@ -197,6 +207,16 @@
   padding: 0 5px;
   font-size: 13px;
   font-family: Open Sans;
+
+   .filter-checkmark-cont {
+      height: 15px;
+      width: 15px;
+      background: transparent;
+    }
+    .filter-checkmark {
+      max-height: 100%;
+      max-width: 100%;
+    }
 }
 .filter-dd-item1:hover {
   // background: blue;
@@ -366,7 +386,7 @@ input[type=number] {
 
   .filter-dd-item1 {
     width: max-content;
-
+   
   }
 }
 
@@ -400,5 +420,16 @@ input[type=number] {
       margin: 5px;
       position: relative;
     }
-
-
+// maybe custom checkmarks
+// .filter-checkbox {
+//   display: none;
+// }
+.filter-checkmark-cont {
+  height: 15px;
+  width: 15px;
+  background: inherit;
+}
+.filter-checkmark {
+  max-height: 100%;
+  max-width: 100%;
+}
