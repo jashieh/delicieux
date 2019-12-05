@@ -110,11 +110,11 @@ class WeeklyCart extends React.Component {
       }, ()=>{console.log(this.state.calories)});
     } else {
       this.setState({
-        calories: this.state.calories - recipeCalories,
-        protein: this.state.protein - recipeProtein,
-        fat: this.state.fat - recipeFat,
-        carbs: this.state.carbs - recipeCarbs,
-        fiber: this.state.fiber - recipeFiber
+        calories: this.state.calories - recipeCalories < 0 ? 0 : this.state.calories - recipeCalories,
+        protein: this.state.protein - recipeProtein < 0 ? 0 : this.state.protein - recipeProtein,
+        fat: this.state.fat - recipeFat < 0 ? 0 : this.state.fat - recipeFat,
+        carbs: this.state.carbs - recipeCarbs < 0 ? 0 : this.state.carbs - recipeCarbs,
+        fiber: this.state.fiber - recipeFiber < 0 ? 0 : this.state.fiber - recipeFiber
       });
     }
    
