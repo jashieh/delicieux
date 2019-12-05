@@ -1,6 +1,3 @@
-
-
-
 .first-side {
     text-align: center;
     width: 25%;
@@ -14,6 +11,10 @@
         border-radius: 0.1em;
         animation: fadein 2s, first 0.7s ease-in;
         background-color: rgb(16, 15, 15);
+    }
+
+    .profile-container {
+      display: inline-block;
     }
 }
 

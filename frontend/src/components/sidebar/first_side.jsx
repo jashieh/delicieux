@@ -13,9 +13,7 @@ class FirstSide extends React.Component {
     }
 
     handleMouseOver(page) {
-        // let that = this;
         // e.preventDefault();
-        // console.log(this)
         return e => {e.preventDefault(); 
             this.props.openSide("second", page)};
         // this.props.hoverMasterList(option);
@@ -42,7 +40,6 @@ class FirstSide extends React.Component {
                             </span>
                         </span>
                     </a>
-                    <UserProfileContainer />
                 </div>
             </div>
         )

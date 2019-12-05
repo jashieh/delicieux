@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import SideIcon from '../stylesheets/assets/side.png';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -35,7 +36,9 @@ class NavBar extends React.Component {
           return (
             <div className="nav-main">
               <div className="nav-left">
-                <button className="nav-button" onClick={() => this.props.openSide("first")}>SIDE</button>
+                {/* <button className="nav-button" onClick={() => this.props.openSide("first")}> */}
+                  <img src={SideIcon} className="side-button" onClick={() => this.props.openSide("first")}/>
+                {/* </button> */}
                 <Link className="nav-button" to="/index">Home</Link>
                 <Link className="nav-button" to="/fridge">Fridge</Link>
                 <Link className="nav-button" to="/weeklycart">Weekly Summary</Link>

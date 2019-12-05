@@ -49,7 +49,7 @@ class MainPage extends React.Component {
         const args = arguments;
         const context = this;
 
-        if (!this.inThrottle && !this.props) {
+        if (!this.inThrottle && !this.props.modal) {
             this.handleScroll.apply(context, args);
             this.inThrottle = true;
             setTimeout(() => this.inThrottle = false, 200);

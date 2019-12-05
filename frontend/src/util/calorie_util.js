@@ -1,6 +1,6 @@
 // Returns daily calorie requirement based on personal profile (calories per day)
 export const calorieCalc = (user) => {
-  if (!user.height && !user.weight && !user.age) return 2000;
+  if (!user.height || !user.weight || !user.age) return 2000;
   let baseMetabolism;
   let calorieOffset = 0;
   let caloriesToKg = 7716;

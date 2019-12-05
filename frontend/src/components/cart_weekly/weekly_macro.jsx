@@ -81,9 +81,9 @@ export default class WeeklyMacro extends React.Component {
   render() {
     let { calories, carbs, protein, fat, fiber, user } = this.props;
     let pieCalorie = (carbs * 4) + (protein * 4) + (fat * 9);
-    let pieCarb = Math.round(carbs * 4 / pieCalorie * 1000) / 10;
-    let pieProtein = Math.round(protein * 4 / pieCalorie * 1000) / 10;
-    let pieFat = Math.round(fat * 9 / pieCalorie * 1000) / 10;
+    let pieCarb = Math.round(carbs * 4 / pieCalorie * 1000) / 10 || 33;
+    let pieProtein = Math.round(protein * 4 / pieCalorie * 1000) / 10 || 33;
+    let pieFat = Math.round(fat * 9 / pieCalorie * 1000) / 10 || 33;
 
     let calorieReq = calorieCalc(user);
     let nutritionReq = {
