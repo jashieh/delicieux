@@ -45,20 +45,27 @@ class WeeklyCartDay extends React.Component {
   }
 
   makeItem(e, recipe, date, time) {
-    debugger;
     e.stopPropagation();
     if (recipe.image !== "...") {
-      const { user } = this.props;
-      modifyFridge(user.id, recipe);
+      let newRecipe = Object.assign(recipe);
+      modifyFridge(this.props.user.id, newRecipe);
       this.props.makeRecipe(date, time);
     }
   }
 
+  // BUG: modify fridge from above just zeros out the fridge if need > supply
+  // so what could happen is we make this item, zero it out, then unmake it and end up with
+  // more than we had before.
   unmakeItem(e, recipe, date, time) {
     e.stopPropagation();
     if (recipe.image !== "...") {
-      const { user } = this.props;
-      modifyFridge(user.id, recipe);
+      let newRecipe = Object.assign({}, recipe);
+      let ingredientKeys = Object.keys(newRecipe.ingredients);
+      for (let i = 0; i < ingredientKeys.length; i++) {
+        newRecipe.ingredients[i].amount *= -1;
+        debugger;
+      }
+      modifyFridge(this.props.user.id, newRecipe);
       this.props.unmakeRecipe(date, time);
     }
   }
