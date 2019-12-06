@@ -53,8 +53,8 @@ export default class RecipeShow extends React.Component {
   toggleChart() {
     this.setState({pieChart: !this.state.pieChart});
   }
-  toggleRight() {
-    this.setState({instructions: !this.state.instructions});
+  toggleRight(n) {
+    this.setState({instructions: n === "instructions" ? true : false});
   }
   handleBarOn(type) {
     return (e) => {
@@ -172,10 +172,7 @@ export default class RecipeShow extends React.Component {
 
     // TODO: INVESTIGATE THIS BUG
     let rightPanel = this.state.instructions && this.state.instructions[0] ? (
-      <ol className="recipe-show-inst-list" onClick={this.toggleRight}>
-        <div className="list-title">
-          Instructions
-        </div>
+      <ol className="recipe-show-inst-list">
         {recipe.instructions[0].steps.map((step, idx) => {
           let number = step.number;
           let instr = step.step;
@@ -185,10 +182,7 @@ export default class RecipeShow extends React.Component {
           </li>)
         })}
       </ol>) : (
-        <ul className="recipe-show-ing-list" onClick={this.toggleRight}>
-        <div className="list-title">
-          Ingredient List
-        </div>
+        <ul className="recipe-show-ing-list">
         {recipe.ingredients.map((ingredient, idx) => {
           let ingrName = ingredient.name.split(" ");
           let subName = ingrName[ingrName.length - 1];
@@ -236,8 +230,22 @@ export default class RecipeShow extends React.Component {
                 <a href={recipe.sourceUrl} target="_blank">Source: {recipe.sourceName}</a>
               </div>
             </div>
-
-            {rightPanel}
+            <div className="rs-list-cont">
+              
+              <div style={{display: "flex"}}>
+                <div className="list-title" 
+                  onClick={this.toggleRight}
+                  style={this.state.instructions ? {} : { textDecoration: "underline", fontWeight: "bold" }}>
+                  Ingredient List
+                </div>
+                <div className="list-title" 
+                  onClick={()=>{this.toggleRight("instructions")}}
+                  style={this.state.instructions ? { textDecoration: "underline", fontWeight: "bold" } : {}}>
+                  Instructions
+                </div>
+              </div>
+              {rightPanel}
+            </div>
 
           </div>
         </div>
