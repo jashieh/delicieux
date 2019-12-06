@@ -27,6 +27,7 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
+    debugger;
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     // this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0}, ()=>{
     fetchFridge(user.id)
@@ -34,6 +35,7 @@ class WeeklyCart extends React.Component {
         if (!cart.dates) {
           getCart(user.id)
             .then(() => {
+              debugger;
               this.getRecipes();
               this.addListeners();
             })
@@ -136,7 +138,6 @@ class WeeklyCart extends React.Component {
     for (let i = 0; i < nutrientNames.length; i++) {
       let nutrient = nutrientNames[i];
 
-      debugger;
       let recipeAmount = recipeNutrition.filter(val => [nutrient].includes(val.title));
       recipeAmount = recipeAmount && recipeAmount[0] ? recipeAmount[0].amount : 0;
       let stateAmount = this.state[nutrient] ? this.state[nutrient] : 0;
@@ -146,7 +147,6 @@ class WeeklyCart extends React.Component {
       else
         newState[nutrient] = stateAmount - recipeAmount;
     }
-    debugger;
     this.setState(newState);
 
     // if (operation === "add") {
@@ -176,9 +176,8 @@ class WeeklyCart extends React.Component {
   }
   
   render() {
-    let { dates, Calories } = this.state;
-    if (dates.length > 0 && Calories){
-      debugger;
+    let { dates } = this.state;
+    if (dates.length > 0 ){
       return (
         <div className="weekly-cart">
           <div className="top">
@@ -191,12 +190,12 @@ class WeeklyCart extends React.Component {
             })}
           </div>
           <WeeklyMacro 
-            calories={this.state.Calories} 
-            carbs={this.state.Carbohydrates} 
-            protein={this.state.Protein} 
-            fat={this.state.Fat} 
-            fiber={this.state.Fiber}
-            user = {this.props.currentUser} />
+            calories={ this.state.Calories ? this.state.Calories : 0 } 
+            carbs={ this.state.Carbohydrates ? this.state.Carbohydrates : 0 } 
+            protein={ this.state.Protein ? this.state.Protein : 0 } 
+            fat={ this.state.Fat ? this.state.Fat : 0 } 
+            fiber={ this.state.Fiber ? this.state.Fiber : 0 }
+            user = { this.props.currentUser } />
           
         </div>
       );
