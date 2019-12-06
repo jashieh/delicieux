@@ -45,9 +45,9 @@ export default class WeeklyMacro extends React.Component {
       console.log(this.props.calories);
       this.setState({
         pieData: [
-          { x: "Carbs", y: carbPer, label: `${carbPer}%` },
-          { x: "Protein", y: proteinPer, label: `${proteinPer}%` },
-          { x: "Fat", y: fatPer, label: `${fatPer}%` }
+          { x: "Carbs", y: carbPer, label: "Carbs" },
+          { x: "Protein", y: proteinPer, label: "Protein" },
+          { x: "Fat", y: fatPer, label: "Fat" }
         ],
         label: true
       })
@@ -81,9 +81,9 @@ export default class WeeklyMacro extends React.Component {
   render() {
     let { calories, carbs, protein, fat, fiber, user } = this.props;
     let pieCalorie = (carbs * 4) + (protein * 4) + (fat * 9);
-    let pieCarb = Math.round(carbs * 4 / pieCalorie * 1000) / 10;
-    let pieProtein = Math.round(protein * 4 / pieCalorie * 1000) / 10;
-    let pieFat = Math.round(fat * 9 / pieCalorie * 1000) / 10;
+    let pieCarb = Math.round(carbs * 4 / pieCalorie * 1000) / 10 || 33;
+    let pieProtein = Math.round(protein * 4 / pieCalorie * 1000) / 10 || 33;
+    let pieFat = Math.round(fat * 9 / pieCalorie * 1000) / 10 || 33;
 
     let calorieReq = calorieCalc(user);
     let nutritionReq = {
@@ -103,79 +103,82 @@ export default class WeeklyMacro extends React.Component {
       <div className="weekly-macro-cont">
         <div className="weekly-macro-pie">
           <div className="chart-cont">
-            <svg width={300} height={200}
-              style={{ border: "1px solid #ccc" }}>
-              <VictoryLegend
-                standalone={false}
-                colorScale={["#3a9691", "skyblue", "lightblue"]}
-                x={20} y={40}
-                gutter={10}
-                rowGutter={-5}
-                data={this.state.legendData}
-                style={{
-                  data: { fontSize: 12, lineHeight: 1 },
-                  border: { stroke: "black" },
-                  title: { fontSize: 14 }
-                }}
-              />
-              <VictoryPie
-                standalone={false}
-                width={300} height={200}
-                padding={{
-                  left: 120, bottom: 20, top: 20
-                }}
-                // animate={{
-                //   duration: 1000
-                // }}
-                colorScale={["#3a9691", "skyblue", "lightblue"]}
+            <VictoryPie
+                colorScale={["lightblue", "#F1EAF7", "#E0EECF"]}
                 data={[
-                  { x: "Carbs", y: pieCarb, label: `${pieCarb}%` },
-                  { x: "Protein", y: pieProtein, label: `${pieProtein}%` },
-                  { x: "Fat", y: pieFat, label: `${pieFat}%` }
+                  { x: "Carbs", y: pieCarb, label: "Carbs" },
+                  { x: "Protein", y: pieProtein, label: "Protein" },
+                  { x: "Fat", y: pieFat, label: "Fat" }
                 ]}
-                labelComponent={<VictoryLabel
-                />}
-                labelRadius={60}
+                events={[
+                  {
+                    target: "data",
+                    eventHandlers: {
+                      onMouseOver: () => {
+                        return [
+                          {
+                            target: "labels",
+                            mutation: ({ text, datum }) => {
+                              return { text: `${datum.y}%` };
+                            }
+                          }
+                        ];
+                      },
+                      onMouseOut: () => {
+                        return [
+                          {
+                            target: "labels",
+                            mutation: ({ text, datum }) => {
+                              return { text: datum.label };
+                            }
+                          }
+                        ];
+                      }
+                    }
+                  }
+                ]}
+                labelComponent={<VictoryLabel/>}
+                labelRadius={70}
                 style={{
+                  parent: { maxWidth: "90%" },
                   labels: {
-                    fill: "black", fontSize: 15
+                    fill: "black", fontSize: 24
                   }, data: {
                     fillOpacity: 0.9, stroke: "black", strokeWidth: 2
                   },
                 }}
               />
-            </svg>
           </div>
         </div>
         <div className="weekly-macro-bar">
           <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("calories")} onMouseLeave={this.handleBarOff("calories")}>
             <div> Calories </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${caloriePer}%, darkgrey ${caloriePer}%)` }}>
-              {this.state.calories ? <div>{Math.floor(calories)} cal</div> : <div>{caloriePer}%</div>}
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${caloriePer}%, tomato ${caloriePer}%)` }}>
+              {this.state.calories ? <div className="bar-text">{Math.floor(calories)} cal</div> : <div className="bar-text">{caloriePer}%</div>}
             </div>
           </div>
           <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("protein")} onMouseLeave={this.handleBarOff("protein")}>
             <div> Protein </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${proteinPer}%, darkgrey ${proteinPer}%)` }}>
-              {this.state.protein ? <div>{Math.floor(protein)} g</div> : <div>{proteinPer}%</div>}
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${proteinPer}%, tomato ${proteinPer}%)` }}>
+              {this.state.protein ? <div className="bar-text">{Math.floor(protein)} g</div> : <div className="bar-text">{proteinPer}%</div>}
             </div>
           </div>
           <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("fat")} onMouseLeave={this.handleBarOff("fat")}>
             <div> Fat </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${fatPer}%, darkgrey ${fatPer}%)` }}>
-              {this.state.fat ? <div>{Math.floor(fat)} g</div> : <div>{fatPer}%</div>}
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${fatPer}%, tomato ${fatPer}%)` }}>
+              {this.state.fat ? <div className="bar-text">{Math.floor(fat)} g</div> : <div className="bar-text">{fatPer}%</div>}
             </div>
           </div>
           <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("carbs")} onMouseLeave={this.handleBarOff("carbs")}>
             <div> Carbohydrates </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${carbsPer}%, darkgrey ${carbsPer}%)` }}>
-              {this.state.carbs ? <div>{Math.floor(carbs)} g</div> : <div>{carbsPer}%</div>}
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${carbsPer}%, tomato ${carbsPer}%)` }}>
+              {this.state.carbs ? <div className="bar-text">{Math.floor(carbs)} g</div> : <div className="bar-text">{carbsPer}%</div>}
             </div>
           </div>
           <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("fiber")} onMouseLeave={this.handleBarOff("fiber")}>
             <div> Fiber </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, #FFC0CB ${fiberPer}%, darkgrey ${fiberPer}%)` }}>
-              {this.state.fiber ? <div>{Math.floor(fiber)} g</div> : <div>{fiberPer}%</div>}
+            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${fiberPer}%, tomato ${fiberPer}%)` }}>
+              {this.state.fiber ? <div className="bar-text">{Math.floor(fiber)} g</div> : <div className="bar-text">{fiberPer}%</div>}
             </div>
           </div>
         </div>

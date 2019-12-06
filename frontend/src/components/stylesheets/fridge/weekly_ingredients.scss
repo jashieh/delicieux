@@ -1,0 +1,17 @@
+.weekly-ingredients-container {
+    overflow: scroll;
+    ul {
+        height: 100%;
+        width: 100%;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        align-items: center;
+        margin-left: 20px;
+        // justify-content: center;
+        // flex-direction: column;
+        flex-wrap: wrap;
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+    }
+}

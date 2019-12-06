@@ -12,16 +12,16 @@
   overflow-x: hidden;
   overflow-y: scroll;
 
-  ::-webkit-scrollbar {
-    width: 5px;
-  }
+  // ::-webkit-scrollbar {
+  //   width: 5px;
+  // }
 
-  ::-webkit-scrollbar-track {
-    border: 7px solid black;
-  }
+  // ::-webkit-scrollbar-track {
+  //   border: 7px solid black;
+  // }
 
-  ::-webkit-scrollbar-thumb {
-    background: red;
-    border-radius: 2px;
-  }
+  // ::-webkit-scrollbar-thumb {
+  //   background: red;
+  //   border-radius: 2px;
+  // }
 }

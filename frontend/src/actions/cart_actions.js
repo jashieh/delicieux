@@ -1,21 +1,35 @@
 import * as CartAPI from '../util/cart_api_util';
 
 export const ADD_RECIPE = "ADD_RECIPE";
+export const MAKE_RECIPE = "MAKE_RECIPE";
+export const UNMAKE_RECIPE = "UNMAKE_RECIPE";
 export const REMOVE_RECIPE = "REMOVE_RECIPE";
 export const ADD_DATE = "ADD_DATE";
 export const SWITCH_DATE = "SWITCH_DATE";
 export const RECEIVE_CART = "RECEIVE_CART";
 export const RECEIVE_CART_ERRORS = "RECEIVE_CART_ERRORS";
 
-export const addRecipe = ({date, time, recipeId}) => ({
+export const addRecipe = ({ date, time, recipeId }) => ({
   type: ADD_RECIPE,
   date,
   time,
   recipeId,
 });
 
-export const removeRecipe = ({date, time}) => ({
+export const removeRecipe = ({ date, time }) => ({
   type: REMOVE_RECIPE,
+  date,
+  time,
+});
+
+export const makeRecipe = ({ date, time }) => ({
+  type: MAKE_RECIPE,
+  date,
+  time,
+});
+
+export const unmakeRecipe = ({ date, time }) => ({
+  type: UNMAKE_RECIPE,
   date,
   time,
 });

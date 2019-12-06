@@ -33,6 +33,7 @@ const RecipeSchema = new Schema({
   // extendedIngredients: [], //Probably don't need this until we maybe add custom recipes!!
   
   nutrition: [],
+  instructions: [],
   servings: Number,
   
   // Selector Properties, optional depending on DB cost

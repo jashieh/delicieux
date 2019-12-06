@@ -24,6 +24,7 @@ router.patch('/:cartId/addDate/', (req, res) => {
     "BREAKFAST": undefined,
     "LUNCH": undefined,
     "DINNER": undefined,
+    "STATUS": {},
   };
 
   Cart.findOneAndUpdate(

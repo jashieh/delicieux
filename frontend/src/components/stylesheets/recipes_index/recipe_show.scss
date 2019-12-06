@@ -80,7 +80,7 @@
 .recipe-show-ing-list {
   // margin: 0 auto;
   list-style: none;
-  overflow-y: auto;
+  overflow-y: scroll;
   // background: orange;
   width: 92%;
   margin: 0 auto;
@@ -89,6 +89,27 @@
   padding-bottom: 10px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+}
+.recipe-show-inst-list {
+  list-style: decimal outside none;
+  overflow-y: scroll;
+  width: 92%;
+  margin: 0 auto;
+  font-family: EB Garamond;
+  padding-left: 13px;
+  padding-bottom: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; 
+
+  .rs-li-item {
+  display: list-item;
+  margin: 7px 0;
+  margin-left: 1em;
+  letter-spacing: 2.5px;
+  font-family: EB Garamond;
+  color: black !important;
+  line-height: 24px;
+  }
 }
 
 
@@ -127,11 +148,19 @@
       // background: blue;
     }
 }
-
+.rs-list-cont {
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+}
 .list-title {
   font-size: 19px;
+  font-family: EB Garamond;
   padding: 10px 0px;
+  margin-right: 15px;
+  cursor: pointer;
 }
+
 .rs-li-item {
   margin: 7px 0;
   display: flex;
@@ -190,7 +219,7 @@
 .bar-text {
   position: absolute;
   top: -20px;
-  right: -46px;
+  right: -55px;
   font-size: 13px;
   // border: 1px solid black;
   padding: 10px 6px;
