@@ -1,5 +1,6 @@
 import React from 'react';
 import WeeklyIngredientsItemContainer from './weekly_ingredients_item_container'
+import { getIngredientById } from '../../util/ingredient_api_util';
 
 const TIMES = ['BREAKFAST', 'LUNCH', 'DINNER'];
 
@@ -13,7 +14,6 @@ class WeeklyIngredients extends React.Component {
     }
 
     this.generateDates = this.generateDates.bind(this);
-    this.getRecipes = this.getRecipes.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
   }
 
@@ -80,16 +80,36 @@ class WeeklyIngredients extends React.Component {
 
   modifyIngredients(recipe) {
     let ing = {};
+    // for(let i = 0; i < recipe.ingredients.length; i++) {
+    //   ing[recipe.ingredients[i].id] = recipe.ingredients[i];
+    // }
+    let count = 0;
     for(let i = 0; i < recipe.ingredients.length; i++) {
-      ing[recipe.ingredients[i].id] = recipe.ingredients[i];
+      count++;
+      getIngredientById(recipe.ingredients[i].id).then(res => {
+        count--;
+
+        
+        // let aisle = res.data.aisle.split(";")[0];
+        // // console.log(aisle);
+        // // console.log(ing[aisle]);
+        // if(!ing[aisle]) {
+        //   console.log("test")
+        //   ing[aisle] = {};
+        //   // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
+        // } else {
+        // }
+        // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
+        // // ing[recipe.ingredients[i].id].aisle = res.data.aisle;
+        // if(count === 0) {
+          
+        //   ing = Object.assign(ing, this.state.ingredients);
+        //   this.setState({ ingredients: ing });
+        // }
+      })
     }
-    ing = Object.assign(ing, this.state.ingredients);
-    this.setState({ ingredients: ing });
   }
 
-  compare() {
-
-  }
   
   render() {
     let ing = [];
@@ -112,10 +132,12 @@ class WeeklyIngredients extends React.Component {
       }
     }
 
+    console.log(this.state.ingredients);
+
     return(
       <div className="weekly-ingredients-container">
         <div className="title">
-          This Week's Required Ingredients
+          Weekly Shopping List
         </div>
         <ul>
           { ing }

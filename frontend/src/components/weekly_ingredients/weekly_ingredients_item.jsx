@@ -9,12 +9,15 @@ class WeeklyIngredientsItem extends React.Component {
             alt=""
             className="weekly-ing-image"/>
         </div>
-        <div className={`weekly-ing-name ${this.props.have}`}>
-        { this.props.ingredient.name }
+        <div className="weekly-ing-right">
+          <div className={`weekly-ing-name ${this.props.have}`}>
+          { this.props.ingredient.name }
+          </div>
+          <div className="fridge-item-amount">
+            { Math.floor(this.props.ingredient.amount) } 
+            { this.props.ingredient.unit }
+          </div>
         </div>
-        {/* <div className="fridge-item-amount">
-          { Math.floor(this.props.ingredient.amount) }
-        </div> */}
       </li>
     );
   }

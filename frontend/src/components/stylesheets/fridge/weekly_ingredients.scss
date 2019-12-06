@@ -2,9 +2,15 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 700px;
+  width: 100%;
+  padding-top: 50px;
+
+  color: white;
 
   .title {
     text-align: center;
+    margin-bottom: 20px;
   }
   
   ul {
@@ -12,15 +18,16 @@
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
     // align-items: center;
-    flex-wrap: wrap;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
+    // flex-wrap: wrap;
+    // -ms-overflow-style: none; 
+    // scrollbar-width: none;
+
     li {
-      width: 35%;
-      min-width: 180px;
+      // width: 35%;
+      // min-width: 180px;
       min-height: 38px;
       margin: 10px 30px;
       background-color: white;
@@ -30,14 +37,13 @@
       font-family: Open Sans;
       font-size: 14px;
       font-weight: 100;
-      animation: FadeIn 1s;
-      animation-fill-mode: both;
+      // animation-fill-mode: both;
+      // animation: FadeIn 1s;
       position: relative;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
-
 
       .weekly-ing-image-container {
         margin-top: 5px;
