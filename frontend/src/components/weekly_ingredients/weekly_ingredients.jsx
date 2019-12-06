@@ -14,6 +14,8 @@ class WeeklyIngredients extends React.Component {
       ingredients: {}
     }
 
+    this.loading = false;
+
     this.generateDates = this.generateDates.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
   }
@@ -85,28 +87,43 @@ class WeeklyIngredients extends React.Component {
     //   ing[recipe.ingredients[i].id] = recipe.ingredients[i];
     // }
     let count = 0;
+    let temp = {};
     for(let i = 0; i < recipe.ingredients.length; i++) {
       count++;
       getIngredientById(recipe.ingredients[i].id).then(res => {
         count--;
-
-        
-        let aisle = res.data.aisle.split(";")[0];
-        // console.log(aisle);
-        // console.log(ing[aisle]);
-        if(!ing[aisle]) {
-          ing[aisle] = {};
-          // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
-        } 
-        ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
-        // ing[recipe.ingredients[i].id].aisle = res.data.aisle;
-        if(count === 0) {
-          
+        temp[res.data.id] = res.data;
+        if(count === 0 ) {
+          let ids = Object.keys(temp);
+          for(let j = 0; j < ids.length; j++) {
+            let aisle = temp[ids[j]].aisle.split(";")[0];
+            if(!ing[aisle]) {
+              ing[aisle] = {};
+            } 
+            ing[aisle][recipe.ingredients[j].id] = recipe.ingredients[j];
+          }
           ing = Object.assign(ing, this.state.ingredients);
           this.setState({ ingredients: ing });
         }
       });
     }
+
+      
+      // count++;
+      // getIngredientById(recipe.ingredients[i].id).then(res => {
+      //   count--;
+
+        
+      //   let aisle = res.data.aisle.split(";")[0];
+      //   if(!ing[aisle]) {
+      //     ing[aisle] = {};
+      //   } 
+      //   ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
+      //   if(count === 0) {
+      //     ing = Object.assign(ing, this.state.ingredients);
+      //     this.setState({ ingredients: ing });
+      //   }
+      // });
   }
 
   

@@ -4,7 +4,6 @@ import WeeklyIngredientsItemContainer from './weekly_ingredients_item_container'
 
 class WeeklyIngredientsCatagory extends React.Component {
   render() {
-      console.log(this.props)
       let ing = Object.keys(this.props.ingredients).map(id => {
         return(
           <WeeklyIngredientsItemContainer ingredient={this.props.ingredients[id]}/>
