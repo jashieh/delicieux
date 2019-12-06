@@ -75,7 +75,8 @@ export default class MainFilter extends React.Component {
   }
   handleTab(num) {
     return (e) => {
-      this.setState({tabs: num})
+      // this.setState({ tabs: num });
+      this.state.tabs !== num ? this.setState({ tabs: num }) : this.setState({ tabs: 0 });
     }
   }
   handleCheck(type) {
@@ -188,6 +189,7 @@ export default class MainFilter extends React.Component {
     else if (this.state.tabs === 1) {
       return (
         <div className="filter-bot-diet">
+
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           <label className="filter-dd-item1" style={this.state.glutenFree ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="glutenFree" 
@@ -232,13 +234,16 @@ export default class MainFilter extends React.Component {
     } else if (this.state.tabs === 2) {
       return (
         <div className="filter-bot-cuisine" onClick={this.removeCuisine}>
-          <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
+          {/* <span className="filter-x" onClick={this.handleTab(0)}>&times;</span> */}
           {this.state.cuisines.map((cuisine, idx) => {
             return (
             <div key={idx} 
               className="filter-dd-item2" 
               onClick={this.handleCuisine({cuisine})}
-              style={this.state.cuisine === cuisine ? { fontWeight: "bold", textDecoration: "underline" } : {}}>
+
+              style={this.state.cuisine === cuisine ? { backgroundColor: "inherit", fontWeight: "bold", color: "purple" } : {}}>
+              {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
+
               {cuisine}
             </div>)
           })}
@@ -251,6 +256,7 @@ export default class MainFilter extends React.Component {
             <input type="checkbox" name="dairy" 
               checked={this.state.dairy} 
               onChange={this.handleCheck("dairy")} />
+
                 Dairy
           </label> 
           <label className="filter-dd-item1" style={this.state.egg ? { fontWeight: "bold" } : {}}>
@@ -299,7 +305,7 @@ export default class MainFilter extends React.Component {
     } else if (this.state.tabs === 4) {
       return (
         <div className="filter-bot-allergies">
-          <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
+          {/* <span className="filter-x" onClick={this.handleTab(0)}>&times;</span> */}
           <div className="filter-slider">
             <div>Max Calories [ 0 - 800 ]</div>
             <div className="slider-second">

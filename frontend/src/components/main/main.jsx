@@ -130,7 +130,7 @@ class MainPage extends React.Component {
                         <input type="radio" name="radio-set" id="st-control-4" />
                         <a href="#st-panel-4" className="splash-footer-tab">Preview</a>
                         <input type="radio" name="radio-set" id="st-control-5" />
-                        <a href="#st-panel-5" className="splash-footer-tab">Passion</a>
+                        <a href="#st-panel-5" className="splash-footer-tab">Developers</a>
 
                         <div className="st-scroll">
 

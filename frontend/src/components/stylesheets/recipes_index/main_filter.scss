@@ -142,10 +142,12 @@
     color: rgb(74, 73, 73);
     justify-content: space-between;
     // background: red;
+
     .filter-param-text:hover {
       cursor: pointer;
       color: #a8a8a8;
     }
+
     .filter-param-dropdown {
       position: relative;
 
@@ -237,6 +239,7 @@
   cursor: pointer;
   font-weight: bold;
 }
+
 .filter-x {
   position: absolute;
   top: 0;
