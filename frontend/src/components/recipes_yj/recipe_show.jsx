@@ -170,7 +170,8 @@ export default class RecipeShow extends React.Component {
       </div>
     );
 
-    let rightPanel = this.state.instructions ? (
+    // TODO: INVESTIGATE THIS BUG
+    let rightPanel = this.state.instructions && this.state.instructions[0] ? (
       <ol className="recipe-show-inst-list" onClick={this.toggleRight}>
         <div className="list-title">
           Instructions
