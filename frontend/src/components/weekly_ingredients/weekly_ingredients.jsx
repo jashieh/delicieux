@@ -1,5 +1,6 @@
 import React from 'react';
 import WeeklyIngredientsItemContainer from './weekly_ingredients_item_container'
+import WeeklyIngredientsCatagory from './weekly_ingredients_catagory';
 import { getIngredientById } from '../../util/ingredient_api_util';
 
 const TIMES = ['BREAKFAST', 'LUNCH', 'DINNER'];
@@ -94,11 +95,9 @@ class WeeklyIngredients extends React.Component {
         // console.log(aisle);
         // console.log(ing[aisle]);
         if(!ing[aisle]) {
-          console.log("test")
           ing[aisle] = {};
           // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
-        } else {
-        }
+        } 
         ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
         // ing[recipe.ingredients[i].id].aisle = res.data.aisle;
         if(count === 0) {
@@ -106,30 +105,37 @@ class WeeklyIngredients extends React.Component {
           ing = Object.assign(ing, this.state.ingredients);
           this.setState({ ingredients: ing });
         }
-      })
+      });
     }
   }
 
   
   render() {
-    let ing = [];
+    // let ing = [];
+    let catagories = [];
     let ids = Object.keys(this.state.ingredients);
 
     for(let i = 0; i < ids.length; i++) {
-      let id = ids[i];
-      let have = this.props.ingredients[id] ? "have" : "dont";
-      if(have === "have") {
-        ing.unshift(<WeeklyIngredientsItemContainer 
-          ingredient={this.state.ingredients[id]}
-          key={this.state.ingredients[id].id}
-          have={have}/>);
-      }
-      else {
-        ing.push(<WeeklyIngredientsItemContainer 
-          ingredient={this.state.ingredients[id]}
-          key={this.state.ingredients[id].id}
-          have={have}/>);
-      }
+      catagories.push(<WeeklyIngredientsCatagory 
+        key={ids[i]}
+        catagory={ids[i]}
+        ingredients={this.state.ingredients[ids[i]]}
+        />);
+
+      // let id = ids[i];
+      // let have = this.props.ingredients[id] ? "have" : "dont";
+      // if(have === "have") {
+      //   ing.unshift(<WeeklyIngredientsItemContainer 
+      //     ingredient={this.state.ingredients[id]}
+      //     key={this.state.ingredients[id].id}
+      //     have={have}/>);
+      // }
+      // else {
+      //   ing.push(<WeeklyIngredientsItemContainer 
+      //     ingredient={this.state.ingredients[id]}
+      //     key={this.state.ingredients[id].id}
+      //     have={have}/>);
+      // }
     }
 
     console.log(this.state.ingredients);
@@ -139,8 +145,8 @@ class WeeklyIngredients extends React.Component {
         <div className="title">
           Weekly Shopping List
         </div>
-        <ul>
-          { ing }
+        <ul className="catagory-list">
+          { catagories }
         </ul>
       </div>
     );
