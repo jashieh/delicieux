@@ -13,34 +13,57 @@ class WeeklyCart extends React.Component {
 
     this.state = {
       dates: [],
-      calories: 0,
-      carbs: 0,
-      protein: 0,
-      fat: 0,
-      fiber: 0
     }
 
     this.generateDates = this.generateDates.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
     this.modifyMacros = this.modifyMacros.bind(this);
     this.removeMacros = this.removeMacros.bind(this);
+
+    this.addListeners = this.addListeners.bind(this);
+    this.removeListeners = this.removeListeners.bind(this);
+    this.scrollCart = this.scrollCart.bind(this);
   } 
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
+    debugger;
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     // this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0}, ()=>{
-      fetchFridge(user.id)
-        .then(() => {
-          if (!cart.dates) {
-            getCart(user.id)
-              .then(() => this.getRecipes())
-          }else {
+    fetchFridge(user.id)
+      .then(() => {
+        if (!cart.dates) {
+          getCart(user.id)
+            .then(() => {
+              debugger;
+              this.getRecipes();
+              this.addListeners();
+            })
+        } else {
             this.getRecipes();
-        }});
-    // });
-    
+            this.addListeners();
+      }});
     fetchUser(user.id);
+  }
+
+  componentWillUnmount() {
+    this.removeListeners();
+  }
+
+  addListeners() {
+    this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
+    this.weeklyCart.addEventListener("wheel", (e) => { this.scrollCart(e) });
+  }
+
+  removeListeners() {
+    this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
+  }
+
+  scrollCart(e) {
+    if (!this.weeklyCartDays)
+      this.weeklyCartDays = document.getElementsByClassName("weekly-cart-days")[0];
+    else 
+      this.weeklyCartDays.scrollLeft -= e.deltaY;
   }
 
 
@@ -58,7 +81,7 @@ class WeeklyCart extends React.Component {
 
     return dateStrings;
   }
-
+  
   // fetches all necessary recipes for a given week
   getRecipes() {
     let dates = this.generateDates();
@@ -94,31 +117,58 @@ class WeeklyCart extends React.Component {
     }
     }
   }
+
   modifyMacros(recipe, operation) {
-    let recipeCalories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount ;
-    let recipeProtein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount ;
-    let recipeFat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount ;
-    let recipeCarbs = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount ;
-    let recipeFiber = Object.values(recipe.nutrition).filter(nutrient => ["Fiber"].includes(nutrient.title))[0].amount ;
-    if (operation === "add") {
-      this.setState({
-        calories: this.state.calories + recipeCalories,
-        protein: this.state.protein + recipeProtein,
-        fat: this.state.fat + recipeFat,
-        carbs: this.state.carbs + recipeCarbs,
-        fiber: this.state.fiber + recipeFiber
-      }, ()=>{console.log(this.state.calories)});
-    } else {
-      this.setState({
-        calories: this.state.calories - recipeCalories,
-        protein: this.state.protein - recipeProtein,
-        fat: this.state.fat - recipeFat,
-        carbs: this.state.carbs - recipeCarbs,
-        fiber: this.state.fiber - recipeFiber
-      });
+    // let recipeCalories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount ;
+    // let recipeProtein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount ;
+    // let recipeFat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount ;
+    // let recipeCarbs = Object.values(recipe.nutrition).filter(nutrient => ["Carbohydrates"].includes(nutrient.title))[0].amount ;
+    // let recipeFiber = Object.values(recipe.nutrition).filter(nutrient => ["Fiber"].includes(nutrient.title))[0].amount ;
+
+    let recipeNutrition = Object.values(recipe.nutrition);
+    let nutrientNames = [
+      "Calories", "Fat", "Saturated Fat", "Carbohydrates", "Sugar", "Cholesterol",
+      "Sodium", "Protein", "Vitamin B6", "Potassium", "Manganese", "Phosphorus",
+      "Fiber", "Magnesium", "Vitamin C", "Vitamin B1", "Vitamin B3", "Copper", "Iron",
+      "Folate", "Vitamin B5", "Vitamin B2", "Selenium", "Zinc", "Calcium", "Vitamin K",
+      "Vitamin B12", "Vitamin D", "Vitamin E", "Vitamin A"
+    ];
+
+    let newState = {};
+    for (let i = 0; i < nutrientNames.length; i++) {
+      let nutrient = nutrientNames[i];
+
+      let recipeAmount = recipeNutrition.filter(val => [nutrient].includes(val.title));
+      recipeAmount = recipeAmount && recipeAmount[0] ? recipeAmount[0].amount : 0;
+      let stateAmount = this.state[nutrient] ? this.state[nutrient] : 0;
+
+      if (operation === "add")
+        newState[nutrient] = stateAmount + recipeAmount;
+      else
+        newState[nutrient] = stateAmount - recipeAmount < 0 ? 0 : stateAmount - recipeAmount;
+
     }
-   
+    this.setState(newState);
+
+    // if (operation === "add") {
+    //   this.setState({
+    //     calories: this.state.calories + recipeCalories,
+    //     protein: this.state.protein + recipeProtein,
+    //     fat: this.state.fat + recipeFat,
+    //     carbs: this.state.carbs + recipeCarbs,
+    //     fiber: this.state.fiber + recipeFiber
+    //   }, ()=>{console.log(this.state.calories)});
+    // } else {
+    //   this.setState({
+    //     calories: this.state.calories - recipeCalories,
+    //     protein: this.state.protein - recipeProtein,
+    //     fat: this.state.fat - recipeFat,
+    //     carbs: this.state.carbs - recipeCarbs,
+    //     fiber: this.state.fiber - recipeFiber
+    //   });
+    // }
   }
+
   removeMacros(recipeId) {
     this.props.getRecipeDB(recipeId)
       .then(({ recipe }) => {
@@ -128,7 +178,7 @@ class WeeklyCart extends React.Component {
   
   render() {
     let { dates } = this.state;
-    if (dates.length > 0){
+    if (dates.length > 0 ){
       return (
         <div className="weekly-cart">
           <div className="top">
@@ -140,12 +190,14 @@ class WeeklyCart extends React.Component {
               return <WeeklyCartDayContainer date={date} key={idx} removeMacros={this.removeMacros}/>;
             })}
           </div>
-          <WeeklyMacro calories={this.state.calories} 
-          carbs={this.state.carbs} 
-          protein={this.state.protein} 
-          fat={this.state.fat} 
-          fiber={this.state.fiber}
-          user = {this.props.currentUser} />
+          <WeeklyMacro 
+            calories={ this.state.Calories ? this.state.Calories : 0 } 
+            carbs={ this.state.Carbohydrates ? this.state.Carbohydrates : 0 } 
+            protein={ this.state.Protein ? this.state.Protein : 0 } 
+            fat={ this.state.Fat ? this.state.Fat : 0 } 
+            fiber={ this.state.Fiber ? this.state.Fiber : 0 }
+            user = { this.props.currentUser } />
+          
         </div>
       );
     } else {

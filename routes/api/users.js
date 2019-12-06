@@ -73,7 +73,8 @@ router.post("/register", (req, res) => {
                   [currentDate]: {
                     "BREAKFAST": undefined,
                     "LUNCH": undefined,
-                    "DINNER": undefined
+                    "DINNER": undefined,
+                    "STATUS": {}
                   }
                 },
               });

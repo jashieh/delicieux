@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import NavbarContainer from '../nav/navbar_container';
 import Apron from '../stylesheets/assets/apron.png';
 import Background1 from '../stylesheets/assets/background1.jpg';
-import Background2 from '../stylesheets/assets/food_background2.jpg';
-import ChooseMeal from '../stylesheets/assets/choose_meal.gif';
+import Background2 from '../stylesheets/assets/main.jpeg';
+import ChooseMeal from '../stylesheets/assets/choose.gif';
 import PieChart from '../stylesheets/assets/pie_chart.gif';
 import LineChart from '../stylesheets/assets/line_chart.gif';
 import GroceryGif from '../stylesheets/assets/grocery.gif';
@@ -14,8 +14,9 @@ import MealPlan from '../stylesheets/assets/meal_plan.jpg';
 import Freshly from '../stylesheets/assets/easy.jpeg';
 import IceCream from '../stylesheets/assets/note.jpg';
 
-import KitchenCounter from '../stylesheets/assets/kitchen_counter_flipped.jpg';
+import KitchenCounter from '../stylesheets/assets/four-two.jpeg';
 import MainIndexItemContainer from './main_index_item_container';
+import MainDevelopers from './main_developers';
 
 import { 
   recipe1,
@@ -44,7 +45,6 @@ class MainPage extends React.Component {
         window.removeEventListener('wheel', this.throttleScroll);
     }
 
-
     throttleScroll() {
         const args = arguments;
         const context = this;
@@ -52,7 +52,7 @@ class MainPage extends React.Component {
         if (!this.inThrottle && !this.props.modal) {
             this.handleScroll.apply(context, args);
             this.inThrottle = true;
-            setTimeout(() => this.inThrottle = false, 200);
+            setTimeout(() => this.inThrottle = false, 1200);
         }
     }
 
@@ -83,6 +83,7 @@ class MainPage extends React.Component {
                 <NavbarContainer />
                 <div className="clr"></div>
               </div>
+              {/* aasdasd */}
               {/* aasdasd */}
               {/*  */}
               {/* <div className="st-container">
@@ -129,7 +130,7 @@ class MainPage extends React.Component {
                         <input type="radio" name="radio-set" id="st-control-4" />
                         <a href="#st-panel-4" className="splash-footer-tab">Preview</a>
                         <input type="radio" name="radio-set" id="st-control-5" />
-                        <a href="#st-panel-5" className="splash-footer-tab">Passion</a>
+                        <a href="#st-panel-5" className="splash-footer-tab">Developers</a>
 
                         <div className="st-scroll">
 
@@ -174,8 +175,6 @@ class MainPage extends React.Component {
                                                     </div>
                                                     <div className="the-exp-body">
                                                         Find the perfect recipe to make from the ingredients available in your fridge.
-                                                    </div>
-                                                    <div className="the-exp-body">
                                                         Reach your diet goals faster with detailed nutritional information and progress visualization.
                                                     </div>
                                                 </div>
@@ -189,89 +188,95 @@ class MainPage extends React.Component {
                             </section>
 
                             <section className="st-panel st-color" id="st-panel-3">
-                                <div className="img-container">
+                                {/* <div className="img-container">
                                     <img src={Background2} alt=""
                                     className="img-container"/>
-                                </div>
+                                </div> */}
                                 {/* <div className="st-deco">
                                 </div> */}
                                 <div className="splash-middle-container-3">
-                                    <h2 className="how-it-works">How it works</h2>
+                                    <h1 className="how-it-works">How it works</h1>
                                     <div className="splash-gif-container">
+                                      <div className="splash-gif-top">
+
                                         <div className="splash-gif-item">
                                             <img src={GroceryGif} alt="" className="splash-gif-2"/>
                                             <div className="splash-gif-label">
-                                                TRACK YOUR INGREDIENTS
-                                            </div>
+                                                Track Your Ingredients                                            </div>
                                             <div className="splash-gif-body">
                                                 Never let your groceries go to waste by keeping a dynamic digital inventory.
                                             </div>
                                         </div>
                                         
                                         <div className="splash-gif-item">
-                                            <img src={ChooseMeal} alt="" className="splash-gif"/>
+                                            <img src={ChooseMeal} alt="" className="splash-gif-3"/>
                                             <div className="splash-gif-label">
-                                                CHOOSE YOUR MEALS
+                                                Choose Your Meals
                                             </div>
                                             <div className="splash-gif-body">
                                                 Get recipe suggestions based on the ingredients you have and your fitness goals.
                                             </div>
                                         </div>
+
+                                      </div>
+                                      <div className="splash-gif-bottom">
+
                                         <div className="splash-gif-item">
                                             <img src={PieChart} alt="" className="splash-gif"/>
                                             <div className="splash-gif-label">
-                                                MACROS MADE EASY
+                                                Macros Made Easy
                                             </div>
                                             <div className="splash-gif-body">
                                                 Stay informed with detailed nutritional information on all recipes.
                                             </div>
                                         </div>
+
                                         <div className="splash-gif-item">
                                             <img src={LineChart} alt="" className="splash-gif"/>
                                             <div className="splash-gif-label">
-                                                MONITOR YOUR PROGRESS
+                                                Monitor Your Progress
                                             </div>
                                             <div className="splash-gif-body">
                                                 Reach your goals easier by visualizing your improvement.
                                             </div>
                                         </div>
+
+                                      </div>
                                     </div>
                                 </div>
                             </section>
 
                             <section className="st-panel st-color" id="st-panel-4">
-                                <div className="st-deco">
-
-                                </div>
                                 <div className="img-container">
                                   <img src={KitchenCounter} className="splash-image"/>
                                 </div>
 
                                 <div className="main-index">
-                                  <div className="main-index-header">
-                                    Browse From a Diverse Menu!
-                                  </div>
+                                
                                   <div className="main-index-rows">
-                                    <div className="main-index-row">
-                                      <MainIndexItemContainer recipe={recipe1}/>
-                                      <MainIndexItemContainer recipe={recipe2}/>
-                                      <MainIndexItemContainer recipe={recipe3}/>
+
+                                    <div className="main-row-left">
+                                      <div className="main-index-row">
+                                        <MainIndexItemContainer recipe={recipe1}/>
+                                        <MainIndexItemContainer recipe={recipe2}/>
+                                        <MainIndexItemContainer recipe={recipe3}/>
+                                      </div>
+                                      <div className="main-index-row">
+                                        <MainIndexItemContainer recipe={recipe4}/>
+                                        <MainIndexItemContainer recipe={recipe5}/>
+                                        <MainIndexItemContainer recipe={recipe6}/>
+                                      </div>
                                     </div>
-                                    <div className="main-index-row">
-                                      <MainIndexItemContainer recipe={recipe4}/>
-                                      <MainIndexItemContainer recipe={recipe5}/>
-                                      <MainIndexItemContainer recipe={recipe6}/>
+                                    <div className="main-index-header">
+                                      Browse From a <br/> Diverse Menu!
+                                      
                                     </div>
                                   </div>
                                 </div>
                             </section>
 
                             <section className="st-panel" id="st-panel-5">
-                                <div className="st-deco">
-
-                                </div>
-                                <h2>Passion</h2>
-                                <p>Fixie ad odd future polaroid dreamcatcher, nesciunt carles bicycle rights accusamus mcsweeney's mumblecore nulla irony.</p>
+                              <MainDevelopers/>
                             </section>
 
                         </div>
