@@ -29,12 +29,13 @@ export const modifyIngredient = (userId, ingredient, amount) => {
 export const modifyFridge = (userId, recipe, makeItem = true) => {
   let ingredients = {};
   let requests = 0;
-  
+  debugger;
   // recipe.extendedIngredients
   // getRecipeById(recipeId).then((res) => {
-    for (let i = 0; i < recipe.ingredients.length; i++) {
+    const list = recipe.ingredients.map(ingredient => Object.assign({}, ingredient));
+    for (let i = 0; i < list.length; i++) {
       requests++;
-      let ingredient = Object.assign({}, recipe.ingredients[i]);
+      let ingredient = list[i];
       getConvertAmounts(ingredient.name, ingredient.unit, ingredient.amount)
         .then(res => {
           requests--;

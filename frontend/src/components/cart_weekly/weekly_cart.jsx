@@ -145,7 +145,8 @@ class WeeklyCart extends React.Component {
       if (operation === "add")
         newState[nutrient] = stateAmount + recipeAmount;
       else
-        newState[nutrient] = stateAmount - recipeAmount;
+        newState[nutrient] = stateAmount - recipeAmount < 0 ? 0 : stateAmount - recipeAmount;
+
     }
     this.setState(newState);
 
