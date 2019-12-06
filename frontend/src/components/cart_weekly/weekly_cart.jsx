@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav/navbar_container';  
 import WeeklyCartDayContainer from "./weekly_cart_day_container";
 import WeeklyMacro from './weekly_macro';
+import WeeklyNutrition from './weekly_nutrition';
 import '../stylesheets/weekly_cart/weekly_cart.scss';
 
 const TIMES = ['BREAKFAST', 'LUNCH', 'DINNER'];
@@ -27,7 +28,6 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
-    debugger;
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     // this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0}, ()=>{
     fetchFridge(user.id)
@@ -35,7 +35,6 @@ class WeeklyCart extends React.Component {
         if (!cart.dates) {
           getCart(user.id)
             .then(() => {
-              debugger;
               this.getRecipes();
               this.addListeners();
             })
@@ -138,14 +137,26 @@ class WeeklyCart extends React.Component {
     for (let i = 0; i < nutrientNames.length; i++) {
       let nutrient = nutrientNames[i];
 
-      let recipeAmount = recipeNutrition.filter(val => [nutrient].includes(val.title));
-      recipeAmount = recipeAmount && recipeAmount[0] ? recipeAmount[0].amount : 0;
-      let stateAmount = this.state[nutrient] ? this.state[nutrient] : 0;
+      let recipeInfo = recipeNutrition.filter(val => [nutrient].includes(val.title));
+
+      let recipeAmount = recipeInfo && recipeInfo[0] ? recipeInfo[0].amount : 0;
+      let recipePercentage = recipeInfo && recipeInfo[0] ? recipeInfo[0].percentOfDailyNeeds : 0;
+
+      let stateAmount = this.state[nutrient] ? this.state[nutrient].amount : 0;
+      let statePercentage = this.state[nutrient] ? this.state[nutrient].percentage : 0;
 
       if (operation === "add")
-        newState[nutrient] = stateAmount + recipeAmount;
+        newState[nutrient] = {
+          amount: stateAmount + recipeAmount,
+          unit: recipeInfo[0].unit,
+          percentage: statePercentage + recipePercentage,
+        };
       else
-        newState[nutrient] = stateAmount - recipeAmount;
+        newState[nutrient] = {
+          amount: stateAmount - recipeAmount,
+          unit: recipeInfo[0].unit,
+          percentage: statePercentage - recipePercentage
+        };
     }
     this.setState(newState);
 
@@ -190,13 +201,16 @@ class WeeklyCart extends React.Component {
             })}
           </div>
           <WeeklyMacro 
-            calories={ this.state.Calories ? this.state.Calories : 0 } 
-            carbs={ this.state.Carbohydrates ? this.state.Carbohydrates : 0 } 
-            protein={ this.state.Protein ? this.state.Protein : 0 } 
-            fat={ this.state.Fat ? this.state.Fat : 0 } 
-            fiber={ this.state.Fiber ? this.state.Fiber : 0 }
+            calories={ this.state.Calories ? this.state.Calories.amount : 0 } 
+            carbs={ this.state.Carbohydrates ? this.state.Carbohydrates.amount : 0 } 
+            protein={ this.state.Protein ? this.state.Protein.amount : 0 } 
+            fat={ this.state.Fat ? this.state.Fat.amount : 0 } 
+            fiber={ this.state.Fiber ? this.state.Fiber.amount : 0 }
             user = { this.props.currentUser } />
           
+          <WeeklyNutrition 
+            nutrients = { this.state } />
+
         </div>
       );
     } else {
