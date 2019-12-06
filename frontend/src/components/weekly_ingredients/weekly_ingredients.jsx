@@ -90,22 +90,22 @@ class WeeklyIngredients extends React.Component {
         count--;
 
         
-        // let aisle = res.data.aisle.split(";")[0];
-        // // console.log(aisle);
-        // // console.log(ing[aisle]);
-        // if(!ing[aisle]) {
-        //   console.log("test")
-        //   ing[aisle] = {};
-        //   // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
-        // } else {
-        // }
-        // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
-        // // ing[recipe.ingredients[i].id].aisle = res.data.aisle;
-        // if(count === 0) {
+        let aisle = res.data.aisle.split(";")[0];
+        // console.log(aisle);
+        // console.log(ing[aisle]);
+        if(!ing[aisle]) {
+          console.log("test")
+          ing[aisle] = {};
+          // ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
+        } else {
+        }
+        ing[aisle][recipe.ingredients[i].id] = recipe.ingredients[i];
+        // ing[recipe.ingredients[i].id].aisle = res.data.aisle;
+        if(count === 0) {
           
-        //   ing = Object.assign(ing, this.state.ingredients);
-        //   this.setState({ ingredients: ing });
-        // }
+          ing = Object.assign(ing, this.state.ingredients);
+          this.setState({ ingredients: ing });
+        }
       })
     }
   }
