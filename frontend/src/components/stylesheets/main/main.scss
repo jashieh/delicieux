@@ -63,11 +63,10 @@
 
 
 .splash-middle {
-    // width: 50%;
+	width: 50%;
 	// background: red;
     padding: 20px;
     display: flex;
-    flex-grow: 1;
     
     .splash-middle-contain {
         display: flex;
@@ -119,12 +118,12 @@
     margin: 0 auto;
     margin-top: 15px;
 	display: flex;
-    flex-direction: row;
+	flex-direction: row;
+
 }
 
 .img-container-second {
-    // width: 50%;
-    width: 40%;
+	width: 50%;
 	height: 100%;
 	// background: blue;
 	display: flex;
@@ -133,8 +132,7 @@
 
 .splash-img-second {
     width: 86%;
-    min-width: 400px;
-    max-width: 622px;
+    max-width: 567px;
     height: 100%;
 }
 
@@ -142,7 +140,7 @@
 .img-container-first {
 	/* z-index: 999; */
 	width: 97.5vw;
-    height: 91vh;
+    height: 89vh;
     margin: 0 auto;
     margin-top: 17px;
     // background: blue;
@@ -154,8 +152,114 @@
     }
 }
 
+.splash-middle-container-3 {
+    width: 97vw;
+	height: 90vh;
+    // background: red;
+    margin: 0 auto;
+    margin-top: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+    background: url("../assets/third.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 10%;
+    position: relative;
+}
 
+.splash-gif-container {
+    display: flex;
+	flex-direction: column;
+    width: 700px;
+    // background: red;
+    position: absolute;
+    top: 10%;
+    left: 10%;
 
+    .splash-gif-top {
+        // background: pink;
+        display: flex;
+        flex-direction: row;
+        padding-left: 30px;
+        border: 1px solid black;
+        border-bottom: none;
+    }
+
+    .splash-gif-bottom {
+        // background: pink;
+        display: flex;
+        flex-direction: row;
+        padding-left: 30px;
+        border: 1px solid black;
+        // border-top: none;
+    }
+}
+
+.splash-gif-item {
+	display: flex;
+	flex-direction: column;
+    align-items: center;
+    // background: skyblue;
+    // background: rgb(249, 249, 242);
+    background: rgba(101, 93, 93, 0.5);
+    box-shadow: 1px 1px 8px 1px rgba(223, 220, 220, 0.29);
+    width: 300px;
+    height: 260px;
+    margin: 10px;
+}
+
+.splash-gif {
+	height: 100px;
+	width: 100px;
+}
+
+.splash-gif-2 {
+	height: 100px;
+	width: 100px;
+	margin-top: -10px;
+	margin-bottom: 10px;
+}
+
+.splash-gif-3 {
+	height: 90px;
+    width: 90px;
+    margin-top: 10px;
+}
+
+.splash-gif-label {
+    border-top: 1px solid rgba(75, 74, 74, 0.55);
+    width: 80%;
+    margin-top: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+}
+
+.splash-gif-body {
+	margin-top: 20px;
+	width: 200px;
+	font-size: 14px;
+	color: white;
+	font-weight: 500;
+	text-align: center;
+	line-height: 1.9;
+}
+
+.how-it-works {
+    position: absolute;
+    bottom: 14%;
+    letter-spacing: 1.5px;
+    right: 17%;
+    text-shadow: 1px 1px 3px white;
+    color: black;
+    font-weight: 300;
+    
+	font-size: 42px;
+	white-space: nowrap;
+}
 
 
 
