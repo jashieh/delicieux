@@ -174,13 +174,13 @@
     width: 50%;
     height: 84%;
     align-items: center;
-    background: red;
+    // background: red;
     position: absolute;
     top: 10%;
     left: 10%;
 
     .splash-gif-top {
-        background: pink;
+        // background: pink;
         width: 100%;
         height: 50%;
         display: flex;
@@ -189,6 +189,7 @@
         align-items: center;
         border: 1px solid black;
         border-bottom: none;
+        
     }
 
     .splash-gif-bottom {
@@ -213,12 +214,13 @@
     // background: rgb(249, 249, 242);
     background: rgba(101, 93, 93, 0.5);
     box-shadow: 1px 1px 8px 1px rgba(223, 220, 220, 0.29);
-    width: 50%;
+    width: 48%;
     max-width: 464px;
     // width: 300px;
-    height: 94%;
+    height: 92%;
     // height: 260px;
-    margin: 10px;
+    margin: 4px;
+
 }
 
 .splash-gif {
@@ -269,19 +271,14 @@
 
 .how-it-works {
     position: absolute;
-    bottom: 14%;
+    bottom: 12%;
     letter-spacing: 1.5px;
     right: 17%;
     text-shadow: 1px 1px 3px white;
     color: black;
     font-weight: 300;
-    background: blue;
-	font-size: 42px;
+    // background: blue;
+	font-size: 44px;
 	white-space: nowrap;
 }
-
-
-
-
-
 
