@@ -24,11 +24,13 @@ class FridgeCatagory extends React.Component {
       );
     });
     return(
-      <div>
-        <div onClick={this.toggleOpen}>
+      <div className="fridge-catagory">
+        <div onClick={this.toggleOpen} className="catagory-title">
           {this.props.catagory}
         </div>
-        { this.state.open && ing }
+        <ul className="fridge-catagory-ul">
+          { this.state.open && ing }
+        </ul>
       </div>
     );
   }

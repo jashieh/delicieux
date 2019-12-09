@@ -84,7 +84,7 @@ class FridgeIngredients extends React.Component {
       <div className="fridge-ingredients-container">
         <div className="fridge-contain">
           <div className="ingredients-contain">
-            <ul>
+            <ul className="fridge-ingredients-ul">
               { catagories }
             </ul>
           </div>

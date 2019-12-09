@@ -155,15 +155,16 @@ class WeeklyIngredients extends React.Component {
   }
 
   emptyCart() {
-    let days = Object.keys(this.props.cart.dates);
-    for(let i = 0; i < days.length; i++) {
-      let meals = Object.keys(this.props.cart.dates[days[i]]);
-      for(let j = 0; j < meals.length; j++) {
-        if(this.props.cart.dates[days[i]][meals[j]]) {
-          console.log(this.props.cart.dates[days[i]])
-          return false;
+    if(this.props.cart.dates) {
+      let days = Object.keys(this.props.cart.dates);
+      for(let i = 0; i < days.length; i++) {
+        for(let j = 0; j < TIMES.length; j++) {
+          if(this.props.cart.dates[days[i]][TIMES[j]]) {
+            return false;
+          }
         }
       }
+      return true;
     }
     return true;
   }
@@ -173,8 +174,7 @@ class WeeklyIngredients extends React.Component {
     // let ing = [];
     let catagories;
     let ids = Object.keys(this.state.catagories);
-    console.log(this.emptyCart())
-    if(Object.keys(this.state.catagories).length === 0) {
+    if(Object.keys(this.state.catagories).length === 0 && !this.emptyCart()) {
       catagories = "loading...";
     } else {
       catagories = [];
@@ -201,9 +201,6 @@ class WeeklyIngredients extends React.Component {
         // }
       }
     }
-
-
-    console.log(this.state.ingredients);
 
     return(
       <div className="weekly-ingredients-container">

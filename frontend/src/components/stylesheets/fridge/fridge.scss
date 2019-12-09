@@ -303,23 +303,42 @@
             // background-color: rgba(15, 48, 130, 0.372);
             background-color: rgba(15, 48, 130, 0.55);
             box-shadow: inset 3px 4px 5px #000;
-            ul {
+            .fridge-ingredients-ul {
                 height: 100%;
                 width: 100%;
                 overflow-y: scroll;
                 overflow-x: hidden;
                 display: flex;
-                // align-items: center;
+                align-items: flex-start;
                 margin-left: 20px;
                 // justify-content: center;
                 flex-direction: column;
-                flex-wrap: wrap;
-                -ms-overflow-style: none; 
-                scrollbar-width: none;
+                // flex-wrap: wrap;
+                // flex-flow: row wrap;
+                // -ms-overflow-style: none; 
+                // scrollbar-width: none;
             }
 
-            ul::-webkit-scrollbar {
-                display: none;
+            // ul::-webkit-scrollbar {
+            //     display: none;
+            // }
+
+            .fridge-catagory {
+                // flex: 1 auto;
+                // width: 40%;
+                // flex-basis: 40%;
+                // flex-grow: 1;
+                
+                .catagory-title {
+                    font-size: 30px;
+                    border-bottom: 1px solid grey;
+                }
+
+                .fridge-catagory-ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    // border-bottom: 1px solid grey;
+                }
             }
 
             li {
