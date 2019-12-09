@@ -13,24 +13,46 @@
     text-align: center;
     margin-bottom: 20px;
   }
-  
+
+  .catagory-list::-webkit-scrollbar {
+    display: none;
+  }
+
   .catagory-list {
     height: 100%;
     width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    margin-left: 20px;
     // display: flex;
     // justify-content: center;
     // align-items: center;
     // flex-wrap: wrap;
     // -ms-overflow-style: none; 
     // scrollbar-width: none;
+    
 
-    ul {
+    .weekly-catagory {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
 
+      .weekly-catagory-title {
+        cursor: pointer;
+        margin-top: 20px;
+        font-size: 16px;
+        border-bottom: 1px solid grey;
+      }
+
+      .weekly-catagory-ul {
+        display: flex;
+        flex-direction: column;
+        width: 90%;
+      }
+      
     }
 
-    li {
+    .weekly-ingredients-item {
       // width: 35%;
       // min-width: 180px;
       min-height: 38px;
@@ -59,14 +81,35 @@
       }
 
       .weekly-ing-image {
-        height: 25px;
-        width: 25px;
-        margin-left: 10px;
-    }
+        height: 30px;
+        width: 30px;
+        margin-left: 20px;
+      }
 
-    .weekly-ing-name {
+      .weekly-ing-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        text-align: right;
+        margin-right: 20px;
+      }
+
+      .weekly-ing-name {
+        font-size: 18px;
         font-weight: 400;
-    }
+        margin-bottom: 5px;
+      }
+
+      .weekly-item-amount {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        font-size: 12px;
+
+        div {
+          margin-left: 5px;
+        }
+      }
 
     }
     

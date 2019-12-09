@@ -24,11 +24,13 @@ class WeeklyIngredientsCatagory extends React.Component {
         );
       });
     return(
-      <ul>
-        <div onClick={this.toggleOpen}>
+      <ul className="weekly-catagory">
+        <div onClick={this.toggleOpen} className="weekly-catagory-title">
           {this.props.catagory}
         </div>
-        { this.state.open && ing }
+        <ul className="weekly-catagory-ul">
+          { this.state.open && ing }
+        </ul>
       </ul>
     );
   }

@@ -324,14 +324,12 @@
             // }
 
             .fridge-catagory {
-                // flex: 1 auto;
-                // width: 40%;
-                // flex-basis: 40%;
-                // flex-grow: 1;
+                margin-top: 20px;
                 
                 .catagory-title {
-                    font-size: 30px;
+                    font-size: 25px;
                     border-bottom: 1px solid grey;
+                    cursor: pointer;
                 }
 
                 .fridge-catagory-ul {
