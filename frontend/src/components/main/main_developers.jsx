@@ -5,6 +5,9 @@ import Yuci from "../stylesheets/assets/yuci.jpg";
 import Youngjun from "../stylesheets/assets/yuci.jpg";
 import Last from '../stylesheets/assets/last.jpeg'
 import LinkedIn from '../stylesheets/assets/linkedin.png'
+import GitHub from '../stylesheets/assets/github-sign.png'
+import Profile from '../stylesheets/assets/user.png'
+import Angel from '../stylesheets/assets/angel.png'
 
 
 class MainDevelopers extends React.Component {
@@ -60,9 +63,24 @@ class MainDevelopers extends React.Component {
                   </div>
                   <a href="https://www.linkedin.com/in/yucishen/" className="main-developer-link">LinkedIn</a>
                 </div>
-                <a href="https://github.com/yshen901" className="main-developer-link">GitHub</a>
-                <a href="https://github.com/yshen901" className="main-developer-link">Profile</a>
-                <a href="https://github.com/yshen901" className="main-developer-link">AngelList</a>
+                <div className="dev-link">
+                  <div className="dev-logo">
+                    <img src={GitHub} alt="" />
+                  </div>
+                  <a href="https://github.com/yshen901" className="main-developer-link">GitHub</a>
+                </div>
+                <div className="dev-link">
+                  <div className="dev-logo">
+                    <img src={Profile} alt="" />
+                  </div>
+                  <a href="https://github.com/yshen901" className="main-developer-link">Profile</a>
+                </div>
+                <div className="dev-link">
+                  <div className="dev-logo">
+                    <img src={Angel} alt="" />
+                  </div>
+                  <a href="https://github.com/yshen901" className="main-developer-link">AngelList</a>
+                </div>
               </div>
             </div>
             <div className="main-developer">
