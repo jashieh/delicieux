@@ -57,7 +57,7 @@ class FridgeIngredients extends React.Component {
     let catagories;
     let ids = Object.keys(this.state.catagories);
 
-    if(Object.keys(this.state.catagories).length === 0) {
+    if(Object.keys(this.state.catagories).length === 0 && Object.keys(this.props.ingredients).length !== 0) {
       catagories = "loading...";
     } else {
       catagories = [];

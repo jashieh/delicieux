@@ -129,7 +129,6 @@ class WeeklyIngredients extends React.Component {
         let aisle = res.data.aisle.split(";")[0];
         recipe.ingredients[i].aisle = aisle;
         this.ingredients[recipe.ingredients[i].id] = recipe.ingredients[i];
-        // console.log(this.ingredients)
         this.results--;
         console.log(this.results)
         if (this.results === 0) {
@@ -155,12 +154,26 @@ class WeeklyIngredients extends React.Component {
     }
   }
 
+  emptyCart() {
+    let days = Object.keys(this.props.cart.dates);
+    for(let i = 0; i < days.length; i++) {
+      let meals = Object.keys(this.props.cart.dates[days[i]]);
+      for(let j = 0; j < meals.length; j++) {
+        if(this.props.cart.dates[days[i]][meals[j]]) {
+          console.log(this.props.cart.dates[days[i]])
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+
   
   render() {
     // let ing = [];
     let catagories;
     let ids = Object.keys(this.state.catagories);
-
+    console.log(this.emptyCart())
     if(Object.keys(this.state.catagories).length === 0) {
       catagories = "loading...";
     } else {
