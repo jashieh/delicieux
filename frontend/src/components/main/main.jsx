@@ -276,6 +276,7 @@ class MainPage extends React.Component {
                             </section>
 
                             <section className="st-panel" id="st-panel-5">
+                              
                               <MainDevelopers/>
                             </section>
 

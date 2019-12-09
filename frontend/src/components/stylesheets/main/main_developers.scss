@@ -1,25 +1,32 @@
+
 .main-developers {
-  width: 1400px;
-  height: 720px;
+  width: 88vw;
+  height: 80vh;
 
   position: absolute;
-  top: 50%;
-  left: 50%;
-
-  margin-left: -700px;
-  margin-top: -360px;
-
-  align-self: center;
+  top: 5%;
+  left: 5%;
 
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  background: red;
+
+  .dev-top {
+    display: flex;
+    flex-direction: row;
+    background: green;
+    width: 80%;
+    height: 50%;
+    margin-bottom: 10px;
+  }
 }
 
 .main-developer {
   display: flex;
   flex-direction: column;
   width: 300px;
-  height: 600px;
+  height: 500px;
+  background: blue;
 
   .main-developer-name {
     font-size: 30px;
@@ -29,9 +36,11 @@
   }
 
   .main-developer-image {
-    height: calc(50% + 10px);
-    border-radius: 50%; 
+    // height: calc(50% + 10px);
     padding-bottom: 10px;
+    border-radius: 5%;
+    width: 200px;
+  
   }
 
   .main-developer-link {
