@@ -155,7 +155,7 @@
 .splash-middle-container-3 {
     width: 97vw;
 	height: 90vh;
-    // background: red;
+    // background: blue;
     margin: 0 auto;
     margin-top: 15px;
 	display: flex;
@@ -171,26 +171,29 @@
 .splash-gif-container {
     display: flex;
 	flex-direction: column;
-    width: 700px;
-    // background: red;
+    width: 50%;
+    align-items: center;
+    background: red;
     position: absolute;
     top: 10%;
     left: 10%;
 
     .splash-gif-top {
-        // background: pink;
+        background: pink;
+        width: 100%;
         display: flex;
         flex-direction: row;
-        padding-left: 30px;
+        justify-content: space-evenly;
         border: 1px solid black;
         border-bottom: none;
     }
 
     .splash-gif-bottom {
-        // background: pink;
+        background: yellow;
+        width: 100%;
         display: flex;
         flex-direction: row;
-        padding-left: 30px;
+        justify-content: space-evenly;
         border: 1px solid black;
         // border-top: none;
     }
@@ -256,7 +259,7 @@
     text-shadow: 1px 1px 3px white;
     color: black;
     font-weight: 300;
-    
+    background: blue;
 	font-size: 42px;
 	white-space: nowrap;
 }

@@ -202,7 +202,8 @@ class MainPage extends React.Component {
                                         <div className="splash-gif-item">
                                             <img src={GroceryGif} alt="" className="splash-gif-2"/>
                                             <div className="splash-gif-label">
-                                                Track Your Ingredients                                            </div>
+                                                Track Your Ingredients
+                                            </div>
                                             <div className="splash-gif-body">
                                                 Never let your groceries go to waste by keeping a dynamic digital inventory.
                                             </div>
