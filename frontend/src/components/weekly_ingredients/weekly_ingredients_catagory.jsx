@@ -3,6 +3,18 @@ import WeeklyIngredientsItemContainer from './weekly_ingredients_item_container'
 
 
 class WeeklyIngredientsCatagory extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: true
+    };
+    this.toggleOpen = this.toggleOpen.bind(this);
+  }
+
+  toggleOpen() {
+    this.setState({open: !this.state.open});
+  }
+
   render() {
       let ing = Object.keys(this.props.ingredients).map(id => {
         return(
@@ -10,11 +22,13 @@ class WeeklyIngredientsCatagory extends React.Component {
             ingredient={this.props.ingredients[id]}
             key={id}/>
         );
-      })
+      });
     return(
       <ul>
-        {this.props.catagory}
-        { ing }
+        <div onClick={this.toggleOpen}>
+          {this.props.catagory}
+        </div>
+        { this.state.open && ing }
       </ul>
     );
   }
