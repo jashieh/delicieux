@@ -202,7 +202,8 @@ class MainPage extends React.Component {
                                         <div className="splash-gif-item">
                                             <img src={GroceryGif} alt="" className="splash-gif-2"/>
                                             <div className="splash-gif-label">
-                                                Track Your Ingredients                                            </div>
+                                                Track Your Ingredients
+                                            </div>
                                             <div className="splash-gif-body">
                                                 Never let your groceries go to waste by keeping a dynamic digital inventory.
                                             </div>
@@ -232,7 +233,7 @@ class MainPage extends React.Component {
                                         </div>
 
                                         <div className="splash-gif-item">
-                                            <img src={LineChart} alt="" className="splash-gif"/>
+                                            <img src={LineChart} alt="" className="splash-gif-last"/>
                                             <div className="splash-gif-label">
                                                 Monitor Your Progress
                                             </div>
@@ -267,15 +268,16 @@ class MainPage extends React.Component {
                                         <MainIndexItemContainer recipe={recipe6}/>
                                       </div>
                                     </div>
+                                    
                                     <div className="main-index-header">
                                       Browse From a <br/> Diverse Menu!
-                                      
                                     </div>
                                   </div>
                                 </div>
                             </section>
 
                             <section className="st-panel" id="st-panel-5">
+                              
                               <MainDevelopers/>
                             </section>
 

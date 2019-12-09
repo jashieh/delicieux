@@ -155,7 +155,7 @@
 .splash-middle-container-3 {
     width: 97vw;
 	height: 90vh;
-    // background: red;
+    // background: blue;
     margin: 0 auto;
     margin-top: 15px;
 	display: flex;
@@ -171,7 +171,9 @@
 .splash-gif-container {
     display: flex;
 	flex-direction: column;
-    width: 700px;
+    width: 50%;
+    height: 84%;
+    align-items: center;
     // background: red;
     position: absolute;
     top: 10%;
@@ -179,18 +181,25 @@
 
     .splash-gif-top {
         // background: pink;
+        width: 100%;
+        height: 50%;
         display: flex;
         flex-direction: row;
-        padding-left: 30px;
+        justify-content: space-evenly;
+        align-items: center;
         border: 1px solid black;
         border-bottom: none;
+        
     }
 
     .splash-gif-bottom {
-        // background: pink;
+        // background: yellow;
+        width: 100%;
+        height: 50%;
         display: flex;
         flex-direction: row;
-        padding-left: 30px;
+        justify-content: space-evenly;
+        align-items: center;
         border: 1px solid black;
         // border-top: none;
     }
@@ -200,31 +209,43 @@
 	display: flex;
 	flex-direction: column;
     align-items: center;
+    justify-content: center;
     // background: skyblue;
     // background: rgb(249, 249, 242);
     background: rgba(101, 93, 93, 0.5);
     box-shadow: 1px 1px 8px 1px rgba(223, 220, 220, 0.29);
-    width: 300px;
-    height: 260px;
-    margin: 10px;
+    width: 48%;
+    max-width: 464px;
+    // width: 300px;
+    height: 92%;
+    // height: 260px;
+    margin: 4px;
+
 }
 
 .splash-gif {
 	height: 100px;
-	width: 100px;
+    width: 100px;
+    margin-top: -27px;
 }
 
 .splash-gif-2 {
 	height: 100px;
 	width: 100px;
-	margin-top: -10px;
+	margin-top: -28px;
 	margin-bottom: 10px;
 }
 
 .splash-gif-3 {
 	height: 90px;
     width: 90px;
-    margin-top: 10px;
+    margin-top: -9px;
+}
+
+.splash-gif-last {
+	height: 100px;
+    width: 100px;
+    margin-top: -54px;
 }
 
 .splash-gif-label {
@@ -250,19 +271,14 @@
 
 .how-it-works {
     position: absolute;
-    bottom: 14%;
+    bottom: 12%;
     letter-spacing: 1.5px;
     right: 17%;
     text-shadow: 1px 1px 3px white;
     color: black;
     font-weight: 300;
-    
-	font-size: 42px;
+    // background: blue;
+	font-size: 44px;
 	white-space: nowrap;
 }
-
-
-
-
-
 
