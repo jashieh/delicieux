@@ -29,18 +29,23 @@ class WeeklyCartDay extends React.Component {
 
   makeItemButton(time) {
     let { cart, date } = this.props;
-    if (cart.dates[date].STATUS[time])
+
+    // JUST A PRECAUTION - SHOULDN'T BE NECESSARY
+    // TODO: REPRODUCE THIS BUG
+    if (cart.dates[date].STATUS && cart.dates[date].STATUS[time]) 
       return (
         <div className="weekly-cart-item-eat" onClick={(e) => { this.unmakeItem(e, this.recipe[time], date, time) }}>
           Unmake Meal
         </div>
       )
-    else
+    else {
+      if (!cart.dates[date].STATUS) debugger;
       return (
         <div className="weekly-cart-item-eat" onClick={(e) => { this.makeItem(e, this.recipe[time], date, time) }}>
           Make Meal
         </div>
       )
+    }
   }
 
   makeItem(e, recipe, date, time) {

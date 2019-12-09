@@ -54,6 +54,7 @@ export default class RecipeShow extends React.Component {
     this.setState({pieChart: !this.state.pieChart});
   }
   toggleRight(n) {
+    debugger;
     this.setState({instructions: n === "instructions" ? true : false});
   }
   handleBarOn(type) {
@@ -170,7 +171,8 @@ export default class RecipeShow extends React.Component {
       </div>
     );
 
-    let rightPanel = this.state.instructions ? (
+    // TODO: INVESTIGATE THIS BUG
+    let rightPanel = this.state.instructions && recipe.instructions && recipe.instructions[0] ? (
       <ol className="recipe-show-inst-list">
         {recipe.instructions[0].steps.map((step, idx) => {
           let number = step.number;
