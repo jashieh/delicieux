@@ -1,7 +1,7 @@
 
 .main-developers {
   width: 90vw;
-  height: 80vh;
+  height: 85vh;
 
   position: absolute;
   top: 5%;
@@ -10,14 +10,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgb(223, 102, 102);
+  // background: rgb(223, 102, 102);
+  justify-content: space-around;
 
   .dev-top {
     display: flex;
     flex-direction: row;
-    background: green;
-    width: 80%;
-    height: 50%;
+    // background: green;
+    width: 79%;
+    height: 45%;
     margin-bottom: 10px;
     justify-content: space-around;
   }
@@ -26,60 +27,87 @@
 .main-developer {
   display: flex;
   flex-direction: row;
-  width: 40%;
+  width: 42%;
   height: 100%;
-  background: blue;
+  // background: blue;
+  border-radius: 5px;
+  overflow: hidden;
 
 
   .dev-left {
     display: flex;
     flex-direction: column;
+    background: rgba(249, 244, 232, 0.824);
     background: white;
-    width: 40%;
+    width: 47%;
+    max-width: 242px;
+    height: 96%;
+    margin: auto 0px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
 
     .dev-image {
-      height: 165px;
-      width: 165px;
+      height: 160px;
+      width: 160px;
       border-radius: 5px;
       overflow: hidden;
+      margin-bottom: 5px;
+      box-shadow: 1px 1px 8px 1px rgb(182, 182, 182);
     }
 
     .main-developer-name {
-      font-size: 20px;
+      font-size: 16px;
+      font-weight: 500;
       line-height: 50px;
       text-align: center;
       vertical-align: middle;
-      background: pink;
+      // background: pink;
     }
   }
 
   .dev-right {
     display: flex;
     flex-direction: column;
-    background: yellow;
+    background: rgba(255, 255, 255, 0.392);
     flex-grow: 1;
+    height: 80%;
+    margin: auto 10px;
+    border-radius: 5px;
+    justify-content: center;
+
 
     .dev-link {
       display: flex;
       flex-direction: row;
-      background: red;
+      // background: red;
+      margin: 4px;
+      align-items: center;
 
       .dev-logo {
-        background: green;
-      }
-      img {
+        // background: green;
         width: 20px;
         height: 20px;
+        margin-left: 20px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+
+      .main-developer-link {
+        font-size: 14px;
+        font-weight: 600;
+        color: black;
+        margin: 10px;
+        // background: blue;
+      }
+
+      a:hover {
+        color: white;
       }
     }
-
-    // .main-developer-link {
-    //   text-align: center;
-    //   font-size: 15px;
-    //   font-weight: 600;
-    //   color: black;
-    //   margin: 10px;
-    // }
   }
 
   .main-developer-image {
