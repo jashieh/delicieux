@@ -269,7 +269,6 @@ class MainPage extends React.Component {
                                     </div>
                                     <div className="main-index-header">
                                       Browse From a <br/> Diverse Menu!
-                                      
                                     </div>
                                   </div>
                                 </div>
