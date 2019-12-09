@@ -207,7 +207,7 @@ a {
 }
 
 .btn {
-  @include btn-border-slide(#252525, #d0deeb, 1px, 0.9s);
+  @include btn-border-slide(rgb(247, 217, 180), rgb(184, 149, 107), 1.3px, 0.9s);
 //   @include btn-border-slide(#252525, #168dff, 2px, 0.8s);
 }
 
