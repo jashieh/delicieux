@@ -233,7 +233,7 @@ class MainPage extends React.Component {
                                         </div>
 
                                         <div className="splash-gif-item">
-                                            <img src={LineChart} alt="" className="splash-gif"/>
+                                            <img src={LineChart} alt="" className="splash-gif-last"/>
                                             <div className="splash-gif-label">
                                                 Monitor Your Progress
                                             </div>
