@@ -268,6 +268,7 @@ class MainPage extends React.Component {
                                         <MainIndexItemContainer recipe={recipe6}/>
                                       </div>
                                     </div>
+                                    
                                     <div className="main-index-header">
                                       Browse From a <br/> Diverse Menu!
                                     </div>
