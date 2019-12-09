@@ -6,7 +6,9 @@ class WeeklyIngredientsCatagory extends React.Component {
   render() {
       let ing = Object.keys(this.props.ingredients).map(id => {
         return(
-          <WeeklyIngredientsItemContainer ingredient={this.props.ingredients[id]}/>
+          <WeeklyIngredientsItemContainer 
+            ingredient={this.props.ingredients[id]}
+            key={id}/>
         );
       })
     return(

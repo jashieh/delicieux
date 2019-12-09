@@ -2,6 +2,9 @@ import React from 'react';
 
 class WeeklyIngredientsItem extends React.Component {
   render() {
+    let amount = 0;
+    this.props.ingredient.amount % 1 === 0 ? amount = this.props.ingredient.amount :
+      amount = this.props.ingredient.amount.toFixed(2);
     return(
       <li>
         <div className="weekly-ing-image-container">
@@ -14,7 +17,7 @@ class WeeklyIngredientsItem extends React.Component {
           { this.props.ingredient.name }
           </div>
           <div className="fridge-item-amount">
-            { this.props.ingredient.amount } 
+            { amount } 
             { this.props.ingredient.unit }
           </div>
         </div>
