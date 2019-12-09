@@ -1,6 +1,6 @@
 
 .main-developers {
-  width: 88vw;
+  width: 90vw;
   height: 80vh;
 
   position: absolute;
@@ -9,7 +9,8 @@
 
   display: flex;
   flex-direction: column;
-  background: red;
+  align-items: center;
+  background: rgb(223, 102, 102);
 
   .dev-top {
     display: flex;
@@ -18,35 +19,71 @@
     width: 80%;
     height: 50%;
     margin-bottom: 10px;
+    justify-content: space-around;
   }
 }
 
 .main-developer {
   display: flex;
-  flex-direction: column;
-  width: 300px;
-  height: 500px;
+  flex-direction: row;
+  width: 40%;
+  height: 100%;
   background: blue;
 
-  .main-developer-name {
-    font-size: 30px;
-    line-height: 50px;
-    text-align: center;
-    vertical-align: middle;
+
+  .dev-left {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 40%;
+
+    .dev-image {
+      height: 165px;
+      width: 165px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
+    .main-developer-name {
+      font-size: 20px;
+      line-height: 50px;
+      text-align: center;
+      vertical-align: middle;
+      background: pink;
+    }
+  }
+
+  .dev-right {
+    display: flex;
+    flex-direction: column;
+    background: yellow;
+    flex-grow: 1;
+
+    .dev-link {
+      display: flex;
+      flex-direction: row;
+      background: red;
+
+      .dev-logo {
+        background: green;
+      }
+      img {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    // .main-developer-link {
+    //   text-align: center;
+    //   font-size: 15px;
+    //   font-weight: 600;
+    //   color: black;
+    //   margin: 10px;
+    // }
   }
 
   .main-developer-image {
-    // height: calc(50% + 10px);
-    padding-bottom: 10px;
-    border-radius: 5%;
-    width: 200px;
+    height: 100%;
   
-  }
-
-  .main-developer-link {
-    text-align: center;
-    font-weight: bold;
-    color: black;
-    margin: 10px;
   }
 }
