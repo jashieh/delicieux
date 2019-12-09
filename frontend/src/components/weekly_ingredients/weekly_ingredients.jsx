@@ -12,7 +12,6 @@ class WeeklyIngredients extends React.Component {
     this.state = {
       dates: [],
       catagories: {},
-      ingredients: {}
     }
 
     this.ingredients = {};
