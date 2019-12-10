@@ -1,5 +1,4 @@
 import React from 'react';
-import MainFilterDropdown from './main_filter_dropdown';
 import Toggle from 'react-toggle';
 // import "react-toggle/style.css";
 import '../stylesheets/recipes_index/main_filter.scss';
