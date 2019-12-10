@@ -25,7 +25,6 @@ class WeeklyNutrition extends React.Component {
         </div>
       )
     }
-
     return nutritionRows;
   }
   

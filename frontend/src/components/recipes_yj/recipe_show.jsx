@@ -48,7 +48,6 @@ export default class RecipeShow extends React.Component {
         ],
         label: true
       })}, 1000)
-    
   }
   toggleChart() {
     this.setState({pieChart: !this.state.pieChart});
@@ -171,32 +170,47 @@ export default class RecipeShow extends React.Component {
       </div>
     );
 
-    // TODO: INVESTIGATE THIS BUG
-    let rightPanel = this.state.instructions && recipe.instructions && recipe.instructions[0] ? (
-      <ol className="recipe-show-inst-list">
-        {recipe.instructions[0].steps.map((step, idx) => {
-          let number = step.number;
-          let instr = step.step;
-          return (
-          <li className="rs-li-item" key={idx}>
-            {instr}
-          </li>)
-        })}
-      </ol>) : (
+    let rightPanel;
+    if (this.state.instructions) {
+      if (recipe.instructions && recipe.instructions[0])
+        rightPanel = (
+          <ol className="recipe-show-inst-list">
+            {recipe.instructions[0].steps.map((step, idx) => {
+              let number = step.number;
+              let instr = step.step;
+              return (
+                <li className="rs-li-item" key={idx}>
+                  {instr}
+                </li>)
+            })}
+          </ol>
+        )
+      else
+        rightPanel = (
+          <div className="recipe-no-instructions">
+            Instructions can be found at: &nbsp;
+            <a href={recipe.sourceUrl} target="_blank">{recipe.sourceName}</a>
+          </div>
+        )
+    }
+    else {
+      rightPanel = (
         <ul className="recipe-show-ing-list">
-        {recipe.ingredients.map((ingredient, idx) => {
-          let ingrName = ingredient.name.split(" ");
-          let subName = ingrName[ingrName.length - 1];
-          // let listStyle = { color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red" };
-          return (
-            <li className="rs-li-item" key={idx} >
-              <div className="rs-li-item-pic-cont" >
-                {ingredient.image ? <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} /> : null}
-              </div>
-              {ingredient.amount % 1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
-            </li>)
-        })}
-      </ul>);
+          {recipe.ingredients.map((ingredient, idx) => {
+            let ingrName = ingredient.name.split(" ");
+            let subName = ingrName[ingrName.length - 1];
+            // let listStyle = { color: fridgeList.includes(ingredient.name) ? "black" : fridgeList.includes(subName) ? "blue" : "red" };
+            return (
+              <li className="rs-li-item" key={idx} >
+                <div className="rs-li-item-pic-cont" >
+                  {ingredient.image ? <img className="rs-l-i-p" src={`https://spoonacular.com/cdn/ingredients_100x100/${ingredient.image}`} /> : null}
+                </div>
+                {ingredient.amount % 1 === 0 ? ingredient.amount : ingredient.amount.toFixed(2)} {ingredient.unit} {ingredient.name}
+              </li>)
+          })}
+        </ul>)
+    }
+
     return(
       <div className="cont-cont">
         <div className="recipe-show-cont">
@@ -233,7 +247,7 @@ export default class RecipeShow extends React.Component {
             </div>
             <div className="rs-list-cont">
               
-              <div style={{display: "flex"}}>
+              <div className="recipe-show-toggle">
                 <div className="list-title" 
                   onClick={this.toggleRight}
                   style={this.state.instructions ? {} : { textDecoration: "underline", fontWeight: "bold" }}>
