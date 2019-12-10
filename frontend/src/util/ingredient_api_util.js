@@ -39,7 +39,7 @@ export const getIngredientById = (id, amount = 1, unit = "gram") => {
     "headers": {
       "content-type": "application/octet-stream",
       "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-      "x-rapidapi-key": "f9ba977a04msha79dcdbd3b845c1p1e804ajsn0a5620f33ad5"
+      "x-rapidapi-key": key.apiKey
     }, "params": {
       "amount": `${amount}`,
       "unit": `${unit}`
