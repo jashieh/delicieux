@@ -14,28 +14,35 @@ class FridgeIngredients extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
-    console.log(this.props);
+    console.log("asdasda")
 
     if(this.props !== prevProps) {
+      console.log("f")
+
       let results = 0;
       let ingredients = this.props.ingredients;
       let ids = Object.keys(ingredients);
+      console.log(ids);
+      if(ids.length === 0) {
+        this.setState({ catagories: {} });
+        return;
+      }
+      let ingTemp = {};
       for(let i = 0; i < ids.length; i++) {
         results++;
         getIngredientById(ids[i]).then(res => {
 
           let aisle = res.data.aisle.split(";")[0];
           ingredients[ids[i]].aisle = aisle;
-          this.ingredients[ids[i]] = ingredients[ids[i]];
+          ingTemp[ids[i]] = ingredients[ids[i]];
           results--;
 
           if (results === 0) {
             let ing = {};
-            let ids = Object.keys(this.ingredients);
+            let ids = Object.keys(ingTemp);
 
             for(let i = 0; i < ids.length; i++) {
-              let ingredient = this.ingredients[ids[i]];
+              let ingredient = ingTemp[ids[i]];
               let aisle = ingredient.aisle.split(";")[0];
 
               if(!ing[aisle]) {
@@ -44,6 +51,8 @@ class FridgeIngredients extends React.Component {
 
               ing[aisle][ids[i]] = ingredient;
             }
+            console.log("x")
+
             this.setState({ catagories: ing });
           };
         });
@@ -53,7 +62,6 @@ class FridgeIngredients extends React.Component {
 
   render() {
     let ingredients;
-    console.log(this.state.catagories);
     let catagories;
     let ids = Object.keys(this.state.catagories);
 
