@@ -8,7 +8,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import { Link } from 'react-router-dom';
 
 
-
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -28,17 +27,16 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.nextStep();
+    // this.props.nextStep();
     if (this.props.values.name.length === 0) {
       this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
     } else if (this.props.values.password.length < 6) {
-      this.setState({ errors: this.state.errors.concat(["User at least 6 characters"]) });
+      this.setState({ errors: this.state.errors.concat(["Password at least 6 characters"]) });
     } else if (this.props.values.password2 !== this.props.values.password ) {
       this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
     } else {
       this.props.nextStep();
     }
-
   }
 
   // handlePassSubmit(e) {
@@ -56,7 +54,7 @@ class SignupForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -74,61 +72,54 @@ class SignupForm extends React.Component {
     const { values, handleChange } = this.props;
 
     return (
-      <MuiThemeProvider>
         <div className="session-background">
           <div className="signup-text">délicieux</div>
-          <a className="signup-form" class="btn">
+          <a className="signup-form" className="btn">
             <span>
               <span>
                 <span>
                   <div className="signup-contain">
                     <div className="signup-text-contain">
                       <div>
-                        <TextField
-                          style={{
-                            color: "blue"
-                          }}
-                          inputStyle={{ color: "white" }}
-                          hintText="Enter Your Name"
-                          floatingLabelText="Name"
-                          onChange={handleChange("name")}
-                          defaultValue={values.name}
+                        <input type="text"
+                          value={values.name}
+                          onChange={handleChange('name')}
+                          placeholder="Name"
+                          className="login-text sign"
+                        />
+                      </div>
+                      {this.renderNameErrors()}
+                      <div>
+                        <input type="text"
+                          value={values.email}
+                          onChange={handleChange('email')}
+                          placeholder="Email"
+                          className="login-text sign"
                         />
                       </div>
                       <div>
-                        <TextField
-                          inputStyle={{ color: "white" }}
-                          hintText="Enter Your Email"
-                          floatingLabelText="Email"
-                          onChange={handleChange("email")}
-                          defaultValue={values.email}
+                        <input type="password"
+                          value={values.password}
+                          onChange={handleChange('password')}
+                          placeholder="Password"
+                          className="login-text sign"
                         />
                       </div>
                       <div>
-                        <TextField
-                          inputStyle={{ color: "white" }}
-                          type="password"
-                          hintText="Enter Your Password"
-                          floatingLabelText="Password"
-                          defaultValue={values.password}
-                          onChange={handleChange("password")}
-                        />
-                      </div>
-                      <div>
-                        <TextField
-                          inputStyle={{ color: "white" }}
-                          type="password"
-                          hintText="Confirm Password"
-                          floatingLabelText="Password"
-                          defaultValue={values.password2}
-                          onChange={handleChange("password2")}
+                        <input type="password"
+                          value={values.password2}
+                          onChange={handleChange('password2')}
+                          placeholder="Confirm Password"
+                          className="login-text sign"
                         />
                       </div>
                     </div>
-                    <button className="submit" onClick={this.handleSubmit}>Continue</button>
+                    <div className="signup-bottom">
+                      <button className="submit" onClick={this.handleSubmit}>Continue</button>
+                    </div>
                     <div className="go-back">
                       <h2>Already have an account?</h2>
-                      <Link to="/login">Login</Link>
+                      <Link className="back-sign" to="/login">Login</Link>
                     </div>
                   </div>
                 </span>
@@ -136,7 +127,6 @@ class SignupForm extends React.Component {
             </span>
           </a>
         </div>
-      </MuiThemeProvider>
     );
   }
 }
