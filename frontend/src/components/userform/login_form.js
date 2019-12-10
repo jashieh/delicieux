@@ -109,13 +109,20 @@ class LoginForm extends React.Component {
                       />
                       <br />
 
-                      <TextField
+                      {/* <TextField
                         inputStyle={{ color: "white" }}
                         type="password"
                         hintText="Enter Your Password"
                         floatingLabelText="Password"
                         value={this.state.password}
                         onChange={this.update("password")}
+                      /> */}
+
+                      <input type="password"
+                        value={this.state.password}
+                        onChange={this.update('password')}
+                        placeholder="Password"
+                        className="login-text"
                       />
                       <br />
                       {this.renderErrors()}
