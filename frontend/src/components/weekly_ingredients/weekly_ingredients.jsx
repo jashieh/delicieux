@@ -132,7 +132,6 @@ class WeeklyIngredients extends React.Component {
         this.results--;
         console.log(this.results)
         if (this.results === 0) {
-          console.log(this.ingredients)
           let ing = {};
           let ids = Object.keys(this.ingredients);
 

@@ -49,16 +49,16 @@ class WeeklyIngredientsItem extends React.Component {
     let check = "";
 
     if(this.state.checked) {
-      check = "x";
+      check = <i className="far fa-check-circle checked"></i>;
     } else {
-      check = "o";
+      check = <i className="far fa-circle"></i>;
     }
     return(
       <li className="weekly-ingredients-item" onClick={this.handleClick}>
-        <div className="weekly-ingredient-checkbox">
+        <div className="weekly-ing-checkbox">
           { check }
         </div>
-        <div>
+        <div className="weekly-ing-box">
           <div className="weekly-ing-image-container">
             <img src={`https://spoonacular.com/cdn/ingredients_100x100/${this.props.ingredient.image}`} 
               alt=""

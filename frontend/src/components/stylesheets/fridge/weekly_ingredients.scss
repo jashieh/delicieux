@@ -53,24 +53,38 @@
     }
 
     .weekly-ingredients-item {
-      // width: 35%;
-      // min-width: 180px;
-      min-height: 38px;
-      margin: 10px 30px;
-      background-color: white;
-      box-shadow: 1px 1px 7px 1px #242222;
-      color: black;
-      border-radius: 4px;
-      font-family: Open Sans;
-      font-size: 14px;
-      font-weight: 100;
-      // animation-fill-mode: both;
-      // animation: FadeIn 1s;
-      position: relative;
-      display: flex;
+      display: flex; 
       flex-direction: row;
-      justify-content: space-between;
       align-items: center;
+      animation: FadeIn 1s;
+      position: relative;
+      
+      .weekly-ing-checkbox {
+        margin-left: 20px;
+        font-size: 27px;
+      }
+
+      .checked {
+        color: green;
+      }
+
+      .weekly-ing-box {
+        min-height: 38px;
+        width: 70%;
+        margin: 10px 15px;
+        background-color: white;
+        box-shadow: 1px 1px 7px 1px #242222;
+        color: black;
+        border-radius: 4px;
+        font-family: Open Sans;
+        font-size: 14px;
+        font-weight: 100;
+        animation-fill-mode: both;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       .weekly-ing-image-container {
         margin-top: 5px;

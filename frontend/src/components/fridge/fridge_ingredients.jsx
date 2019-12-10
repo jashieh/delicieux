@@ -14,15 +14,11 @@ class FridgeIngredients extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log("asdasda")
 
     if(this.props !== prevProps) {
-      console.log("f")
-
       let results = 0;
       let ingredients = this.props.ingredients;
       let ids = Object.keys(ingredients);
-      console.log(ids);
       if(ids.length === 0) {
         this.setState({ catagories: {} });
         return;
@@ -51,7 +47,6 @@ class FridgeIngredients extends React.Component {
 
               ing[aisle][ids[i]] = ingredient;
             }
-            console.log("x")
 
             this.setState({ catagories: ing });
           };
