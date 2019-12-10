@@ -42,6 +42,7 @@ export default class MainFilter extends React.Component {
       maxFat: 0,
       minProtein: 0,
     }
+
     this.addIngredient = this.addIngredient.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -354,6 +355,7 @@ export default class MainFilter extends React.Component {
         </div>)
     }
   }     
+
   render() {
    
     return(
