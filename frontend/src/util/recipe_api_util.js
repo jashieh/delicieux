@@ -1,8 +1,7 @@
 import axios from 'axios';
 import key from './key';
 axios.defaults.timeout = 10000;
-const client = axios.create();
-client.defaults.timeout = 10000;
+
 export const getRandomRecipe = (number = 1, tags) => {
   if (!tags) tags = [];
   let tagStr = tags.join(",");
@@ -17,10 +16,10 @@ export const getRandomRecipe = (number = 1, tags) => {
     "params": {
       "number": `${number}`,
       "tags": tagStr
-    }
+    },
   })
     // .then(res => console.log(res))
-    // .catch(err => console.log(err))
+    // .fail(err => console.log(err))
   //res.data
 };
 
@@ -41,7 +40,6 @@ export const getRandomRecipes = (number) => {
 };
 
 export const getRecipeById = (id, includeNutrition = true) => {
-  // return axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=${includeNutrition}&apiKey=${apiKey}`);
   return axios({
     "method": "GET",
     "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`,
@@ -62,7 +60,6 @@ export const getRecipeById = (id, includeNutrition = true) => {
 // Input ids as an array
 export const getMultipleRecipes = (ids, includeNutrition = true) => {
   const idString = ids.join(',');
-  // return axios.get(`https://api.spoonacular.com/recipes/informationBulk?${idString}&apiKey=${apiKey}`);
 
   return axios({
     "method": "GET",
@@ -170,17 +167,15 @@ export const complexRecipeSearch = (
 
   // const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");
-  const config = {
-    timeout: 10000
-  }
-  const abort = axios.CancelToken.source()
-  const id = setTimeout(
-    () => abort.cancel(`Timeout of ${config.timeout}ms.`),
-    10000)
-  // console.log(queryStr);
-  // return axios.get(`https://api.spoonacular.com/recipes/complexSearch?${queryStr}apiKey=${apiKey}`);
+  // const config = {
+  //   timeout: 10000
+  // }
+  // const abort = axios.CancelToken.source()
+  // const id = setTimeout(
+  //   () => abort.cancel(`Timeout of ${config.timeout}ms.`),
+  //   10000)
 
-  return client({
+  return axios({
     "method": "GET",
     "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch",
     "headers": {
@@ -207,8 +202,7 @@ export const complexRecipeSearch = (
       "fillIngredients": "true",
       "instructionsRequired": "true"
     },
-    "cancelToken": abort.token,
-    "timeout": 10000
+    timeout: 5000
   })
   .catch((error)=>{
     console.log("we error now")

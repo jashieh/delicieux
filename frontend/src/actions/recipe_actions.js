@@ -194,6 +194,7 @@ export const complexRecipeSearch = ({
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
+    .catch(err => console.log("oh we fucked"))
 };
 
 export const searchRecipeByName = (name, limit = 5) => dispatch => (
