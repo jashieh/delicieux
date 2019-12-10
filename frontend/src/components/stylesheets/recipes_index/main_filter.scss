@@ -43,6 +43,7 @@
     // background: #DFF2F7;
     display: flex;
     flex-direction: row;
+    align-items: center;
   }
 
   .filter-header {
@@ -92,9 +93,8 @@
       background: inherit;
       display: flex;
       justify-content: center;
+      cursor: pointer;
       
-      
-
       img {
         width: 17px;
         height: 17px;
@@ -103,7 +103,6 @@
       
     }
     .filter-query-search:hover{
-        cursor: pointer;
         background: #d3d3d3;
         border-radius: 3px;
     }
@@ -133,7 +132,7 @@
   .filter-param-cont {
     width: 380px;
     height: 20px;
-    margin-top: 29px;
+    // margin-top: 15px;
     margin-left: 33px;
     margin-right: 10px;
     display: flex;
@@ -244,10 +243,12 @@
   position: absolute;
   top: 0;
   right: 10px;
+  font-size: 25px;
 }
 .filter-x:hover {
   cursor: pointer;
-  color: white;
+  // color: white;
+  color: grey;
 }
 .filter-bot-diet {
   height: 70px;
@@ -386,6 +387,28 @@ input[type=number] {
   display: flex;
   justify-content: flex-end !important;
   // background-color: red;
+  
+  .include-fridge-toggle {
+    cursor: pointer;
+    padding: 15px 15px;
+    background-color: rgba(228, 228, 209, 0.699);
+    box-shadow: 1px 1px 6px 1px rgba(187, 184, 163, 0.8);
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+
+   -ms-user-select: none;
+   user-select: none;
+  }
+  
+  .include-fridge {
+    background-color: green;
+  }
+
 
   .filter-dd-item1 {
     width: max-content;
@@ -439,13 +462,15 @@ input[type=number] {
 .filter-search-ul {
   position: absolute;
   z-index: 10;
-  background-color: white;
+  background-color: rgb(238, 236, 236);
   color: black;
   box-sizing: border-box;
   width: 300px;
+  margin-left: -10px;
   font-weight: 400;
   font-size: 15px;
   font-family: Open Sans;
+
     .filter-search-li {
       padding: 12px 15px;
       color:black;
@@ -457,11 +482,10 @@ input[type=number] {
     
     
     .filter-search-li:hover {
-        cursor: pointer;
-        filter: brightness(80%);
-        background-color: #24B6FF;
-        color: white;
-        font-weight: 600;
+      cursor: pointer;
+      background-color: #24B6FF;
+      color: rgb(211, 207, 207);
+      font-weight: 600;
     }
 
   }    

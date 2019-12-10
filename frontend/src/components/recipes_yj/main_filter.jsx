@@ -137,7 +137,7 @@ export default class MainFilter extends React.Component {
       });
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
-    debugger;
+
     if (ingredientList.length) {
       this.props.startLoad("loading");
       this.props.getRecipesByIngredients(ingredientList, 12);
@@ -357,9 +357,12 @@ export default class MainFilter extends React.Component {
   }     
 
   render() {
-   
+    let includeFridge;
+
+    this.state.includeFridge ? includeFridge = "include-fridge" : includeFridge = "";
+
     return(
-      <div >
+      <div>
       {this.state.ingredientToggle ? (
         <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
@@ -367,19 +370,23 @@ export default class MainFilter extends React.Component {
           <div className="filter-header">
             <div className="filter-text-cont">
               <FilterSearchContainer addIngredient={this.addIngredient}/>
-              <div className="filter-query-search" onClick={this.handleIngredientSubmit} 
+              <div className="filter-query-search"  
                 style={!this.state.ingredientList.length ? {background: "white", cursor: "auto"} : {}}>
                   <img src={Loupe} alt=""/>
               </div>
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
-                <label className="filter-dd-item1">
+              <div className={`include-fridge-toggle ${includeFridge}`} 
+                onClick={this.handleCheck("includeFridge")}>
+                Include Fridge
+              </div>
+                {/* <label className="filter-dd-item1">
                     <Toggle className="toggle" 
                     defaultChecked={this.state.includeFridge} 
                     onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
-                </label> 
+                </label>  */}
             </div>
           </div>
           <div className="filter-bot-allergies">
