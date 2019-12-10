@@ -77,7 +77,6 @@
   display: inline-block;
   padding: 0.7em 2.6em;
 
-  cursor: pointer;
   overflow: hidden;
 
   &:before,
@@ -214,9 +213,15 @@ body {
 
 }
 
+a {
+  font-size: 1.2em;
+  letter-spacing: 0.07em;
+  text-decoration: none;
+  margin: 16px 0;
+}
 
 .btn {
-  @include btn-border-slide(#252525, #d0deeb, 1px, 0.9s);
+  @include btn-border-slide(rgb(247, 217, 180), rgb(184, 149, 107), 1.3px, 0.9s);
 //   @include btn-border-slide(#252525, #168dff, 2px, 0.8s);
 }
 

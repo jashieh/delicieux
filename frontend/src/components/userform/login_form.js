@@ -61,15 +61,15 @@ class LoginForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
   }
 
   render() {
+
     return (
-      <MuiThemeProvider>
         <div className="session-background">
           <div className="signup-text">délicieux</div>
           <a className="signup-form" class="btn">
@@ -79,40 +79,43 @@ class LoginForm extends React.Component {
                   <form onSubmit={this.handleSubmit}>
                     <div>
                       <br />
-                      <TextField
-                        inputStyle={{ color: "white" }}
+
+                      <input
                         type="text"
-                        hintText="Enter Your Email"
-                        floatingLabelText="Email"
                         value={this.state.email}
-                        onChange={this.update("email")}
+                        onChange={this.update('email')}
+                        placeholder="Email"
+                        className="login-text"
+                      />
+                      <br />
+                      <input type="password"
+                        value={this.state.password}
+                        onChange={this.update('password')}
+                        placeholder="Password"
+                        className="login-text"
                       />
                       <br />
 
-                      <TextField
-                        inputStyle={{ color: "white" }}
-                        type="password"
-                        hintText="Enter Your Password"
-                        floatingLabelText="Password"
-                        value={this.state.password}
-                        onChange={this.update("password")}
-                      />
-                      <br />
                       {this.renderErrors()}
+
                       <div className="login-bottom">
+
                         <div className="buttons">
                           <input type="submit" value="Submit" className="submit" />
                         </div>
+
                         <div className="buttons">
                           <button className="submit" onClick={this.handleDemo()}>
                             Demo User
                           </button>
                         </div>
+
                       </div>
-                        <div className="go-back">
-                          <h2>Don't have an account?</h2>
-                          <Link className="back-sign" to="/signup">Sign Up</Link>
-                        </div>
+
+                      <div className="go-back">
+                        <h2>Don't have an account?</h2>
+                        <Link className="back-sign" to="/signup">Sign Up</Link>
+                      </div>
                     </div>
                   </form>
                 </span>
@@ -120,7 +123,6 @@ class LoginForm extends React.Component {
             </span>
           </a>
         </div>
-      </MuiThemeProvider>
     );
   }
 }
