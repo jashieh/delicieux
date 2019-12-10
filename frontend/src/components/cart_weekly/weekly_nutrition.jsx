@@ -16,7 +16,7 @@ class WeeklyNutrition extends React.Component {
       if (nutrientNames[i] === "dates") continue;
       let { amount, unit, percentage } = nutrients[nutrientNames[i]];
 
-      debugger;
+      // debugger;
       nutritionRows.push(
         <div className="weekly-nutrient-row">
           <div className="weekly-nutrient-name">{ nutrientNames[i] }</div>
