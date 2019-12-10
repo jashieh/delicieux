@@ -68,6 +68,13 @@ class LoginForm extends React.Component {
   }
 
   render() {
+
+    // const styles = {
+    //   InputLabelProps: {
+    //     color: '#fff'
+    //   }
+    // }
+
     return (
       <MuiThemeProvider>
         <div className="session-background">
@@ -79,13 +86,26 @@ class LoginForm extends React.Component {
                   <form onSubmit={this.handleSubmit}>
                     <div>
                       <br />
-                      <TextField
-                        inputStyle={{ color: "white" }}
+                      {/* <TextField
+                        inputStyle={{ color: "black" }}
                         type="text"
-                        hintText="Enter Your Email"
                         floatingLabelText="Email"
+                        InputLabelProps={{
+                          style: {
+  
+                            color: 'red'
+                          }
+                        }}
                         value={this.state.email}
                         onChange={this.update("email")}
+                      /> */}
+
+                      <input
+                        type="text"
+                        value={this.state.email}
+                        onChange={this.update('email')}
+                        placeholder="Email"
+                        className="login-text"
                       />
                       <br />
 
