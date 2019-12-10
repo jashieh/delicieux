@@ -36,7 +36,6 @@ class SignupForm extends React.Component {
       errors.push("Please enter your name");
       // this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
       bool = false;
-      console.log("xd")
     } 
     if (this.props.values.password.length < 6) {
       // this.setState({ errors: this.state.errors.concat(["User at least 6 characters"]) });
