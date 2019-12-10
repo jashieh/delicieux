@@ -51,14 +51,14 @@ class WeeklyCart extends React.Component {
 
   addListeners() {
     this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
-    this.weeklyCart.addEventListener("wheel", (e) => { this.scrollCart(e) });
+    this.weeklyCart.addEventListener("wheel", this.scrollCart);
   }
 
   // Removes the listener, fixes the bug when this.weeklyCart isn't found
   removeListeners() {
     this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
     if (this.weeklyCart)
-      this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
+      this.weeklyCart.removeEventListener("wheel", this.scrollCart);
   }
 
   scrollCart(e) {
