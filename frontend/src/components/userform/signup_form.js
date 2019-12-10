@@ -77,14 +77,20 @@ class SignupForm extends React.Component {
       <MuiThemeProvider>
         <div className="session-background">
           <div className="signup-text">délicieux</div>
-          <a className="signup-form" class="btn">
+          <a className="signup-form" className="btn">
             <span>
               <span>
                 <span>
                   <div className="signup-contain">
                     <div className="signup-text-contain">
                       <div>
-                        <TextField
+                        <input type="text"
+                          value={values.name}
+                          onChange={handleChange('name')}
+                          placeholder="Name"
+                          className="login-text"
+                        />
+                        {/* <TextField
                           style={{
                             color: "blue"
                           }}
@@ -93,42 +99,62 @@ class SignupForm extends React.Component {
                           floatingLabelText="Name"
                           onChange={handleChange("name")}
                           defaultValue={values.name}
-                        />
+                        /> */}
                       </div>
                       <div>
-                        <TextField
+                        <input type="text"
+                          value={values.email}
+                          onChange={handleChange('email')}
+                          placeholder="Email"
+                          className="login-text"
+                        />
+                        {/* <TextField
                           inputStyle={{ color: "white" }}
                           hintText="Enter Your Email"
                           floatingLabelText="Email"
                           onChange={handleChange("email")}
                           defaultValue={values.email}
-                        />
+                        /> */}
                       </div>
                       <div>
-                        <TextField
+                        <input type="password"
+                          value={values.password}
+                          onChange={handleChange('password')}
+                          placeholder="Password"
+                          className="login-text"
+                        />
+                        {/* <TextField
                           inputStyle={{ color: "white" }}
                           type="password"
                           hintText="Enter Your Password"
                           floatingLabelText="Password"
                           defaultValue={values.password}
                           onChange={handleChange("password")}
-                        />
+                        /> */}
                       </div>
                       <div>
-                        <TextField
+                        <input type="password"
+                          value={values.password2}
+                          onChange={handleChange('password2')}
+                          placeholder="Confirm Password"
+                          className="login-text"
+                        />
+                        {/* <TextField
                           inputStyle={{ color: "white" }}
                           type="password"
                           hintText="Confirm Password"
                           floatingLabelText="Password"
                           defaultValue={values.password2}
                           onChange={handleChange("password2")}
-                        />
+                        /> */}
                       </div>
                     </div>
-                    <button className="submit" onClick={this.handleSubmit}>Continue</button>
+                    <div className="signup-bottom">
+                      <button className="submit" onClick={this.handleSubmit}>Continue</button>
+                    </div>
                     <div className="go-back">
                       <h2>Already have an account?</h2>
-                      <Link to="/login">Login</Link>
+                      <Link className="back-sign" to="/login">Login</Link>
                     </div>
                   </div>
                 </span>

@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -76,7 +76,6 @@ class LoginForm extends React.Component {
     // }
 
     return (
-      <MuiThemeProvider>
         <div className="session-background">
           <div className="signup-text">délicieux</div>
           <a className="signup-form" class="btn">
@@ -86,19 +85,6 @@ class LoginForm extends React.Component {
                   <form onSubmit={this.handleSubmit}>
                     <div>
                       <br />
-                      {/* <TextField
-                        inputStyle={{ color: "black" }}
-                        type="text"
-                        floatingLabelText="Email"
-                        InputLabelProps={{
-                          style: {
-  
-                            color: 'red'
-                          }
-                        }}
-                        value={this.state.email}
-                        onChange={this.update("email")}
-                      /> */}
 
                       <input
                         type="text"
@@ -108,16 +94,6 @@ class LoginForm extends React.Component {
                         className="login-text"
                       />
                       <br />
-
-                      {/* <TextField
-                        inputStyle={{ color: "white" }}
-                        type="password"
-                        hintText="Enter Your Password"
-                        floatingLabelText="Password"
-                        value={this.state.password}
-                        onChange={this.update("password")}
-                      /> */}
-
                       <input type="password"
                         value={this.state.password}
                         onChange={this.update('password')}
@@ -125,21 +101,27 @@ class LoginForm extends React.Component {
                         className="login-text"
                       />
                       <br />
+
                       {this.renderErrors()}
+
                       <div className="login-bottom">
+
                         <div className="buttons">
                           <input type="submit" value="Submit" className="submit" />
                         </div>
+
                         <div className="buttons">
                           <button className="submit" onClick={this.handleDemo()}>
                             Demo User
                           </button>
                         </div>
+
                       </div>
-                        <div className="go-back">
-                          <h2>Don't have an account?</h2>
-                          <Link className="back-sign" to="/signup">Sign Up</Link>
-                        </div>
+
+                      <div className="go-back">
+                        <h2>Don't have an account?</h2>
+                        <Link className="back-sign" to="/signup">Sign Up</Link>
+                      </div>
                     </div>
                   </form>
                 </span>
@@ -147,7 +129,6 @@ class LoginForm extends React.Component {
             </span>
           </a>
         </div>
-      </MuiThemeProvider>
     );
   }
 }

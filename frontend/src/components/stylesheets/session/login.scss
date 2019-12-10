@@ -87,10 +87,14 @@
 
 .go-back {
     font-family: Open Sans;
-    font-size: 12px;
+    font-size: 13px;
+    // background: red;
+    padding-left: 20px;
     font-weight: 300;
     display: flex;
     flex-direction: row;
+    // text-transform: capitalize;
+    letter-spacing: 1.1px;
 
     h2 {
         width: max-content;
@@ -100,35 +104,17 @@
 
     .back-sign {
         width: max-content;
+        font-size: 13px;
+        // text-transform: capitalize;
+
+    }
+    .back-sign:hover {
+        color: rgb(152, 99, 43);
+        font-weight: 500;
     }
 }
 
     
-.signup-text {
-    height: 0;
-    font-family: Sacramento;
-    position: absolute;
-    top: 150px;
-    // left: 47%;
-    left: 38%;
-    color: black;
-    font-size: 38px;
-    font-weight: 100;
-    text-shadow: 1px 1px 8px rgba(148, 85, 37, 0.836);
-}
-
-
-.submit {
-    background-color: black;
-    border: none;
-    color: rgb(176, 171, 171);
-    font-size: 13px;
-    padding: 10px 30px;
-    margin: 0 auto;
-    width: 130px;
-    // margin-top: 10px;
-    font-family: Open Sans;
-}
 
 .login-bottom {
     display: flex;
@@ -137,9 +123,49 @@
     // background-color: red;
     justify-content: space-around;
     
+    .submit {
+        background-color: rgba(196, 133, 74, 0.351);
+        border: none;
+        color: rgb(109, 53, 4);
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px 0px;
+        margin: 0 6px;
+        width: 117px;
+        border-radius: 4px;
+        // margin-top: 10px;
+        font-family: Open Sans;
+
+    }
+
+    .submit:hover {
+        color: rgba(255, 255, 255, 0.769);
+        background:rgba(196, 133, 74, 0.44);
+        cursor: pointer;
+    }
+
+    .submit:focus {
+        outline: none;
+        font-size: 13px;
+        font-weight: bold;
+        letter-spacing: 0px;
+
+    }
 }
 
 .session-background {
+    display: flex;
+    flex-direction: column;
+
+    .signup-text {
+        font-family: Sacramento;
+        color: black;
+        font-size: 36px;
+        font-weight: 100;
+        // width: 340px;
+        text-shadow: 1px 1px 8px rgba(148, 85, 37, 0.836);
+    }
+
 
     .login-text {
         background: inherit;
@@ -148,14 +174,19 @@
         outline: none;
         border: none;
         border-bottom: 1px solid rgba(160, 138, 82, 0.803);
+        margin: 17px 0px;
+        color: rgb(72, 57, 20);
+        font-family: Open Sans;
+        font-size: 15px;
+        letter-spacing: 1.4px;
 
     }
 
     ::placeholder {
         font-family: Open Sans;
-        font-size: 16px;
+        font-size: 13px;
         letter-spacing: 1.2px;
-        color: rgb(72, 57, 20);
+        color: rgb(153, 130, 71);
         padding-left: 0px;
     }
 
@@ -165,5 +196,61 @@
         font-size: 15px;
         letter-spacing: 1.4px;
     }
+
+    input:hover {
+        cursor: pointer;
+    }
+
+    input:focus::-webkit-input-placeholder {
+        color: rgba(72, 57, 20, 0.884);
+        text-shadow: 1px 1px 8px rgb(193, 161, 91);
+    }
 }
 
+.login-error {
+    color: rgb(72, 57, 20);
+    font-family: Open Sans;
+    font-size: 13px;
+    letter-spacing: 1.4px;
+    padding: 10px 0px;
+    // background: yellow;
+    text-align: center;
+    // text-transform: lowercase;
+}
+
+
+.submit {
+    background-color: rgba(196, 133, 74, 0.351);
+    border: none;
+    color: rgb(109, 53, 4);
+    font-size: 13px;
+    font-weight: bold;
+    padding: 10px 0px;
+    margin: 0 6px;
+    width: 117px;
+    border-radius: 4px;
+    // margin-top: 10px;
+    font-family: Open Sans;
+
+}
+
+.submit:hover {
+    color: rgba(255, 255, 255, 0.769);
+    background:rgba(196, 133, 74, 0.44);
+    cursor: pointer;
+}
+
+.submit:focus {
+    outline: none;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 0px;
+
+}
+
+
+.signup-bottom {
+    display: flex;
+    justify-content: center;
+    margin: 7px;
+}
