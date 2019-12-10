@@ -20,11 +20,11 @@ class WeeklyIngredientsItem extends React.Component {
   }
 
   handleClick() {
-    if(this.state.checked) {
-      this.setState({ checked: false });
-    } else {
-      this.setState({ checked: true });
-    }
+    // if(this.state.checked) {
+    //   this.setState({ checked: false });
+    // } else {
+    //   this.setState({ checked: true });
+    // }
 
     let ingredient = this.props.ingredient;
     getConvertAmounts(ingredient.name, ingredient.unit, ingredient.amount)
@@ -32,10 +32,11 @@ class WeeklyIngredientsItem extends React.Component {
         if(this.state.checked) {
           this.props.modifyIngredient(this.props.userId, this.props.ingredient, 
             -res.data.targetAmount);
-            
+            this.setState({ checked: false });            
         } else {
           this.props.modifyIngredient(this.props.userId, this.props.ingredient, 
             res.data.targetAmount);
+            this.setState({ checked: true });
         }
       });
   }
