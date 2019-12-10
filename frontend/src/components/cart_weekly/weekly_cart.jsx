@@ -141,7 +141,6 @@ class WeeklyCart extends React.Component {
       let nutrient = nutrientNames[i];
 
       let recipeInfo = recipeNutrition.filter(val => [nutrient].includes(val.title));
-
       if (!recipeInfo || !recipeInfo[0]) continue;
 
       let recipeAmount = recipeInfo && recipeInfo[0] ? recipeInfo[0].amount : 0;

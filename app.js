@@ -4,7 +4,7 @@ const db = require('./config/keys').mongoURI;
 const bodyParser = require('body-parser');
 const passport = require("passport");
 const path = require('path');
-// const timeout = require('connect-timeout')
+
 const app = express();
 
 const users = require('./routes/api/users');
@@ -27,7 +27,6 @@ app.all('/', function (req, res, next) {
   res.header("Access-Control-Allow-Headers", "x-rapidapi-key");
   next()
 });
-// app.use(timeout('10s'));
 
 app.use('/api/users', users);
 app.use('/api/recipes', recipes);
