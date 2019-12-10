@@ -103,7 +103,7 @@
     }
 
     .back-sign {
-        width: max-content;
+        width: 54px;
         font-size: 13px;
         // text-transform: capitalize;
 
@@ -245,12 +245,19 @@
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 0px;
-
+   
 }
 
 
 .signup-bottom {
     display: flex;
     justify-content: center;
-    margin: 7px;
+    margin: 15px 7px;
+    margin-top: 19px;
+}
+
+
+.login-text.sign {
+    margin: 14px 0px;
+
 }

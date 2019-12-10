@@ -88,7 +88,7 @@ class SignupForm extends React.Component {
                           value={values.name}
                           onChange={handleChange('name')}
                           placeholder="Name"
-                          className="login-text"
+                          className="login-text sign"
                         />
                         {/* <TextField
                           style={{
@@ -106,7 +106,7 @@ class SignupForm extends React.Component {
                           value={values.email}
                           onChange={handleChange('email')}
                           placeholder="Email"
-                          className="login-text"
+                          className="login-text sign"
                         />
                         {/* <TextField
                           inputStyle={{ color: "white" }}
@@ -121,7 +121,7 @@ class SignupForm extends React.Component {
                           value={values.password}
                           onChange={handleChange('password')}
                           placeholder="Password"
-                          className="login-text"
+                          className="login-text sign"
                         />
                         {/* <TextField
                           inputStyle={{ color: "white" }}
@@ -137,7 +137,7 @@ class SignupForm extends React.Component {
                           value={values.password2}
                           onChange={handleChange('password2')}
                           placeholder="Confirm Password"
-                          className="login-text"
+                          className="login-text sign"
                         />
                         {/* <TextField
                           inputStyle={{ color: "white" }}
