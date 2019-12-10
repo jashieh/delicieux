@@ -26,16 +26,33 @@ class LoginForm extends React.Component {
     this.setState({ errors: nextProps.errors });
   }
 
+  handleDemoLogin(email, password) {
+    if (email.length > 0) {
+      this.setState({ email: this.state.email += email.shift() },
+        () => setTimeout(() => this.handleDemoLogin(email, password), 50)
+      )
+    } else if (password.length > 0) {
+      this.setState({ password: this.state.password += password.shift() },
+        () => setTimeout(() => this.handleDemoLogin(email, password), 50)
+      )
+    } else {
+      this.props.login(this.state);
+    }
+  }
+
+
   handleDemo() {
-    let { email, password } = this.state;
-    let demoUser = {
-      email: "demo_user@delicious.com",
-      password: "password"
-    };
+    // let { email, password } = this.state;
+    // let demoUser = {
+    //   email: "demo_user@delicious.com",
+    //   password: "password"
+    // };
 
     return e => {
       e.preventDefault();
-      this.props.login(demoUser);
+      let email = 'demo_user@delicieux.com'.split("");
+      let password = 'password'.split("");
+      this.handleDemoLogin(email, password);
     };
   }
 
@@ -66,6 +83,7 @@ class LoginForm extends React.Component {
       </ul>
     );
   }
+
 
   render() {
 

@@ -14,6 +14,10 @@ class FormPersonalDetails extends React.Component {
     this.handleSignup = this.handleSignup.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors()
+  }
+
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
@@ -43,7 +47,7 @@ class FormPersonalDetails extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -64,14 +68,14 @@ class FormPersonalDetails extends React.Component {
                     <input type="text"
                       value={values.height}
                       onChange={handleChange('height')}
-                      placeholder="Enter Your Height"
+                      placeholder="Enter Your Height (cm)"
                       className="login-text sign"
                     />
                     <br />
                     <input type="text"
                       value={values.weight}
                       onChange={handleChange('weight')}
-                      placeholder="Enter Your Weight"
+                      placeholder="Enter Your Weight (kg)"
                       className="login-text sign"
                     />
                     <br />
@@ -82,7 +86,7 @@ class FormPersonalDetails extends React.Component {
                       className="login-text sign"
                     />
                     <br />
-                    {/* {this.renderErrors()} */}
+                    {this.renderErrors()}
                     <div className="signup-bottom">
                       <button className="submit" onClick={this.back}>
                         Back
