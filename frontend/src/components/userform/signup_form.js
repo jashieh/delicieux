@@ -28,14 +28,30 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.nextStep();
+    let bool = true;
+    // this.props.nextStep();
+    console.log(this.props.values)
+    let errors = [];
     if (this.props.values.name.length === 0) {
-      this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
-    } else if (this.props.values.password.length < 6) {
-      this.setState({ errors: this.state.errors.concat(["User at least 6 characters"]) });
-    } else if (this.props.values.password2 !== this.props.values.password ) {
-      this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
-    } else {
+      errors.push("Please enter your name");
+      // this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
+      bool = false;
+      console.log("xd")
+    } 
+    if (this.props.values.password.length < 6) {
+      // this.setState({ errors: this.state.errors.concat(["User at least 6 characters"]) });
+      bool = false;
+      errors.push("Password at least 6 characters");
+    } 
+    if (this.props.values.password2 !== this.props.values.password ) {
+      // this.setState({ errors: this.state.errors.concat(["Passwords must match"]) })'
+      bool = false;
+      errors.push("Passwords must match");
+    }
+    this.setState({ errors: errors }, () => console.log(this.state.errors))
+
+    
+    if(bool){
       this.props.nextStep();
     }
 
