@@ -77,11 +77,18 @@
 }
 
 
+.recipe-show-toggle {
+  display: flex;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+
 .recipe-show-ing-list {
   // margin: 0 auto;
   list-style: none;
   overflow-y: scroll;
   // background: orange;
+  height: 80%;
   width: 92%;
   margin: 0 auto;
   font-family: EB Garamond;
@@ -90,10 +97,12 @@
   border-top: 1px solid black;
   border-bottom: 1px solid black;
 }
+
 .recipe-show-inst-list {
   list-style: decimal outside none;
   overflow-y: scroll;
   width: 92%;
+  height: 80%;
   margin: 0 auto;
   font-family: EB Garamond;
   padding-left: 13px;
@@ -109,6 +118,22 @@
   font-family: EB Garamond;
   color: black !important;
   line-height: 24px;
+  }
+}
+
+.recipe-no-instructions {
+  width: 92%;
+  margin: 0 auto;
+  font-family: EB Garamond;
+  padding-left: 13px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black; 
+
+  a {
+    font-family: inherit;
+    font-size: inherit;
   }
 }
 
@@ -151,6 +176,7 @@
 .rs-list-cont {
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 80%;
 }
 .list-title {

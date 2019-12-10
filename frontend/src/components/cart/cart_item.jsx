@@ -63,12 +63,11 @@ class CartItem extends React.Component {
   }
 
   render() {
-    const { time, sourceName } = this.props;
+    const { time, sourceName, cart } = this.props;
     
-    let recipe = this.recipe(); 
-    
+    let recipe = null;
+    if (cart.dates) recipe = this.recipe();
     if (recipe && recipe.nutrition) {
-
       let timeC = recipe.readyInMinutes < 60 ? (recipe.readyInMinutes).toString() +"m":
         recipe.readyInMinutes < 180 ? Math.floor(recipe.readyInMinutes / 60).toString() + "h" : "3h+";
       let calorieC = Math.floor(recipe.nutrition[0].amount)  

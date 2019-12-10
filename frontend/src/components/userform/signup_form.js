@@ -34,6 +34,9 @@ class SignupForm extends React.Component {
       errors.push("Please enter your name");
       bool = false;
       // this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
+    } else if (this.props.values.name.length < 2 || this.props.values.name.length > 30) {
+      errors.push("Must be between 2 and 30 characters")
+      bool = false;
     }
 
     if (this.props.values.password.length < 6) {
@@ -51,7 +54,14 @@ class SignupForm extends React.Component {
     if (this.props.values.email.length === 0) {
       errors.push("Please enter your email");
       bool = false;
+<<<<<<< HEAD
+    } else if (!this.props.values.email.includes("@")) {
+      console.log("Kelly")
+      errors.push("Invalid Email");
+      bool = false;
+=======
 
+>>>>>>> master
     }
 
     this.setState({ errors: errors }, () => console.log(this.state.errors))
@@ -78,7 +88,7 @@ class SignupForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -92,9 +102,14 @@ class SignupForm extends React.Component {
           if (this.state.errors[error].includes("name")) {
             // console.log(this.state.errors[error])
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
-            )
-          }
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
+              )
+            } else if (this.state.errors[error].includes("30")) {
+              console.log("Hello")
+              return (
+                <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
+              )
+            }
         })}
       </ul>
     )
@@ -106,7 +121,12 @@ class SignupForm extends React.Component {
         {Object.keys(this.state.errors).map((error, i) => {
           if (this.state.errors[error].includes("email")) {
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
+            )
+          } else if (this.state.errors[error].includes("Invalid")) {
+            console.log("Second");
+            return (
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}
@@ -120,7 +140,7 @@ class SignupForm extends React.Component {
         {Object.keys(this.state.errors).map((error, i) => {
           if (this.state.errors[error].includes("6")) {
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}
@@ -134,7 +154,7 @@ class SignupForm extends React.Component {
         {Object.keys(this.state.errors).map((error, i) => {
           if (this.state.errors[error].includes("match")) {
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}
