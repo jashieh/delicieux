@@ -69,12 +69,6 @@ class LoginForm extends React.Component {
 
   render() {
 
-    // const styles = {
-    //   InputLabelProps: {
-    //     color: '#fff'
-    //   }
-    // }
-
     return (
         <div className="session-background">
           <div className="signup-text">délicieux</div>
