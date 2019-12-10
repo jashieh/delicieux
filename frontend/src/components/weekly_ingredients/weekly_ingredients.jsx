@@ -174,7 +174,7 @@ class WeeklyIngredients extends React.Component {
     let catagories;
     let ids = Object.keys(this.state.catagories);
     if(Object.keys(this.state.catagories).length === 0 && !this.emptyCart()) {
-      catagories = "loading...";
+      catagories = <div className="weekly-loading">Loading...</div>
     } else {
       catagories = [];
       for(let i = 0; i < ids.length; i++) {
