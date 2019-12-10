@@ -41,20 +41,20 @@ class LoginForm extends React.Component {
   }
 
 
-  // handleDemo() {
-  //   // let { email, password } = this.state;
-  //   // let demoUser = {
-  //   //   email: "demo_user@delicious.com",
-  //   //   password: "password"
-  //   // };
+  handleDemo() {
+    // let { email, password } = this.state;
+    // let demoUser = {
+    //   email: "demo_user@delicious.com",
+    //   password: "password"
+    // };
 
-  //   return e => {
-  //     e.preventDefault();
-  //     let email = 'demo_user@delicieux.com'.split("");
-  //     let password = 'password'.split("");
-  //     this.handleDemoLogin(email, password);
-  //   };
-  // }
+    return e => {
+      e.preventDefault();
+      let email = 'demo_user@delicieux.com'.split("");
+      let password = 'password'.split("");
+      this.handleDemoLogin(email, password);
+    };
+  }
 
   update(field) {
     return e =>
@@ -123,9 +123,9 @@ class LoginForm extends React.Component {
                         </div>
 
                         <div className="buttons">
-                          {/* <button className="submit" onClick={this.handleDemo()}>
+                          <button className="submit" onClick={this.handleDemo()}>
                             Demo User
-                          </button> */}
+                          </button>
                         </div>
 
                       </div>

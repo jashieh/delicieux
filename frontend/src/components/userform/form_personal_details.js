@@ -14,6 +14,10 @@ class FormPersonalDetails extends React.Component {
     this.handleSignup = this.handleSignup.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors()
+  }
+
   continue = e => {
     e.preventDefault();
     this.props.nextStep();
