@@ -1,5 +1,7 @@
 import React from 'react';
 import WeeklyIngredientsItemContainer from './weekly_ingredients_item_container'
+import WeeklyIngredientsCatagory from './weekly_ingredients_catagory';
+import { getIngredientById } from '../../util/ingredient_api_util';
 
 const TIMES = ['BREAKFAST', 'LUNCH', 'DINNER'];
 
@@ -9,11 +11,12 @@ class WeeklyIngredients extends React.Component {
 
     this.state = {
       dates: [],
-      ingredients: []
+      catagories: {},
     }
 
+    this.ingredients = {};
+    this.results = 0;
     this.generateDates = this.generateDates.bind(this);
-    this.getRecipes = this.getRecipes.bind(this);
     this.getRecipes = this.getRecipes.bind(this);
   }
 
@@ -48,70 +51,164 @@ class WeeklyIngredients extends React.Component {
     let { cart, recipes, addCartDate, getRecipeDB } = this.props;
     let recipeId;
 
-    let results = 0;
     for (let i = 0; i < dates.length; i++) {
-      if (!cart.dates[dates[i]]) {
-        results++;
-        addCartDate(cart.id, { date: dates[i] })
-          .then(() => {
-            results--;
-            if (results === 0) this.setState({ dates })
-          });
-      } else {
+      // if (!cart.dates[dates[i]]) {
+      //   this.results++;
+      //   addCartDate(cart.id, { date: dates[i] })
+      //     .then(() => {
+      //       this.results--;
+            // if (this.results === 0) {
+            //   let ing = {};
+            //   let ids = Object.keys(this.ingredients);
+
+            //   for(let i = 0; i < ids.length; i++) {
+            //     let ingredient = this.ingredients[ids[i]];
+            //     let aisle = ingredient.aisle.split(";")[0];
+
+            //     if(!ing[aisle]) {
+            //       ing[aisle] = {};
+            //     } 
+
+            //     ing[aisle][ids[i]] = ingredient;
+            //     // this.setState({ ingredients: ing });
+            //   }
+            //   this.setState({ catagories: ing });
+            //   this.setState({ dates });
+            // };
+          // });
+      // } else {
         for (let j = 0; j < TIMES.length; j++) {
+          if(!cart.dates[dates[i]]) continue;
           recipeId = cart.dates[dates[i]][TIMES[j]];
           if (recipeId && recipes[recipeId]) {
             this.modifyIngredients(recipes[recipeId]);
           } else if (recipeId && !recipes[recipeId]) {
-            results++;
+            this.results++;
             getRecipeDB(recipeId)
               .then(({ recipe } ) => {
                 this.modifyIngredients(recipe);
-                results--;
-                if (results === 0) this.setState({ dates });
+                this.results--;
               });
           } else if (!recipeId) {
-            if (results === 0) this.setState( { dates} );
         }
       }
-    }
+    // }
     }
   }
 
   modifyIngredients(recipe) {
-    let newIngredients = [];
-    for(let i = 0; i < recipe.ingredients.length; i++) {
-      newIngredients.push(recipe.ingredients[i]);
-    }
+    let ing = {};
+    // for(let i = 0; i < recipe.ingredients.length; i++) {
+    //   ing[recipe.ingredients[i].id] = recipe.ingredients[i];
+    // }
+    // let count = 0;
+    // let temp = {};
+    // for(let i = 0; i < recipe.ingredients.length; i++) {
+    //   count++;
+    //   getIngredientById(recipe.ingredients[i].id).then(res => {
+    //     count--;
+    //     temp[res.data.id] = res.data;
+    //     if(count === 0) {
+    //       let ids = Object.keys(temp);
+    //       for(let j = 0; j < ids.length; j++) {
+    //         let aisle = temp[ids[j]].aisle.split(";")[0];
+    //         if(!ing[aisle]) {
+    //           ing[aisle] = {};
+    //         } 
+    //         ing[aisle][recipe.ingredients[j].id] = recipe.ingredients[j];
+    //       }
+    //       ing = Object.assign(ing, this.state.ingredients);
+    //       this.setState({ ingredients: ing });
+    //     }
+    //   });
+    // }
 
-    newIngredients = newIngredients.concat(this.state.ingredients);
-    this.setState({ ingredients: newIngredients});
+    for(let i = 0; i < recipe.ingredients.length; i++) {
+      this.results++;
+      getIngredientById(recipe.ingredients[i].id).then(res => {
+
+        let aisle = res.data.aisle.split(";")[0];
+        recipe.ingredients[i].aisle = aisle;
+        this.ingredients[recipe.ingredients[i].id] = recipe.ingredients[i];
+        this.results--;
+        console.log(this.results)
+        if (this.results === 0) {
+          let ing = {};
+          let ids = Object.keys(this.ingredients);
+
+          for(let i = 0; i < ids.length; i++) {
+            let ingredient = this.ingredients[ids[i]];
+            let aisle = ingredient.aisle.split(";")[0];
+
+            if(!ing[aisle]) {
+              ing[aisle] = {};
+            } 
+
+            ing[aisle][ids[i]] = ingredient;
+            // this.setState({ ingredients: ing });
+          }
+          this.setState({ catagories: ing });
+          // this.setState({ dates });
+        };
+      });
+    }
   }
+
+  emptyCart() {
+    if(this.props.cart.dates) {
+      let days = Object.keys(this.props.cart.dates);
+      for(let i = 0; i < days.length; i++) {
+        for(let j = 0; j < TIMES.length; j++) {
+          if(this.props.cart.dates[days[i]][TIMES[j]]) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+    return true;
+  }
+
   
   render() {
-    let ing = [];
-    let filtered = [];
-    let ids = [];
-
-    for(let i = 0; i < this.state.ingredients.length; i++) {
-      if(!ids.includes(this.state.ingredients[i].id)) {
-        ids.push(this.state.ingredients[i].id);
-        filtered.push(this.state.ingredients[i]);
-
-        ing.push(
-          <WeeklyIngredientsItemContainer 
-            ingredient={this.state.ingredients[i]}
-            key={this.state.ingredients[i].id}/>
-        );
+    // let ing = [];
+    let catagories;
+    let ids = Object.keys(this.state.catagories);
+    if(Object.keys(this.state.catagories).length === 0 && !this.emptyCart()) {
+      catagories = <div className="weekly-loading">Loading...</div>
+    } else {
+      catagories = [];
+      for(let i = 0; i < ids.length; i++) {
+        catagories.push(<WeeklyIngredientsCatagory 
+          key={ids[i]}
+          catagory={ids[i]}
+          ingredients={this.state.catagories[ids[i]]}
+          />);
+  
+        // let id = ids[i];
+        // let have = this.props.ingredients[id] ? "have" : "dont";
+        // if(have === "have") {
+        //   ing.unshift(<WeeklyIngredientsItemContainer 
+        //     ingredient={this.state.ingredients[id]}
+        //     key={this.state.ingredients[id].id}
+        //     have={have}/>);
+        // }
+        // else {
+        //   ing.push(<WeeklyIngredientsItemContainer 
+        //     ingredient={this.state.ingredients[id]}
+        //     key={this.state.ingredients[id].id}
+        //     have={have}/>);
+        // }
       }
     }
 
     return(
       <div className="weekly-ingredients-container">
-        This Week's Required Ingredients
-
-        <ul>
-          { ing }
+        <div className="title">
+          Weekly Shopping List
+        </div>
+        <ul className="catagory-list">
+          { catagories }
         </ul>
       </div>
     );

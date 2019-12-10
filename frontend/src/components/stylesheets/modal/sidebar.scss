@@ -1,6 +1,7 @@
 .first-side {
     text-align: center;
     width: 25%;
+    min-width: 250px;
     height: 100vh;
     position: absolute;
     left: 0;
@@ -11,6 +12,21 @@
         border-radius: 0.1em;
         animation: fadein 2s, first 0.7s ease-in;
         background-color: rgb(16, 15, 15);
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        a {
+          font-size: 1.2em;
+          text-transform: uppercase;
+          letter-spacing: 0.07em;
+          text-decoration: none;
+          margin: 16px 0;
+          // width: 240px;
+          width: 60%;
+          min-width: 200px;
+        }
     }
 
     .profile-container {
@@ -61,7 +77,6 @@
   display: inline-block;
   padding: 0.7em 2.6em;
 
-  cursor: pointer;
   overflow: hidden;
 
   &:before,
@@ -200,14 +215,13 @@ body {
 
 a {
   font-size: 1.2em;
-  text-transform: uppercase;
   letter-spacing: 0.07em;
   text-decoration: none;
   margin: 16px 0;
 }
 
 .btn {
-  @include btn-border-slide(#252525, #d0deeb, 1px, 0.9s);
+  @include btn-border-slide(rgb(247, 217, 180), rgb(184, 149, 107), 1.2px, 0.9s);
 //   @include btn-border-slide(#252525, #168dff, 2px, 0.8s);
 }
 
