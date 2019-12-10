@@ -61,13 +61,9 @@ class FridgeIngredients extends React.Component {
     let ids = Object.keys(this.state.catagories);
 
     if(Object.keys(this.state.catagories).length === 0 && Object.keys(this.props.ingredients).length !== 0) {
-<<<<<<< HEAD
-      catagories = "loading...";
-=======
       // catagories = "loading...";
       catagories = <div className="fridge-loading">Loading...</div>
 
->>>>>>> d71f2e3bae1e5a68b27ae3c9682686e3f2689e88
     } else {
       catagories = [];
       for(let i = 0; i < ids.length; i++) {

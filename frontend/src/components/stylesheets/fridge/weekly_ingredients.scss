@@ -30,13 +30,9 @@
     // flex-wrap: wrap;
     // -ms-overflow-style: none; 
     // scrollbar-width: none;
-<<<<<<< HEAD
-    
-=======
     .weekly-loading {
       margin-left: -20px;
     }
->>>>>>> d71f2e3bae1e5a68b27ae3c9682686e3f2689e88
 
     .weekly-catagory {
       display: flex;
@@ -51,12 +47,10 @@
       }
 
       .weekly-catagory-ul {
-<<<<<<< HEAD
         display: flex;
         flex-direction: column;
         width: 90%;
       }
-      
     }
 
     .weekly-ingredients-item {
@@ -88,44 +82,6 @@
         font-weight: 100;
         animation-fill-mode: both;
         display: flex;
-=======
-        display: flex;
-        flex-direction: column;
-        width: 90%;
-      }
-      
-    }
-
-    .weekly-ingredients-item {
-      display: flex; 
-      flex-direction: row;
-      align-items: center;
-      animation: FadeIn 1s;
-      position: relative;
-      
-      .weekly-ing-checkbox {
-        margin-left: 20px;
-        font-size: 27px;
-      }
-
-      .checked {
-        color: green;
-      }
-
-      .weekly-ing-box {
-        min-height: 38px;
-        width: 70%;
-        margin: 10px 15px;
-        background-color: white;
-        box-shadow: 1px 1px 7px 1px #242222;
-        color: black;
-        border-radius: 4px;
-        font-family: Open Sans;
-        font-size: 14px;
-        font-weight: 100;
-        animation-fill-mode: both;
-        display: flex;
->>>>>>> d71f2e3bae1e5a68b27ae3c9682686e3f2689e88
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
