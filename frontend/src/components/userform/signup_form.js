@@ -26,6 +26,7 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let bool = true;
+
     let errors = [];
 
     // this.props.nextStep();
@@ -50,6 +51,7 @@ class SignupForm extends React.Component {
     if (this.props.values.email.length === 0) {
       errors.push("Please enter your email");
       bool = false;
+
     }
 
     this.setState({ errors: errors }, () => console.log(this.state.errors))

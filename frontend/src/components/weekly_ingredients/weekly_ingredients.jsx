@@ -52,11 +52,11 @@ class WeeklyIngredients extends React.Component {
     let recipeId;
 
     for (let i = 0; i < dates.length; i++) {
-      if (!cart.dates[dates[i]]) {
-        this.results++;
-        addCartDate(cart.id, { date: dates[i] })
-          .then(() => {
-            this.results--;
+      // if (!cart.dates[dates[i]]) {
+      //   this.results++;
+      //   addCartDate(cart.id, { date: dates[i] })
+      //     .then(() => {
+      //       this.results--;
             // if (this.results === 0) {
             //   let ing = {};
             //   let ids = Object.keys(this.ingredients);
@@ -75,9 +75,10 @@ class WeeklyIngredients extends React.Component {
             //   this.setState({ catagories: ing });
             //   this.setState({ dates });
             // };
-          });
-      } else {
+          // });
+      // } else {
         for (let j = 0; j < TIMES.length; j++) {
+          if(!cart.dates[dates[i]]) continue;
           recipeId = cart.dates[dates[i]][TIMES[j]];
           if (recipeId && recipes[recipeId]) {
             this.modifyIngredients(recipes[recipeId]);
@@ -91,7 +92,7 @@ class WeeklyIngredients extends React.Component {
           } else if (!recipeId) {
         }
       }
-    }
+    // }
     }
   }
 

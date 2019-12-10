@@ -103,7 +103,7 @@ class ModifyIngredient extends React.Component {
           className="remove-ingredient"
           onMouseEnter={this.mouseHover} 
           onMouseLeave={this.mouseHover}>
-          <i class="far fa-trash-alt"></i>
+          <i className="far fa-trash-alt"></i>
           { this.state.hover && <div className="hover-flag">Discard</div> }
         </div>
       </div>
