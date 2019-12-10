@@ -60,12 +60,11 @@ class FormPersonalDetails extends React.Component {
               <span>
                 <span>
                   <form>
-                    <TextField
-                      inputStyle={{ color: "white" }}
-                      hintText="Enter Your Height"
-                      floatingLabelText="Height"
-                      onChange={handleChange("height")}
-                      defaultValue={values.height}
+                    <input type="text"
+                      value={values.height}
+                      onChange={handleChange('height')}
+                      placeholder="Enter Your Height"
+                      className="login-text"
                     />
                     <br />
                     <TextField
