@@ -49,8 +49,6 @@ router.patch('/:userId/modifyIngredient', (req, res) => {
           .then(data => res.json(data.ingredients[req.body.id]))
           .catch(err => res.status(400).json(err))
       } else {
-        console.log(data.ingredients[req.body.id]);
-        console.log(Object.assign(req.body, data.ingredients[req.body.id]))
         // return res.json(data.ingredients[req.body.id]);
         return res.json(Object.assign(req.body, data.ingredients[req.body.id]));
       }
