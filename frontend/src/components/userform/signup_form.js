@@ -12,9 +12,7 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: [],
-      passErrors: "",
-      pass2Errors: ""
+      errors: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -49,6 +47,11 @@ class SignupForm extends React.Component {
       // this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
     }
 
+    if (this.props.values.email.length === 0) {
+      errors.push("Please enter your email");
+      bool = false;
+    }
+
     this.setState({ errors: errors }, () => console.log(this.state.errors))
     
     if (bool) {
@@ -69,6 +72,7 @@ class SignupForm extends React.Component {
   // }
 
   renderNameErrors() {
+
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -79,11 +83,19 @@ class SignupForm extends React.Component {
   }
 
   renderPasswordErrors() {
-    return (
+    return(
       <ul>
-        <li>{this.state.passErrors}</li>
+        {Object.keys(this.state.errors).map((error, i) => {
+          console.log(this.state.errors[error]);
+          if (this.state.errors[error].includes("name")) {
+            console.log(this.state.errors[error])
+            return (
+              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+            )
+          }
+        })}
       </ul>
-    );
+    )
   }
 
   render() {
@@ -106,7 +118,8 @@ class SignupForm extends React.Component {
                           className="login-text sign"
                         />
                       </div>
-                      {this.renderNameErrors()}
+                      {/* {this.renderNameErrors()} */}
+                      {this.renderPasswordErrors()}
                       <div>
                         <input type="text"
                           value={values.email}
@@ -139,6 +152,7 @@ class SignupForm extends React.Component {
                       <h2>Already have an account?</h2>
                       <Link className="back-sign" to="/login">Login</Link>
                     </div>
+                    
                   </div>
                 </span>
               </span>
