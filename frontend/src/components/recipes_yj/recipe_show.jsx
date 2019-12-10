@@ -7,12 +7,6 @@ export default class RecipeShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      nutritionReq: {
-        "Calories": 2000,
-        "Carbohydrates": 250,
-        "Protein": 80,
-        "Fat": 75,
-      },
       pieData: [
         { y: 100, label: "" },
         { y: 0, label: "" },
@@ -30,7 +24,6 @@ export default class RecipeShow extends React.Component {
   }
   componentDidMount() {
     const { recipe, fridge } = this.props;
-    // ["Calories", "Protein", "Carbohydrates", "Fat"]
     let calories = Object.values(recipe.nutrition).filter(nutrient => ["Calories"].includes(nutrient.title))[0].amount;
     let protein = Object.values(recipe.nutrition).filter(nutrient => ["Protein"].includes(nutrient.title))[0].amount;
     let fat = Object.values(recipe.nutrition).filter(nutrient => ["Fat"].includes(nutrient.title))[0].amount;
@@ -115,11 +108,8 @@ export default class RecipeShow extends React.Component {
               }
             }
           ]}
-          // labelComponent={<VictoryTooltip />}
           labelComponent={<VictoryLabel />}
-          // innerRadius={200}
           labelRadius={70}
-          // padAngle={1}
           style={{
             parent: { maxWidth: "90%" },
             labels: {
@@ -218,23 +208,6 @@ export default class RecipeShow extends React.Component {
             <div className="recipe-show-photo-cont">
               <img className="recipe-show-photo" src={recipe.image} />
             </div>
-            {/* <div className="rs-icon-cont">
-              <div className="rs-icon">
-                <p>{timeC}</p>
-              </div>
-              {recipe.vegetarian ?
-              <div className="rs-icon">
-                <p>Veg</p>
-              </div> : null}
-              {recipe.ketogenic ?
-              <div className="rs-icon">
-                <p>Keto</p>
-              </div> : null}
-              {recipe.ketogenic ?
-                <div className="rs-icon">
-                  <p>Paleo</p>
-                </div> : null}
-            </div> */}
             {chartDisp}
           </div>
             

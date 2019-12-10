@@ -197,9 +197,6 @@ export default class MainFilter extends React.Component {
               checked={this.state.glutenFree} 
               onChange={this.handleCheck("glutenFree")}/>
               Gluten Free
-              {/* <div className="filter-checkmark-cont">
-                <img className="filter-checkmark" src={ThickCheck}/>
-              </div> */}
           </label>
           <label className="filter-dd-item1" style={this.state.ketogenic ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="ketogenic" 
@@ -256,50 +253,49 @@ export default class MainFilter extends React.Component {
             <input type="checkbox" name="dairy" 
               checked={this.state.dairy} 
               onChange={this.handleCheck("dairy")} />
-
                 Dairy
           </label> 
           <label className="filter-dd-item1" style={this.state.egg ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="egg" 
               checked={this.state.egg} 
               onChange={this.handleCheck("egg")} />
-                  Egg
+                Egg
           </label>
           <label className="filter-dd-item1" style={this.state.peanut ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="peanut" 
               checked={this.state.peanut} 
               onChange={this.handleCheck("peanut")} />
-                  Peanut
+                Peanut
           </label>
           <label className="filter-dd-item1" style={this.state.seafood ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="seafood" 
               checked={this.state.seafood} 
               onChange={this.handleCheck("seafood")} />
-                  Seafood
+                Seafood
           </label>
           <label className="filter-dd-item1" style={this.state.shellfish ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="shellfish" 
               checked={this.state.shellfish} 
               onChange={this.handleCheck("shellfish")} />
-                  Shellfish
+                Shellfish
           </label>
           <label className="filter-dd-item1" style={this.state.soy ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="soy" 
               checked={this.state.soy} 
               onChange={this.handleCheck("soy")} />
-                  Soy
+                Soy
           </label>
           <label className="filter-dd-item1" style={this.state.sulfite ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="sulfite" 
               checked={this.state.sulfite} 
               onChange={this.handleCheck("sulfite")} />
-                  Sulfite
+                Sulfite
           </label>
           <label className="filter-dd-item1" style={this.state.wheat ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="wheat" 
               checked={this.state.wheat} 
               onChange={this.handleCheck("wheat")} />
-                  Wheat
+                Wheat
           </label>
         </div>)
     } else if (this.state.tabs === 4) {
@@ -355,7 +351,6 @@ export default class MainFilter extends React.Component {
     }
   }     
   render() {
-   
     return(
       <div >
       {this.state.ingredientToggle ? (
