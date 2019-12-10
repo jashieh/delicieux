@@ -47,6 +47,7 @@ export default class RecipeShow extends React.Component {
     this.setState({pieChart: !this.state.pieChart});
   }
   toggleRight(n) {
+    debugger;
     this.setState({instructions: n === "instructions" ? true : false});
   }
   handleBarOn(type) {

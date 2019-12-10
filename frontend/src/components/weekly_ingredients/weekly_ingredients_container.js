@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
   userId: state.session.user.id,
   cart: state.entities.cart,
   recipes: state.entities.recipes,
+  ingredients: state.entities.fridge.ingredients
 });
 
 const mapDispatchToProps = dispatch => ({

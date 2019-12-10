@@ -54,8 +54,11 @@ class WeeklyCart extends React.Component {
     this.weeklyCart.addEventListener("wheel", (e) => { this.scrollCart(e) });
   }
 
+  // Removes the listener, fixes the bug when this.weeklyCart isn't found
   removeListeners() {
-    this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
+    this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
+    if (this.weeklyCart)
+      this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
   }
 
   scrollCart(e) {
@@ -138,7 +141,9 @@ class WeeklyCart extends React.Component {
       let nutrient = nutrientNames[i];
 
       let recipeInfo = recipeNutrition.filter(val => [nutrient].includes(val.title));
-      if (!recipeInfo.length) continue;
+
+      if (!recipeInfo || !recipeInfo[0]) continue;
+
       let recipeAmount = recipeInfo && recipeInfo[0] ? recipeInfo[0].amount : 0;
       let recipePercentage = recipeInfo && recipeInfo[0] ? recipeInfo[0].percentOfDailyNeeds : 0;
 
