@@ -12,9 +12,7 @@ class SignupForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      errors: [],
-      passErrors: "",
-      pass2Errors: ""
+      errors: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,16 +25,39 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let bool = true;
+    let errors = [];
+
     // this.props.nextStep();
     if (this.props.values.name.length === 0) {
-      this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
-    } else if (this.props.values.password.length < 6) {
-      this.setState({ errors: this.state.errors.concat(["Password at least 6 characters"]) });
-    } else if (this.props.values.password2 !== this.props.values.password ) {
-      this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
-    } else {
+      errors.push("Please enter your name");
+      bool = false;
+      // this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
+    }
+
+    if (this.props.values.password.length < 6) {
+      bool = false;
+      errors.push("Password at least 6 characters");
+      // this.setState({ errors: this.state.errors.concat(["Password at least 6 characters"]) });
+    }
+    
+    if (this.props.values.password2 !== this.props.values.password ) {
+      bool = false;
+      errors.push("Passwords must match");
+      // this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
+    }
+
+    if (this.props.values.email.length === 0) {
+      errors.push("Please enter your email");
+      bool = false;
+    }
+
+    this.setState({ errors: errors }, () => console.log(this.state.errors))
+    
+    if (bool) {
       this.props.nextStep();
     }
+    
   }
 
   // handlePassSubmit(e) {
@@ -51,6 +72,7 @@ class SignupForm extends React.Component {
   // }
 
   renderNameErrors() {
+
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
@@ -60,13 +82,64 @@ class SignupForm extends React.Component {
     );
   }
 
-  renderPasswordErrors() {
+  renderNameError() {
+    return(
+      <ul>
+        {Object.keys(this.state.errors).map((error, i) => {
+          // console.log(this.state.errors[error]);
+          if (this.state.errors[error].includes("name")) {
+            // console.log(this.state.errors[error])
+            return (
+              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+            )
+          }
+        })}
+      </ul>
+    )
+  }
+
+  renderEmailError() {
     return (
       <ul>
-        <li>{this.state.passErrors}</li>
+        {Object.keys(this.state.errors).map((error, i) => {
+          if (this.state.errors[error].includes("email")) {
+            return (
+              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+            )
+          }
+        })}
       </ul>
-    );
+    )
   }
+
+  renderPasswordError() {
+    return (
+      <ul>
+        {Object.keys(this.state.errors).map((error, i) => {
+          if (this.state.errors[error].includes("6")) {
+            return (
+              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+            )
+          }
+        })}
+      </ul>
+    )
+  }
+
+  renderConfirmError() {
+    return (
+      <ul>
+        {Object.keys(this.state.errors).map((error, i) => {
+          if (this.state.errors[error].includes("match")) {
+            return (
+              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+            )
+          }
+        })}
+      </ul>
+    )
+  }
+
 
   render() {
     const { values, handleChange } = this.props;
@@ -88,7 +161,7 @@ class SignupForm extends React.Component {
                           className="login-text sign"
                         />
                       </div>
-                      {this.renderNameErrors()}
+                      {this.renderNameError()}
                       <div>
                         <input type="text"
                           value={values.email}
@@ -97,6 +170,7 @@ class SignupForm extends React.Component {
                           className="login-text sign"
                         />
                       </div>
+                      {this.renderEmailError()}
                       <div>
                         <input type="password"
                           value={values.password}
@@ -105,6 +179,7 @@ class SignupForm extends React.Component {
                           className="login-text sign"
                         />
                       </div>
+                      {this.renderPasswordError()}
                       <div>
                         <input type="password"
                           value={values.password2}
@@ -113,6 +188,7 @@ class SignupForm extends React.Component {
                           className="login-text sign"
                         />
                       </div>
+                      {this.renderConfirmError()}
                     </div>
                     <div className="signup-bottom">
                       <button className="submit" onClick={this.handleSubmit}>Continue</button>
@@ -121,6 +197,7 @@ class SignupForm extends React.Component {
                       <h2>Already have an account?</h2>
                       <Link className="back-sign" to="/login">Login</Link>
                     </div>
+                    
                   </div>
                 </span>
               </span>
