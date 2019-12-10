@@ -30,16 +30,13 @@ class SignupForm extends React.Component {
     // this.props.nextStep();
     if (this.props.values.name.length === 0) {
       this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
-    } 
-    
-    if (this.props.values.password.length < 6) {
+    } else if (this.props.values.password.length < 6) {
       this.setState({ errors: this.state.errors.concat(["Password at least 6 characters"]) });
     } else if (this.props.values.password2 !== this.props.values.password ) {
       this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
     } else {
       this.props.nextStep();
     }
-
   }
 
   // handlePassSubmit(e) {
