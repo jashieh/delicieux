@@ -26,18 +26,35 @@ class LoginForm extends React.Component {
     this.setState({ errors: nextProps.errors });
   }
 
-  handleDemo() {
-    let { email, password } = this.state;
-    let demoUser = {
-      email: "demo_user@delicious.com",
-      password: "password"
-    };
-
-    return e => {
-      e.preventDefault();
-      this.props.login(demoUser);
-    };
+  handleDemoLogin(email, password) {
+    if (email.length > 0) {
+      this.setState({ email: this.state.email += email.shift() },
+        () => setTimeout(() => this.handleDemoLogin(email, password), 50)
+      )
+    } else if (password.length > 0) {
+      this.setState({ password: this.state.password += password.shift() },
+        () => setTimeout(() => this.handleDemoLogin(email, password), 50)
+      )
+    } else {
+      this.props.login(this.state);
+    }
   }
+
+
+  // handleDemo() {
+  //   // let { email, password } = this.state;
+  //   // let demoUser = {
+  //   //   email: "demo_user@delicious.com",
+  //   //   password: "password"
+  //   // };
+
+  //   return e => {
+  //     e.preventDefault();
+  //     let email = 'demo_user@delicieux.com'.split("");
+  //     let password = 'password'.split("");
+  //     this.handleDemoLogin(email, password);
+  //   };
+  // }
 
   update(field) {
     return e =>
@@ -66,6 +83,7 @@ class LoginForm extends React.Component {
       </ul>
     );
   }
+
 
   render() {
 
@@ -105,9 +123,9 @@ class LoginForm extends React.Component {
                         </div>
 
                         <div className="buttons">
-                          <button className="submit" onClick={this.handleDemo()}>
+                          {/* <button className="submit" onClick={this.handleDemo()}>
                             Demo User
-                          </button>
+                          </button> */}
                         </div>
 
                       </div>

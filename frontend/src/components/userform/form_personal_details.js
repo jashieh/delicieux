@@ -43,7 +43,7 @@ class FormPersonalDetails extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -82,7 +82,7 @@ class FormPersonalDetails extends React.Component {
                       className="login-text sign"
                     />
                     <br />
-                    {/* {this.renderErrors()} */}
+                    {this.renderErrors()}
                     <div className="signup-bottom">
                       <button className="submit" onClick={this.back}>
                         Back
