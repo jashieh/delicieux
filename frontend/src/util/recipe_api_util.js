@@ -207,12 +207,9 @@ export const complexRecipeSearch = (
       "fillIngredients": "true",
       "instructionsRequired": "true"
     },
+    "cancelToken": abort.token,
     "timeout": 10000
   })
-  // .then(response => {
-  //     clearTimeout(id)
-  //     return response
-  //   })
   .catch((error)=>{
     console.log("we error now")
   })
