@@ -242,7 +242,7 @@ export default class MainFilter extends React.Component {
               className="filter-dd-item2" 
               onClick={this.handleCuisine({cuisine})}
 
-              style={this.state.cuisine === cuisine ? { backgroundColor: "inherit", fontWeight: "bold", color: "purple" } : {}}>
+              style={this.state.cuisine === cuisine ? { fontWeight: "bold", color: "purple" } : {}}>
               {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
 
               {cuisine}
@@ -389,7 +389,7 @@ export default class MainFilter extends React.Component {
                 </label>  */}
             </div>
           </div>
-          <div className="filter-bot-allergies">
+          <div className="filter-bot-ingredients">
             {this.renderIngredients()}
 
           </div>
