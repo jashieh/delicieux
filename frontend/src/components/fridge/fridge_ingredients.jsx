@@ -25,7 +25,10 @@ class FridgeIngredients extends React.Component {
       }
       let ingTemp = {};
       for(let i = 0; i < ids.length; i++) {
+        if(!ingredients[ids[i]]) continue;
         results++;
+
+
         getIngredientById(ids[i]).then(res => {
 
           let aisle = res.data.aisle.split(";")[0];
