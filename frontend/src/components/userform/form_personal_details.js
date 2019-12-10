@@ -68,14 +68,14 @@ class FormPersonalDetails extends React.Component {
                     <input type="text"
                       value={values.height}
                       onChange={handleChange('height')}
-                      placeholder="Enter Your Height"
+                      placeholder="Enter Your Height (cm)"
                       className="login-text sign"
                     />
                     <br />
                     <input type="text"
                       value={values.weight}
                       onChange={handleChange('weight')}
-                      placeholder="Enter Your Weight"
+                      placeholder="Enter Your Weight (kg)"
                       className="login-text sign"
                     />
                     <br />

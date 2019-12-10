@@ -76,7 +76,7 @@ class SignupForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
         ))}
       </ul>
     );
@@ -90,7 +90,7 @@ class SignupForm extends React.Component {
           if (this.state.errors[error].includes("name")) {
             // console.log(this.state.errors[error])
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}
@@ -104,7 +104,7 @@ class SignupForm extends React.Component {
         {Object.keys(this.state.errors).map((error, i) => {
           if (this.state.errors[error].includes("email")) {
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}
@@ -118,7 +118,7 @@ class SignupForm extends React.Component {
         {Object.keys(this.state.errors).map((error, i) => {
           if (this.state.errors[error].includes("6")) {
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}
@@ -132,7 +132,7 @@ class SignupForm extends React.Component {
         {Object.keys(this.state.errors).map((error, i) => {
           if (this.state.errors[error].includes("match")) {
             return (
-              <p className="login-error" key={`error-${i}`}>{this.state.errors[error]}</p>
+              <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           }
         })}

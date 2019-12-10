@@ -218,6 +218,15 @@
     // text-transform: lowercase;
 }
 
+.login-error.sign-err {
+    padding: 0px;
+    padding-left: 6px;
+    margin-top: -4px;
+    text-align: start;
+    font-size: 10px;
+    color: rgba(212, 54, 42, 0.954);
+}
+
 
 .submit {
     background-color: rgba(196, 133, 74, 0.351);
