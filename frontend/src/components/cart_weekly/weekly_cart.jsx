@@ -65,7 +65,7 @@ class WeeklyCart extends React.Component {
     if (!this.weeklyCartDays)
       this.weeklyCartDays = document.getElementsByClassName("weekly-cart-days")[0];
     else 
-      this.weeklyCartDays.scrollLeft -= e.deltaY;
+      this.weeklyCartDays.scrollLeft += e.deltaY;
   }
 
 

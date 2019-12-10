@@ -38,7 +38,7 @@
 
 // @KELLY: should we also add a custom scrollbar to the index?
 .weekly-cart-days::-webkit-scrollbar {
-  height: 1px;
+  height: 5px;
   // display: none;
 }
 
@@ -48,7 +48,7 @@
 
 .weekly-cart-days::-webkit-scrollbar-thumb {
   background: rgb(173, 174, 230);
-  height: 1px;
+  height: 5px;
   // border: 1px black solid;
   // border-radius: 2px;
 }
