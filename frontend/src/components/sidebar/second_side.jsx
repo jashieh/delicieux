@@ -3,6 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UserProfileContainer from '../profile/user_profile_container';
+import WeeklyIngredientsContainer from '../weekly_ingredients/weekly_ingredients_container';
 
 class SecondSide extends React.Component {
     constructor(props) {
@@ -17,8 +18,8 @@ class SecondSide extends React.Component {
 
         if(this.props.page === "profile") {
           page = <UserProfileContainer />;
-        } else {
-          page = <div></div>;
+        } else if (this.props.page === "list") {
+          page = <WeeklyIngredientsContainer />;
         }
         
         return (

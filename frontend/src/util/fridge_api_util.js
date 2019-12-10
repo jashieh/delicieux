@@ -19,7 +19,7 @@ export const addFridgeIngredient = (userId, ingredient, amount) => {
 // Amount can be negative or positive
 // ingredient: { id: 1, name: "chicken", image: "url", aisle: "meat", amount: 50 }
 export const modifyIngredient = (userId, ingredient, amount) => {
-  let item = ingredient;
+  let item = Object.assign({},ingredient);
   item.amount = amount;
   return axios.patch(`/api/fridge/${userId}/modifyIngredient`, item);
 };

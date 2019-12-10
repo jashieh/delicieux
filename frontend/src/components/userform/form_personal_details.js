@@ -55,42 +55,42 @@ class FormPersonalDetails extends React.Component {
     return (
       <MuiThemeProvider>
         <div className="session-background">
+          <div className="signup-text">délicieux</div>
           <a className="signup-form" class="btn">
             <span>
               <span>
                 <span>
                   <form>
-                    <TextField
-                      inputStyle={{ color: "white" }}
-                      hintText="Enter Your Height"
-                      floatingLabelText="Height"
-                      onChange={handleChange("height")}
-                      defaultValue={values.height}
+                    <input type="text"
+                      value={values.height}
+                      onChange={handleChange('height')}
+                      placeholder="Enter Your Height"
+                      className="login-text sign"
                     />
                     <br />
-                    <TextField
-                      inputStyle={{ color: "white" }}
-                      hintText="Enter Your Weight"
-                      floatingLabelText="Weight"
-                      onChange={handleChange("weight")}
-                      defaultValue={values.weight}
+                    <input type="text"
+                      value={values.weight}
+                      onChange={handleChange('weight')}
+                      placeholder="Enter Your Weight"
+                      className="login-text sign"
                     />
                     <br />
-                    <TextField
-                      inputStyle={{ color: "white" }}
-                      hintText="Enter Your Age"
-                      floatingLabelText="Age"
-                      onChange={handleChange("age")}
-                      defaultValue={values.age}
+                    <input type="text"
+                      value={values.age}
+                      onChange={handleChange('age')}
+                      placeholder="Enter Your Age"
+                      className="login-text sign"
                     />
                     <br />
                     {/* {this.renderErrors()} */}
-                    <button className="submit" onClick={this.back}>
-                      Back
-                    </button>
-                    <button className="submit" onClick={this.handleSignup()}>
-                      Sign Up
-                    </button>
+                    <div className="signup-bottom">
+                      <button className="submit" onClick={this.back}>
+                        Back
+                      </button>
+                      <button className="submit" onClick={this.handleSignup()}>
+                        Sign Up
+                      </button>
+                    </div>
                   </form>
                 </span>
               </span>
