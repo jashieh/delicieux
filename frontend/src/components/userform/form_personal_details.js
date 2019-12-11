@@ -12,6 +12,22 @@ class FormPersonalDetails extends React.Component {
     };
     this.renderErrors = this.renderErrors.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
+    this.hitEnter = this.hitEnter.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener("keydown", this.hitEnter);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.hitEnter);
+  }
+
+  hitEnter(e) {
+    if(e.key === "Enter") {
+      const { email, name, password, password2, height, weight, age } = this.props.values;
+      this.props.signup({ email, name, password, password2, height, weight, age });
+    }
   }
 
   componentWillUnmount() {

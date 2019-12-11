@@ -16,12 +16,22 @@ class SignupForm extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.hitEnter = this.hitEnter.bind(this);
   }
 
-  // continue = e => {
-  //   e.preventDefault();
-  //   this.props.nextStep();
-  // };
+  componentDidMount() {
+    document.addEventListener("keydown", this.hitEnter);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("keydown", this.hitEnter);
+  }
+
+  hitEnter(e) {
+    if(e.key === "Enter") {
+      this.handleSubmit(e);
+    }
+  }
 
   handleSubmit(e) {
     e.preventDefault();

@@ -42,6 +42,7 @@ export default class MainFilter extends React.Component {
       maxFat: 0,
       minProtein: 0,
     }
+
     this.addIngredient = this.addIngredient.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleTab = this.handleTab.bind(this);
@@ -136,7 +137,7 @@ export default class MainFilter extends React.Component {
       });
     }
     const ingredientList = this.state.includeFridge ? this.state.ingredientList.concat(fridgeContent) : this.state.ingredientList;
-    debugger;
+
     if (ingredientList.length) {
       this.props.startLoad("loading");
       this.props.getRecipesByIngredients(ingredientList, 12);
@@ -191,40 +192,55 @@ export default class MainFilter extends React.Component {
         <div className="filter-bot-diet">
 
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
-          <label className="filter-dd-item1" style={this.state.glutenFree ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="glutenFree" 
               className="filter-checkbox"
               checked={this.state.glutenFree} 
               onChange={this.handleCheck("glutenFree")}/>
-              Gluten Free
+
+              <span className="filter-diet-name">
+                Gluten Free
+              </span>
+              {/* <div className="filter-checkmark-cont">
+                <img className="filter-checkmark" src={ThickCheck}/>
+              </div> */}
+
           </label>
           <label className="filter-dd-item1" style={this.state.ketogenic ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="ketogenic" 
               className="filter-checkbox"
               checked={this.state.ketogenic} 
               onChange={this.handleCheck("ketogenic")}/>
-              Ketogenic
+              <span className="filter-diet-name">
+                Ketogenic
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.vegetarian ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="vegetarian" 
               className="filter-checkbox"
               checked={this.state.vegetarian} 
               onChange={this.handleCheck("vegetarian")}/>
-              Vegetarian
+              <span className="filter-diet-name">
+                Vegetarian
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.vegan ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="vegan" 
               className="filter-checkbox"
               checked={this.state.vegan} 
               onChange={this.handleCheck("vegan")}/>
-              Vegan
+              <span className="filter-diet-name">
+                Vegan
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.paleo ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="paleo" 
               className="filter-checkbox"
               checked={this.state.paleo} 
               onChange={this.handleCheck("paleo")}/>
-              Paleo
+              <span className="filter-diet-name">
+                Paleo
+              </span>
               {this.state.paleo }
           </label>
         </div>)
@@ -238,7 +254,7 @@ export default class MainFilter extends React.Component {
               className="filter-dd-item2" 
               onClick={this.handleCuisine({cuisine})}
 
-              style={this.state.cuisine === cuisine ? { backgroundColor: "inherit", fontWeight: "bold", color: "purple" } : {}}>
+              style={this.state.cuisine === cuisine ? { fontWeight: "bold", color: "purple" } : {}}>
               {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
 
               {cuisine}
@@ -251,51 +267,90 @@ export default class MainFilter extends React.Component {
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           <label className="filter-dd-item1" style={this.state.dairy ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="dairy" 
-              checked={this.state.dairy} 
+              checked={this.state.dairy}
+              className="filter-checkbox" 
               onChange={this.handleCheck("dairy")} />
+
+              <span className="filter-diet-name">
                 Dairy
+              </span>
           </label> 
           <label className="filter-dd-item1" style={this.state.egg ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="egg" 
               checked={this.state.egg} 
+              className="filter-checkbox"
               onChange={this.handleCheck("egg")} />
+
+              <span className="filter-diet-name">
                 Egg
+              </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.peanut ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="peanut" 
               checked={this.state.peanut} 
+              className="filter-checkbox"
               onChange={this.handleCheck("peanut")} />
+
+              <span className="filter-diet-name">
                 Peanut
+              </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.seafood ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="seafood" 
               checked={this.state.seafood} 
+              className="filter-checkbox"
               onChange={this.handleCheck("seafood")} />
+
+              <span className="filter-diet-name">
                 Seafood
+              </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.shellfish ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="shellfish" 
               checked={this.state.shellfish} 
+              className="filter-checkbox"
               onChange={this.handleCheck("shellfish")} />
+
+              <span className="filter-diet-name">
                 Shellfish
+              </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.soy ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="soy" 
               checked={this.state.soy} 
+              className="filter-checkbox"
               onChange={this.handleCheck("soy")} />
+
+              <span className="filter-diet-name">
                 Soy
+              </span>
+
           </label>
-          <label className="filter-dd-item1" style={this.state.sulfite ? { fontWeight: "bold" } : {}}>
+          {/* <label className="filter-dd-item1" style={this.state.sulfite ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="sulfite" 
               checked={this.state.sulfite} 
+              className="filter-checkbox"
               onChange={this.handleCheck("sulfite")} />
+
+              <span className="filter-diet-name">
                 Sulfite
-          </label>
+              </span>
+          </label> */}
+
           <label className="filter-dd-item1" style={this.state.wheat ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="wheat" 
               checked={this.state.wheat} 
+              className="filter-checkbox"
               onChange={this.handleCheck("wheat")} />
+
+              <span className="filter-diet-name">
                 Wheat
+              </span>
+
           </label>
         </div>)
     } else if (this.state.tabs === 4) {
@@ -350,9 +405,16 @@ export default class MainFilter extends React.Component {
         </div>)
     }
   }     
+
   render() {
+
+    let includeFridge;
+
+    this.state.includeFridge ? includeFridge = "include-fridge" : includeFridge = "";
+
+
     return(
-      <div >
+      <div>
       {this.state.ingredientToggle ? (
         <form className="filter-cont">
           <span className="filter-x" onClick={this.toggleIngredients}>&times;</span>
@@ -360,22 +422,26 @@ export default class MainFilter extends React.Component {
           <div className="filter-header">
             <div className="filter-text-cont">
               <FilterSearchContainer addIngredient={this.addIngredient}/>
-              <div className="filter-query-search" onClick={this.handleIngredientSubmit} 
+              <div className="filter-query-search"  
                 style={!this.state.ingredientList.length ? {background: "white", cursor: "auto"} : {}}>
                   <img src={Loupe} alt=""/>
               </div>
             </div>
           </div>
             <div className="filter-param-cont fridge-add">
-                <label className="filter-dd-item1">
+              <div className={`include-fridge-toggle ${includeFridge}`} 
+                onClick={this.handleCheck("includeFridge")}>
+                Include Fridge
+              </div>
+                {/* <label className="filter-dd-item1">
                     <Toggle className="toggle" 
                     defaultChecked={this.state.includeFridge} 
                     onChange={this.handleCheck("includeFridge")} />
                     <p>Include Fridge</p>
-                </label> 
+                </label>  */}
             </div>
           </div>
-          <div className="filter-bot-allergies">
+          <div className="filter-bot-ingredients">
             {this.renderIngredients()}
 
           </div>

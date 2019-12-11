@@ -25,7 +25,8 @@ export default class FilterSearchItem extends React.Component {
   render() {
     return (
       <li className="filter-search-li"
-        onClick={() => {this.props.addIngredient(this.props.ingredient.name)}}
+        onClick={() => {this.props.addIngredient(this.props.ingredient.name);
+          this.props.clearSearch()}}
         onMouseEnter={this.enter}
         onMouseLeave={this.leave}>
         <div className="filter-search-li-name">
