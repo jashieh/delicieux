@@ -111,3 +111,30 @@
     height: 13px;
     
 }
+
+.edit-profile {
+    background: white;
+    padding: 9px 10px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    border-radius: 4px;
+    width: 11%;
+   
+}
+
+.edit-profile:hover {
+    cursor: pointer;
+}
+
+.edit {
+    // background: red;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -14px;
+}
+
+.edit:active {
+    color: rgb(174, 68, 68);
+    // background: lightgray;
+}

@@ -273,9 +273,11 @@ class UserProfile extends React.Component {
 
     return (
       <div className="profile-container">
+        <div className="edit">
+          <div className="edit-profile"onClick={this.toggleEdit}>{edit}</div>
+        </div>
         <div className="profile-item-container">
           <div>Name: {user}</div>
-          <div className="edit-profile"onClick={this.toggleEdit}>{edit}</div>
         </div>
         <div className="profile-item-container">
           <div className="profile-left">
