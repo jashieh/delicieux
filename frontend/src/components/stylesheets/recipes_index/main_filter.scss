@@ -208,66 +208,13 @@
   // justify-content: space-between;
   margin: 0 10px;
   height: 20px;
+  cursor: pointer;
   // width: 50px;
   // width: 120px;
   user-select: none;
   padding: 0 5px;
   font-size: 13px;
   font-family: Open Sans;
-
-  .filter-checkbox {
-    display: none;
-  }
-
-  .filter-diet-name {
-    display: inline-block;
-    background-color: rgba(255, 255, 255, .9);
-    // border: 2px solid rgba(139, 139, 139, .3);
-    color: #adadad;
-    border-radius: 25px;
-    white-space: nowrap;
-    margin: 3px 0px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: all .2s;
-    padding: 5px 10px;
-  }
-
-  .filter-diet-name:hover {
-    background-color: #a19c9cda;;
-  }
-
-  .filter-diet-name::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 12px;
-    // padding: 2px 0px 2px 2px;
-    width: 20px;
-    content: "\f067";
-    transition: transform .3s ease-in-out;
-  }
-
-  .filter-checkbox:checked + span::before {
-    content: "\f00c";
-    transform: rotate(-360deg);
-    transition: transform .3s ease-in-out;
-}
-
-  .filter-checkbox:checked + span {
-    // border: 2px solid #1bdbf8;
-    background-color: #a19c9cda;
-    color: #fff;
-    transition: all .2s;
-}
   
   .filter-checkmark-cont {
     height: 15px;
@@ -280,13 +227,62 @@
   }
 }
 
-
-
-.filter-dd-item1:hover {
-  // background: blue;
-  // font-weight: bold;
-  cursor: pointer;
+.filter-checkbox {
+  display: none;
 }
+
+.filter-diet-name {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, .9);
+  // border: 2px solid rgba(139, 139, 139, .3);
+  color: #adadad;
+  border-radius: 25px;
+  white-space: nowrap;
+  margin: 3px 0px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all .2s;
+  padding: 5px 10px;
+}
+
+.filter-diet-name:hover {
+  background-color: #a19c9cda;;
+}
+
+.filter-diet-name::before {
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  font-size: 12px;
+  // padding: 2px 0px 2px 2px;
+  width: 20px;
+  content: "\f067";
+  transition: transform .3s ease-in-out;
+}
+
+.filter-checkbox:checked + span::before {
+  content: "\f00c";
+  // transform: rotate(-360deg);
+  transition: transform .3s ease-in-out;
+}
+
+.filter-checkbox:checked + span {
+  // border: 2px solid #1bdbf8;
+  background-color: #a19c9cda;
+  color: #fff;
+  transition: all .2s;
+}
+
+
+
 .filter-dd-item2 {
   font-family: Open Sans;
   font-size: 14px;
@@ -344,6 +340,11 @@
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
+
+  .filter-dd-item1 {
+    // width: 20%;
+  }
+  
 }
 
 .filter-bot-ingredients {

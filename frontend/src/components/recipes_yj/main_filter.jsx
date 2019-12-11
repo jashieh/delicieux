@@ -265,52 +265,75 @@ export default class MainFilter extends React.Component {
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           <label className="filter-dd-item1" style={this.state.dairy ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="dairy" 
-              checked={this.state.dairy} 
+              checked={this.state.dairy}
+              className="filter-checkbox" 
               onChange={this.handleCheck("dairy")} />
-
+              <span className="filter-diet-name">
                 Dairy
+              </span>
           </label> 
           <label className="filter-dd-item1" style={this.state.egg ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="egg" 
               checked={this.state.egg} 
+              className="filter-checkbox"
               onChange={this.handleCheck("egg")} />
-                  Egg
+              <span className="filter-diet-name">
+                Egg
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.peanut ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="peanut" 
               checked={this.state.peanut} 
+              className="filter-checkbox"
               onChange={this.handleCheck("peanut")} />
-                  Peanut
+              <span className="filter-diet-name">
+                Peanut
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.seafood ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="seafood" 
               checked={this.state.seafood} 
+              className="filter-checkbox"
               onChange={this.handleCheck("seafood")} />
-                  Seafood
+              <span className="filter-diet-name">
+                Seafood
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.shellfish ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="shellfish" 
               checked={this.state.shellfish} 
+              className="filter-checkbox"
               onChange={this.handleCheck("shellfish")} />
-                  Shellfish
+              <span className="filter-diet-name">
+                Shellfish
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.soy ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="soy" 
               checked={this.state.soy} 
+              className="filter-checkbox"
               onChange={this.handleCheck("soy")} />
-                  Soy
+              <span className="filter-diet-name">
+                Soy
+              </span>
           </label>
-          <label className="filter-dd-item1" style={this.state.sulfite ? { fontWeight: "bold" } : {}}>
+          {/* <label className="filter-dd-item1" style={this.state.sulfite ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="sulfite" 
               checked={this.state.sulfite} 
+              className="filter-checkbox"
               onChange={this.handleCheck("sulfite")} />
-                  Sulfite
-          </label>
+              <span className="filter-diet-name">
+                Sulfite
+              </span>
+          </label> */}
           <label className="filter-dd-item1" style={this.state.wheat ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="wheat" 
               checked={this.state.wheat} 
+              className="filter-checkbox"
               onChange={this.handleCheck("wheat")} />
-                  Wheat
+              <span className="filter-diet-name">
+                Wheat
+              </span>
           </label>
         </div>)
     } else if (this.state.tabs === 4) {
