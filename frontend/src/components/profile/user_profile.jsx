@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Target from '../stylesheets/assets/medical-history.png';
-import Scale from "../stylesheets/assets/scale.png";
+import Target from '../stylesheets/assets/target.png';
+import Scale from "../stylesheets/assets/weight-scale.png";
 import Dumbbell from "../stylesheets/assets/dumbbell.png";
 import Ruler from "../stylesheets/assets/ruler.png";
 import Calorie from "../stylesheets/assets/calories-two.png";
+import Age from "../stylesheets/assets/hourglass.png";
+import Man from "../stylesheets/assets/man.png";
+import Woman from "../stylesheets/assets/woman.png";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -187,14 +190,6 @@ class UserProfile extends React.Component {
               checked={this.props.user.gender === "F"}/>
               <label htmlFor="genderF" className="gender-icon"><i className="fas fa-female"></i></label>
 
-            <input type="radio" 
-              className="gender-radio" 
-              onChange={this.update("gender")}
-              name="gender"
-              value={"O"}
-              id="genderO"
-              checked={this.props.user.gender === "O"}/>
-              <label htmlFor="genderO" className="gender-icon"><i className="fas fa-paw"></i></label>
         </div>;
         
     if(this.state.edit) {
@@ -281,7 +276,12 @@ class UserProfile extends React.Component {
           <div>{gender}</div>
         </div>
         <div className="profile-item-container">
-          <div>Age</div>
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Age} alt="" />
+            </div>
+            <div>Age</div>
+          </div>
           <div>{age}</div>
         </div>
         <div className="profile-item-container">
@@ -321,8 +321,15 @@ class UserProfile extends React.Component {
           <div>{weeklyTarget}</div>
         </div>
         <div className="profile-item-container">
-          Daily Calorie Goal:{" "}
-          {Math.floor(this.props.calorieCalc(this.props.user))} cal
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Calorie} alt="" />
+            </div>
+            <div>
+              Daily Calorie Goal:{" "}
+              {Math.floor(this.props.calorieCalc(this.props.user))} cal
+            </div>
+          </div>
         </div>
       </div>
     );
