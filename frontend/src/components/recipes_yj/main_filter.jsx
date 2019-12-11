@@ -1,5 +1,5 @@
 import React from 'react';
-import MainFilterDropdown from './main_filter_dropdown';
+
 import Toggle from 'react-toggle';
 // import "react-toggle/style.css";
 import '../stylesheets/recipes_index/main_filter.scss';
@@ -197,12 +197,14 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.glutenFree} 
               onChange={this.handleCheck("glutenFree")}/>
+
               <span className="filter-diet-name">
                 Gluten Free
               </span>
               {/* <div className="filter-checkmark-cont">
                 <img className="filter-checkmark" src={ThickCheck}/>
               </div> */}
+
           </label>
           <label className="filter-dd-item1" style={this.state.ketogenic ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="ketogenic" 
@@ -268,6 +270,7 @@ export default class MainFilter extends React.Component {
               checked={this.state.dairy}
               className="filter-checkbox" 
               onChange={this.handleCheck("dairy")} />
+
               <span className="filter-diet-name">
                 Dairy
               </span>
@@ -277,63 +280,77 @@ export default class MainFilter extends React.Component {
               checked={this.state.egg} 
               className="filter-checkbox"
               onChange={this.handleCheck("egg")} />
+
               <span className="filter-diet-name">
                 Egg
               </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.peanut ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="peanut" 
               checked={this.state.peanut} 
               className="filter-checkbox"
               onChange={this.handleCheck("peanut")} />
+
               <span className="filter-diet-name">
                 Peanut
               </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.seafood ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="seafood" 
               checked={this.state.seafood} 
               className="filter-checkbox"
               onChange={this.handleCheck("seafood")} />
+
               <span className="filter-diet-name">
                 Seafood
               </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.shellfish ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="shellfish" 
               checked={this.state.shellfish} 
               className="filter-checkbox"
               onChange={this.handleCheck("shellfish")} />
+
               <span className="filter-diet-name">
                 Shellfish
               </span>
+
           </label>
           <label className="filter-dd-item1" style={this.state.soy ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="soy" 
               checked={this.state.soy} 
               className="filter-checkbox"
               onChange={this.handleCheck("soy")} />
+
               <span className="filter-diet-name">
                 Soy
               </span>
+
           </label>
           {/* <label className="filter-dd-item1" style={this.state.sulfite ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="sulfite" 
               checked={this.state.sulfite} 
               className="filter-checkbox"
               onChange={this.handleCheck("sulfite")} />
+
               <span className="filter-diet-name">
                 Sulfite
               </span>
           </label> */}
+
           <label className="filter-dd-item1" style={this.state.wheat ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="wheat" 
               checked={this.state.wheat} 
               className="filter-checkbox"
               onChange={this.handleCheck("wheat")} />
+
               <span className="filter-diet-name">
                 Wheat
               </span>
+
           </label>
         </div>)
     } else if (this.state.tabs === 4) {
@@ -390,9 +407,11 @@ export default class MainFilter extends React.Component {
   }     
 
   render() {
+
     let includeFridge;
 
     this.state.includeFridge ? includeFridge = "include-fridge" : includeFridge = "";
+
 
     return(
       <div>

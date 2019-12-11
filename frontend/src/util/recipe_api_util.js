@@ -1,5 +1,6 @@
 import axios from 'axios';
 import key from './key';
+// axios.defaults.timeout = 10000;
 
 export const getRandomRecipe = (number = 1, tags) => {
   if (!tags) tags = [];
@@ -15,10 +16,10 @@ export const getRandomRecipe = (number = 1, tags) => {
     "params": {
       "number": `${number}`,
       "tags": tagStr
-    }
+    },
   })
     // .then(res => console.log(res))
-    // .catch(err => console.log(err))
+    // .fail(err => console.log(err))
   //res.data
 };
 
@@ -39,7 +40,6 @@ export const getRandomRecipes = (number) => {
 };
 
 export const getRecipeById = (id, includeNutrition = true) => {
-  // return axios.get(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition=${includeNutrition}&apiKey=${apiKey}`);
   return axios({
     "method": "GET",
     "url": `https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/${id}/information`,
@@ -60,7 +60,6 @@ export const getRecipeById = (id, includeNutrition = true) => {
 // Input ids as an array
 export const getMultipleRecipes = (ids, includeNutrition = true) => {
   const idString = ids.join(',');
-  // return axios.get(`https://api.spoonacular.com/recipes/informationBulk?${idString}&apiKey=${apiKey}`);
 
   return axios({
     "method": "GET",
@@ -168,9 +167,13 @@ export const complexRecipeSearch = (
 
   // const cuisineStr = cuisine.join(",");
   const dietStr = diet.join(",");
-
-  // console.log(queryStr);
-  // return axios.get(`https://api.spoonacular.com/recipes/complexSearch?${queryStr}apiKey=${apiKey}`);
+  // const config = {
+  //   timeout: 10000
+  // }
+  // const abort = axios.CancelToken.source()
+  // const id = setTimeout(
+  //   () => abort.cancel(`Timeout of ${config.timeout}ms.`),
+  //   10000)
 
   return axios({
     "method": "GET",
@@ -198,7 +201,11 @@ export const complexRecipeSearch = (
       "addRecipeInformation": "true",
       "fillIngredients": "true",
       "instructionsRequired": "true"
-    }
+    },
+    // timeout: 5000
+  })
+  .catch((error)=>{
+    console.log("we error now")
   })
 };
 
@@ -215,15 +222,15 @@ export const getSimilarRecipes = (id, limit = 5) => {
       "x-rapidapi-key": key.apiKey
     },
     "params": {
-      "numer": `${limit}`
+      "number": `${limit}`
     },
   })
     // .then((response) => {
     //   console.log(response)
     // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
+    .catch((error) => {
+      console.log(error)
+    })
 };
 
 
