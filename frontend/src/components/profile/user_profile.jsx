@@ -268,54 +268,37 @@ class UserProfile extends React.Component {
     return (
       <div className="profile-container">
         <div className="profile-item-container">
-          <div>
-            Name: { user }
-          </div>
-          <div onClick={this.toggleEdit}>
-            { edit }
-          </div>
+          <div>Name: {user}</div>
+          <div onClick={this.toggleEdit}>{edit}</div>
         </div>
         <div className="profile-item-container">
-          <div>
-            Sex
-          </div>
-          <div>
-            { gender }
-          </div>
+          <div>Sex</div>
+          <div>{gender}</div>
         </div>
         <div className="profile-item-container">
-          <div>
-            Age
-          </div>
-          <div>
-            { age }
-          </div>
+          <div>Age</div>
+          <div>{age}</div>
         </div>
         <div className="profile-item-container">
           Height
-          <div>
-            { height } cm
-          </div>
+          <div>{height} cm</div>
         </div>
         <div className="profile-item-container">
           Activity Level
-          <div>
-            { activityLevel }
-          </div>
-        </div>     
+          <div>{activityLevel}</div>
+        </div>
         <div className="profile-item-container">
           Current Weight
-          <div>
-            { weight } kg
-          </div>
+          <div>{weight} kg</div>
         </div>
         <div className="profile-item-container">
           Weekly Target
-          <div>
-            { weeklyTarget }
-          </div>
-        </div> 
-        Daily Calorie Goal: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
+          <div>{weeklyTarget}</div>
+        </div>
+        <div className="profile-item-container">
+          Daily Calorie Goal:{" "}
+          {Math.floor(this.props.calorieCalc(this.props.user))} cal
+        </div>
       </div>
     );
   }
