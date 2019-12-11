@@ -8,6 +8,8 @@ import Calorie from "../stylesheets/assets/calories-two.png";
 import Age from "../stylesheets/assets/hourglass.png";
 import Man from "../stylesheets/assets/man.png";
 import Woman from "../stylesheets/assets/woman.png";
+import Sex from "../stylesheets/assets/femenine.png";
+ 
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -179,8 +181,10 @@ class UserProfile extends React.Component {
               value={"M"}
               id="genderM"
               checked={this.props.user.gender === "M"}/>
-              <label htmlFor="genderM" className="gender-icon"><i className="fas fa-male"></i></label>
-        
+              <label htmlFor="genderM" className="gender-icon">
+                <img className="gender-image" src={Man} alt=""/>
+              </label>
+
             <input type="radio" 
               className="gender-radio" 
               onChange={this.update("gender")}
@@ -188,7 +192,9 @@ class UserProfile extends React.Component {
               value={"F"}
               id="genderF"
               checked={this.props.user.gender === "F"}/>
-              <label htmlFor="genderF" className="gender-icon"><i className="fas fa-female"></i></label>
+              <label htmlFor="genderF" className="gender-icon">
+                <img className="gender-image" src={Woman} alt=""/>
+              </label>
 
         </div>;
         
@@ -269,10 +275,15 @@ class UserProfile extends React.Component {
       <div className="profile-container">
         <div className="profile-item-container">
           <div>Name: {user}</div>
-          <div onClick={this.toggleEdit}>{edit}</div>
+          <div className="edit-profile"onClick={this.toggleEdit}>{edit}</div>
         </div>
         <div className="profile-item-container">
-          <div>Sex</div>
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Sex} alt="" />
+            </div>
+            <div>Sex</div>
+          </div>
           <div>{gender}</div>
         </div>
         <div className="profile-item-container">

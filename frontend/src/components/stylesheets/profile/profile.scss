@@ -25,52 +25,63 @@
 }
 
 .gender-radio-container {
-    width: 60px;
+    width: 70px;
     height: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid black;
+    justify-content: space-evenly;
+    // border: 1px solid black;
+    padding: 5px;
     border-radius: 5px;
-    // background: white !important;
 
     .gender-radio {
         margin:0;padding:0;
         -webkit-appearance:none;
            -moz-appearance:none;
                 appearance:none;
+        width: 25px;
+
     }
 
     .gender-radio:checked + .gender-icon{
-        background-color: green;
-        color: white;
+        background-color: rgb(255, 255, 255);
+        border: 1.5px solid rgba(0, 0, 0, 0.454);
+        color: rgb(255, 255, 255);
     }
 
     .gender-icon {
         width: 100%;
         height: 100%;
+        border: 1px solid rgb(210, 204, 204);
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px 1px rgba(179, 175, 175, 0.297);
+        // margin-right: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        // background: red;
+        background: white;
         // background: url("../assets/man.png");
     }
 
-    .gender-icon:nth-child(2) {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+    .gender-icon:hover {
+        cursor: pointer;
     }
 
-    .gender-icon:nth-child(4) {
-        border-left: 1px solid green;
-        border-right: 1px solid green;
-    }
+    // .gender-icon:nth-child(2) {
+    //     border-top-left-radius: 5px;
+    //     border-bottom-left-radius: 5px;
+    // }
 
-    .gender-icon:nth-child(6) {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
-    }
+    // .gender-icon:nth-child(4) {
+    //     border-left: 1px solid green;
+    //     border-right: 1px solid green;
+    // }
+
+    // .gender-icon:nth-child(6) {
+    //     border-top-right-radius: 5px;
+    //     border-bottom-right-radius: 5px;
+    // }
 }
 
 
@@ -95,3 +106,8 @@
     }
 }
 
+.gender-image {
+    width: 13px;
+    height: 13px;
+    
+}
