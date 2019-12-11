@@ -1,5 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Target from '../stylesheets/assets/medical-history.png';
+import Scale from "../stylesheets/assets/scale.png";
+import Dumbbell from "../stylesheets/assets/dumbbell.png";
+import Ruler from "../stylesheets/assets/ruler.png";
+import Calorie from "../stylesheets/assets/calories-two.png";
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -280,19 +285,39 @@ class UserProfile extends React.Component {
           <div>{age}</div>
         </div>
         <div className="profile-item-container">
-          Height
-          <div>{height} cm</div>
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Ruler} alt="" />
+            </div>
+            <div>Height (cm)</div>
+          </div>
+          <div>{height}</div>
         </div>
         <div className="profile-item-container">
-          Activity Level
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Dumbbell} alt="" />
+            </div>
+            <div>Activity Level</div>
+          </div>
           <div>{activityLevel}</div>
         </div>
         <div className="profile-item-container">
-          Current Weight
-          <div>{weight} kg</div>
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Scale} alt="" />
+            </div>
+            <div>Current Weight (kg)</div>
+          </div>
+          <div>{weight}</div>
         </div>
         <div className="profile-item-container">
-          Weekly Target
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Target} alt="" />
+            </div>
+            <div>Weekly Target</div>
+          </div>
           <div>{weeklyTarget}</div>
         </div>
         <div className="profile-item-container">

@@ -6,7 +6,7 @@
     font-family: Open Sans;
     font-weight: 500;
     color: black;
-    font-size: 15px;
+    font-size: 13px;
     
     
     .profile-item-container {
@@ -16,7 +16,7 @@
         justify-content: space-between;
         height: 70px;
         border-bottom: 1px solid gray; 
-        padding: 0px 15px; 
+        // padding: 0px 15px; 
     }
 }
 
@@ -69,3 +69,26 @@
         border-bottom-right-radius: 5px;
     }
 }
+
+
+
+.profile-left {
+    display: flex;
+    flex-direction: row;
+    // background: red;
+    margin: 4px;
+    align-items: center;
+
+    .profile-logo {
+    // background: green;
+        width: 15px;
+        height: 15px;
+        margin-right: 6px;
+    }
+
+    img {
+    width: 100%;
+    height: 100%;
+    }
+}
+
