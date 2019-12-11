@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const FridgeIngredientSchema = new Schema({
+const IngredientSchema = new Schema({
   ingredientId: {
     type: Number,
     required: true,
@@ -22,4 +22,4 @@ const FridgeIngredientSchema = new Schema({
   }
 });
 
-module.exports = FridgeIngredient = mongoose.model('fridge_ingredient', FridgeIngredientSchema);
+module.exports = Ingredient = mongoose.model('ingredient', IngredientSchema);
