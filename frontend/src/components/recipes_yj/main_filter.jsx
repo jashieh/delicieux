@@ -209,7 +209,7 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.ketogenic} 
               onChange={this.handleCheck("ketogenic")}/>
-              <span>
+              <span className="filter-diet-name">
                 Ketogenic
               </span>
           </label>
@@ -218,7 +218,7 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.vegetarian} 
               onChange={this.handleCheck("vegetarian")}/>
-              <span>
+              <span className="filter-diet-name">
                 Vegetarian
               </span>
           </label>
@@ -227,7 +227,7 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.vegan} 
               onChange={this.handleCheck("vegan")}/>
-              <span>
+              <span className="filter-diet-name">
                 Vegan
               </span>
           </label>
@@ -236,7 +236,7 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.paleo} 
               onChange={this.handleCheck("paleo")}/>
-              <span>
+              <span className="filter-diet-name">
                 Paleo
               </span>
               {this.state.paleo }

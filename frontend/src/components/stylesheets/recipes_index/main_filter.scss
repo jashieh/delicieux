@@ -215,10 +215,14 @@
   font-size: 13px;
   font-family: Open Sans;
 
+  .filter-checkbox {
+    display: none;
+  }
+
   .filter-diet-name {
     display: inline-block;
     background-color: rgba(255, 255, 255, .9);
-    border: 2px solid rgba(139, 139, 139, .3);
+    // border: 2px solid rgba(139, 139, 139, .3);
     color: #adadad;
     border-radius: 25px;
     white-space: nowrap;
@@ -230,9 +234,10 @@
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     transition: all .2s;
+    padding: 5px 10px;
   }
 
-  .filter-checkbox {
+  .filter-diet-name::before {
     display: inline-block;
     font-style: normal;
     font-variant: normal;
@@ -253,8 +258,8 @@
 }
 
   .filter-checkbox:checked + span {
-    border: 2px solid #1bdbf8;
-    background-color: #12bbd4;
+    // border: 2px solid #1bdbf8;
+    background-color: #a19c9cda;
     color: #fff;
     transition: all .2s;
 }
@@ -274,8 +279,8 @@
 
 .filter-dd-item1:hover {
   // background: blue;
-  font-weight: bold;
-  cursor: pointer;
+  // font-weight: bold;
+  // cursor: pointer;
 }
 .filter-dd-item2 {
   font-family: Open Sans;
