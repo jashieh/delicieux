@@ -172,7 +172,7 @@
       }
     }
   }
-
+  
   .filter-bot {
     height: 50px;
     width: 400px;
@@ -182,7 +182,7 @@
     justify-content: center;
     flex-wrap: flex;
     
-
+    
   }
   .filter-bot-cuisine {
     height: 70px;
@@ -199,6 +199,8 @@
     position: relative;
   }
 }
+
+
 .filter-dd-item1 {
   display: flex;
   // background-color: inherit;
@@ -206,11 +208,56 @@
   // justify-content: space-between;
   margin: 0 10px;
   height: 20px;
-  width: 120px;
+  // width: 50px;
+  // width: 120px;
   user-select: none;
   padding: 0 5px;
   font-size: 13px;
   font-family: Open Sans;
+
+  .filter-diet-name {
+    display: inline-block;
+    background-color: rgba(255, 255, 255, .9);
+    border: 2px solid rgba(139, 139, 139, .3);
+    color: #adadad;
+    border-radius: 25px;
+    white-space: nowrap;
+    margin: 3px 0px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: all .2s;
+  }
+
+  .filter-checkbox {
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    font-size: 12px;
+    padding: 2px 6px 2px 2px;
+    content: "\f067";
+    transition: transform .3s ease-in-out;
+  }
+
+  .filter-checkbox:checked + span::before {
+    content: "\f00c";
+    transform: rotate(-360deg);
+    transition: transform .3s ease-in-out;
+}
+
+  .filter-checkbox:checked + span {
+    border: 2px solid #1bdbf8;
+    background-color: #12bbd4;
+    color: #fff;
+    transition: all .2s;
+}
   
   .filter-checkmark-cont {
     height: 15px;
@@ -222,6 +269,9 @@
     max-width: 100%;
   }
 }
+
+
+
 .filter-dd-item1:hover {
   // background: blue;
   font-weight: bold;
@@ -264,7 +314,7 @@
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
   position: relative;
   margin: 10px 0px;
@@ -476,8 +526,8 @@ input[type=number] {
     background: grey;
     border-radius: 5px;
     padding-left: 10px;
-
-
+    
+    
     .filter-x {
       position: absolute;
       top: 0;
@@ -495,45 +545,51 @@ input[type=number] {
     
   }
   // maybe custom checkmarks
-  // .filter-checkbox {
-    //   display: none;
-    // }
-    .filter-checkmark-cont {
-      height: 15px;
-      width: 15px;
-      background: inherit;
+
+  .filter-checkbox {
+    // display: none;
+    margin-right: 5px;
+    border-radius: 50%;
+  }
+
+  
+  .filter-checkmark-cont {
+    height: 15px;
+    width: 15px;
+    background: inherit;
+  }
+  .filter-checkmark {
+    max-height: 100%;
+    max-width: 100%;
+  }
+  .filter-search-ul {
+    position: absolute;
+    z-index: 10;
+    background-color: rgb(238, 236, 236);
+    color: black;
+    box-sizing: border-box;
+    width: 300px;
+    margin-left: -10px;
+    font-weight: 400;
+    font-size: 15px;
+    font-family: Open Sans;
+    
+    .filter-search-li {
+      padding: 12px 15px;
+      color:black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
     }
-    .filter-checkmark {
-      max-height: 100%;
-      max-width: 100%;
+    
+    
+    .filter-search-li:hover {
+      cursor: pointer;
+      background-color: #24B6FF;
+      color: rgb(211, 207, 207);
+      font-weight: 600;
     }
-    .filter-search-ul {
-      position: absolute;
-      z-index: 10;
-      background-color: rgb(238, 236, 236);
-      color: black;
-      box-sizing: border-box;
-      width: 300px;
-      margin-left: -10px;
-      font-weight: 400;
-      font-size: 15px;
-      font-family: Open Sans;
-      
-      .filter-search-li {
-        padding: 12px 15px;
-        color:black;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-      
-      
-      .filter-search-li:hover {
-        cursor: pointer;
-        background-color: #24B6FF;
-        color: rgb(211, 207, 207);
-        font-weight: 600;
-      }
-      
-    }    
+    
+  }   
+  

@@ -21,11 +21,12 @@
   color: #09d3ac;
 }
 
+
 // reset file
 @import './reset.scss';
 
+@import './font_awesome/css/all.css';
 // main page
-
 @import './main/main.scss';
 
 // main page page 3

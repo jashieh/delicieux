@@ -197,7 +197,9 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.glutenFree} 
               onChange={this.handleCheck("glutenFree")}/>
-              Gluten Free
+              <span className="filter-diet-name">
+                Gluten Free
+              </span>
               {/* <div className="filter-checkmark-cont">
                 <img className="filter-checkmark" src={ThickCheck}/>
               </div> */}
@@ -207,28 +209,36 @@ export default class MainFilter extends React.Component {
               className="filter-checkbox"
               checked={this.state.ketogenic} 
               onChange={this.handleCheck("ketogenic")}/>
-              Ketogenic
+              <span>
+                Ketogenic
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.vegetarian ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="vegetarian" 
               className="filter-checkbox"
               checked={this.state.vegetarian} 
               onChange={this.handleCheck("vegetarian")}/>
-              Vegetarian
+              <span>
+                Vegetarian
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.vegan ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="vegan" 
               className="filter-checkbox"
               checked={this.state.vegan} 
               onChange={this.handleCheck("vegan")}/>
-              Vegan
+              <span>
+                Vegan
+              </span>
           </label>
           <label className="filter-dd-item1" style={this.state.paleo ? { fontWeight: "bold" } : {}}>
             <input type="checkbox" name="paleo" 
               className="filter-checkbox"
               checked={this.state.paleo} 
               onChange={this.handleCheck("paleo")}/>
-              Paleo
+              <span>
+                Paleo
+              </span>
               {this.state.paleo }
           </label>
         </div>)
