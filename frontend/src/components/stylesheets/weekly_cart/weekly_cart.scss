@@ -1,9 +1,18 @@
-.weekly-cart {
+.weekly-cart-page {
   height: 100vh;
   width: 100vw;
 
   display: flex;
   flex-direction: column; 
+  align-items: center;
+}
+
+.weekly-cart-info {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -20,35 +29,56 @@
 }
 
 .weekly-cart-days {
-  height: 45%;
-  width: 80%;
+  height: 100%;
+  width: 900px;
+  box-sizing: border-box;
 
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-
-  overflow-y: hidden;
-  overflow-x: scroll;
-
-  border-left: 1px solid rgb(173, 174, 230);
-  border-right: 1px solid rgb(173, 174, 230);
-
-  border-radius: 5px;
+  justify-content: flex-start;
 }
+
+.weekly-cart-times {
+  display: flex;
+  justify-content: center;
+  padding-left: 60px;
+  padding-bottom: 5px;
+
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 15.5px;
+  letter-spacing: 1px;
+
+  div {
+    width: 280px;
+    text-align: center;
+  }
+}
+
+// .weekly-cart-divider {
+//   align-self: flex-end;
+
+//   margin-right: 30px;
+
+//   width: 88%;
+//   height: 1px;
+//   border: 1px solid gray;
+// }
 
 // @KELLY: should we also add a custom scrollbar to the index?
-.weekly-cart-days::-webkit-scrollbar {
-  height: 5px;
-  // display: none;
-}
+// .weekly-cart-days::-webkit-scrollbar {
+//   width: 5px;
+//   // display: none;
+// }
 
-.weekly-cart-days::-webkit-scrollbar-track {
-  background: rgba(173, 174, 230, 0.5);
-}
+// .weekly-cart-days::-webkit-scrollbar-track {
+//   background: rgba(173, 174, 230, 0.5);
+// }
 
-.weekly-cart-days::-webkit-scrollbar-thumb {
-  background: rgb(173, 174, 230);
-  height: 5px;
-  // border: 1px black solid;
-  // border-radius: 2px;
-}
+// .weekly-cart-days::-webkit-scrollbar-thumb {
+//   background: rgb(173, 174, 230);
+//   width: 5px;
+//   // border: 1px black solid;
+//   // border-radius: 2px;
+// }
