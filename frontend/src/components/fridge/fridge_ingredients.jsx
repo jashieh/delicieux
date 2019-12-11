@@ -15,7 +15,6 @@ class FridgeIngredients extends React.Component {
 
   componentDidUpdate(prevProps) {
     if(this.props !== prevProps) {
-      console.log(this.props.ingredients)
       let ingredients = this.props.ingredients;
       let ids = Object.keys(ingredients);
 
@@ -29,7 +28,6 @@ class FridgeIngredients extends React.Component {
         }
 
         cat[aisle][ids[i]] = ingredients[ids[i]];
-        console.log(cat);
       }
       this.setState({ catagories: cat });
     }
@@ -84,7 +82,6 @@ class FridgeIngredients extends React.Component {
     let ingredients;
     let catagories;
     let ids = Object.keys(this.state.catagories);
-    console.log(this.state.catagories)
     if(Object.keys(this.state.catagories).length === 0 && Object.keys(this.props.ingredients).length !== 0) {
       // catagories = "loading...";
       catagories = <div className="fridge-loading">Loading...</div>

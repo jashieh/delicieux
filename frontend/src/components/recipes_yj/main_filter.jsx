@@ -53,9 +53,6 @@ export default class MainFilter extends React.Component {
     this.handleIngredientSubmit = this.handleIngredientSubmit.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
   }
-  componentDidMount() {
-    this.props.fetchFridge(this.props.userId);
-  }
 
   addIngredient(search) {
     let x = this.state.ingredientList;

@@ -21,5 +21,3 @@ const FridgeSchema = new Schema({
 
 module.exports = Fridge = mongoose.model('fridge', FridgeSchema);
 
-
-// 5dd49eb514fe715b3dc68cd1

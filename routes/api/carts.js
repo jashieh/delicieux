@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Cart = require('../../models/cart');
+const Ingredient = require('../../models/ingredient');
 
 // gets using the user_id?
 router.get('/:userId', (req, res) => {

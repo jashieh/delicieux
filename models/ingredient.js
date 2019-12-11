@@ -19,6 +19,10 @@ const IngredientSchema = new Schema({
   amount: {
     type: Number,
     required: true
+  },
+  aisle: {
+    type: String,
+    required: true
   }
 });
 

@@ -36,11 +36,20 @@ class CartItem extends React.Component {
 
   onDrop(e) {
     if (e.dataTransfer.getData("recipeId")) {
-      let { cart, date, time, userId, addCartMeal, getCart } = this.props;
+      let { cart, date, time, getRecipeDB, addCartMeal, getCart, recipes } = this.props;
+      let id = e.dataTransfer.getData("recipeId");
+      let recipe = this.recipe();
       addCartMeal(cart.id, {
         date,
         time,
         recipeId: parseInt(e.dataTransfer.getData("recipeId")),
+      })
+      .then(() => {
+        console.log("x")
+        if (recipes[id]) {
+          console.log(recipes[id])
+        };
+        console.log(getRecipeDB(id))
       })
     }
     // .then(

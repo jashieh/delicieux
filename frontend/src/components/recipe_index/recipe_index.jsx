@@ -56,6 +56,7 @@ class RecipeIndex extends React.Component {
 
   updateRecipes() {
     this.setState({ loading: true });
+    console.log('herasdasd')
     this.props.getRecipes(this.props.recipe_filters)
       .then(
         () => this.setState({ loading: false }),
