@@ -237,6 +237,10 @@
     padding: 5px 10px;
   }
 
+  .filter-diet-name:hover {
+    background-color: #a19c9cda;;
+  }
+
   .filter-diet-name::before {
     display: inline-block;
     font-style: normal;
@@ -246,7 +250,8 @@
     font-family: "Font Awesome 5 Free";
     font-weight: 900;
     font-size: 12px;
-    padding: 2px 6px 2px 2px;
+    // padding: 2px 0px 2px 2px;
+    width: 20px;
     content: "\f067";
     transition: transform .3s ease-in-out;
   }
@@ -280,7 +285,7 @@
 .filter-dd-item1:hover {
   // background: blue;
   // font-weight: bold;
-  // cursor: pointer;
+  cursor: pointer;
 }
 .filter-dd-item2 {
   font-family: Open Sans;
@@ -302,6 +307,7 @@
   top: 0;
   right: 10px;
   font-size: 25px;
+  color: #a19c9cda;
 }
 
 .filter-x:hover {
@@ -344,12 +350,16 @@
   min-height: 70px;
   width: 850px;
   margin: 10px 0px;
+  box-sizing: border-box;
+  padding: 0px 30px;
+  // padding-left: 30px;
   // background:rgb(241, 234, 247);
   background: #4291f75c;
   border-radius: 5px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  // justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
   position: relative;
 }
@@ -508,6 +518,7 @@ input[type=number] {
   display: flex;
   align-items: center;
   justify-content: center;
+  // justify-content: flex-start;
   flex-wrap: wrap;
   position: relative;
 }
@@ -522,30 +533,34 @@ input[type=number] {
   
   .filter-ing-item {
     height: 30px;
-    padding-right: 40px;
+    padding-left: 10px;
+    padding-right: 30px;
+    font-size: 14px;
     margin: 5px;
     position: relative;
     
     display: flex;
     align-items: center;
-    background: grey;
+    background: white;
     border-radius: 5px;
     padding-left: 10px;
+    color: rgb(78, 77, 77);
     
     
     .filter-x {
       position: absolute;
-      top: 0;
+      color: grey;
+      // top: 0;
+      top: 23%;
       right: 0;
       padding-right: 5px;
-      font-size: 20px;
+      font-size: 17px;
       height: 100%;
     }
     
     .filter-x:hover {
       cursor: pointer;
-      // color: white;
-      color: grey;
+      color: black;
     }
     
   }

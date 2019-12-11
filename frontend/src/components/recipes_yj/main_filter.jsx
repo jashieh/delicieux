@@ -192,7 +192,7 @@ export default class MainFilter extends React.Component {
         <div className="filter-bot-diet">
 
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
-          <label className="filter-dd-item1" style={this.state.glutenFree ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="glutenFree" 
               className="filter-checkbox"
               checked={this.state.glutenFree} 
