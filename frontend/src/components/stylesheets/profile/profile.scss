@@ -7,6 +7,8 @@
     font-weight: 500;
     color: black;
     font-size: 13px;
+    max-width: 330px;
+    // min-width: 290px;
     
     
     .profile-item-container {
@@ -21,7 +23,19 @@
 }
 
 .user-info-input {
-    width: 50px;
+    width: 45px !important;
+    padding: 5px 0px;
+    padding-left: 8px;
+    background: rgb(248, 248, 252) !important;
+    border-radius: 3px;
+    margin: none !important;
+    text-align: center;
+}
+
+.user-info-input:focus {
+    outline: none;
+    // box-shadow: 1px 1px 2px 1px rgba(142, 141, 141, 0.509);
+    border: 1px solid rgba(187, 187, 187, 0.829);
 }
 
 .gender-radio-container {
@@ -128,7 +142,6 @@
 }
 
 .edit {
-    // background: red;
     display: flex;
     justify-content: flex-end;
     margin-bottom: -14px;
@@ -136,5 +149,32 @@
 
 .edit:active {
     color: rgb(174, 68, 68);
-    // background: lightgray;
+}
+
+.profile-user {
+    // background: red;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-name {
+    // font-size: 12px;
+    // background: yellow;
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.activity {
+    // padding: 30px 5px;
+    text-indent: 5px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+        appearance: none;
+}
+
+.activity:focus {
+    outline: none;
+
 }

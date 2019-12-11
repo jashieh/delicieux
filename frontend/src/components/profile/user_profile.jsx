@@ -218,7 +218,7 @@ class UserProfile extends React.Component {
         />;
 
       activityLevel = 
-        <select onChange={this.update("activityLevel")}>
+        <select className="activity" onChange={this.update("activityLevel")}>
           <option value="1" selected={this.props.user.activityLevel === 1}>
             Sedentary
           </option>
@@ -233,21 +233,27 @@ class UserProfile extends React.Component {
           </option>
         </select>
       
-      weeklyTarget = 
-        <select onChange={this.update("weeklyTarget")}>
+      weeklyTarget = (
+        <select className="activity" onChange={this.update("weeklyTarget")}>
           <option value="0" selected={this.props.user.weeklyTarget === 0}>
             Maintain my weight
           </option>
           <option value="-1.0" selected={this.props.user.weeklyTarget === -1.0}>
             Lose 1.0 kg/week
           </option>
-          <option value="-0.75" selected={this.props.user.weeklyTarget === -0.75}>
+          <option
+            value="-0.75"
+            selected={this.props.user.weeklyTarget === -0.75}
+          >
             Lose 0.75 kg/week
           </option>
           <option value="-0.5" selected={this.props.user.weeklyTarget === -0.5}>
             Lose 0.5 kg/week
           </option>
-          <option value="-0.25" selected={this.props.user.weeklyTarget === -0.25}>
+          <option
+            value="-0.25"
+            selected={this.props.user.weeklyTarget === -0.25}
+          >
             Lose 0.25 kg/week
           </option>
           <option value="0.25" selected={this.props.user.weeklyTarget === 0.25}>
@@ -263,12 +269,13 @@ class UserProfile extends React.Component {
             Gain 1.0 kg/week
           </option>
         </select>
+      );
 
       edit = "Save";
     }
 
     if(this.props.user.name) {
-      user =  this.props.user.name[0].toUpperCase() + this.props.user.name.slice(1);
+      user =  this.props.user.name.toUpperCase();
     }
 
     return (
@@ -277,7 +284,14 @@ class UserProfile extends React.Component {
           <div className="edit-profile"onClick={this.toggleEdit}>{edit}</div>
         </div>
         <div className="profile-item-container">
-          <div>Name: {user}</div>
+          <div className="profile-user">
+            <div>
+              Name:
+            </div>
+            <div className="profile-name">
+              {user}
+            </div>
+          </div>
         </div>
         <div className="profile-item-container">
           <div className="profile-left">
