@@ -167,14 +167,30 @@
 }
 
 .activity {
-    // padding: 30px 5px;
-    text-indent: 5px;
+    // text-indent: 10px;
+    width: 140px;
+    font-size: 12px;
     -webkit-appearance: none;
     -moz-appearance: none;
-        appearance: none;
+    appearance: none;
+    padding: 7px 8px;
+    background-image: url("../assets/download.png");
+    background-repeat: no-repeat;
+    background-position: 93% 50%;
+    background-size: 12px;
+}
+
+.activity:hover {
+    cursor: pointer;
 }
 
 .activity:focus {
     outline: none;
+}
 
+.profile-item-container.last {
+    background: red;
+    margin-top: 20px;
+    height: 60px;
+    justify-content: center;
 }

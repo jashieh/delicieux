@@ -347,7 +347,7 @@ class UserProfile extends React.Component {
           </div>
           <div>{weeklyTarget}</div>
         </div>
-        <div className="profile-item-container">
+        <div className="profile-item-container last">
           <div className="profile-left">
             <div className="profile-logo">
               <img src={Calorie} alt="" />

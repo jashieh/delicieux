@@ -18,6 +18,10 @@ class LoginForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.currentUser === true) {
       this.props.history.push("/index");
@@ -28,18 +32,18 @@ class LoginForm extends React.Component {
 
   handleDemoLogin(email, password) {
     if (email.length > 0) {
-      this.setState({ email: this.state.email += email.shift() },
-        () => setTimeout(() => this.handleDemoLogin(email, password), 50)
-      )
+      this.setState({ email: (this.state.email += email.shift()) }, () =>
+        setTimeout(() => this.handleDemoLogin(email, password), 50)
+      );
     } else if (password.length > 0) {
-      this.setState({ password: this.state.password += password.shift() },
+      this.setState(
+        { password: (this.state.password += password.shift()) },
         () => setTimeout(() => this.handleDemoLogin(email, password), 50)
-      )
+      );
     } else {
       this.props.login(this.state);
     }
   }
-
 
   handleDemo() {
     // let { email, password } = this.state;
@@ -50,8 +54,8 @@ class LoginForm extends React.Component {
 
     return e => {
       e.preventDefault();
-      let email = 'demo_user@delicieux.com'.split("");
-      let password = 'password'.split("");
+      let email = "demo_user@delicieux.com".split("");
+      let password = "password".split("");
       this.handleDemoLogin(email, password);
     };
   }
@@ -78,69 +82,74 @@ class LoginForm extends React.Component {
     return (
       <ul>
         {Object.keys(this.state.errors).map((error, i) => (
-          <li className="login-error" key={`error-${i}`}>{this.state.errors[error]}</li>
+          <li className="login-error" key={`error-${i}`}>
+            {this.state.errors[error]}
+          </li>
         ))}
       </ul>
     );
   }
 
-
   render() {
-
     return (
-        <div className="session-background">
-          <div className="signup-text">délicieux</div>
-          <a className="signup-form" class="btn">
+      <div className="session-background">
+        <div className="signup-text">délicieux</div>
+        <a className="signup-form" class="btn">
+          <span>
             <span>
               <span>
-                <span>
-                  <form onSubmit={this.handleSubmit}>
-                    <div>
-                      <br />
+                <form onSubmit={this.handleSubmit}>
+                  <div>
+                    <br />
 
-                      <input
-                        type="text"
-                        value={this.state.email}
-                        onChange={this.update('email')}
-                        placeholder="Email"
-                        className="login-text"
-                      />
-                      <br />
-                      <input type="password"
-                        value={this.state.password}
-                        onChange={this.update('password')}
-                        placeholder="Password"
-                        className="login-text"
-                      />
-                      <br />
+                    <input
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.update("email")}
+                      placeholder="Email"
+                      className="login-text"
+                    />
+                    <br />
+                    <input
+                      type="password"
+                      value={this.state.password}
+                      onChange={this.update("password")}
+                      placeholder="Password"
+                      className="login-text"
+                    />
+                    <br />
 
-                      {this.renderErrors()}
+                    {this.renderErrors()}
 
-                      <div className="login-bottom">
-
-                        <div className="buttons">
-                          <input type="submit" value="Submit" className="submit" />
-                        </div>
-
-                        <div className="buttons">
-                          <button className="submit" onClick={this.handleDemo()}>
-                            Demo User
-                          </button>
-                        </div>
-
+                    <div className="login-bottom">
+                      <div className="buttons">
+                        <input
+                          type="submit"
+                          value="Submit"
+                          className="submit"
+                        />
                       </div>
 
-                      <div className="go-back">
-                        <h2>Don't have an account?</h2>
-                        <Link className="back-sign" to="/signup">Sign Up</Link>
+                      <div className="buttons">
+                        <button className="submit" onClick={this.handleDemo()}>
+                          Demo User
+                        </button>
                       </div>
                     </div>
-                  </form>
-                </span>
+
+                    <div className="go-back">
+                      <h2>Don't have an account?</h2>
+                      <Link className="back-sign" to="/signup">
+                        Sign Up
+                      </Link>
+                    </div>
+                  </div>
+                </form>
               </span>
             </span>
-          </a>
-        </div>
+          </span>
+        </a>
+      </div>
     );
   }
 }
