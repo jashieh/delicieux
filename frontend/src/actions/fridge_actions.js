@@ -1,5 +1,7 @@
 import * as FridgeAPIUtil from '../util/fridge_api_util';
 import * as IngredientAPIUtil from '../util/ingredient_api_util';
+import { getIngredientById } from '../util/ingredient_api_util';
+
 
 export const RECEIVE_FRIDGE = 'RECIEVE_FRIDGE';
 export const RECEIVE_FRIDGE_INGREDIENT = 'RECEIVE_FRIDGE_INGREDIENT';
@@ -48,11 +50,15 @@ export const fetchFridge = (userId) => dispatch => (
     })
 );
 
-export const addFridgeIngredient = (userId, ingredient, amount) => dispatch => (
-  FridgeAPIUtil
-    .addFridgeIngredient(userId, ingredient, amount)
-    .then(ingredient => dispatch(receiveFridgeIngredient(ingredient)))
-);
+export const addFridgeIngredient = (userId, ingredient, amount) => dispatch => {
+  return getIngredientById(ingredient.id).then(res => {
+    let aisle = res.data.aisle;
+    ingredient.aisle = aisle;
+    FridgeAPIUtil
+      .addFridgeIngredient(userId, ingredient, amount)
+      .then(ingredient => dispatch(receiveFridgeIngredient(ingredient)))
+  });
+};
 
 export const modifyIngredient = (userId, ingredient, amount) => dispatch =>(
   FridgeAPIUtil

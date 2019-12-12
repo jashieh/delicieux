@@ -93,11 +93,15 @@ export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUn
       "sourceUnit": sourceUnit,
       "sourceAmount": `${sourceAmount}`
     }
-  })
+  });
     // .then((response) => {
     //   console.log(response)
     // })
     // .catch((error) => {
     //   console.log(error)
     // })
-}
+};
+
+
+
+
