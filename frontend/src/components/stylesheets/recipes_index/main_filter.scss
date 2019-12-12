@@ -407,11 +407,18 @@ input[type=range]::-webkit-slider-thumb {
   
 }
 
-input[type=number] {
+.slide {
+  -webkit-appearance: none;
   background: inherit;
   border: none;
   margin-left: 11px;
   width: 50px;
+}
+
+.slide::-webkit-outer-spin-button,
+.slide::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 
