@@ -30,7 +30,7 @@ class RecipeIndexItem extends React.Component {
     const { recipe, rotateToBack, fridge } = this.props;
     const { vegetarian, vegan, title, spoonacularScore, image, servings, readyInMinutes, nutrition } = this.props.recipe
 
-    let timeC = readyInMinutes < 60 ? (readyInMinutes).toString() + "m" :
+    let timeC = readyInMinutes < 60 ? (readyInMinutes).toString() :
       readyInMinutes < 180 ? Math.floor(readyInMinutes / 60).toString() + "h" : "3h";
     let isVegan
     if (vegan) {
