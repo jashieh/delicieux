@@ -82,6 +82,11 @@ export default class MainFilter extends React.Component {
     }
   }
   handleCuisine(type) {
+    if(this.state.cuisine === type.cuisine) {
+      return (e) => {
+        this.setState({ cuisine: "" })
+      }
+    }
     return (e) => {
       this.setState({ cuisine: type.cuisine })
     }
@@ -121,7 +126,7 @@ export default class MainFilter extends React.Component {
         maxCarbs: this.state.maxCarbs,
         minProtein: this.state.minProtein
       })
-      this.setState({ tabs: 0 });
+      // this.setState({ tabs: 0 });
     }
     
   }
@@ -137,7 +142,7 @@ export default class MainFilter extends React.Component {
     if (ingredientList.length) {
       this.props.startLoad("loading");
       this.props.getRecipesByIngredients(ingredientList, 12);
-      this.setState({ tabs: 0, ingredientToggle: false });
+      // this.setState({ tabs: 0, ingredientToggle: false });
     }
   }
 
@@ -202,7 +207,7 @@ export default class MainFilter extends React.Component {
               </div> */}
 
           </label>
-          <label className="filter-dd-item1" style={this.state.ketogenic ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="ketogenic" 
               className="filter-checkbox"
               checked={this.state.ketogenic} 
@@ -211,7 +216,7 @@ export default class MainFilter extends React.Component {
                 Ketogenic
               </span>
           </label>
-          <label className="filter-dd-item1" style={this.state.vegetarian ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="vegetarian" 
               className="filter-checkbox"
               checked={this.state.vegetarian} 
@@ -220,7 +225,7 @@ export default class MainFilter extends React.Component {
                 Vegetarian
               </span>
           </label>
-          <label className="filter-dd-item1" style={this.state.vegan ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="vegan" 
               className="filter-checkbox"
               checked={this.state.vegan} 
@@ -229,7 +234,7 @@ export default class MainFilter extends React.Component {
                 Vegan
               </span>
           </label>
-          <label className="filter-dd-item1" style={this.state.paleo ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="paleo" 
               className="filter-checkbox"
               checked={this.state.paleo} 
@@ -243,17 +248,17 @@ export default class MainFilter extends React.Component {
     } else if (this.state.tabs === 2) {
       return (
         <div className="filter-bot-cuisine" onClick={this.removeCuisine}>
-          {/* <span className="filter-x" onClick={this.handleTab(0)}>&times;</span> */}
+          <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           {this.state.cuisines.map((cuisine, idx) => {
             return (
             <div key={idx} 
               className="filter-dd-item2" 
-              onClick={this.handleCuisine({cuisine})}
-
-              style={this.state.cuisine === cuisine ? { fontWeight: "bold", color: "purple" } : {}}>
-              {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
-
-              {cuisine}
+              onClick={this.handleCuisine({cuisine})}>
+              <input type="radio" name="drone" className="filter-checkbox"
+                checked={this.state.cuisine === cuisine}/>
+              <div className="filter-diet-name">
+                {cuisine}
+              </div>
             </div>)
           })}
         </div>);
@@ -261,7 +266,7 @@ export default class MainFilter extends React.Component {
       return( 
         <div className="filter-bot-allergies">
           <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
-          <label className="filter-dd-item1" style={this.state.dairy ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="dairy" 
               checked={this.state.dairy}
               className="filter-checkbox" 
@@ -271,7 +276,7 @@ export default class MainFilter extends React.Component {
                 Dairy
               </span>
           </label> 
-          <label className="filter-dd-item1" style={this.state.egg ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="egg" 
               checked={this.state.egg} 
               className="filter-checkbox"
@@ -282,7 +287,7 @@ export default class MainFilter extends React.Component {
               </span>
 
           </label>
-          <label className="filter-dd-item1" style={this.state.peanut ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="peanut" 
               checked={this.state.peanut} 
               className="filter-checkbox"
@@ -293,7 +298,7 @@ export default class MainFilter extends React.Component {
               </span>
 
           </label>
-          <label className="filter-dd-item1" style={this.state.seafood ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="seafood" 
               checked={this.state.seafood} 
               className="filter-checkbox"
@@ -304,7 +309,7 @@ export default class MainFilter extends React.Component {
               </span>
 
           </label>
-          <label className="filter-dd-item1" style={this.state.shellfish ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1" >
             <input type="checkbox" name="shellfish" 
               checked={this.state.shellfish} 
               className="filter-checkbox"
@@ -315,7 +320,7 @@ export default class MainFilter extends React.Component {
               </span>
 
           </label>
-          <label className="filter-dd-item1" style={this.state.soy ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="soy" 
               checked={this.state.soy} 
               className="filter-checkbox"
@@ -337,7 +342,7 @@ export default class MainFilter extends React.Component {
               </span>
           </label> */}
 
-          <label className="filter-dd-item1" style={this.state.wheat ? { fontWeight: "bold" } : {}}>
+          <label className="filter-dd-item1">
             <input type="checkbox" name="wheat" 
               checked={this.state.wheat} 
               className="filter-checkbox"
@@ -352,7 +357,7 @@ export default class MainFilter extends React.Component {
     } else if (this.state.tabs === 4) {
       return (
         <div className="filter-bot-allergies">
-          {/* <span className="filter-x" onClick={this.handleTab(0)}>&times;</span> */}
+          <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           <div className="filter-slider">
             <div>Max Calories [ 0 - 800 ]</div>
             <div className="slider-second">
@@ -419,7 +424,7 @@ export default class MainFilter extends React.Component {
             <div className="filter-text-cont">
               <FilterSearchContainer addIngredient={this.addIngredient}/>
               <div className="filter-query-search"  
-                style={!this.state.ingredientList.length ? {background: "white", cursor: "auto"} : {}}>
+                onClick={this.handleIngredientSubmit}>
                   <img src={Loupe} alt=""/>
               </div>
             </div>
