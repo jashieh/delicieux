@@ -99,7 +99,11 @@ class WeeklyIngredients extends React.Component {
   modifyIngredients(recipe) {
     let cat = {};
     for(let i = 0; i < recipe.ingredients.length; i++) {
-      this.ingredients[recipe.ingredients[i].id] = recipe.ingredients[i];
+      if(this.ingredients[recipe.ingredients[i].id]) {
+        this.ingredients[recipe.ingredients[i].id].amount += recipe.ingredients[i].amount;
+      } else {
+        this.ingredients[recipe.ingredients[i].id] = recipe.ingredients[i];
+      }
       
       if(this.results === 0) {
         let ing = {};
