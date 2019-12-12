@@ -252,7 +252,7 @@ export default class MainFilter extends React.Component {
           {this.state.cuisines.map((cuisine, idx) => {
             return (
             <div key={idx} 
-              className="filter-dd-item2" 
+              className="filter-dd-item1" 
               onClick={this.handleCuisine({cuisine})}>
               <input type="radio" name="drone" className="filter-checkbox"
                 checked={this.state.cuisine === cuisine}/>
