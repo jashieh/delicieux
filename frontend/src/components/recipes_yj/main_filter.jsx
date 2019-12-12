@@ -244,7 +244,7 @@ export default class MainFilter extends React.Component {
     } else if (this.state.tabs === 2) {
       return (
         <div className="filter-bot-cuisine" onClick={this.removeCuisine}>
-          {/* <span className="filter-x" onClick={this.handleTab(0)}>&times;</span> */}
+          <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           {this.state.cuisines.map((cuisine, idx) => {
             return (
             <div key={idx} 
@@ -353,7 +353,7 @@ export default class MainFilter extends React.Component {
     } else if (this.state.tabs === 4) {
       return (
         <div className="filter-bot-allergies">
-          {/* <span className="filter-x" onClick={this.handleTab(0)}>&times;</span> */}
+          <span className="filter-x" onClick={this.handleTab(0)}>&times;</span>
           <div className="filter-slider">
             <div>Max Calories [ 0 - 800 ]</div>
             <div className="slider-second">
