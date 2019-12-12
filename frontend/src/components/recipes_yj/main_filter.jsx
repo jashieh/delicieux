@@ -115,7 +115,12 @@ export default class MainFilter extends React.Component {
     if (this.state.wheat) intolerances.push("wheat");
     if (intolerances.length || diet.length || this.state.query || this.state.cuisine || this.state.maxCalories 
       || this.state.maxFat || this.state.maxCarbs || this.state.minProtein) {
-      this.props.startLoad("loading")
+      this.props.startLoad("loading");
+
+      setTimeout(() => {
+        if(this.props.loading)
+          this.props.startLoad("failed")
+      }, 10000);
       this.props.complexRecipeSearch({
         search: this.state.query,
         cuisine: this.state.cuisine,
@@ -141,6 +146,10 @@ export default class MainFilter extends React.Component {
 
     if (ingredientList.length) {
       this.props.startLoad("loading");
+      setTimeout(() => {
+        if(this.props.loading)
+        this.props.startLoad("failed")
+      }, 10000)
       this.props.getRecipesByIngredients(ingredientList, 12);
       // this.setState({ tabs: 0, ingredientToggle: false });
     }
