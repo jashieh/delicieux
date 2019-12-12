@@ -78,7 +78,6 @@ router.post("/register", (req, res) => {
                   }
                 },
               });
-              console.log(newCart);
               newCart.save();
 
               jwt.sign(payload, keys.secretOrKey, { expiresIn: 3600 }, (err, token) => {
