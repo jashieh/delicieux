@@ -138,7 +138,7 @@ export default class MainFilter extends React.Component {
     if (ingredientList.length) {
       this.props.startLoad("loading");
       this.props.getRecipesByIngredients(ingredientList, 12);
-      this.setState({ tabs: 0, ingredientToggle: false });
+      // this.setState({ tabs: 0, ingredientToggle: false });
     }
   }
 
@@ -420,7 +420,7 @@ export default class MainFilter extends React.Component {
             <div className="filter-text-cont">
               <FilterSearchContainer addIngredient={this.addIngredient}/>
               <div className="filter-query-search"  
-                style={!this.state.ingredientList.length ? {background: "white", cursor: "auto"} : {}}>
+                onClick={this.handleIngredientSubmit}>
                   <img src={Loupe} alt=""/>
               </div>
             </div>

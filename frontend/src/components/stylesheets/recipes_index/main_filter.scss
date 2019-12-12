@@ -86,28 +86,8 @@
       font-family: Open Sans;
       font-size: 15px;
     }
-    
-    .filter-query-search {
-      width: 30px;
-      height: 30px;
-      background: inherit;
-      display: flex;
-      justify-content: center;
-      cursor: pointer;
-      
-      img {
-        width: 17px;
-        height: 17px;
-        align-self: center;
-      }
-      
-    }
-    .filter-query-search:hover{
-      background: #d3d3d3;
-      border-radius: 3px;
-    }
-    
   }
+     
   .filter-text-button {
     height: 43px;
     width: 48px;
@@ -198,6 +178,26 @@
     flex-wrap: wrap;
     position: relative;
   }
+}
+
+.filter-query-search {
+  width: 30px;
+  height: 30px;
+  background: inherit;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  
+  img {
+    width: 17px;
+    height: 17px;
+    align-self: center;
+  }
+  
+}
+.filter-query-search:hover{
+  background: #d3d3d3;
+  border-radius: 3px;
 }
 
 
