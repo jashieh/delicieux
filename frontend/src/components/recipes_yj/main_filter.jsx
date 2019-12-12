@@ -83,6 +83,11 @@ export default class MainFilter extends React.Component {
     }
   }
   handleCuisine(type) {
+    if(this.state.cuisine === type.cuisine) {
+      return (e) => {
+        this.setState({ cuisine: "" })
+      }
+    }
     return (e) => {
       this.setState({ cuisine: type.cuisine })
     }
@@ -249,12 +254,17 @@ export default class MainFilter extends React.Component {
             return (
             <div key={idx} 
               className="filter-dd-item2" 
-              onClick={this.handleCuisine({cuisine})}
-
-              style={this.state.cuisine === cuisine ? { fontWeight: "bold", color: "purple" } : {}}>
+              onClick={this.handleCuisine({cuisine})}>
               {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
-
-              {cuisine}
+              {/* <div style={ this.state.cuisine === cuisine ?
+                {content: "\f00c", } : {} }>
+              </div> */}
+              <div className="filter-diet-name" 
+                style={ this.state.cuisine === cuisine ? 
+                  {backgroundColor: "#a19c9cda", color: "white","--my-var": "\f00c"} : {
+                    "--my-var": "\f067"}}>
+                {cuisine}
+              </div>
             </div>)
           })}
         </div>);

@@ -165,7 +165,7 @@
     
   }
   .filter-bot-cuisine {
-    height: 70px;
+    height: 100px;
     width: 850px;
     margin: 10px 0px;
     // background: rgb(241, 234, 247);
@@ -254,6 +254,7 @@
   color: white;
 }
 
+
 .filter-diet-name::before {
   display: inline-block;
   font-style: normal;
@@ -269,13 +270,14 @@
   transition: transform .3s ease-in-out;
 }
 
-.filter-checkbox:checked + span::before {
+
+.filter-checkbox:checked + .filter-diet-name::before {
   content: "\f00c";
   // transform: rotate(-360deg);
   transition: transform .3s ease-in-out;
 }
 
-.filter-checkbox:checked + span {
+.filter-checkbox:checked + .filter-diet-name {
   // border: 2px solid #1bdbf8;
   background-color: #a19c9cda;
   color: #fff;
@@ -285,18 +287,23 @@
 
 
 .filter-dd-item2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: Open Sans;
   font-size: 14px;
-  // background-color: inherit;
   text-align: center;
   margin: 0 10px;
   height: 20px;
   width: 90px;
   user-select: none;
+  padding: 1px;
+  border-radius: 5px;
 }
+
 .filter-dd-item2:hover {
   cursor: pointer;
-  font-weight: bold;
+  // font-weight: bold;
 }
 
 .filter-x {
