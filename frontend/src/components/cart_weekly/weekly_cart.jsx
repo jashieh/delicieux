@@ -28,6 +28,7 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
+    debugger;
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     // this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0}, ()=>{
     fetchFridge(user.id)
@@ -86,6 +87,7 @@ class WeeklyCart extends React.Component {
   
   // fetches all necessary recipes for a given week
   getRecipes() {
+    debugger;
     let dates = this.generateDates();
     let { cart, recipes, addCartDate, getRecipeDB } = this.props;
     let recipeId;
@@ -96,6 +98,7 @@ class WeeklyCart extends React.Component {
         results++;
         addCartDate(cart.id, { date: dates[i] })
           .then(() => {
+            debugger;
             results--;
             if (results === 0) this.setState({ dates })
           });
@@ -109,14 +112,17 @@ class WeeklyCart extends React.Component {
             getRecipeDB(recipeId)
               .then(({ recipe } ) => {
                 this.modifyMacros(recipe, "add");
+                debugger;
                 results--;
                 if (results === 0) this.setState({ dates });
               });
           } else if (!recipeId) {
-            if (results === 0) this.setState( { dates} );
+            debugger;
+            if (results === 0) this.setState({ dates });
         }
       }
     }
+    if (results === 0) this.setState({ dates });
     }
   }
 
@@ -195,6 +201,7 @@ class WeeklyCart extends React.Component {
   render() {
     let { dates } = this.state;
     if (dates.length > 0 ){
+      debugger;
       return (
         <div className="weekly-cart-page">
           <div className="top">
