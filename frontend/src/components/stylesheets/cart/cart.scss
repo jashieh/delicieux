@@ -114,6 +114,7 @@
   display: flex;
   flex-direction: column;
   background: white;
+  position: relative;
   // box-shadow: 1px 1px 8px 1px #c6c4c4;
   border: 1px solid rgba(240, 71, 33, 0.529);
   box-shadow: 1px 1px 8px 1px #e65a3b80;
@@ -188,8 +189,15 @@
 
   // border: 1px solid black;
   // background: maroon;
-
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  width: 60px;
   font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: black;
   vertical-align: middle;
   text-align: center;
