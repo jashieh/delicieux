@@ -1,6 +1,6 @@
 import axios from 'axios';
 import key from './key';
-axios.defaults.timeout = 10000;
+// axios.defaults.timeout = 10000;
 
 export const getRandomRecipe = (number = 1, tags) => {
   if (!tags) tags = [];
@@ -202,7 +202,7 @@ export const complexRecipeSearch = (
       "fillIngredients": "true",
       "instructionsRequired": "true"
     },
-    timeout: 5000
+    // timeout: 5000
   })
   .catch((error)=>{
     console.log("we error now")
@@ -263,6 +263,10 @@ export const getRecipe = (recipeId) => (
 
 export const postRecipeId = (recipeData) => {
   return axios.post('/api/recipes/indiv', recipeData);
+};
+
+export const updateRecipeIngredients = (recipeId, ingredients) => {
+  return axios.patch(`api/recipes/${recipeId}/ingredients`, ingredients);
 };
 
 export const postRecipeComplex = (recipeData) => {

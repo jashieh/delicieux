@@ -28,7 +28,8 @@ const RecipeSchema = new Schema({
     amount: Number,
     unit: String,
     name: String,
-    image: String
+    image: String,
+    aisle: String
   })],
   // extendedIngredients: [], //Probably don't need this until we maybe add custom recipes!!
   

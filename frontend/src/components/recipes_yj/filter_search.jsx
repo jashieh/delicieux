@@ -24,6 +24,7 @@ export default class FilterSearch extends React.Component {
     this.search = debounce(this.search, 100);
     this.handleClick = this.handleClick.bind(this);
     this.hitEnter = this.hitEnter.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
   }
 
   componentDidMount() {
@@ -55,7 +56,7 @@ export default class FilterSearch extends React.Component {
 
   handleClick(e) {
     if (!(this.node && this.node.contains(e.target))) {
-      this.setState({ visible: false});
+      this.setState({ visible: false, query: "" });
     }
   }
 
@@ -65,12 +66,18 @@ export default class FilterSearch extends React.Component {
     }
   }
 
+  clearSearch() {
+    this.setState({ visible: false, query: "" });
+  }
+
   render() {
     let results;
     if (this.state.results.length > 0) {
       results = this.state.results.map((ingredient, i) => {
         return (
-          <FilterSearchItemContainer key={i} ingredient={ingredient} addIngredient={this.props.addIngredient}/>
+          <FilterSearchItemContainer key={i} ingredient={ingredient} 
+            addIngredient={this.props.addIngredient}
+            clearSearch={this.clearSearch}/>
         );
       });
     } else {

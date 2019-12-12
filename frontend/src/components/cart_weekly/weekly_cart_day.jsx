@@ -76,6 +76,15 @@ class WeeklyCartDay extends React.Component {
 
   render() {
     const { recipes, cart, date, openModal, addMacros } = this.props;
+    const mapper = {
+      Mon: "Monday",
+      Tue: "Tuesday",
+      Wed: "Wednesday",
+      Thu: "Thursday",
+      Fri: "Friday",
+      Sat: "Saturday",
+      Sun: "Sunday"
+    }
     let cartContent = 
       TIMES.map((time, idx) => {
         // Must pull recipes into an instance variable otherwise it won't be available
@@ -92,7 +101,7 @@ class WeeklyCartDay extends React.Component {
           // addMacros(this.recipe[time]);
           return (
             <div className="weekly-cart-item" key={idx}>
-              <div className="weekly-cart-item-time">{time}</div>
+              {/* <div className="weekly-cart-item-time">{time}</div> */}
               <div className="weekly-cart-item-main">
                 <div className="weekly-cart-item-info">
                   <div className="weekly-cart-item-info-text">
@@ -118,7 +127,7 @@ class WeeklyCartDay extends React.Component {
         } else {
           return (
             <div className="weekly-cart-item" key={idx}>
-              <div className="weekly-cart-item-time">{time}</div>
+              {/* <div className="weekly-cart-item-time">{time}</div> */}
               <div className="weekly-cart-item-info"></div>
             </div>
           );
@@ -127,12 +136,13 @@ class WeeklyCartDay extends React.Component {
     
     return (
       <div className="weekly-cart-day">
-        <div className="weekly-cart-header-date">{date}</div>
-        <div className="weekly-cart-date">
-          {cartContent}
+        <div className="weekly-cart-header-date">
+          <div>{date.split(" ")[0]}</div>
         </div>
+        <div className="weekly-cart-day-divider"></div>
+        <div className="weekly-cart-date">{cartContent}</div>
       </div>
-    )
+    );
   }
 }
 

@@ -21,9 +21,9 @@ class WeeklyCart extends React.Component {
     this.modifyMacros = this.modifyMacros.bind(this);
     this.removeMacros = this.removeMacros.bind(this);
 
-    this.addListeners = this.addListeners.bind(this);
-    this.removeListeners = this.removeListeners.bind(this);
-    this.scrollCart = this.scrollCart.bind(this);
+    // this.addListeners = this.addListeners.bind(this);
+    // this.removeListeners = this.removeListeners.bind(this);
+    // this.scrollCart = this.scrollCart.bind(this);
   } 
 
   // generate an array of weekdates and fetch recipe info
@@ -36,37 +36,37 @@ class WeeklyCart extends React.Component {
           getCart(user.id)
             .then(() => {
               this.getRecipes();
-              this.addListeners();
+              // this.addListeners();
             })
         } else {
             this.getRecipes();
-            this.addListeners();
+            // this.addListeners();
       }});
     fetchUser(user.id);
   }
 
-  componentWillUnmount() {
-    this.removeListeners();
-  }
+  // componentWillUnmount() {
+  //   this.removeListeners();
+  // }
 
-  addListeners() {
-    this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
-    this.weeklyCart.addEventListener("wheel", (e) => { this.scrollCart(e) });
-  }
+  // addListeners() {
+  //   this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
+  //   this.weeklyCart.addEventListener("wheel", this.scrollCart);
+  // }
 
-  // Removes the listener, fixes the bug when this.weeklyCart isn't found
-  removeListeners() {
-    this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
-    if (this.weeklyCart)
-      this.weeklyCart.removeEventListener("wheel", (e) => { this.scrollCart(e) })
-  }
+  // // Removes the listener, fixes the bug when this.weeklyCart isn't found
+  // removeListeners() {
+  //   this.weeklyCart = document.getElementsByClassName("weekly-cart")[0];
+  //   if (this.weeklyCart)
+  //     this.weeklyCart.removeEventListener("wheel", this.scrollCart);
+  // }
 
-  scrollCart(e) {
-    if (!this.weeklyCartDays)
-      this.weeklyCartDays = document.getElementsByClassName("weekly-cart-days")[0];
-    else 
-      this.weeklyCartDays.scrollLeft -= e.deltaY;
-  }
+  // scrollCart(e) {
+  //   if (!this.weeklyCartDays)
+  //     this.weeklyCartDays = document.getElementsByClassName("weekly-cart-days")[0];
+  //   else 
+  //     this.weeklyCartDays.scrollLeft += e.deltaY;
+  // }
 
 
   // Generates an array of dateStrings that represent the week's cart
@@ -141,7 +141,6 @@ class WeeklyCart extends React.Component {
       let nutrient = nutrientNames[i];
 
       let recipeInfo = recipeNutrition.filter(val => [nutrient].includes(val.title));
-
       if (!recipeInfo || !recipeInfo[0]) continue;
 
       let recipeAmount = recipeInfo && recipeInfo[0] ? recipeInfo[0].amount : 0;
@@ -197,26 +196,33 @@ class WeeklyCart extends React.Component {
     let { dates } = this.state;
     if (dates.length > 0 ){
       return (
-        <div className="weekly-cart">
+        <div className="weekly-cart-page">
           <div className="top">
             <NavBarContainer />
           </div>
-          <div className="weekly-cart-header">Weekly Summary</div>
-          <div className="weekly-cart-days">
-            {dates.map((date, idx) => {
-              return <WeeklyCartDayContainer date={date} key={idx} removeMacros={this.removeMacros}/>;
-            })}
+          <div className="weekly-cart-info">
+            <div className="weekly-cart-days">
+              <div className="weekly-cart-times">
+                <div>BREAKFAST</div>
+                <div>LUNCH</div>
+                <div>DINNER</div>
+              </div>
+              <div className="weekly-cart-divider"></div>
+              {dates.map((date, idx) => {
+                return <WeeklyCartDayContainer date={date} key={idx} removeMacros={this.removeMacros}/>;
+              })}
+            </div>
+            <WeeklyMacro 
+              calories={ this.state.Calories ? this.state.Calories.amount : 0 } 
+              carbs={ this.state.Carbohydrates ? this.state.Carbohydrates.amount : 0 } 
+              protein={ this.state.Protein ? this.state.Protein.amount : 0 } 
+              fat={ this.state.Fat ? this.state.Fat.amount : 0 } 
+              fiber={ this.state.Fiber ? this.state.Fiber.amount : 0 }
+              user = { this.props.currentUser } />
+            
+            <WeeklyNutrition 
+              nutrients = { this.state } />
           </div>
-          <WeeklyMacro 
-            calories={ this.state.Calories ? this.state.Calories.amount : 0 } 
-            carbs={ this.state.Carbohydrates ? this.state.Carbohydrates.amount : 0 } 
-            protein={ this.state.Protein ? this.state.Protein.amount : 0 } 
-            fat={ this.state.Fat ? this.state.Fat.amount : 0 } 
-            fiber={ this.state.Fiber ? this.state.Fiber.amount : 0 }
-            user = { this.props.currentUser } />
-          
-          <WeeklyNutrition 
-            nutrients = { this.state } />
 
         </div>
       );

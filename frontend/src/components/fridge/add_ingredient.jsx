@@ -36,17 +36,19 @@ class AddIngredient extends React.Component {
   handleSubmit(e) {
     if(this.props.fridge.ingredients.hasOwnProperty(this.props.ingredient.id)) {
       if(parseInt(this.state.amount) > 0) {
+        this.props.closeModal();
         this.props.modifyIngredient(this.props.userId, this.props.ingredient, 
-          parseInt(this.state.amount))
-            .then(() => {this.props.closeModal()});
+          parseInt(this.state.amount));
+            // .then(() => {this.props.closeModal()});
       } else {
         this.setState({ error: "Amount must be greater than 0."});
       }
     } else {
         if(parseInt(this.state.amount) > 0) {
+          this.props.closeModal();
           this.props.addFridgeIngredient(this.props.userId, this.props.ingredient, 
-            parseInt(this.state.amount))
-              .then(() => {this.props.closeModal()});
+            parseInt(this.state.amount));
+              // .then(() => {this.props.closeModal()});
         } else {
           this.setState({ error: "Amount must be greater than 0."});
         }

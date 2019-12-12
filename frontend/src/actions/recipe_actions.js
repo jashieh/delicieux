@@ -1,6 +1,7 @@
 import * as RecipeAPI from '../util/recipe_api_util';
 import { recipeArrayToObject } from "../selectors/selectors";
 import { startLoad, stopLoad } from './loading_actions';
+import { getIngredientById } from '../util/ingredient_api_util';
 
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE";
 export const RECEIVE_RECIPES = "RECEIVE_RECIPES";
@@ -69,6 +70,8 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
       ({ data }) => {
         let apiData = data;
         let results = 0;
+        let updateDone = 0;
+        
         for (let i = 0; i < apiData.length; i++) {
           results++;
           RecipeAPI
@@ -76,6 +79,7 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
             .then(({data}) => {
               results--;
               apiData[i] = data;
+              // from db
               // if (results === 0) dispatch(receiveRecipes(apiData))
               //   .then( ()=> dispatch(stopLoad()));    
               if (results === 0){
@@ -85,15 +89,43 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
 
             })
             .catch(() => {
+              let newRecipes = {};
+              updateDone++;
               RecipeAPI.postRecipeId(apiData[i])
                 .then((payload) => {
                   results--;
                   apiData[i] = payload.data;
+                  // from api
+                  let ing = payload.data.ingredients;
+                  let count = 0;
+                  for(let j = 0; j < ing.length; j++) {
+                    if(!ing[j].id) {
+                      // updateDone--;
+                      continue;
+                    }
+                    count++;
+                    getIngredientById(ing[j].id).then(res => {
+                      count--;
+                      ing[j].aisle = res.data.aisle;
+                      if(count === 0) {
+                        RecipeAPI.updateRecipeIngredients(payload.data.recipeId, ing)
+                        .then(res => {
+                          updateDone--;
+                          console.log(updateDone)
+                          apiData[i] = res.data;
+
+                          if(updateDone === 0) {
+                            dispatch(receiveRecipes(apiData))
+                          }
+                        });
+                      }
+                    });
+                  }
                   // if (results === 0) dispatch(receiveRecipes(apiData))
                   //   .then(() => dispatch(stopLoad()));
                   if (results === 0){
                     dispatch(receiveRecipes(apiData))
-                    dispatch(stopLoad())
+                    dispatch(stopLoad());
                   } 
                 });
             });

@@ -21,6 +21,8 @@ export default class RecipeShow extends React.Component {
     };
     this.toggleChart = this.toggleChart.bind(this);
     this.toggleRight = this.toggleRight.bind(this);
+    this.keyEvent = this.keyEvent.bind(this);
+
   }
   componentDidMount() {
     const { recipe, fridge } = this.props;
@@ -32,6 +34,9 @@ export default class RecipeShow extends React.Component {
     let carbPer = Math.round(carbohydrates * 4 / calorieAc * 1000) / 10;
     let proteinPer = Math.round(protein * 4 / calorieAc * 1000) / 10;
     let fatPer = Math.round(fat * 9 / calorieAc * 1000) / 10;
+
+    document.addEventListener('keydown', this.keyEvent);
+    
     setTimeout(() => {
       this.setState({
         pieData: [
@@ -40,8 +45,20 @@ export default class RecipeShow extends React.Component {
           { x: "Fat", y: fatPer, label: "Fat" }
         ],
         label: true
-      })}, 1000)
+      })}, 1000);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keyEvent);
+  }
+
+
+  keyEvent(e) {
+    if(e.key === 'Escape') {
+      this.props.closeModal();
+    }
+  }
+
   toggleChart() {
     this.setState({pieChart: !this.state.pieChart});
   }

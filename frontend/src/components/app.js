@@ -34,9 +34,6 @@ const App = () => (
       <ProtectedRoute exact path="/weeklyCart" component={ WeeklyCartContainer }/>
 
       
-      <Route exact path="/weekly" component={ WeeklyIngredientsContainer } />
-
-      
       <Redirect to="/" />
     </Switch>
   </div>

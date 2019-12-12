@@ -4,7 +4,8 @@ import Fridge from './fridge';
 import { closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  userId: state.session.user.id
+  userId: state.session.user.id,
+  fridge: state.entities.fridge
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,76 +1,105 @@
 .weekly-cart-days {
-  min-height: 450px;
   background-color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .weekly-cart-day {
-  width: 100%;
-  height: calc(100% - 50px);
+  width: 900px;
+  height: 100px;
 
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  box-sizing: border-box;
   // border-left: 1px solid rgb(172, 169, 169);
 
   display: flex;
-  flex-direction: column;
-  justify-content: center; 
+  justify-content: start; 
+  align-items: center;
 }
 .weekly-cart-header-date {
-  height: 30px;
-  margin: 0px 12px;
-
   line-height: 30px;
   text-align: center;
   vertical-align: middle;
+
+  transform: rotate(-90deg);
+  min-height: 30px;
+  min-width: 60px;
+
+  font-size: 15px;
+  text-transform: uppercase;
+  
+  font-family: Open Sans;
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 1px;
+  
+  display: flex;
+  justify-content: center;
 }
+
+// .weekly-cart-day-divider {
+//   border: 1px solid gray;
+//   height: 100%;
+//   width: 1px;
+//   align-self: start;
+// }
+
 .weekly-cart-date {
-  min-width: 300px;
-  height: 400px;
+  min-width: 840px;
+  height: 90px;
   // background: blue;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   // background: inherit;
 }
 .weekly-cart-item {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  height: 161px;
+  align-items: center;
+  justify-content: center;
+  width: 255px;
+  height: 100%;
   // padding-bottom: 3px;
   margin-bottom: 10px;
-  border-radius: 10px;
+  // border-radius: 10px;
   // background: rgb(250, 250, 250);
   // background: rgb(224, 238, 207);
-  box-shadow: 1px 1px 7px 1px #d0cece;
+  // box-shadow: 1px 1px 7px 1px #d0cece;
   overflow: hidden;
 }
 .weekly-cart-item-time {
   width: max-content;
   font-size: 13px;
   font-weight: 400;
-  padding: 12px 10px;
+  padding: 5px 10px;
   padding-left: 18px;
   padding-bottom: 8px;
   // background: rgb(223, 128, 128);
   background: white;
   background: inherit;
+
+  color: white;
 }
 .weekly-cart-item-info {
   width: 94%;
-  height: 78px;
-  border-radius: 10px;
+  height: 65px;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: rgb(245, 245, 245);
-  box-shadow: 1px 1px 8px 1px #c6c4c4;
+  box-shadow: 1px 1px 7.5px 1px #c6c4c4d2;
   margin: 0 auto;
   font-family: Open Sans;
   font-size: 15px;
+  border: 1px solid rgba(128, 128, 128, 0.301);
 
-  box-shadow: 1px 1px 8px 1px #e65a3b80;
+  // box-shadow: 1px 1px 8px 1px #e65a3b80;
 
   .weekly-cart-item-info-left {
     width: 70%;
@@ -115,7 +144,7 @@
 
   // background: purple !important;
   background: inherit;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   line-height: 20px;
   vertical-align: middle;
@@ -159,7 +188,7 @@
 }
 
 .weekly-cart-item-main {
-  height: 120px;
+  height: 65px;
   width: 100%;
   // background: skyblue;
   background: inherit;
