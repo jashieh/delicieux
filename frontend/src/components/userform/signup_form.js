@@ -65,7 +65,6 @@ class SignupForm extends React.Component {
       errors.push("Please enter your email");
       bool = false;
     } else if (!this.props.values.email.includes("@")) {
-      console.log("Kelly")
       errors.push("Invalid Email");
       bool = false;
     }

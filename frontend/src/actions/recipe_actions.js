@@ -99,7 +99,6 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
                   let ing = payload.data.ingredients;
                   let count = 0;
                   for(let j = 0; j < ing.length; j++) {
-                    console.log(ing[j].id)
                     if(!ing[j].id) {
                       // updateDone--;
                       continue;
@@ -114,7 +113,7 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
                           updateDone--;
                           console.log(updateDone)
                           apiData[i] = res.data;
-                          
+
                           if(updateDone === 0) {
                             dispatch(receiveRecipes(apiData))
                           }
@@ -122,9 +121,6 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
                       }
                     });
                   }
-
-
-                  console.log(payload);
                   // if (results === 0) dispatch(receiveRecipes(apiData))
                   //   .then(() => dispatch(stopLoad()));
                   if (results === 0){

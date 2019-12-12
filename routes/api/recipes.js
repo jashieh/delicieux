@@ -88,7 +88,6 @@ router.patch('/:recipeId/picture', (req, res)=> {
 });
 
 router.patch('/:recipeId/ingredients', (req, res) => {
-  console.log(req.body);
   Recipe.findOneAndUpdate({ recipeId: req.params.recipeId }, {ingredients: req.body})
     .then(recipe => res.json(recipe))
     .catch(err => res.status(400).json(err));

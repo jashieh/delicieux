@@ -46,9 +46,7 @@ class CartItem extends React.Component {
         recipeId: parseInt(recipeId),
       })
       .then(() => {
-        console.log("x")
         if (recipes[recipeId]) {
-          console.log(recipes[recipeId].ingredients);
           let ingredients = recipes[recipeId].ingredients;
           let count = 0;
 

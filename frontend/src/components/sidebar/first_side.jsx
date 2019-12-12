@@ -12,10 +12,6 @@ class FirstSide extends React.Component {
         this.handleMouseOver = this.handleMouseOver.bind(this);
     }
 
-    componentDidMount() {
-        console.log("x")
-    }
-
     handleMouseOver(page) {
         // e.preventDefault();
         return e => {e.preventDefault(); 
