@@ -79,26 +79,25 @@
   color: black;
 }
 
-.make {
-  color: rgb(92, 92, 92);
-  display: block;
-  width: 25px;
-  height: 22px;
-  border: 1px solid rgb(120, 118, 118);
-  border-radius: 50%;
-  position: relative;
-  margin-top: 8px;
-  margin-right: 10px;
 
-  p {
-    // position: absolute;
-    // top: 20%;
-    // left: 14%;
-    margin-top: 5px;
-    text-align: center;
+.recipe-time-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  .make {
+    // color: rgb(92, 92, 92);
+    // display: block;
+    width: 15px;
+    height: 15px;
+    // border: 1px solid rgb(120, 118, 118);
+    // border-radius: 50%;
+    // position: relative;
+    // margin-top: 8px;
+    margin-right: 5px;
+    margin-left: 5px;
   }
-  
 }
+
 
 .recipe-index-item-image {
   height: 150px;
