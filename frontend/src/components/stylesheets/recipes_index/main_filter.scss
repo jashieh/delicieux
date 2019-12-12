@@ -342,11 +342,7 @@
   justify-content: center;
   flex-wrap: wrap;
   position: relative;
-
-  .filter-dd-item1 {
-    // width: 20%;
-  }
-  
+  transition: transform .3s ease-in-out;  
 }
 
 .filter-bot-ingredients {

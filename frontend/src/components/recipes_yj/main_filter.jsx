@@ -122,7 +122,7 @@ export default class MainFilter extends React.Component {
         maxCarbs: this.state.maxCarbs,
         minProtein: this.state.minProtein
       })
-      this.setState({ tabs: 0 });
+      // this.setState({ tabs: 0 });
     }
     
   }
