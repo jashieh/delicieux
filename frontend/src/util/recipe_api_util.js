@@ -265,6 +265,10 @@ export const postRecipeId = (recipeData) => {
   return axios.post('/api/recipes/indiv', recipeData);
 };
 
+export const updateRecipeIngredients = (recipeId, ingredients) => {
+  return axios.patch(`api/recipes/${recipeId}/ingredients`, ingredients);
+};
+
 export const postRecipeComplex = (recipeData) => {
   return axios.post('/api/recipes/item', recipeData);
 };

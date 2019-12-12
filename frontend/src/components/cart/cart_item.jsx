@@ -2,7 +2,8 @@ import React from 'react';
 import Utensil from '../stylesheets/assets/cutlery.png';
 import Calc from '../stylesheets/assets/calc.png';
 import Clock from '../stylesheets/assets/clock-two.png';
-
+import { updateRecipeIngredients } from '../../util/recipe_api_util';
+import { getIngredientById } from '../../util/ingredient_api_util';
 
 class CartItem extends React.Component {
   constructor(props) {
@@ -35,21 +36,30 @@ class CartItem extends React.Component {
   }
 
   onDrop(e) {
-    if (e.dataTransfer.getData("recipeId")) {
+    let recipeId = e.dataTransfer.getData("recipeId");
+    if (recipeId) {
       let { cart, date, time, getRecipeDB, addCartMeal, getCart, recipes } = this.props;
-      let id = e.dataTransfer.getData("recipeId");
       let recipe = this.recipe();
       addCartMeal(cart.id, {
         date,
         time,
-        recipeId: parseInt(e.dataTransfer.getData("recipeId")),
+        recipeId: parseInt(recipeId),
       })
       .then(() => {
         console.log("x")
-        if (recipes[id]) {
-          console.log(recipes[id])
+        if (recipes[recipeId]) {
+          console.log(recipes[recipeId].ingredients);
+          let ingredients = recipes[recipeId].ingredients;
+          let count = 0;
+
+          for(let i = 0; i < ingredients.length; i++) {
+            count++;
+            // getIngredientById(ingredients[i].id).then((res) => {
+
+            // });
+          }
         };
-        console.log(getRecipeDB(id))
+        // console.log(getRecipeDB(recipeId))
       })
     }
     // .then(

@@ -20,7 +20,6 @@ router.get('/:recipeId', (req, res) => {
   
 // Adding a recipe from search by recipe ID API Call
 router.post('/indiv', (req, res) => {
-  console.log(req.body);
   const newRecipe = new Recipe({
     recipeId: req.body.id,
     title: req.body.title,
@@ -84,6 +83,13 @@ router.post('/item', (req, res) => {
 //Modifying image of picture
 router.patch('/:recipeId/picture', (req, res)=> {
   Recipe.findOneAndUpdate({ recipeId: req.params.recipeId }, {image: req.body.image})
+    .then(recipe => res.json(recipe))
+    .catch(err => res.status(400).json(err));
+});
+
+router.patch('/:recipeId/ingredients', (req, res) => {
+  console.log(req.body);
+  Recipe.findOneAndUpdate({ recipeId: req.params.recipeId }, {ingredients: req.body})
     .then(recipe => res.json(recipe))
     .catch(err => res.status(400).json(err));
 });

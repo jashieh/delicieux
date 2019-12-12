@@ -21,7 +21,11 @@ class FridgeIngredients extends React.Component {
 
       let cat = {};
       for(let i = 0; i < ids.length; i++) {
-        let aisle = ingredients[ids[i]].aisle.split(";")[0];
+        let aisle = "Misc";
+
+        if(ingredients[ids[i]].aisle) {
+          aisle = ingredients[ids[i]].aisle.split(";")[0];
+        }
 
         if(!cat[aisle]) {
           cat[aisle] = {};
