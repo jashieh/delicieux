@@ -26,20 +26,22 @@ class FirstSide extends React.Component {
                     <div className="first-drawer-main-text">
                         délicieux
                     </div>
-                    <a className="btn" onClick={this.handleMouseOver("list")} >
-                        <span>
+                    <div>
+                        <a className="btn" onClick={this.handleMouseOver("list")} >
                             <span>
-                            <span>My List</span>
+                                <span>
+                                <span>My List</span>
+                                </span>
                             </span>
-                        </span>
-                    </a>
-                    <a className="btn" onClick={this.handleMouseOver("profile")}>
-                        <span>
+                        </a>
+                        <a className="btn" onClick={this.handleMouseOver("profile")}>
                             <span>
-                            <span>Profile</span>
+                                <span>
+                                <span>Profile</span>
+                                </span>
                             </span>
-                        </span>
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
         )

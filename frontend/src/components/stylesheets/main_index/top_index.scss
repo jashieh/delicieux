@@ -48,27 +48,28 @@
       border: none;
       font-size: 14px;
       text-transform: none;
-      width: 25px;
+      width: 22px;
       display: flex;
       align-items: center;
       // padding-top: 10px;
       // padding-bottom: 10px;
-      border-radius: 5px;
+      border-radius: 3px;
       margin: 0;
       margin-right: 10px;
       cursor: pointer;
     }
     
     .side-button:hover {
-      background: rgb(168, 168, 168);
+      background: rgba(168, 168, 168, 0.249);
     }
     
     .nav-button {
       font-family: Open Sans;
+      font-weight: 300;
       color: black;
       background: none;
       border: none;
-      font-size: 14px;
+      font-size: 12px;
       text-transform: none;
       height: 100%;
       display: flex;
@@ -331,4 +332,6 @@
     background: red;
     border-radius: 2px;
   }
+  
+
   

@@ -19,9 +19,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
 
         a {
-          font-size: 1.2em;
+          font-size: 1em;
           text-transform: uppercase;
           letter-spacing: 0.07em;
           text-decoration: none;
