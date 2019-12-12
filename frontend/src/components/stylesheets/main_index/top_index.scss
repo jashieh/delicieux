@@ -30,7 +30,7 @@
     // align-content: space-between;
     
     .nav-left {
-      width: 24%;
+      width: 300px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -301,6 +301,7 @@
       // background: darkgrey;
       background: white;
       padding: 10px;
+      border-left: 1px solid rgb(172, 169, 169);
       // padding-left: 20px;
       
       .macro-contain {
@@ -316,7 +317,7 @@
         width: max-content;
         // change the height so that the list container grows as you increase the recipe quantity
         // background-color: rgb(29, 27, 27);
-        background-color: #f9f9f9;
+        // background-color: #f9f9f9;
       }
     }
   }
