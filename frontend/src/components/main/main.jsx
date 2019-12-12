@@ -9,7 +9,6 @@ import ChooseMeal from '../stylesheets/assets/choose.gif';
 import PieChart from '../stylesheets/assets/pie_chart.gif';
 import LineChart from '../stylesheets/assets/line_chart.gif';
 import GroceryGif from '../stylesheets/assets/grocery.gif';
-import CookingPic from '../stylesheets/assets/cooking.jpg';
 import MealPlan from '../stylesheets/assets/meal_plan.jpg';
 import Freshly from '../stylesheets/assets/easy.jpeg';
 import IceCream from '../stylesheets/assets/note.jpg';

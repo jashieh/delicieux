@@ -4,7 +4,6 @@ import IngredientSearchContainer from './ingredient_search_container';
 import FridgeIngredientsContainer from './fridge_ingredients_container';
 import NavbarContainer from '../nav/navbar_container';
 import Clock from '../clock/clock';
-import flip from '../stylesheets/assets/pot.gif';
 
 class Fridge extends React.Component {
   constructor(props) {
