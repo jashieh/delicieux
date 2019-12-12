@@ -1,29 +1,51 @@
 .profile-container {
-    width: 200px;
-    border: 1px solid black;
-    background: white;
+    width: 81%;
+    // border: 1px solid black;
+    background: inherit;
+    align-self: center;
+    font-family: Open Sans;
+    font-weight: 500;
+    color: black;
+    font-size: 13px;
+    max-width: 330px;
+    // min-width: 290px;
+    
     
     .profile-item-container {
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        height: 50px;
-        border-bottom: 1px solid gray;  
+        height: 70px;
+        border-bottom: 1px solid gray; 
+        // padding: 0px 15px; 
     }
 }
 
 .user-info-input {
-    width: 50px;
+    width: 45px !important;
+    padding: 5px 0px;
+    padding-left: 8px;
+    background: rgb(248, 248, 252) !important;
+    border-radius: 3px;
+    margin: none !important;
+    text-align: center;
+}
+
+.user-info-input:focus {
+    outline: none;
+    // box-shadow: 1px 1px 2px 1px rgba(142, 141, 141, 0.509);
+    border: 1px solid rgba(187, 187, 187, 0.829);
 }
 
 .gender-radio-container {
-    width: 50px;
-    height: 20px;
+    width: 70px;
+    height: 30px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    border: 1px solid black;
+    justify-content: space-evenly;
+    // border: 1px solid black;
+    padding: 5px;
     border-radius: 5px;
 
     .gender-radio {
@@ -31,34 +53,144 @@
         -webkit-appearance:none;
            -moz-appearance:none;
                 appearance:none;
+        width: 25px;
+
     }
 
     .gender-radio:checked + .gender-icon{
-        background-color: green;
-        color: white;
+        background-color: rgb(255, 255, 255);
+        border: 1.5px solid rgba(0, 0, 0, 0.454);
+        color: rgb(255, 255, 255);
     }
 
     .gender-icon {
         width: 100%;
         height: 100%;
+        border: 1px solid rgb(210, 204, 204);
+        border-radius: 5px;
+        box-shadow: 1px 1px 2px 1px rgba(179, 175, 175, 0.297);
+        // margin-right: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
+        background: white;
+        // background: url("../assets/man.png");
     }
 
-    .gender-icon:nth-child(2) {
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
+    .gender-icon:hover {
+        cursor: pointer;
     }
 
-    .gender-icon:nth-child(4) {
-        border-left: 1px solid green;
-        border-right: 1px solid green;
+    // .gender-icon:nth-child(2) {
+    //     border-top-left-radius: 5px;
+    //     border-bottom-left-radius: 5px;
+    // }
+
+    // .gender-icon:nth-child(4) {
+    //     border-left: 1px solid green;
+    //     border-right: 1px solid green;
+    // }
+
+    // .gender-icon:nth-child(6) {
+    //     border-top-right-radius: 5px;
+    //     border-bottom-right-radius: 5px;
+    // }
+}
+
+
+
+.profile-left {
+    display: flex;
+    flex-direction: row;
+    // background: red;
+    margin: 4px;
+    align-items: center;
+
+    .profile-logo {
+    // background: green;
+        width: 15px;
+        height: 15px;
+        margin-right: 6px;
     }
 
-    .gender-icon:nth-child(6) {
-        border-top-right-radius: 5px;
-        border-bottom-right-radius: 5px;
+    img {
+    width: 100%;
+    height: 100%;
     }
+}
+
+.gender-image {
+    width: 13px;
+    height: 13px;
+    
+}
+
+.edit-profile {
+    background: white;
+    padding: 9px 10px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    border-radius: 4px;
+    width: 11%;
+   
+}
+
+.edit-profile:hover {
+    cursor: pointer;
+}
+
+.edit {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -14px;
+}
+
+.edit:active {
+    color: rgb(174, 68, 68);
+}
+
+.profile-user {
+    // background: red;
+    width: 100px;
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-name {
+    // font-size: 12px;
+    // background: yellow;
+    padding: 0px 10px;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+.activity {
+    // text-indent: 10px;
+    width: 140px;
+    font-size: 12px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 7px 8px;
+    background-image: url("../assets/download.png");
+    background-repeat: no-repeat;
+    background-position: 93% 50%;
+    background-size: 12px;
+}
+
+.activity:hover {
+    cursor: pointer;
+}
+
+.activity:focus {
+    outline: none;
+}
+
+.profile-item-container.last {
+    background: red;
+    margin-top: 20px;
+    height: 60px;
+    justify-content: center;
 }

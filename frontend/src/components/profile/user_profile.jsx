@@ -1,5 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Target from '../stylesheets/assets/target.png';
+import Scale from "../stylesheets/assets/weight-scale.png";
+import Dumbbell from "../stylesheets/assets/dumbbell.png";
+import Ruler from "../stylesheets/assets/ruler.png";
+import Calorie from "../stylesheets/assets/calories-two.png";
+import Age from "../stylesheets/assets/hourglass.png";
+import Man from "../stylesheets/assets/man.png";
+import Woman from "../stylesheets/assets/woman.png";
+import Sex from "../stylesheets/assets/femenine.png";
+ 
 
 class UserProfile extends React.Component {
   constructor(props) {
@@ -171,8 +181,10 @@ class UserProfile extends React.Component {
               value={"M"}
               id="genderM"
               checked={this.props.user.gender === "M"}/>
-              <label htmlFor="genderM" className="gender-icon"><i className="fas fa-male"></i></label>
-        
+              <label htmlFor="genderM" className="gender-icon">
+                <img className="gender-image" src={Man} alt=""/>
+              </label>
+
             <input type="radio" 
               className="gender-radio" 
               onChange={this.update("gender")}
@@ -180,16 +192,10 @@ class UserProfile extends React.Component {
               value={"F"}
               id="genderF"
               checked={this.props.user.gender === "F"}/>
-              <label htmlFor="genderF" className="gender-icon"><i className="fas fa-female"></i></label>
+              <label htmlFor="genderF" className="gender-icon">
+                <img className="gender-image" src={Woman} alt=""/>
+              </label>
 
-            <input type="radio" 
-              className="gender-radio" 
-              onChange={this.update("gender")}
-              name="gender"
-              value={"O"}
-              id="genderO"
-              checked={this.props.user.gender === "O"}/>
-              <label htmlFor="genderO" className="gender-icon"><i className="fas fa-paw"></i></label>
         </div>;
         
     if(this.state.edit) {
@@ -212,7 +218,7 @@ class UserProfile extends React.Component {
         />;
 
       activityLevel = 
-        <select onChange={this.update("activityLevel")}>
+        <select className="activity" onChange={this.update("activityLevel")}>
           <option value="1" selected={this.props.user.activityLevel === 1}>
             Sedentary
           </option>
@@ -227,21 +233,27 @@ class UserProfile extends React.Component {
           </option>
         </select>
       
-      weeklyTarget = 
-        <select onChange={this.update("weeklyTarget")}>
+      weeklyTarget = (
+        <select className="activity" onChange={this.update("weeklyTarget")}>
           <option value="0" selected={this.props.user.weeklyTarget === 0}>
             Maintain my weight
           </option>
           <option value="-1.0" selected={this.props.user.weeklyTarget === -1.0}>
             Lose 1.0 kg/week
           </option>
-          <option value="-0.75" selected={this.props.user.weeklyTarget === -0.75}>
+          <option
+            value="-0.75"
+            selected={this.props.user.weeklyTarget === -0.75}
+          >
             Lose 0.75 kg/week
           </option>
           <option value="-0.5" selected={this.props.user.weeklyTarget === -0.5}>
             Lose 0.5 kg/week
           </option>
-          <option value="-0.25" selected={this.props.user.weeklyTarget === -0.25}>
+          <option
+            value="-0.25"
+            selected={this.props.user.weeklyTarget === -0.25}
+          >
             Lose 0.25 kg/week
           </option>
           <option value="0.25" selected={this.props.user.weeklyTarget === 0.25}>
@@ -257,65 +269,95 @@ class UserProfile extends React.Component {
             Gain 1.0 kg/week
           </option>
         </select>
+      );
 
       edit = "Save";
     }
 
     if(this.props.user.name) {
-      user =  this.props.user.name[0].toUpperCase() + this.props.user.name.slice(1);
+      user =  this.props.user.name.toUpperCase();
     }
 
     return (
       <div className="profile-container">
+        <div className="edit">
+          <div className="edit-profile"onClick={this.toggleEdit}>{edit}</div>
+        </div>
         <div className="profile-item-container">
-          <div>
-            Name: { user }
-          </div>
-          <div onClick={this.toggleEdit}>
-            { edit }
+          <div className="profile-user">
+            <div>
+              Name:
+            </div>
+            <div className="profile-name">
+              {user}
+            </div>
           </div>
         </div>
         <div className="profile-item-container">
-          <div>
-            Sex
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Sex} alt="" />
+            </div>
+            <div>Sex</div>
           </div>
-          <div>
-            { gender }
-          </div>
+          <div>{gender}</div>
         </div>
         <div className="profile-item-container">
-          <div>
-            Age
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Age} alt="" />
+            </div>
+            <div>Age</div>
           </div>
-          <div>
-            { age }
-          </div>
+          <div>{age}</div>
         </div>
         <div className="profile-item-container">
-          Height
-          <div>
-            { height } cm
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Ruler} alt="" />
+            </div>
+            <div>Height (cm)</div>
           </div>
+          <div>{height}</div>
         </div>
         <div className="profile-item-container">
-          Activity Level
-          <div>
-            { activityLevel }
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Dumbbell} alt="" />
+            </div>
+            <div>Activity Level</div>
           </div>
-        </div>     
-        <div className="profile-item-container">
-          Current Weight
-          <div>
-            { weight } kg
-          </div>
+          <div>{activityLevel}</div>
         </div>
         <div className="profile-item-container">
-          Weekly Target
-          <div>
-            { weeklyTarget }
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Scale} alt="" />
+            </div>
+            <div>Current Weight (kg)</div>
           </div>
-        </div> 
-        Daily Calorie Goal: { Math.floor(this.props.calorieCalc(this.props.user)) } cal
+          <div>{weight}</div>
+        </div>
+        <div className="profile-item-container">
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Target} alt="" />
+            </div>
+            <div>Weekly Target</div>
+          </div>
+          <div>{weeklyTarget}</div>
+        </div>
+        <div className="profile-item-container last">
+          <div className="profile-left">
+            <div className="profile-logo">
+              <img src={Calorie} alt="" />
+            </div>
+            <div>
+              Daily Calorie Goal:{" "}
+              {Math.floor(this.props.calorieCalc(this.props.user))} cal
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

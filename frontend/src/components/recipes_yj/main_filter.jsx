@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Toggle from 'react-toggle';
 // import "react-toggle/style.css";
 import '../stylesheets/recipes_index/main_filter.scss';

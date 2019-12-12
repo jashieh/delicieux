@@ -25,7 +25,7 @@ class SecondSide extends React.Component {
         return (
           <div className="second-side" onClick={e => e.stopPropagation()}>
             <div className="second-drawer-contain">
-                <div>
+                <div className="second-drawer-main">
                   { page }
                 </div>
             </div>
