@@ -255,14 +255,9 @@ export default class MainFilter extends React.Component {
             <div key={idx} 
               className="filter-dd-item2" 
               onClick={this.handleCuisine({cuisine})}>
-              {/* style={ this.state.cuisine === cuisine ? {backgroundColor: "black" } : {}}> */}
-              {/* <div style={ this.state.cuisine === cuisine ?
-                {content: "\f00c", } : {} }>
-              </div> */}
-              <div className="filter-diet-name" 
-                style={ this.state.cuisine === cuisine ? 
-                  {backgroundColor: "#a19c9cda", color: "white","--my-var": "\f00c"} : {
-                    "--my-var": "\f067"}}>
+              <input type="radio" name="drone" className="filter-checkbox"
+                checked={this.state.cuisine === cuisine}/>
+              <div className="filter-diet-name">
                 {cuisine}
               </div>
             </div>)
