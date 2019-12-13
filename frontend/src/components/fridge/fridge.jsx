@@ -28,6 +28,7 @@ class Fridge extends React.Component {
           <NavbarContainer />
         </div>
         <div className="contain-all">
+          <div className="fridge-title">My Ingredients</div>
           <div className="left-fridge" >
             {/* <Clock /> */}
             <IngredientSearchContainer />

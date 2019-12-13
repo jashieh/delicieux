@@ -1,6 +1,6 @@
 import React from 'react';
 import FridgeItemContainer from './fridge_item_container';
-
+import Arrow from '../stylesheets/assets/download.png';
 
 class FridgeCatagory extends React.Component {
   constructor(props) {
@@ -27,6 +27,7 @@ class FridgeCatagory extends React.Component {
       <div className="fridge-catagory">
         <div onClick={this.toggleOpen} className="catagory-title">
           {this.props.catagory}
+          <img className="category-icon" src={Arrow} alt=""/>
         </div>
         <ul className="fridge-catagory-ul">
           { this.state.open && ing }
