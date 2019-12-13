@@ -6,8 +6,8 @@ strong {
   display: flex;
   flex-direction: column;
 
-  width: 230px;
-  max-height: 600px;
+  width: 260px;
+  max-height: 660px;
 
   padding: 10px;
   border: 2px solid rgb(142, 142, 216);
@@ -29,12 +29,12 @@ strong {
   display: flex;
   flex-direction: row;  
 
-  width: 230px;
-  height: 16px;
+  width: 260px;
+  min-height: 17px;
 
   font-family: Open Sans;
-  font-size: 14px;
-  line-height: 16px;
+  font-size: 15px;
+  line-height: 17px;
   vertical-align: middle;
 }
 
