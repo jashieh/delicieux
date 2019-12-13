@@ -121,6 +121,10 @@
     color: rgb(74, 73, 73);
     justify-content: space-between;
     // background: red;
+
+    .filter-param-text {
+      text-underline-position: under;
+    }
     
     .filter-param-text:hover {
       cursor: pointer;
