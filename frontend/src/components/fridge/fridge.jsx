@@ -9,6 +9,8 @@ class Fridge extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  
   
   componentDidMount() {
     this.props.fetchFridge(this.props.userId);
