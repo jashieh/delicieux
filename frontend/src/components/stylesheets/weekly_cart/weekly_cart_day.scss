@@ -72,6 +72,7 @@
   // box-shadow: 1px 1px 7px 1px #d0cece;
   overflow: hidden;
 }
+
 .weekly-cart-item-time {
   width: max-content;
   font-size: 13px;
@@ -85,11 +86,12 @@
 
   color: white;
 }
+
 .weekly-cart-item-info {
   width: 94%;
   height: 65px;
   border-radius: 5px;
-  display: flex;
+  display: flex;  
   flex-direction: column;
   justify-content: space-between;
   background: rgb(245, 245, 245);
@@ -98,8 +100,6 @@
   font-family: Open Sans;
   font-size: 15px;
   border: 1px solid rgba(128, 128, 128, 0.301);
-
-  // box-shadow: 1px 1px 8px 1px #e65a3b80;
 
   .weekly-cart-item-info-left {
     width: 70%;

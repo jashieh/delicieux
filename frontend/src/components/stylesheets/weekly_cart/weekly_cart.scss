@@ -16,22 +16,32 @@
   align-items: center;
 }
 
-.weekly-cart-header {
-  height: 5%;
-  width: 100%;
-
-  font-size: 30px;
-  line-height: 40px;
-  vertical-align: middle;
-  text-align: center;
-
-  margin-top: 20px;
-}
-
 .weekly-cart-days {
   height: 100%;
   width: 900px;
+  padding-left: 150px;
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.weekly-cart-details {
+  height: 100%;
+  width: calc(100% - 900px);
+  padding-left: 200px;
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.weekly-cart-data {
+  height: 840px;
+  width: calc(100% - 230px);
 
   display: flex;
   flex-direction: column;

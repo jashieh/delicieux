@@ -150,34 +150,34 @@ export default class WeeklyMacro extends React.Component {
           </div>
         </div>
         <div className="weekly-macro-bar">
-          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("calories")} onMouseLeave={this.handleBarOff("calories")}>
-            <div> Calories </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${caloriePer}%, tomato ${caloriePer}%)` }}>
-              {this.state.calories ? <div className="bar-text">{Math.floor(calories)} cal</div> : <div className="bar-text">{caloriePer}%</div>}
+          <div className="weekly-bar-graph-cont" onMouseEnter={this.handleBarOn("calories")} onMouseLeave={this.handleBarOff("calories")}>
+            <div className="weekly-bar-title"> Calories </div>
+            <div className="weekly-chart-test" style={{ "border": "1px solid gray", background: `linear-gradient(90deg, black ${caloriePer}%, white ${caloriePer}%)` }}>
+              &nbsp; {this.state.calories ? <div className="weekly-bar-text">{Math.floor(calories)} cal</div> : <div className="weekly-bar-text">{caloriePer}%</div>}
             </div>
           </div>
-          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("protein")} onMouseLeave={this.handleBarOff("protein")}>
-            <div> Protein </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${proteinPer}%, tomato ${proteinPer}%)` }}>
-              {this.state.protein ? <div className="bar-text">{Math.floor(protein)} g</div> : <div className="bar-text">{proteinPer}%</div>}
+          <div className="weekly-bar-graph-cont" onMouseEnter={this.handleBarOn("protein")} onMouseLeave={this.handleBarOff("protein")}>
+            <div className="weekly-bar-title"> Protein </div>
+            <div className="weekly-chart-test" style={{ "border": "1px solid gray", background: `linear-gradient(90deg, black ${proteinPer}%, white ${proteinPer}%)` }}>
+              {this.state.protein ? <div className="weekly-bar-text">{Math.floor(protein)} g</div> : <div className="weekly-bar-text">{proteinPer}%</div>}
             </div>
           </div>
-          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("fat")} onMouseLeave={this.handleBarOff("fat")}>
-            <div> Fat </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${fatPer}%, tomato ${fatPer}%)` }}>
-              {this.state.fat ? <div className="bar-text">{Math.floor(fat)} g</div> : <div className="bar-text">{fatPer}%</div>}
+          <div className="weekly-bar-graph-cont" onMouseEnter={this.handleBarOn("fat")} onMouseLeave={this.handleBarOff("fat")}>
+            <div className="weekly-bar-title"> Fat </div>
+            <div className="weekly-chart-test" style={{ "border": "1px solid gray", background: `linear-gradient(90deg, black ${fatPer}%, white ${fatPer}%)` }}>
+              {this.state.fat ? <div className="weekly-bar-text">{Math.floor(fat)} g</div> : <div className="weekly-bar-text">{fatPer}%</div>}
             </div>
           </div>
-          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("carbs")} onMouseLeave={this.handleBarOff("carbs")}>
-            <div> Carbohydrates </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${carbsPer}%, tomato ${carbsPer}%)` }}>
-              {this.state.carbs ? <div className="bar-text">{Math.floor(carbs)} g</div> : <div className="bar-text">{carbsPer}%</div>}
+          <div className="weekly-bar-graph-cont" onMouseEnter={this.handleBarOn("carbs")} onMouseLeave={this.handleBarOff("carbs")}>
+            <div className="weekly-bar-title"> Carbohydrates </div>
+            <div className="weekly-chart-test" style={{ "border": "1px solid gray", background: `linear-gradient(90deg, black ${carbsPer}%, white ${carbsPer}%)` }}>
+              {this.state.carbs ? <div className="weekly-bar-text">{Math.floor(carbs)} g</div> : <div className="weekly-bar-text">{carbsPer}%</div>}
             </div>
           </div>
-          <div className="bar-graph-cont" onMouseEnter={this.handleBarOn("fiber")} onMouseLeave={this.handleBarOff("fiber")}>
-            <div> Fiber </div>
-            <div className="chart-test" style={{ background: `linear-gradient(90deg, black ${fiberPer}%, tomato ${fiberPer}%)` }}>
-              {this.state.fiber ? <div className="bar-text">{Math.floor(fiber)} g</div> : <div className="bar-text">{fiberPer}%</div>}
+          <div className="weekly-bar-graph-cont" onMouseEnter={this.handleBarOn("fiber")} onMouseLeave={this.handleBarOff("fiber")}>
+            <div className="weekly-bar-title"> Fiber </div>
+            <div className="weekly-chart-test" style={{ "border": "1px solid gray", background: `linear-gradient(90deg, black ${fiberPer}%, white ${fiberPer}%)` }}>
+              {this.state.fiber ? <div className="weekly-bar-text">{Math.floor(fiber)} g</div> : <div className="weekly-bar-text">{fiberPer}%</div>}
             </div>
           </div>
         </div>

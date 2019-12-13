@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import UserProfileContainer from '../profile/user_profile_container';
@@ -11,7 +9,7 @@ class FirstSide extends React.Component {
 
         this.handleMouseOver = this.handleMouseOver.bind(this);
     }
-
+    
     handleMouseOver(page) {
         // e.preventDefault();
         return e => {e.preventDefault(); 
