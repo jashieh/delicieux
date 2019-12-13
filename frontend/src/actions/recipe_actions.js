@@ -226,7 +226,7 @@ export const complexRecipeSearch = ({
       },
       errors => dispatch(receiveRecipeErrors(errors))
     )
-    .catch(err => console.log("oh we fucked"))
+    .catch(err => {});
 };
 
 export const searchRecipeByName = (name, limit = 5) => dispatch => (
