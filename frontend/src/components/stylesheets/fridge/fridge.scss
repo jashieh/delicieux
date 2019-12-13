@@ -6,8 +6,8 @@
 .fridge-container {
   height: 100vh;
   width: 100%;
-  background-color: rgb(233, 232, 230);
-  
+  background: white; 
+
   .contain-all {
     height: 90%;
     width: 90%;
@@ -17,6 +17,11 @@
     flex-direction: column;
     // background: white;
     
+    .fridge-title {
+      font-size: 23px;
+      padding: 30px 0px 10px 0px;
+      font-weight: 300;
+    }
     
     .left-fridge {
       width: 100%;
@@ -27,7 +32,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      flex-direction: row;
+      margin-bottom: 15px;
     }
     
     .right-fridge {
@@ -50,7 +56,6 @@
   display: flex;
   background-color: white;
   justify-content: flex-start;
-  margin-left: 10px;
   width: max-content;
   
   .ingredient-search-contain {
@@ -73,22 +78,26 @@
     
     .search-input:focus {
       outline: none;
-      // border: none;
-      border: 1px solid white;
-      color: rgb(182, 182, 182);
-      // background-color: #2A2C2F;
+      border: 1px solid rgba(145, 144, 144, 0.468);
+      color: rgb(114, 111, 111);
     }
-    
+
+    ::placeholder {
+      color: rgb(104, 104, 104);
+      font-family: Open Sans;
+      font-size: 15px;
+    }
+
     .ingredient-search-ul {
       position: absolute;
-      background-color: #2A2C2F;
+      background-color: #E1E2E1;
       color: grey;
       box-sizing: border-box;
       width: 300px;
       font-weight: 400;
       font-size: 15px;
       font-family: Open Sans;
-      
+      z-index: 100;
       
       .ingredient-search-li {
         padding: 12px 12px;
@@ -101,10 +110,10 @@
       
       .ingredient-search-li:hover {
         cursor: pointer;
-        filter: brightness(80%);
-        background-color: #24B6FF;
-        color: white;
-        font-weight: 600;
+        filter: brightness(100%);
+        background-color: #e3f2fd;
+        color: #6e6d6d;
+        font-weight: 500;
       }
       
     }    
@@ -115,15 +124,13 @@
 
 .add-ingredient-modal-container {
   width: 380px;
-  // height: 200px;
   border-radius: 5px;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-items: center;
   box-sizing: border-box;
-  box-shadow: 1px 1px 10px;
+  // box-shadow: 1px 1px 6px grey;
   
   div {
     display: flex;
@@ -207,8 +214,10 @@
         font-size: 16px;
         padding: 0 0 0 10px;
         border-radius: 5px;
-        box-shadow: 2px 2px 10px 1px rgb(196, 194, 194);
-        
+      }
+
+      .add-ingredient-input:focus {
+
       }
       
       .add-ingredient-input-box {
@@ -281,7 +290,7 @@
 
 
 .fridge-ingredients-container {
-  background-color: black;
+  // background-color: black;
   height: 100%;
   width: 100%;
   
@@ -289,26 +298,31 @@
     // width: 78%;
     width: 100%;
     height: 100%;
-    background: white;
+    background: #fafafa;
+    border-radius: 3px;
+
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+
     
     .ingredients-contain {
       width: 98%;
       // height: 90%;
       height: 97%;
+      // background: rgba(148, 148, 148, 0.527);
+      // border: 1px solid lightgray;
       
       .fridge-ingredients-ul {
         height: 100%;
-        width: 90%;
+        width: 100%;
         overflow-y: auto;
         overflow-x: hidden;
         display: flex;
         align-items: flex-start;
         // margin-left: 20px;
-        margin-left: 5%;
+        // margin-left: 5%;
         // justify-content: center;
         flex-direction: column;
         // flex-wrap: wrap;
@@ -333,14 +347,23 @@
           .catagory-title {
             font-size: 14px;
             // border-bottom: 1px solid grey;
-            padding: 13px;
+            padding: 25px;
             background: white;
             border: 1px solid rgba(152, 151, 151, 0.358);
             margin-bottom: 10px;
             cursor: pointer;
             font-family: Open Sans;
-            font-weight: 400;
+            font-weight: bold;
             color: rgb(206, 62, 9);
+            color: rgb(99, 169, 226);
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+
+            .category-icon {
+              width: 13px;
+              height: 13px;
+            }
           }
           
           .fridge-catagory-ul {
@@ -441,7 +464,6 @@
     background-color: black;
     
   }
-  
   
   
   
