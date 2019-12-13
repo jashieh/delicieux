@@ -1,6 +1,4 @@
 import axios from 'axios';
-
-import { getRecipeById } from './recipe_api_util';
 import { getConvertAmounts } from './ingredient_api_util';
 
 export const fetchFridge = (userId) => {
@@ -29,7 +27,6 @@ export const modifyIngredient = (userId, ingredient, amount) => {
 export const modifyFridge = (userId, recipe, makeItem = true) => {
   let ingredients = {};
   let requests = 0;
-  debugger;
   // recipe.extendedIngredients
   // getRecipeById(recipeId).then((res) => {
     const list = recipe.ingredients.map(ingredient => Object.assign({}, ingredient));

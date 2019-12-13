@@ -28,7 +28,7 @@ class WeeklyIngredientsCatagory extends React.Component {
         <div onClick={this.toggleOpen} className="weekly-catagory-title">
           {this.props.catagory} 
           <div className="weekly-catagory-arrow">
-            <i class="fas fa-chevron-down"></i>
+            <i className="fas fa-chevron-down"></i>
           </div>
         </div>
         <ul className="weekly-catagory-ul">

@@ -1,7 +1,5 @@
 import React from 'react';
-import WeeklyIngredientsItemContainer from './weekly_ingredients_item_container'
 import WeeklyIngredientsCatagory from './weekly_ingredients_catagory';
-import { getIngredientById } from '../../util/ingredient_api_util';
 
 const TIMES = ['BREAKFAST', 'LUNCH', 'DINNER'];
 
@@ -21,7 +19,7 @@ class WeeklyIngredients extends React.Component {
   }
 
   componentDidMount() {
-    let { getCart, userId, cart, fetchFridge} = this.props;
+    let { getCart, userId, cart} = this.props;
     // fetchFridge(userId)
     //   .then(() => {
         if (!cart.dates) {

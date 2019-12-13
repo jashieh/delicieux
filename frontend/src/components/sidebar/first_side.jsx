@@ -1,6 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import UserProfileContainer from '../profile/user_profile_container';
 
 
 class FirstSide extends React.Component {
@@ -11,10 +9,8 @@ class FirstSide extends React.Component {
     }
     
     handleMouseOver(page) {
-        // e.preventDefault();
         return e => {e.preventDefault(); 
             this.props.openSide("second", page)};
-        // this.props.hoverMasterList(option);
     }
 
     render() {

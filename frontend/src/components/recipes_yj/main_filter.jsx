@@ -1,12 +1,6 @@
 import React from 'react';
-import Toggle from 'react-toggle';
-// import "react-toggle/style.css";
-import '../stylesheets/recipes_index/main_filter.scss';
-import '../stylesheets/recipes_index/toggle.scss';
 import Loupe from '../stylesheets/assets/loupe-2.png';
 import Ingredient from '../stylesheets/assets/ginkgo.png';
-import Check from '../stylesheets/assets/checkmark.jpg';
-import ThickCheck from '../stylesheets/assets/thickcheck.png';
 import FilterSearchContainer from './filter_search_container';
 
 export default class MainFilter extends React.Component {

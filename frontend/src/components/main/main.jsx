@@ -1,15 +1,10 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 
 import NavbarContainer from '../nav/navbar_container';
-import Apron from '../stylesheets/assets/apron.png';
-import Background1 from '../stylesheets/assets/background1.jpg';
-import Background2 from '../stylesheets/assets/main.jpeg';
 import ChooseMeal from '../stylesheets/assets/choose.gif';
 import PieChart from '../stylesheets/assets/pie_chart.gif';
 import LineChart from '../stylesheets/assets/line_chart.gif';
 import GroceryGif from '../stylesheets/assets/grocery.gif';
-import MealPlan from '../stylesheets/assets/meal_plan.jpg';
 import Freshly from '../stylesheets/assets/easy.jpeg';
 import IceCream from '../stylesheets/assets/note.jpg';
 
@@ -248,7 +243,7 @@ class MainPage extends React.Component {
 
                             <section className="st-panel st-color" id="st-panel-4">
                                 <div className="img-container">
-                                  <img src={KitchenCounter} className="splash-image"/>
+                                  <img src={KitchenCounter} className="splash-image" alt=""/>
                                 </div>
 
                                 <div className="main-index">

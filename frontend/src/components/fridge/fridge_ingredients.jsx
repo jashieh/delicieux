@@ -1,7 +1,5 @@
 import React from 'react';
-import FridgeItemContainer from './fridge_item_container';
 import FridgeCatagory from './fridge_catagory';
-import { getIngredientById } from '../../util/ingredient_api_util';
 
 
 class FridgeIngredients extends React.Component {
@@ -83,11 +81,9 @@ class FridgeIngredients extends React.Component {
   // }
 
   render() {
-    let ingredients;
     let catagories;
     let ids = Object.keys(this.state.catagories);
     if(Object.keys(this.state.catagories).length === 0 && Object.keys(this.props.ingredients).length !== 0) {
-      // catagories = "loading...";
       catagories = <div className="fridge-loading">Loading...</div>
     } else {
       catagories = [];
@@ -99,16 +95,6 @@ class FridgeIngredients extends React.Component {
           />);
       }
     }
-
-
-    // if(this.props.ingredients) {
-    //   let fridge = this.props.ingredients;
-    //   ingredients = Object.keys(fridge).map(ingredientId => {
-    //     return(
-    //       <FridgeItemContainer ingredient={fridge[ingredientId]} key={ingredientId}/>
-    //     );
-    //   });
-    // }
 
     return(
       <div className="fridge-ingredients-container">

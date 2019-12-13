@@ -1,6 +1,6 @@
 import * as RecipeAPI from '../util/recipe_api_util';
 import { recipeArrayToObject } from "../selectors/selectors";
-import { startLoad, stopLoad } from './loading_actions';
+import { stopLoad } from './loading_actions';
 import { getIngredientById } from '../util/ingredient_api_util';
 
 export const RECEIVE_RECIPE = "RECEIVE_RECIPE";

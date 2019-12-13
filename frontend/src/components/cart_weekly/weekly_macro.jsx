@@ -1,5 +1,5 @@
 import React from 'react';
-import { VictoryLegend, VictoryPie, VictoryLabel } from 'victory';
+import { VictoryPie, VictoryLabel } from 'victory';
 import "../stylesheets/weekly_cart/weekly_macro.scss";
 import { calorieCalc } from '../../util/calorie_util';
 
