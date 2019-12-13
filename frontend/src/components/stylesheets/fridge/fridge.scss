@@ -60,7 +60,7 @@
     position: relative;
     width: max-content;
     // height: 100%;
-    background-color: blue;
+    // background-color: blue;
     
     .search-input {
       // margin: 50px auto;
@@ -68,7 +68,7 @@
       width: 300px;
       border-radius: 2px;
       animation: FadeIn 1s;
-      border: 1px solid white;
+      border: 1px solid rgba(145, 144, 144, 0.468);
       background: white;
       // background-color: rgb(19, 17, 17);
       
@@ -94,7 +94,7 @@
       
       
       .ingredient-search-li {
-        padding: 12px 15px;
+        padding: 12px 12px;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -342,13 +342,16 @@
           width: 100%;
           
           .catagory-title {
-            font-size: 20px;
+            font-size: 14px;
             // border-bottom: 1px solid grey;
-            padding: 10px;
+            padding: 13px;
             background: white;
             border: 1px solid rgba(152, 151, 151, 0.358);
             margin-bottom: 10px;
             cursor: pointer;
+            font-family: Open Sans;
+            font-weight: 400;
+            color: rgb(206, 62, 9);
           }
           
           .fridge-catagory-ul {
@@ -364,12 +367,10 @@
           min-height: 38px;
           max-width: 100px;
           // padding: 10px;
-          margin: 10px 30px;
+          margin: 10px 22px;
           background-color: white;
-          // background-color: rgb(31, 31, 31);
-          // background-color: rgb(53, 51, 51);
-          // background-color: rgba(59, 60, 65, 0.865);
-          box-shadow: 1px 1px 5px 1px #96939393;
+          border: 1px solid lightgrey;
+          box-shadow: 1px 1px 5px 1px #96939323;
           // color: rgb(210, 204, 204);
           color: black;
           border-radius: 4px;
