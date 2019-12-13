@@ -1,4 +1,4 @@
-import React from 'react';
+  import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -168,7 +168,7 @@ class SignupForm extends React.Component {
     return (
         <div className="session-background">
           <div className="signup-text">délicieux</div>
-          <a className="signup-form" className="btn">
+          <div className="signup-form" className="btn">
             <span>
               <span>
                 <span>
@@ -223,7 +223,7 @@ class SignupForm extends React.Component {
                 </span>
               </span>
             </span>
-          </a>
+          </div>
         </div>
     );
   }
