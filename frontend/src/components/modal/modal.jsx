@@ -8,12 +8,7 @@ import ModifyIngredientContainer from '../fridge/modify_ingredient_container';
 import RecipeShowContainer from '../recipes_yj/recipe_show_container'
 import "../stylesheets/modal/modal.scss";
 
-class Modal extends React.Component {
-  
-  constructor(props) {
-    super(props);
-  }
-  
+class Modal extends React.Component {  
   render() {
     const { modal, closeModal } = this.props;
     if (!modal) {

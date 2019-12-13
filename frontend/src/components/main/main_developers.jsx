@@ -15,14 +15,14 @@ class MainDevelopers extends React.Component {
     return (
       <div>
         <div className="img-container">
-          <img src={Last} className="splash-image" />
+          <img src={Last} className="splash-image" alt=""/>
         </div>
         <div className="main-developers">
           <div className="dev-top">
             <div className="main-developer">
               <div className="dev-left">
                 <div className="dev-image">
-                  <img className="main-developer-image" src={Justin} />
+                  <img className="main-developer-image" src={Justin} alt=""/>
                 </div>
                 <div className="main-developer-name">Justin Shieh</div>
               </div>
