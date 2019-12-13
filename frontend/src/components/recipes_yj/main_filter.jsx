@@ -432,11 +432,28 @@ export default class MainFilter extends React.Component {
               </div>
             </div>
           </div>
-            <div className="filter-param-cont fridge-add">
-              <div className={`include-fridge-toggle ${includeFridge}`} 
-                onClick={this.handleCheck("includeFridge")}>
+            <div className="fridge-add">
+              <div className="filter-switch" onClick={this.handleCheck("includeFridge")}>
+                <input type="radio" id="yes" name="switch"
+                  defaultChecked={this.state.includeFridge}
+                  className="switch-btn radio-yes"/>
+                <input type="radio" id="no" name="switch"
+                  className="switch-btn radio-no"/>
+
+                <label htmlFor="yes" className="switch-btn-label radio-yes-label">
+                  <span className="switch-btn-text">yes</span>
+                </label>
+                <label htmlFor="no" className="switch-btn-label radio-no-label">
+                  <span className="switch-btn-text">no</span>
+                </label>
+              </div>
+              <div className="include-fridge">
                 Include Fridge
               </div>
+              {/* <div className={`include-fridge-toggle ${includeFridge}`} 
+                onClick={this.handleCheck("includeFridge")}>
+                Include Fridge
+              </div> */}
                 {/* <label className="filter-dd-item1">
                     <Toggle className="toggle" 
                     defaultChecked={this.state.includeFridge} 

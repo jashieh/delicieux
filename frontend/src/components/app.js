@@ -12,6 +12,7 @@ import UserForm from './userform/user_form';
 import FridgeContainer from './fridge/fridge_container';
 import MainIndexContainer from './main_index/main_index_container';
 import WeeklyCartContainer from './cart_weekly/weekly_cart_container';
+import Filter from './recipes_yj/main_filter_container';
 import './stylesheets/App.scss';
 
 const App = () => (
@@ -27,6 +28,8 @@ const App = () => (
       <ProtectedRoute exact path="/index" component={ MainIndexContainer } />
       <ProtectedRoute exact path="/weeklyCart" component={ WeeklyCartContainer }/>
 
+
+      <Route exact path="/filter" component={Filter} />
       <Redirect to="/" />
     </Switch>
   </div>

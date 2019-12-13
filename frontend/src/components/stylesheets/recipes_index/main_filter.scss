@@ -87,7 +87,7 @@
       font-size: 15px;
     }
   }
-     
+  
   .filter-text-button {
     height: 43px;
     width: 48px;
@@ -164,7 +164,7 @@
     
     
   }
-
+  
   .filter-bot-cuisine {
     height: 100px;
     width: 850px;
@@ -311,7 +311,7 @@
   right: 10px;
   font-size: 25px;
   color: #a19c9cda;
-
+  
 }
 
 .filter-x:hover {
@@ -489,9 +489,122 @@ input[type=number]:focus {
 
 
 .fridge-add {
+  width: 380px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 33px;
+  margin-right: 10px;
   display: flex;
-  justify-content: flex-end !important;
-  // background-color: red;
+  font-family: Open Sans;
+  font-size: 14px;
+  color: rgb(74, 73, 73);
+  justify-content: flex-end;
+  font-size: 1.1px;
+
+  .include-fridge {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    // font-weight: 600;
+    margin-left: 6px;
+  }
+  
+  .filter-switch {
+    font-size: 6em;
+    position: relative;
+    display: inline-block;		
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    .switch-btn {
+      display: none;
+    }
+    
+    .switch-btn-label {
+      display: inline-block;	
+      padding: .75em .5em .75em .75em;
+      vertical-align: top;
+      font-size: 1em;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #666;
+      cursor: pointer;
+      transition: color .2s ease-in-out;
+    }
+    
+    .switch-btn-label + .switch-btn-label {
+      padding-right: 1.25em;
+      padding-left: 0;
+      
+      .switch-btn-text {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        min-width: 1.5em;
+        opacity: 0;
+        pointer-events: none;
+        
+        // transition: opacity .2s ease-in-out;
+      }
+    }
+    
+    .radio-yes:checked ~ .radio-no-label .switch-btn-text,
+    .radio-no:checked ~ .radio-yes-label .switch-btn-text {
+      opacity: 0;
+    }
+    
+    .switch-btn-label:before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: #c2c0c0;
+      border-radius: 1.5em;
+      box-shadow: inset 0 .0715em .3572em rgba(43,43,43,.05);
+      transition: background .2s ease-in-out;
+    }
+    
+    .radio-yes:checked ~ .switch-btn-label:before {
+      background: #6ad500;
+    }
+    
+    .radio-no-label:after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      top: .5em;
+      bottom: .5em;
+      left: .5em;
+      width: 2em;
+      background: #fff;
+      border-radius: 1em;	
+      pointer-events: none;
+      box-shadow: 0 .1429em .2143em rgba(43,43,43,.2), 0 .3572em .3572em rgba(43,43,43,.1);
+      transition: left .2s ease-in-out, background .2s ease-in-out;
+    }
+    
+    .radio-yes:checked ~ .radio-no-label:after {
+      left: calc(100% - 2.5em);
+      background: #fff;
+    }
+    
+    .radio-no:checked ~ .radio-yes-label:before, 
+    .radio-yes:checked ~ .radio-no-label:before {
+      z-index: 1;
+    } 
+    
+    .radio-yes:checked ~ .radio-yes-label {
+      color: #fff;
+    }
+    
+    
+  }
+  
   
   .include-fridge-toggle {
     cursor: pointer;
@@ -510,12 +623,10 @@ input[type=number]:focus {
     user-select: none;
   }
   
-  .include-fridge {
-    // background-color: green;
-    box-shadow: inset 1px 1px 6px 1px rgba(187, 184, 163, 0.8);
-  }
-  
-  
+  // .include-fridge {
+  //   // background-color: green;
+  //   box-shadow: inset 1px 1px 6px 1px rgba(187, 184, 163, 0.8);
+  // }
   .filter-dd-item1 {
     width: max-content;
     
@@ -573,7 +684,7 @@ input[type=number]:focus {
       padding-right: 5px;
       font-size: 17px;
       height: 100%;
-
+      
     }
     
     .filter-x:hover {
@@ -583,13 +694,13 @@ input[type=number]:focus {
     
   }
   // maybe custom checkmarks
-
+  
   .filter-checkbox {
     // display: none;
     margin-right: 5px;
     border-radius: 50%;
   }
-
+  
   
   .filter-checkmark-cont {
     height: 15px;
@@ -630,6 +741,6 @@ input[type=number]:focus {
     }
     
   }   
-
-
+  
+  
   
