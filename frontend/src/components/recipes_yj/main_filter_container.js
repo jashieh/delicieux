@@ -6,7 +6,8 @@ import { startLoad, stopLoad } from '../../actions/loading_actions';
 
 const mapStateToProps = state => ({
   userId: state.session.user.id,
-  fridge: state.entities.fridge
+  fridge: state.entities.fridge,
+  loading: state.ui.loading
 });
 
 const mapDispatchToProps = dispatch => ({

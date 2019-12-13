@@ -13,6 +13,7 @@
   .title {
     text-align: center;
     margin-bottom: 20px;
+    font-size: 20px;
   }
 
   .catagory-list::-webkit-scrollbar {
@@ -42,9 +43,23 @@
 
       .weekly-catagory-title {
         cursor: pointer;
+        display: flex;
+        flex-direction: row;
         margin-top: 20px;
-        font-size: 16px;
+        font-size: 18px;
         border-bottom: 1px solid grey;
+
+        .weekly-catagory-arrow {
+          font-size: 12px;
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+        }
+        
+      }
+
+      .weekly-catagory-title:hover {
+        color: grey;
       }
 
       .weekly-catagory-ul {
@@ -60,6 +75,7 @@
       align-items: center;
       animation: FadeIn 1s;
       position: relative;
+      cursor: pointer;
       
       .weekly-ing-checkbox {
         margin-left: 20px;
