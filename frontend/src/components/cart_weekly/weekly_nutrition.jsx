@@ -59,7 +59,7 @@ class WeeklyNutrition extends React.Component {
       nutritionRows.push(
         <div className="weekly-nutrient-row">
           <div className="weekly-nutrient-name">
-            <div style={ ["Sugar", "Fiber", "Saturated Fat"].includes(main[i]) ? {"padding-left": "15px"} : { "font-weight": "bold" } }>
+            <div style={ ["Sugar", "Fiber", "Saturated Fat"].includes(main[i]) ? {"paddingLeft": "15px"} : { "fontWeight": "bold" } }>
               {main[i]}
             </div>
             <div> &nbsp; { amount.toFixed(0) }{ unit } </div>
