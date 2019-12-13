@@ -52,6 +52,8 @@ class WeeklyNutrition extends React.Component {
     let nutritionRows = [];
     for (let i = 0; i < main.length; i++) {
       if (main[i] === "dates") continue;
+      if (!nutrients[main[i]]) continue;
+      
       let { amount, unit, percentage } = nutrients[main[i]];
 
       nutritionRows.push(

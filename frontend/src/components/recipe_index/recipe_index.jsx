@@ -2,7 +2,6 @@ import React from 'react';
 import RecipeIndexItemContainer from './recipe_index_item_container';
 import '../stylesheets/recipe_index/recipe_index.scss';
 import flip from '../stylesheets/assets/load2.gif';
-// import flip from '../stylesheets/assets/toast.gif';
 
 
 class RecipeIndex extends React.Component {
@@ -18,8 +17,12 @@ class RecipeIndex extends React.Component {
 
   // Loads all of the recipes upon mounting
   componentDidMount() {
-    let { user, fridge, fetchFridge, getRecipesByIngredients, getRandomRecipes, startLoad } = this.props;  
+    let { user, fridge, fetchFridge, getRecipesByIngredients, getRandomRecipes, startLoad, loading} = this.props;  
     startLoad("loading");
+    setTimeout(() => {
+      if(loading)
+        startLoad("failed");
+    }, 10000)
     fetchFridge(user.id)
       .then(
         () => {
@@ -66,7 +69,8 @@ class RecipeIndex extends React.Component {
   render() {
     const { recipes, loading } = this.props;
     const indexRecipes = recipes.indexOrder.map((recipeId) => recipes[recipeId]);
-    if (loading) {
+
+    if (loading === "loading") {
       return (
         <div className="loading-cont">
           <div className="loading-img-cont">
@@ -74,7 +78,11 @@ class RecipeIndex extends React.Component {
           </div>
         </div>
       )
-    } else {
+    } 
+    else if (loading === "failed") {
+      return( <div className="loading-cont">No Results Found</div>)
+    }
+    else {
       return (
         <div className="recipe-index">
           {indexRecipes.map((recipe, idx) => {

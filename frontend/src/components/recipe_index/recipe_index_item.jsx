@@ -3,7 +3,7 @@ import '../stylesheets/recipe_index/recipe_index_item.scss';
 import Leaf from '../stylesheets/assets/leaf.png';
 import Leaf2 from '../stylesheets/assets/leaf2.png';
 import Salami from '../stylesheets/assets/salami.png';
-import Clock from '../stylesheets/assets/food-clock.png';
+import Clock from '../stylesheets/assets/time.png';
 
 const MAX = 21;
 const MIN = 0;
