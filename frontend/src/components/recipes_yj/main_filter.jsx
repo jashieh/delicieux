@@ -447,7 +447,7 @@ export default class MainFilter extends React.Component {
                   <span className="switch-btn-text">no</span>
                 </label>
               </div>
-              <div>
+              <div className="include-fridge">
                 Include Fridge
               </div>
               {/* <div className={`include-fridge-toggle ${includeFridge}`} 
