@@ -28,7 +28,7 @@ class WeeklyCart extends React.Component {
 
   // generate an array of weekdates and fetch recipe info
   componentDidMount() {
-    debugger;
+    // debugger;
     let { getCart, user, cart, fetchFridge, fetchUser } = this.props;
     // this.setState({calories: 0, carbs: 0, protein: 0, fat: 0, fiber: 0}, ()=>{
     fetchFridge(user.id)
@@ -87,7 +87,7 @@ class WeeklyCart extends React.Component {
   
   // fetches all necessary recipes for a given week
   getRecipes() {
-    debugger;
+    // debugger;
     let dates = this.generateDates();
     let { cart, recipes, addCartDate, getRecipeDB } = this.props;
     let recipeId;
@@ -98,7 +98,7 @@ class WeeklyCart extends React.Component {
         results++;
         addCartDate(cart.id, { date: dates[i] })
           .then(() => {
-            debugger;
+            // debugger;
             results--;
             if (results === 0) this.setState({ dates })
           });
@@ -112,12 +112,12 @@ class WeeklyCart extends React.Component {
             getRecipeDB(recipeId)
               .then(({ recipe } ) => {
                 this.modifyMacros(recipe, "add");
-                debugger;
+                // debugger;
                 results--;
                 if (results === 0) this.setState({ dates });
               });
           } else if (!recipeId) {
-            debugger;
+            // debugger;
             if (results === 0) this.setState({ dates });
         }
       }
@@ -155,13 +155,13 @@ class WeeklyCart extends React.Component {
       let stateAmount = this.state[nutrient] ? this.state[nutrient].amount : 0;
       let statePercentage = this.state[nutrient] ? this.state[nutrient].percentage : 0;
       if (!recipeInfo[0]) {
-        debugger;
+        // debugger;
       }
       if (operation === "add")
         newState[nutrient] = {
-          amount: stateAmount + recipeAmount,
+          amount: stateAmount + recipeAmount < 0 ? 0 : stateAmount + recipeAmount,
           unit: recipeInfo[0].unit,
-          percentage: statePercentage + recipePercentage,
+          percentage: statePercentage + recipePercentage < 0 ? 0 : statePercentage + recipePercentage,
         };
       else
         newState[nutrient] = {
@@ -170,6 +170,7 @@ class WeeklyCart extends React.Component {
           percentage: statePercentage - recipePercentage
         };
     }
+
     this.setState(newState);
 
     // if (operation === "add") {
@@ -194,14 +195,14 @@ class WeeklyCart extends React.Component {
   removeMacros(recipeId) {
     this.props.getRecipeDB(recipeId)
       .then(({ recipe }) => {
-        this.modifyMacros(recipe);
+        this.modifyMacros(recipe, "remove");
       })
   }
   
   render() {
     let { dates } = this.state;
     if (dates.length > 0 ){
-      debugger;
+      // debugger;
       return (
         <div className="weekly-cart-page">
           <div className="top">
@@ -219,16 +220,20 @@ class WeeklyCart extends React.Component {
                 return <WeeklyCartDayContainer date={date} key={idx} removeMacros={this.removeMacros}/>;
               })}
             </div>
-            <WeeklyMacro 
-              calories={ this.state.Calories ? this.state.Calories.amount : 0 } 
-              carbs={ this.state.Carbohydrates ? this.state.Carbohydrates.amount : 0 } 
-              protein={ this.state.Protein ? this.state.Protein.amount : 0 } 
-              fat={ this.state.Fat ? this.state.Fat.amount : 0 } 
-              fiber={ this.state.Fiber ? this.state.Fiber.amount : 0 }
-              user = { this.props.currentUser } />
-            
-            <WeeklyNutrition 
-              nutrients = { this.state } />
+            <div className="weekly-cart-details">
+              <WeeklyNutrition 
+                nutrients = { this.state } />
+              <div className="weekly-cart-data">
+                <WeeklyMacro 
+                  calories={ this.state.Calories ? this.state.Calories.amount : 0 } 
+                  carbs={ this.state.Carbohydrates ? this.state.Carbohydrates.amount : 0 } 
+                  protein={ this.state.Protein ? this.state.Protein.amount : 0 } 
+                  fat={ this.state.Fat ? this.state.Fat.amount : 0 } 
+                  fiber={ this.state.Fiber ? this.state.Fiber.amount : 0 }
+                  user = { this.props.currentUser } />
+                <div className="weekly-cart-graph"></div>
+              </div>
+            </div>
           </div>
 
         </div>

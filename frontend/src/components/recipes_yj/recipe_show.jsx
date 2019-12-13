@@ -91,7 +91,7 @@ export default class RecipeShow extends React.Component {
 
     let chartDisp = this.state.pieChart ? (
       <div className="chart-cont" onClick={this.toggleChart}>
-        <div>Calorie Distribution</div>
+        <div className="chart-title">Calorie Distribution</div>
         <VictoryPie
           animate={{
             duration: 2000
@@ -107,7 +107,7 @@ export default class RecipeShow extends React.Component {
                     {
                       target: "labels",
                       mutation: ({ text, datum }) => {
-                        return { text: `${datum.y}%`};
+                        return { text: `${datum.y}%` };
                       }
                     }
                   ];
@@ -138,6 +138,7 @@ export default class RecipeShow extends React.Component {
       </div>
     ) : (
       <div className="bar-chart-cont" onClick={this.toggleChart}>
+        <div className="chart-title">Calorie Distribution</div>
         {recipe.nutrition.map((nutrient, idx) => {
           if (
             ["Calories", "Protein", "Carbohydrates", "Fat"].includes(
@@ -155,11 +156,12 @@ export default class RecipeShow extends React.Component {
                 onMouseEnter={this.handleBarOn(title)}
                 onMouseLeave={this.handleBarOff(title)}
               >
-                <div> {title} </div>
+                <div className="bar-title"> {title} </div>
                 <div
                   className="chart-test"
                   style={{
-                    background: `linear-gradient(90deg, black ${percent}%, tomato ${percent}%)`
+                    border: "1px solid gray",
+                    background: `linear-gradient(90deg, black ${percent}%, white ${percent}%)`
                   }}
                 >
                   {this.state[title] ? (
@@ -255,8 +257,6 @@ export default class RecipeShow extends React.Component {
           </div>
         </div>
       </div>
-
-     
     )
   }
 
