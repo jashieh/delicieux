@@ -27,7 +27,7 @@ class Fridge extends React.Component {
         </div>
         <div className="contain-all">
           <div className="left-fridge" >
-            <Clock />
+            {/* <Clock /> */}
             <IngredientSearchContainer />
           </div>
           <div className="right-fridge" >

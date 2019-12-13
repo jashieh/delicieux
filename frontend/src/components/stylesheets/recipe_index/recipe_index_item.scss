@@ -52,7 +52,9 @@
 
 .recipe-index-item:hover {
   cursor: pointer;
-  filter: brightness(90%);
+  filter: brightness(94%);
+  box-shadow: none;
+  // box-shadow: 1px 1px 3px 1px rgba(207, 205, 205, 0.18);
 }
 
 
