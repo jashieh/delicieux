@@ -67,11 +67,13 @@
         flex-direction: column;
         // background: pink;
         margin: 0 auto;
+        cursor: pointer;
         
         :first-child {
           font-family: EB Garamond;
           letter-spacing: 1px;
         }
+
       }
     }
   }
@@ -245,10 +247,8 @@
   }
 
   .bar-chart-cont {
-    .chart-title {
-      padding-bottom: 15px;
-    }
 
+    cursor: pointer;
     height: 220px;
     width: 250px;
     display: flex;
@@ -256,6 +256,10 @@
     flex-wrap: wrap;
     // background: blue;
     margin: 0 auto;
+
+    .chart-title {
+      padding-bottom: 15px;
+    }
   }
 }
 
@@ -278,7 +282,7 @@
   font-weight: bold;
   font-family: EB Garamond;
   letter-spacing: 1px;
-  text-decoration: underline;
+  // text-decoration: underline;
 }
 
 

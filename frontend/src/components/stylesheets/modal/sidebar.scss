@@ -28,7 +28,8 @@
           text-decoration: none;
           margin: 16px 0;
           // width: 240px;
-          width: 160px;
+          // width: 160px;
+          width: 43%;
         }
     }
 
@@ -428,7 +429,7 @@ a {
 // Start of styling
  
 .btnn {
-  @include btnn-border-slide(rgb(247, 217, 180), rgb(223, 193, 156), 1px, 0.5s);
+  @include btnn-border-slide( rgb(255, 255, 255),rgba(75, 23, 4, 0.632), 1px, 0.6s);
 //   @include btn-border-slide(#252525, #168dff, 2px, 0.8s);
 }
 

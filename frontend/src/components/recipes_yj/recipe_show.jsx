@@ -242,12 +242,12 @@ export default class RecipeShow extends React.Component {
               <div className="recipe-show-toggle">
                 <div className="list-title" 
                   onClick={this.toggleRight}
-                  style={this.state.instructions ? {} : { textDecoration: "underline", fontWeight: "bold" }}>
+                  style={this.state.instructions ? {} : { fontWeight: "bold" }}>
                   Ingredient List
                 </div>
                 <div className="list-title" 
                   onClick={()=>{this.toggleRight("instructions")}}
-                  style={this.state.instructions ? { textDecoration: "underline", fontWeight: "bold" } : {}}>
+                  style={this.state.instructions ? { fontWeight: "bold" } : {}}>
                   Instructions
                 </div>
               </div>
