@@ -2,8 +2,6 @@ import React from 'react';
 import RecipeIndexItemContainer from './recipe_index_item_container';
 import '../stylesheets/recipe_index/recipe_index.scss';
 import flip from '../stylesheets/assets/load2.gif';
-import { stopLoad } from '../../actions/loading_actions';
-// import flip from '../stylesheets/assets/toast.gif';
 
 
 class RecipeIndex extends React.Component {
@@ -19,11 +17,11 @@ class RecipeIndex extends React.Component {
 
   // Loads all of the recipes upon mounting
   componentDidMount() {
-    let { user, fridge, fetchFridge, getRecipesByIngredients, getRandomRecipes, complexRecipeSearch, startLoad, stopLoad, loading} = this.props;  
+    let { user, fridge, fetchFridge, getRecipesByIngredients, getRandomRecipes, startLoad, loading} = this.props;  
     startLoad("loading");
     setTimeout(() => {
       if(loading)
-        startLoad("failed")
+        startLoad("failed");
     }, 10000)
     fetchFridge(user.id)
       .then(
@@ -82,7 +80,7 @@ class RecipeIndex extends React.Component {
       )
     } 
     else if (loading === "failed") {
-      return( <div>No Results Found</div>)
+      return( <div className="loading-cont">No Results Found</div>)
     }
     else {
       return (
