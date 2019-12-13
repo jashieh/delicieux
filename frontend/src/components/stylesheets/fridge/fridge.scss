@@ -78,15 +78,19 @@
     
     .search-input:focus {
       outline: none;
-      // border: none;
       border: 1px solid rgba(145, 144, 144, 0.468);
-      color: rgb(182, 182, 182);
-      // background-color: #2A2C2F;
+      color: rgb(114, 111, 111);
     }
-    
+
+    ::placeholder {
+      color: rgb(104, 104, 104);
+      font-family: Open Sans;
+      font-size: 15px;
+    }
+
     .ingredient-search-ul {
       position: absolute;
-      background-color: #2A2C2F;
+      background-color: #E1E2E1;
       color: grey;
       box-sizing: border-box;
       width: 300px;
@@ -106,10 +110,10 @@
       
       .ingredient-search-li:hover {
         cursor: pointer;
-        filter: brightness(80%);
-        background-color: #24B6FF;
-        color: white;
-        font-weight: 600;
+        filter: brightness(100%);
+        background-color: #e3f2fd;
+        color: #6e6d6d;
+        font-weight: 500;
       }
       
     }    
@@ -120,15 +124,13 @@
 
 .add-ingredient-modal-container {
   width: 380px;
-  // height: 200px;
   border-radius: 5px;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  // align-items: center;
   box-sizing: border-box;
-  box-shadow: 1px 1px 10px;
+  // box-shadow: 1px 1px 6px grey;
   
   div {
     display: flex;
@@ -212,8 +214,10 @@
         font-size: 16px;
         padding: 0 0 0 10px;
         border-radius: 5px;
-        box-shadow: 2px 2px 10px 1px rgb(196, 194, 194);
-        
+      }
+
+      .add-ingredient-input:focus {
+
       }
       
       .add-ingredient-input-box {
@@ -294,7 +298,7 @@
     // width: 78%;
     width: 100%;
     height: 100%;
-    background: rgb(227, 227, 227);
+    background: #fafafa;
     border-radius: 3px;
 
     margin: 0 auto;
@@ -349,8 +353,9 @@
             margin-bottom: 10px;
             cursor: pointer;
             font-family: Open Sans;
-            font-weight: 400;
+            font-weight: bold;
             color: rgb(206, 62, 9);
+            color: rgb(99, 169, 226);
             border-radius: 4px;
             display: flex;
             justify-content: space-between;
