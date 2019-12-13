@@ -18,6 +18,7 @@
         justify-content: space-between;
         height: 70px;
         border-bottom: 1px solid gray; 
+        padding-right: 8px;
         // padding: 0px 15px; 
     }
 }
@@ -46,6 +47,8 @@
     justify-content: space-evenly;
     // border: 1px solid black;
     padding: 5px;
+    padding-right: 0px;
+    margin-right: -5px;
     border-radius: 5px;
 
     .gender-radio {
@@ -69,33 +72,16 @@
         border: 1px solid rgb(210, 204, 204);
         border-radius: 5px;
         box-shadow: 1px 1px 2px 1px rgba(179, 175, 175, 0.297);
-        // margin-right: 2px;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         background: white;
-        // background: url("../assets/man.png");
     }
 
     .gender-icon:hover {
         cursor: pointer;
     }
-
-    // .gender-icon:nth-child(2) {
-    //     border-top-left-radius: 5px;
-    //     border-bottom-left-radius: 5px;
-    // }
-
-    // .gender-icon:nth-child(4) {
-    //     border-left: 1px solid green;
-    //     border-right: 1px solid green;
-    // }
-
-    // .gender-icon:nth-child(6) {
-    //     border-top-right-radius: 5px;
-    //     border-bottom-right-radius: 5px;
-    // }
 }
 
 
@@ -189,8 +175,14 @@
 }
 
 .profile-item-container.last {
-    background: red;
+    // width: 90%;
+    // margin: 0 auto;
+    background: ivory;
+    // border: 1px solid rgba(128, 128, 128, 0.447);
+    border: none;
+    font-size: 12.3spx;
     margin-top: 20px;
-    height: 60px;
+    height: 50px;
+    font-weight: 500;
     justify-content: center;
 }

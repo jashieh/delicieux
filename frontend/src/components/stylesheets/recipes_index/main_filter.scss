@@ -416,11 +416,16 @@ input[type=range]::-webkit-slider-thumb {
 .slide {
   -webkit-appearance: none;
   background: inherit;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   border: none;
   margin-left: 11px;
   width: 50px;
 }
 
+input[type=number]:focus {
+  outline: none;
+} 
 .slide::-webkit-outer-spin-button,
 .slide::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -625,4 +630,6 @@ input[type=range]::-webkit-slider-thumb {
     }
     
   }   
+
+
   
