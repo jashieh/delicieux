@@ -1,0 +1,64 @@
+strong {
+  font-weight: bold;
+}
+
+.weekly-nutrient-table {
+  display: flex;
+  flex-direction: column;
+
+  width: 260px;
+  max-height: 660px;
+
+  padding: 10px;
+  border: 2px solid rgb(142, 142, 216);
+  border-radius: 1px;
+}
+
+.nutrition-title {
+  font-size: 25px;
+  font-family: Open Sans;
+  font-weight: bold;
+
+  line-height: 30px;
+  vertical-align: middle;
+
+  // border-bottom: 3px solid black;
+}
+
+.weekly-nutrient-row {
+  display: flex;
+  flex-direction: row;  
+
+  width: 260px;
+  min-height: 17px;
+
+  font-family: Open Sans;
+  font-size: 15px;
+  line-height: 17px;
+  vertical-align: middle;
+}
+
+.weekly-nutrient-name {
+  width: 190px;
+  padding-left: 10px;
+  display: flex;
+}
+
+.weekly-nutrient-percentage {
+  width: 50px;
+  padding-right: 5px;
+  text-align: right;
+}
+
+.nutrition-divider {
+  width: 100%;
+  min-height: 1px;
+  border-bottom: 1px solid black;
+}
+
+.nutrition-section-divider {
+  width: 100%;
+  height: 4px;
+  background: black;
+  margin: 4px 0;
+}

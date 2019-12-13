@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Target from '../stylesheets/assets/target.png';
 import Scale from "../stylesheets/assets/weight-scale.png";
 import Dumbbell from "../stylesheets/assets/dumbbell.png";

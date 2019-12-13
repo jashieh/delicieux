@@ -1,10 +1,4 @@
-import React from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/styles/typography'
-import TextField from 'material-ui/TextField';
-import RaisedButton from 'material-ui/RaisedButton';
+  import React from 'react';
 import { Link } from 'react-router-dom';
 
 
@@ -174,7 +168,7 @@ class SignupForm extends React.Component {
     return (
         <div className="session-background">
           <div className="signup-text">délicieux</div>
-          <a className="signup-form" className="btn">
+          <div className="signup-form" className="btn">
             <span>
               <span>
                 <span>
@@ -229,7 +223,7 @@ class SignupForm extends React.Component {
                 </span>
               </span>
             </span>
-          </a>
+          </div>
         </div>
     );
   }

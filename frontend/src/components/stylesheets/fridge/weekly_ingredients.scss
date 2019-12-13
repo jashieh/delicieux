@@ -44,6 +44,8 @@
 
       .weekly-catagory-title {
         cursor: pointer;
+        display: flex;
+        flex-direction: row;
         margin-top: 20px;
         font-size: 14px;
         font-family: Open Sans;
@@ -65,6 +67,7 @@
       align-items: center;
       animation: FadeIn 1s;
       position: relative;
+      cursor: pointer;
       
       .weekly-ing-checkbox {
         margin-left: 20px;

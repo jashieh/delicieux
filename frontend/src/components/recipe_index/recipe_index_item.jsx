@@ -3,6 +3,7 @@ import '../stylesheets/recipe_index/recipe_index_item.scss';
 import Leaf from '../stylesheets/assets/leaf.png';
 import Leaf2 from '../stylesheets/assets/leaf2.png';
 import Salami from '../stylesheets/assets/salami.png';
+import Clock from '../stylesheets/assets/time.png';
 
 const MAX = 21;
 const MIN = 0;
@@ -30,8 +31,8 @@ class RecipeIndexItem extends React.Component {
     const { recipe, rotateToBack, fridge } = this.props;
     const { vegetarian, vegan, title, spoonacularScore, image, servings, readyInMinutes, nutrition } = this.props.recipe
 
-    let timeC = readyInMinutes < 60 ? (readyInMinutes).toString() :
-      readyInMinutes < 180 ? Math.floor(readyInMinutes / 60).toString() + "h" : "3h";
+    let timeC = readyInMinutes < 60 ? (readyInMinutes).toString() + "m":
+      readyInMinutes < 180 ? Math.floor(readyInMinutes / 60).toString() + "h" : "3h+";
     let isVegan
     if (vegan) {
       isVegan = "Vegan";
@@ -65,8 +66,9 @@ class RecipeIndexItem extends React.Component {
           <div className="recipe-index-item-name">
             {title.slice(0, 25) + ".."}
           </div>
-          <div className="make">
-            <p>{timeC}</p>
+          <div className="recipe-time-container"> 
+            <div>{timeC}</div>
+            <img src={Clock} alt="" className="make"/>
           </div>
         </div>
         <div className="icon-box">

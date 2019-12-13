@@ -106,7 +106,7 @@ class WeeklyCartDay extends React.Component {
                 <div className="weekly-cart-item-info">
                   <div className="weekly-cart-item-info-text">
                     <div className="weekly-cart-item-info-left">
-                      <div className="weekly-cart-item-name">{this.recipe[time].title.slice(0, 20) + ".."}</div>
+                      <div className="weekly-cart-item-name">{this.recipe[time].title.slice(0, 15) + ".."}</div>
                       <div className="weekly-cart-item-buttons">
                         <div className="weekly-cart-item-remove" onClick={(e) => { this.removeItem(e, time) }}>
                           Remove

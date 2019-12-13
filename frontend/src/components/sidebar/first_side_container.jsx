@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import React from 'react';
 import { openSide, closeSide } from '../../actions/side_actions';
 import FirstSide from './first_side';
 

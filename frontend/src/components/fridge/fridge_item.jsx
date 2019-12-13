@@ -17,7 +17,7 @@ class FridgeItem extends React.Component {
         { this.props.ingredient.name }
         </div>
         <div className="fridge-item-amount">
-          { Math.floor(this.props.ingredient.amount) }
+          { Math.ceil(this.props.ingredient.amount) }
         </div>
       </li>
     );

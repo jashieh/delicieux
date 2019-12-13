@@ -123,11 +123,11 @@ class CartItem extends React.Component {
                   </div>
                   {calorieC}
                 </div>
-                <div className="cart-item-remove" onClick={this.removeFromCart}>X</div>
+                <div></div>
               </div>
-              {/* <div className="cart-item-remove">
-                dasdasd
-              </div> */}
+              <div className="cart-item-remove" onClick={this.removeFromCart}>
+                X
+              </div>
             </div>
           </div>
         </div>
