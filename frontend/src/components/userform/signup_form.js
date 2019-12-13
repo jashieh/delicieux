@@ -33,11 +33,9 @@ class SignupForm extends React.Component {
 
     let errors = [];
 
-    // this.props.nextStep();
     if (this.props.values.name.length === 0) {
       errors.push("Please enter your name");
       bool = false;
-      // this.setState({ errors: this.state.errors.concat(["Please enter your name"]) });
     } else if (this.props.values.name.length < 2 || this.props.values.name.length > 30) {
       errors.push("Must be between 2 and 30 characters")
       bool = false;
@@ -46,13 +44,11 @@ class SignupForm extends React.Component {
     if (this.props.values.password.length < 6) {
       bool = false;
       errors.push("Password at least 6 characters");
-      // this.setState({ errors: this.state.errors.concat(["Password at least 6 characters"]) });
     }
     
     if (this.props.values.password2 !== this.props.values.password ) {
       bool = false;
       errors.push("Passwords must match");
-      // this.setState({ errors: this.state.errors.concat(["Passwords must match"]) });
     }
 
     if (this.props.values.email.length === 0) {
@@ -71,17 +67,6 @@ class SignupForm extends React.Component {
     
   }
 
-  // handlePassSubmit(e) {
-  //   e.preventDefault();
-  //   if (this.props.values.password.length === 0) {
-  //     this.setState({ errors: this.state.errors.push("Please enter a password.") });
-  //   } else if (this.state.password.length < 6) {
-  //     this.setState({ passwordErrors: ["Use at least 6 characters."] });
-  //   } else {
-  //     this.setState({ passwordErrors: [], form: "username" });
-  //   }
-  // }
-
   renderNameErrors() {
 
     return (
@@ -97,14 +82,11 @@ class SignupForm extends React.Component {
     return(
       <ul>
         {Object.keys(this.state.errors).map((error, i) => {
-          // console.log(this.state.errors[error]);
           if (this.state.errors[error].includes("name")) {
-            // console.log(this.state.errors[error])
             return (
               <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
               )
             } else if (this.state.errors[error].includes("30")) {
-              console.log("Hello")
               return (
                 <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
               )
@@ -123,7 +105,6 @@ class SignupForm extends React.Component {
               <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )
           } else if (this.state.errors[error].includes("Invalid")) {
-            console.log("Second");
             return (
               <li className="login-error sign-err" key={`error-${i}`}>{this.state.errors[error]}</li>
             )

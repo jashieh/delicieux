@@ -111,7 +111,6 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
                         RecipeAPI.updateRecipeIngredients(payload.data.recipeId, ing)
                         .then(res => {
                           updateDone--;
-                          console.log(updateDone)
                           apiData[i] = res.data;
 
                           if(updateDone === 0) {
@@ -121,8 +120,6 @@ const getMultipleRecipes = (recipeIds) => dispatch => (
                       }
                     });
                   }
-                  // if (results === 0) dispatch(receiveRecipes(apiData))
-                  //   .then(() => dispatch(stopLoad()));
                   if (results === 0){
                     dispatch(receiveRecipes(apiData))
                     dispatch(stopLoad());

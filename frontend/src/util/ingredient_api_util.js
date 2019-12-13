@@ -22,12 +22,6 @@ export const searchIngredientByName = (query = "", limit = 5, intolerances=[]) =
       "metaInformation": "true"
     }
   })
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
 }
 
 // amount = number of grams
@@ -45,12 +39,6 @@ export const getIngredientById = (id, amount = 1, unit = "gram") => {
       "unit": `${unit}`
     }
   })
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
 }
 
 
@@ -69,12 +57,6 @@ export const getIngredientSubstitutes = (ingredientName) => {
       "ingredientName": ingredientName
     }
   })
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
 };
 
 export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUnit="grams") => {
@@ -94,12 +76,6 @@ export const getConvertAmounts = (ingredient, sourceUnit, sourceAmount, targetUn
       "sourceAmount": `${sourceAmount}`
     }
   });
-    // .then((response) => {
-    //   console.log(response)
-    // })
-    // .catch((error) => {
-    //   console.log(error)
-    // })
 };
 
 
