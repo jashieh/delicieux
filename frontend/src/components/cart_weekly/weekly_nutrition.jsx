@@ -1,5 +1,5 @@
 import React from 'react';
-import { Divider } from 'material-ui';
+// import { Divider } from 'material-ui';
 
 class WeeklyNutrition extends React.Component {
   constructor(props) {
@@ -10,8 +10,8 @@ class WeeklyNutrition extends React.Component {
 
   generateNutrientTableRows() {
     let { nutrients } = this.props;
-    let nutrientNames = Object.keys(nutrients);
-    nutrientNames = nutrientNames.sort();
+    // let nutrientNames = Object.keys(nutrients);
+    // nutrientNames = nutrientNames.sort();
 
     let main = [
       "Calories", 
