@@ -8,10 +8,13 @@
   padding-top: 50px;
 
   color: white;
+  font-family: Open Sans;
 
   .title {
     text-align: center;
     margin-bottom: 20px;
+    color: black;
+    font-size: 14px;
   }
 
   .catagory-list::-webkit-scrollbar {
@@ -42,8 +45,11 @@
       .weekly-catagory-title {
         cursor: pointer;
         margin-top: 20px;
-        font-size: 16px;
-        border-bottom: 1px solid grey;
+        font-size: 14px;
+        font-family: Open Sans;
+        line-height: 25px;
+        color: black;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.393);
       }
 
       .weekly-catagory-ul {
@@ -62,11 +68,12 @@
       
       .weekly-ing-checkbox {
         margin-left: 20px;
-        font-size: 27px;
+        font-size: 22px;
+        
       }
 
       .checked {
-        color: green;
+        color: rgba(17, 126, 17, 0.598);
       }
 
       .weekly-ing-box {
@@ -74,7 +81,7 @@
         width: 70%;
         margin: 10px 15px;
         background-color: white;
-        box-shadow: 1px 1px 7px 1px #242222;
+        // box-shadow: 1px 1px 4px 1px #91919179;
         color: black;
         border-radius: 4px;
         font-family: Open Sans;
@@ -110,7 +117,7 @@
       }
 
       .weekly-ing-name {
-        font-size: 18px;
+        font-size: 13px;
         font-weight: 400;
         margin-bottom: 5px;
       }
@@ -119,7 +126,7 @@
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        font-size: 12px;
+        font-size: 11px;
 
         div {
           margin-left: 5px;
