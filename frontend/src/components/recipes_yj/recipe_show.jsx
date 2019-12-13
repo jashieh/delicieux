@@ -161,7 +161,7 @@ export default class RecipeShow extends React.Component {
                   className="chart-test"
                   style={{
                     border: "1px solid gray",
-                    background: `linear-gradient(90deg, black ${percent}%, white ${percent}%)`
+                    background: `linear-gradient(90deg, lightblue ${percent}%, white ${percent}%)`
                   }}
                 >
                   {this.state[title] ? (
