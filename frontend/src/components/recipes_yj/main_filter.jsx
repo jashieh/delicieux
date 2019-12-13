@@ -258,7 +258,7 @@ export default class MainFilter extends React.Component {
               className="filter-dd-item1" 
               onClick={this.handleCuisine({cuisine})}>
               <input type="radio" name="drone" className="filter-checkbox"
-                checked={this.state.cuisine === cuisine}/>
+                checked={this.state.cuisine === cuisine} onChange={()=>{}}/>
               <div className="filter-diet-name">
                 {cuisine}
               </div>
