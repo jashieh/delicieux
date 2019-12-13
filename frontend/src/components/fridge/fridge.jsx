@@ -22,7 +22,7 @@ class Fridge extends React.Component {
   render() {
     return(
       <div className="fridge-container" >
-        <div className="fridge-nav">
+        <div className="top">
           <NavbarContainer />
         </div>
         <div className="contain-all">
