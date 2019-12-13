@@ -88,7 +88,7 @@
   .recipe-show-ing-list {
     // margin: 0 auto;
     list-style: none;
-    overflow-y: auto;
+    overflow-y: scroll;
     // background: orange;
     height: 90%;
     width: 92%;
@@ -200,7 +200,7 @@
     line-height: 24px;
     
   }
-
+  
   .rs-li-item-pic-cont {
     height: 20px;
     width: 20px;

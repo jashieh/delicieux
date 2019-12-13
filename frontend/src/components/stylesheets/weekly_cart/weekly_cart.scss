@@ -17,10 +17,10 @@
 }
 
 .weekly-cart-days {
-  height: 100%;
+  height: auto;
   width: 960px;
-  padding-top: 4%;
-  padding-bottom: 4%;
+  margin-top: 4%;
+  margin-bottom: 4%;
   padding-left: 4%;
 
   box-sizing: border-box;
@@ -34,7 +34,7 @@
 }
 
 .weekly-cart-details {
-  height: 100%;
+  height: auto;
   width: calc(100% - 900px);
   min-width: 840px;
   padding-left: 100px;
@@ -67,6 +67,8 @@
   font-size: 15.5px;
   letter-spacing: 1px;
 
+  width: 100%;
+
   div {
     width: 280px;
     text-align: center;
@@ -90,6 +92,12 @@
 
     justify-content: space-between;
     padding-left: 200px;
+  }
+
+  .weekly-cart-times {
+    div {
+      width: 350px;
+    }
   }
 }
 
