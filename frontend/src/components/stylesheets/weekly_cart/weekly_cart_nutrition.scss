@@ -6,7 +6,9 @@ strong {
   display: flex;
   flex-direction: column;
 
-  width: 260px;
+  width: 30%;
+  max-width: 250px;
+  min-width: 235px;
   max-height: 660px;
 
   padding: 10px;
@@ -29,7 +31,7 @@ strong {
   display: flex;
   flex-direction: row;  
 
-  width: 260px;
+  width: 100%;
   min-height: 17px;
 
   font-family: Open Sans;
@@ -39,7 +41,7 @@ strong {
 }
 
 .weekly-nutrient-name {
-  width: 190px;
+  width: calc(100% - 50px);
   padding-left: 10px;
   display: flex;
 }
