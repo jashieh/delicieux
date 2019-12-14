@@ -47,6 +47,7 @@ export const fetchFridge = (userId) => dispatch => (
             })
         }
       }
+      return data.ingredients;
     })
 );
 
