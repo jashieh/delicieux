@@ -86,7 +86,7 @@ class RecipeIndexItem extends React.Component {
             {score}
             <div className="recipe-index-item-name">{spoonacularScore}</div>
           </div>
-          <div className="vegan">
+          <div className="vegan-two">
             {leaf}
             <div className="recipe-index-item-name">{isVegan}</div>
           </div>
