@@ -4,6 +4,9 @@ import Leaf from '../stylesheets/assets/leaf.png';
 import Leaf2 from '../stylesheets/assets/leaf2.png';
 import Salami from '../stylesheets/assets/salami.png';
 import Clock from '../stylesheets/assets/time.png';
+import Calorie from '../stylesheets/assets/caloriee.png'
+import Like from "../stylesheets/assets/like.png";
+import Dislike from '../stylesheets/assets/dislike.png'
 
 const MAX = 21;
 const MIN = 0;
@@ -51,6 +54,13 @@ class RecipeIndexItem extends React.Component {
       leaf = <img className="leaf" src={Salami} alt="" />;
     }
 
+    let score
+    if (spoonacularScore > 50) {
+      score = <img className="like" src={Like} alt="" />;
+    } else {
+      score = <img className="like" src={Dislike} alt="" />;
+    }
+
     return (
       <div
         className="recipe-index-item"
@@ -66,21 +76,23 @@ class RecipeIndexItem extends React.Component {
           <div className="recipe-index-item-name">
             {title.slice(0, 25) + ".."}
           </div>
-          <div className="recipe-time-container"> 
+          <div className="recipe-time-container">
             <div>{timeC}</div>
-            <img src={Clock} alt="" className="make"/>
+            <img src={Clock} alt="" className="make" />
           </div>
         </div>
         <div className="icon-box">
-          <div className="spoon">
+          <div className="vegan">
+            {score}
             <div className="recipe-index-item-name">{spoonacularScore}</div>
           </div>
-          <div className="vegan">
+          <div className="vegan-two">
             {leaf}
             <div className="recipe-index-item-name">{isVegan}</div>
           </div>
-          <div className="serving-size">
-            <div className="recipe-index-item-name">{calorieC}</div>
+          <div className="vegan">
+            <div className="calorie">kcal</div>
+            <div className="recipe-index-item-name cal-name">{calorieC}</div>
           </div>
         </div>
         {/* <div className="recipe-index-item-add" onClick={this.addToCart}>Add to Cart</div> */}
