@@ -17,10 +17,10 @@
 }
 
 .weekly-cart-days {
-  height: auto;
+  height: 100%;
   width: 960px;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  padding-top: 4%;
+  padding-bottom: 4%;
   padding-left: 4%;
 
   box-sizing: border-box;
@@ -34,7 +34,7 @@
 }
 
 .weekly-cart-details {
-  height: auto;
+  height: 100%;
   width: calc(100% - 900px);
   min-width: 840px;
   padding-left: 100px;
@@ -60,7 +60,7 @@
   display: flex;
   justify-content: center;
   padding-left: 60px;
-  padding-bottom: 5px;
+  margin-bottom: 8px;
 
   font-family: Open Sans;
   font-weight: 400;
@@ -83,10 +83,16 @@
   }
   
   .weekly-cart-days {
+    height: auto;
     width: 100%;
+    .weekly-cart-day {
+      margin: 0;
+    }
   }
 
+
   .weekly-cart-details {
+    height: auto;
     width: 75%;
     padding: 0;
 
