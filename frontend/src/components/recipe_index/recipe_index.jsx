@@ -22,11 +22,12 @@ class RecipeIndex extends React.Component {
     setTimeout(() => {
       if(loading)
         startLoad("failed");
-    }, 10000)
+    }, 10000);
     fetchFridge(user.id)
       .then(
-        () => {
-          let { ingredients } = fridge;
+        (res) => {
+          let ingredients = res;
+          // let { ingredients } = fridge;
           let names = [];
           if(ingredients) {
             names = Object.keys(ingredients).map((id) => ingredients[id].name);
