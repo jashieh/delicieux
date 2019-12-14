@@ -41,12 +41,33 @@
       display: flex;
       flex-direction: row;
       align-items: center;
+
+      .calorie {
+        background: white;
+        font-size: 10px;
+        padding: 3px 4px;
+        border-radius: 5px;
+        margin-top: 2.3px;
+        // border: 1px solid black;
+      }
+
+      .cal-name {
+        padding-left: 5px;
+      }
     }
 
     .leaf {
       width: 20px;
       height: 20px;
     }
+
+    .like {
+      width: 24px;
+      height: 23px;
+      border: 2px solid white;
+      border-radius: 5px;
+    }
+
   }
 }
 
