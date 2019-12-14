@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import NavbarContainer from '../nav/navbar_container';
 import ChooseMeal from '../stylesheets/assets/choose.gif';
@@ -74,7 +75,7 @@ class MainPage extends React.Component {
           <div>
             <div className="container">
               <div className="codrops-top">
-                <NavbarContainer />
+                {/* <NavbarContainer /> */}
                 <div className="clr"></div>
               </div>
               {/* <div className="st-container">
@@ -136,6 +137,10 @@ class MainPage extends React.Component {
                                         onClick={()=>this.props.history.push('/login')}>
                                         délicieux
                                     </h2>
+                                    <div className="splash-login-buttons">
+                                        <Link className="main-sign" to={'/signup'}>Signup</Link>
+                                        <Link className="main-sign" to={'/login'}>Login</Link>
+                                    </div>
                                     {/* <div className="very-top">
                                         <div className="top-top">
                                             <div className="meter">
@@ -152,9 +157,18 @@ class MainPage extends React.Component {
                                 </div> */}
                                 
                                 <div className="second-main-contain"> 
+                                    <div className="second-main-inner">
+                                        
                                     <div className="img-container-second">
                                         <img src={Freshly} alt=""
                                             className="splash-img-second" />
+                                    </div>
+                                    <div className="splash-loading-container">
+                                    <h2 className="splash-main-title"
+                                        onClick={()=>this.props.history.push('/login')}>
+                                        délicieux
+                                    </h2>
+
                                     </div>
                                     <div className="splash-middle">
                                         <div className="splash-middle-contain">
@@ -176,6 +190,7 @@ class MainPage extends React.Component {
                                         </div>
                                     </div>
                                 </div>
+                                </div>
                             </section>
 
                             <section className="st-panel st-color" id="st-panel-3">
@@ -185,7 +200,16 @@ class MainPage extends React.Component {
                                 </div> */}
                                 {/* <div className="st-deco">
                                 </div> */}
+                                
                                 <div className="splash-middle-container-3">
+                                    <div className="splash-loading-container">
+                                    <h2 className="splash-main-title"
+                                        onClick={()=>this.props.history.push('/login')}>
+                                        délicieux
+                                    </h2>
+
+                                    </div>
+                                    
                                     <h1 className="how-it-works">How it works</h1>
                                     <div className="splash-gif-container">
                                       <div className="splash-gif-top">
@@ -243,6 +267,13 @@ class MainPage extends React.Component {
                                   <img src={KitchenCounter} className="splash-image" alt=""/>
                                 </div>
 
+                                    <div className="splash-loading-container">
+                                    <h2 className="splash-main-title"
+                                        onClick={()=>this.props.history.push('/login')}>
+                                        délicieux
+                                    </h2>
+
+                                    </div>
                                 <div className="main-index">
                                 
                                   <div className="main-index-rows">
