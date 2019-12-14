@@ -19,10 +19,22 @@
   justify-content: center;
   position: absolute;
   box-sizing: border-box;
-  top: 2%;
+  top: 3.8%;
   right: 0%;
   width: 300px;
   height: 80px;
+
+  .splash-login-buttons {
+      width: 130px;
+      font-size: 12px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    // position: absolute;
+    // top: 10%;
+    // right: 0%;
+    // width: 300px;
+  }
 
   // h2 {
   //     position: static;

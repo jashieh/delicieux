@@ -75,7 +75,7 @@ class MainPage extends React.Component {
           <div>
             <div className="container">
               <div className="codrops-top">
-                <NavbarContainer />
+                {/* <NavbarContainer /> */}
                 <div className="clr"></div>
               </div>
               {/* aasdasd */}
