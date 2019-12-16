@@ -1,5 +1,5 @@
-  import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 
 
 class SignupForm extends React.Component {
@@ -148,7 +148,8 @@ class SignupForm extends React.Component {
 
     return (
         <div className="session-background">
-          <div className="signup-text">délicieux</div>
+          <div className="signup-text"
+            onClick={() => this.props.history.push("/")}>délicieux</div>
           <div className="signup-form" className="btn">
             <span>
               <span>
@@ -210,6 +211,6 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+export default withRouter(SignupForm);
 
 

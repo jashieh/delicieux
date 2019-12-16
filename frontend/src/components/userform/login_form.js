@@ -1,8 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import TextField from "material-ui/TextField";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -93,7 +90,8 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div className="session-background">
-        <div className="signup-text">délicieux</div>
+        <div className="signup-text"
+          onClick={() => this.props.history.push("/")}>délicieux</div>
         <a className="signup-form" class="btn">
           <span>
             <span>

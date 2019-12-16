@@ -1,8 +1,6 @@
 import React from "react";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppBar from "material-ui/AppBar";
-import TextField from "material-ui/TextField";
-import RaisedButton from "material-ui/RaisedButton";
+import { withRouter } from "react-router-dom";
 
 class FormPersonalDetails extends React.Component {
   constructor(props) {
@@ -75,7 +73,8 @@ class FormPersonalDetails extends React.Component {
     return (
       <MuiThemeProvider>
         <div className="session-background">
-          <div className="signup-text">délicieux</div>
+          <div className="signup-text"
+            onClick={() => this.props.history.push("/")}>délicieux</div>
           <a className="signup-form" class="btn">
             <span>
               <span>
@@ -122,4 +121,4 @@ class FormPersonalDetails extends React.Component {
   }
 }
 
-export default FormPersonalDetails;
+export default withRouter(FormPersonalDetails);

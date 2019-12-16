@@ -137,10 +137,12 @@ class MainPage extends React.Component {
                                         onClick={()=>this.props.history.push('/login')}>
                                         délicieux
                                     </h2>
-                                    <div className="splash-login-buttons">
-                                        <Link className="main-sign" to={'/signup'}>Signup</Link>
-                                        <Link className="main-sign" to={'/login'}>Login</Link>
-                                    </div>
+                                    {!this.props.loggedIn && 
+                                        <div className="splash-login-buttons">
+                                            <Link className="main-sign" to={'/signup'}>Signup</Link>
+                                            <Link className="main-sign" to={'/login'}>Login</Link>
+                                        </div>
+                                    }
                                     {/* <div className="very-top">
                                         <div className="top-top">
                                             <div className="meter">
