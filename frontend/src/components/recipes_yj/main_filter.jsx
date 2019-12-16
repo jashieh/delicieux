@@ -11,7 +11,7 @@ export default class MainFilter extends React.Component {
       query: "",
       ingredientQuery: "",
       ingredientList: [],
-      includeFridge: true,
+      includeFridge: false,
       tabs: 0,
       cuisines: ["American", "Chinese", "French", "German", "Indian", "Italian", "Japanese", "Korean", "Mexican", "Thai"],
       allergies: ["Dairy", "Egg", "Gluten", "Peanut", "Seafood", "Shellfish", "Soy", "Sulfite", "Wheat"],
@@ -49,6 +49,8 @@ export default class MainFilter extends React.Component {
 
   addIngredient(search) {
     let x = this.state.ingredientList;
+    console.log(this.state.ingredientToggle)
+
     if (!x.join("").includes(search.trim())) {
       x.push(search.trim());
       this.setState({ ingredientList: x }, () => {
@@ -86,6 +88,7 @@ export default class MainFilter extends React.Component {
     }
   }
   handleKeyDown(e) {
+
     if (e.key === 'Enter' && !e.shiftKey) {
       this.handleQuerySubmit();
     }
@@ -432,12 +435,13 @@ export default class MainFilter extends React.Component {
               </div>
             </div>
           </div>
-            <div className="fridge-add">
-              <div className="filter-switch" onClick={this.handleCheck("includeFridge")}>
+            <div className="fridge-add"> 
+              <div className="filter-switch" onChange={this.handleCheck("includeFridge")}>
                 <input type="radio" id="yes" name="switch"
-                  defaultChecked={this.state.includeFridge}
+                  defaultChecked={this.state.includeFridge === true}
                   className="switch-btn radio-yes"/>
                 <input type="radio" id="no" name="switch"
+                  defaultChecked={this.state.includeFridge === false}
                   className="switch-btn radio-no"/>
 
                 <label htmlFor="yes" className="switch-btn-label radio-yes-label">
