@@ -1,3 +1,18 @@
+# <a href="https://delicieux.herokuapp.com/" target="_blank">Délicieux</a>
+
+
+## Background and Overview
+
+## Technologies Used
+* **MongoDB:** MongoDB was used as the primary database for the project.
+* **Express:** Express was used to manage the application's backend interface.
+* **Node.js:** Node.js was used to execute JavaScript code outside of a browser.
+* **React/Redux:** React and Redux libraries were used to facilitate frontend development.
+
+## Feature Highlights
+
+
+
 ## Background and Overview
 ____ is an app that helps people keep track of everything related to food. It will have four main functionalities:
 * Ingredients Tracker: The app will maintain a list of ingredients that contain its price, nutritional information, and current stock.
