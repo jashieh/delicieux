@@ -71,7 +71,7 @@ onDrop(e) {
 We have implemented a recipe filtering feature to improve the quality of recipe search results for the user. The feature displays a conditional filter with pre-determined query parameters such as dietary restriction, nutritional goals, cuisine type, and presence of ingredients that the user can select to refine their search. After the search button function is executed, the resulting search scans the database and only displays results that conform to user-selected preferences.
 
 
-
+![](https://github.com/jashieh/delicieux/blob/master/frontend/src/components/stylesheets/assets/filter.jpg)
 
 
  ### Recipe Index
