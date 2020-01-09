@@ -5,6 +5,7 @@ import key from './key';
 // Searches for matches starting with query string. 
 // Returns name, id and image of ingredients  
 
+
 export const searchIngredientByName = (query = "", limit = 5, intolerances=[]) => {
   const allergies = intolerances.join(",")
   // return axios.get(`https://api.spoonacular.com/food/ingredients/autocomplete?query=${query}&metaInformation=true&number=${limit}&apiKey=${apiKey}`);
