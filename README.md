@@ -1,3 +1,21 @@
+# <a href="https://delicieux.herokuapp.com/" target="_blank">Délicieux</a>
+
+
+## Background and Overview
+Délicieux is a dynamically updating grocery management and meal planning application with smart recipe suggestions based on stored ingredients, filter parameters and diet goals. Built on the MERN Stack (MongoDB, Express, React, Node.js), délicieux allows the user to keep track of the ingredients in their fridge, either by selecting quantities from the recipes they select or by manually inputting the data into their digital fridge. The user can also input their personal goals, dietary restrictions, allergies, and cuisine preferences to filter the recipes displayed to them. A weekly summary of the recipes the user choose and its corresponding macro information is also provided.
+
+## Technologies Used
+* **MongoDB:** MongoDB was used as the primary database for the project.
+* **Express:** Express was used to manage the application's backend interface.
+* **Node.js:** Node.js was used to execute JavaScript code outside of a browser.
+* **React/Redux:** React and Redux libraries were used to facilitate frontend development.
+
+## Feature Highlights
+
+### 
+
+
+
 ## Background and Overview
 ____ is an app that helps people keep track of everything related to food. It will have four main functionalities:
 * Ingredients Tracker: The app will maintain a list of ingredients that contain its price, nutritional information, and current stock.
