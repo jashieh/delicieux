@@ -2,13 +2,13 @@ import React from 'react';
 import IngredientSearchItemContainer from './ingredient_search_item_container';
 
 const debounce = (func, delay) => {
-let inDebounce
-  return function() {
-    const context = this
-    const args = arguments
-    clearTimeout(inDebounce)
-    inDebounce = setTimeout(() => func.apply(context, args), delay)
-  }
+  let inDebounce
+    return function() {
+      const context = this
+      const args = arguments
+      clearTimeout(inDebounce)
+      inDebounce = setTimeout(() => func.apply(context, args), delay)
+    }
 }
 
 class IngredientSearch extends React.Component {
