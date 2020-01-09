@@ -72,9 +72,11 @@ We have implemented a recipe filtering feature to improve the quality of recipe 
 
 
 
+
+
  ### Recipe Index
 
 Based on the recipe filters previosuly applied, the application will assemble 12 optimized recipe suggestions for the user. By clicking on each recipe, attributes such as nutritional information, macronutrient distributions, and recipe instructions are automatically retrived from the Food and Recipe API known as Spoonacular to facilitate accomplishment of the user's weekly goals. The user is able to develop weekly meal plans with ease by dragging and dropping individual recipes into their weekly meal planner. 
   
-
+![](https://github.com/jashieh/delicieux/blob/master/demo/index.gif)
 
