@@ -1,5 +1,7 @@
 # <a href="https://delicieux.herokuapp.com/" target="_blank">Délicieux</a>
 
+![](https://github.com/jashieh/delicieux/blob/master/demo/landing.gif)
+
 
 ## Background and Overview
 Délicieux is a dynamically updating grocery management and meal planning application with smart recipe suggestions based on stored ingredients, filter parameters and diet goals. Built on the MERN Stack (MongoDB, Express, React, Node.js), délicieux allows the user to keep track of the ingredients in their fridge, either by selecting quantities from the recipes they select or by manually inputting the data into their digital fridge. The user can also input their personal goals, dietary restrictions, allergies, and cuisine preferences to filter the recipes displayed to them. A weekly summary of the recipes the user choose and its corresponding macro information is also provided.
