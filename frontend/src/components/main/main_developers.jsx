@@ -77,13 +77,13 @@ class MainDevelopers extends React.Component {
                   <div className="dev-logo">
                     <img src={Profile} alt="" />
                   </div>
-                  <a href="https://github.com/yshen901" className="main-developer-link">Profile</a>
+                  <a href="http://kelly-ku.com" className="main-developer-link">Profile</a>
                 </div>
                 <div className="dev-link">
                   <div className="dev-logo">
                     <img src={Angel} alt="" />
                   </div>
-                  <a href="https://github.com/yshen901" className="main-developer-link">AngelList</a>
+                  <a href="https://angel.co/kelly-ku" className="main-developer-link">AngelList</a>
                 </div>
               </div>
             </div>
