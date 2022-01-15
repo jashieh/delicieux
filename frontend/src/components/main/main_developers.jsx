@@ -2,13 +2,12 @@ import React from "react";
 import Kelly from "../stylesheets/assets/kelly.jpeg";
 import Justin from "../stylesheets/assets/justin.jpg";
 import Yuci from "../stylesheets/assets/yuci.jpg";
-import Youngjun from "../stylesheets/assets/yuci.jpg";
+import Youngjun from "../stylesheets/assets/youngjun.jpeg";
 import Last from '../stylesheets/assets/last.jpeg'
 import LinkedIn from '../stylesheets/assets/linkedin.png'
 import GitHub from '../stylesheets/assets/github-sign.png'
 import Profile from '../stylesheets/assets/user.png'
 import Angel from '../stylesheets/assets/angel.png'
-
 
 class MainDevelopers extends React.Component {
   render() {
